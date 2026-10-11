@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#f2dcc3"/>
+  <path d="M0 40H64V50A14 14 0 0 1 50 64H14A14 14 0 0 1 0 50z" fill="#d0a074"/>
+  <rect y="38" width="64" height="3" fill="#8a5a3a"/>
+  <g stroke="#5a3d2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- floor shadow -->
+    <ellipse cx="32" cy="55.5" rx="25" ry="2.5" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <!-- left leg -->
+    <rect x="10" y="36" width="5.5" height="19" rx="1.5" fill="#d9a066"/>
+    <!-- drawer pedestal -->
+    <rect x="39" y="36" width="16" height="19" rx="2" fill="#d9a066"/>
+    <path d="M40 38H54V41H40z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M39 45.5H55" fill="none"/>
+    <circle cx="47" cy="41.5" r="2.3" fill="#d8a84a" stroke-width="2"/>
+    <circle cx="47" cy="50.5" r="2.3" fill="#d8a84a" stroke-width="2"/>
+    <!-- desk top -->
+    <rect x="6" y="32" width="52" height="6" rx="2.5" fill="#e8c290"/>
+    <path d="M9 34.5H55" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".6"/>
+    <!-- monitor stand -->
+    <rect x="17" y="23" width="6" height="8" fill="#e9e2d4"/>
+    <path d="M10.5 32Q10.5 29.25 14 29.25H26Q29.5 29.25 29.5 32z" fill="#e9e2d4"/>
+    <!-- monitor -->
+    <rect x="6" y="7" width="28" height="17" rx="3.5" fill="#e9e2d4"/>
+    <rect x="9.25" y="10.25" width="21.5" height="10.5" rx="1.5" fill="#6fa7a0"/>
+    <path d="M12.5 18.5L18 12.5M17 18.5L20.5 14.5" fill="none" stroke="#fff8ea" stroke-width="2.5" opacity=".5"/>
+    <!-- lamp arm: two thick segments, one joint -->
+    <path d="M48 29L53.5 21.5L48.5 13.5" fill="none" stroke-width="7.5"/>
+    <path d="M48 29L53.5 21.5L48.5 13.5" fill="none" stroke="#d9785a" stroke-width="3"/>
+    <!-- lamp base -->
+    <path d="M42.5 30.5Q42.5 27.5 48 27.5Q53.5 27.5 53.5 30.5V32H42.5z" fill="#d9785a"/>
+    <!-- lamp shade: cone pointing down at the desk -->
+    <path d="M47.1 12L49.9 15L44.3 24.2Q38.8 22.5 37.7 16.8z" fill="#d9785a"/>
+    <path d="M41 18.5L47 13.5" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".5"/>
+  </g>
+</svg>

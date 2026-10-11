@@ -18,6 +18,7 @@ import SessionCompletionModal from "./components/SessionCompleteModal/SessionCom
 import ExportImportModal from "./components/ExportImport/ExportImportModal";
 import ClearDataModal from "./components/ClearData/ClearDataModal";
 import Footer from "./components/Footer/Footer";
+import LanguagePicker from "./components/Language/LanguagePicker";
 import SupportButton from "./components/Support/SupportButton";
 import AboutPage from "./pages/AboutPage";
 import PrivacyPage from "./pages/PrivacyPage";
@@ -650,6 +651,7 @@ const App = () => {
     <>
       {page}
       <SupportButton />
+      <LanguagePicker />
     </>
   );
 };

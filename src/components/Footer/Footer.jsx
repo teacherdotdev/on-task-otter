@@ -1,6 +1,5 @@
 import edtechathonLogo from "../../assets/edtechathon-logo.svg";
 import Link from "../Link/Link";
-import LanguagePicker from "../Language/LanguagePicker";
 import { useTranslation } from "../../i18n";
 
 const Footer = () => {
@@ -19,7 +18,6 @@ const Footer = () => {
     </a>
     <Link href="/about">{t("footer.about")}</Link>
     <Link href="/privacy">{t("footer.privacy")}</Link>
-    <LanguagePicker />
   </footer>
   );
 };

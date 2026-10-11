@@ -95,6 +95,7 @@ export const fr = {
     "calibration.restart": "Recommencer le calibrage",
     "calibration.done": "Terminé",
     "calibration.close": "Fermer le calibrage",
+    "calibration.hears": "Ce que le micro entend",
 
     "session.label": "Séance de concentration",
     "session.favorites": "Lancer une favorite",

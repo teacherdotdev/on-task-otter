@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "../../i18n";
+import { soundThresholdOf } from "../../data/activities";
 
 const SessionSettingsCard = ({ session, displayCountdown, children }) => {
   const { t } = useTranslation();
@@ -121,7 +122,7 @@ const SessionSettingsCard = ({ session, displayCountdown, children }) => {
                     onClick={() => chooseFavorite(favorite)}
                   >
                     <b>{favorite.name}</b>
-                    <span>{t("session.minutesShort", { minutes: favorite.minutes })} · {favorite.trackSound === false ? t("session.noSoundMeter") : (Number.isFinite(favorite.soundThreshold) ? t("preset.soundLimitDetail", { percent: favorite.soundThreshold }) : t("session.tracksSound"))}</span>
+                    <span>{t("session.minutesShort", { minutes: favorite.minutes })} · {favorite.trackSound === false ? t("session.noSoundMeter") : (Number.isFinite(favorite.soundThreshold) ? t("preset.soundLimitDetail", { percent: soundThresholdOf(favorite.soundThreshold, favorite.activity) }) : t("session.tracksSound"))}</span>
                   </button>
                   <button
                     className="favorite-delete"

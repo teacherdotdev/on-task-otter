@@ -1,5 +1,6 @@
 import { exportClassroomSave, importClassroomSave, SAVE_FILE_APP_NAME } from "./storage.js";
 import { t } from "../i18n";
+import { activities, MAX_SOUND_THRESHOLD, MIN_SOUND_THRESHOLD } from "../data/activities";
 
 const isFiniteNonNegativeNumber = (value) => {
   return Number.isFinite(value) && value >= 0;
@@ -105,11 +106,11 @@ const validateSaveFile = (data, validIds) => {
     (settings.trackSound === undefined || typeof settings.trackSound === "boolean") &&
     (settings.soundThresholds === undefined || (
       Number.isFinite(settings.soundThresholds.independent) &&
-      settings.soundThresholds.independent >= 10 &&
-      settings.soundThresholds.independent <= 80 &&
+      settings.soundThresholds.independent >= MIN_SOUND_THRESHOLD &&
+      settings.soundThresholds.independent <= MAX_SOUND_THRESHOLD &&
       Number.isFinite(settings.soundThresholds.partner) &&
-      settings.soundThresholds.partner >= 10 &&
-      settings.soundThresholds.partner <= 80
+      settings.soundThresholds.partner >= MIN_SOUND_THRESHOLD &&
+      settings.soundThresholds.partner <= MAX_SOUND_THRESHOLD
     )) &&
     (settings.favoriteSessions === undefined || (
       Array.isArray(settings.favoriteSessions) &&
@@ -163,7 +164,10 @@ const validateSaveFile = (data, validIds) => {
     ...settings,
     otterName: settings.otterName ?? "Otter",
     favoriteSessions: settings.favoriteSessions ?? [],
-    soundThresholds: settings.soundThresholds ?? { independent: 22, partner: 48 },
+    soundThresholds: settings.soundThresholds ?? {
+      independent: activities.independent.threshold,
+      partner: activities.partner.threshold,
+    },
   };
   data.data.onTaskOtterHouse = {
     activeRoom: house.activeRoom,

@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { accessories } from "./data/accessories";
-import { activities } from "./data/activities";
+import { activities, soundThresholdOf } from "./data/activities";
 import { houseItems, houseRooms } from "./data/houseItems";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useMicrophone } from "./hooks/useMicrophone";
+import { useRoomMonitor } from "./hooks/useRoomMonitor";
 import { useFullScreen } from "./hooks/useFullScreen";
 import { useTimer } from "./hooks/useTimer";
 import { formatTime } from "./utils/formatTime";
@@ -33,7 +34,10 @@ const Classroom = () => {
     preferredMinutes: 15,
     otterName: "Otter",
     favoriteSessions: [],
-    soundThresholds: { independent: 22, partner: 48 },
+    soundThresholds: {
+      independent: activities.independent.threshold,
+      partner: activities.partner.threshold,
+    },
     trackSound: true,
   });
   const [progressData, setProgressData] = useLocalStorage("onTaskOtterProgress", {
@@ -62,8 +66,8 @@ const Classroom = () => {
   const activity = activities[savedActivity] ? savedActivity : "partner";
   const favoriteSessions = Array.isArray(savedFavoriteSessions) ? savedFavoriteSessions : [];
   const soundThresholds = {
-    independent: savedSoundThresholds.independent ?? activities.independent.threshold,
-    partner: savedSoundThresholds.partner ?? activities.partner.threshold,
+    independent: soundThresholdOf(savedSoundThresholds.independent, "independent"),
+    partner: soundThresholdOf(savedSoundThresholds.partner, "partner"),
   };
   const { points, history = [] } = progressData;
   // Older saved classrooms may only have session history, not this total.
@@ -96,8 +100,8 @@ const Classroom = () => {
   const setSoundThreshold = (activityId, value) => setSettings((current) => ({
     ...current,
     soundThresholds: {
-      independent: current.soundThresholds?.independent ?? activities.independent.threshold,
-      partner: current.soundThresholds?.partner ?? activities.partner.threshold,
+      independent: soundThresholdOf(current.soundThresholds?.independent, "independent"),
+      partner: soundThresholdOf(current.soundThresholds?.partner, "partner"),
       [activityId]: value,
     },
   }));
@@ -205,74 +209,55 @@ const Classroom = () => {
   // runtime state
   const expectation = { ...activities[activity], threshold: soundThresholds[activity] };
   const microphone = useMicrophone();
-  const loudThreshold = expectation.threshold + 18;
-  const noiseSamples = useRef([]);
-  const [sustainedNoiseLevel, setSustainedNoiseLevel] = useState(0);
-  const [hasSustainedLoudNoise, setHasSustainedLoudNoise] = useState(false);
+  const timer = useTimer(preferredMinutes);
+  const pauseTimer = timer.pause;
+  /**
+   * True while the calibration popup is open. The class is being asked to
+   * talk on purpose, so the room is not judged.
+   */
+  const [calibrating, setCalibrating] = useState(false);
   const [needsTeacherResume, setNeedsTeacherResume] = useState(false);
-
-  useEffect(() => {
-    if (microphone.status !== "on") {
-      noiseSamples.current = [];
-      setSustainedNoiseLevel(0);
-      setHasSustainedLoudNoise(false);
-      return;
-    }
-
-    const now = Date.now();
-    noiseSamples.current = [
-      ...noiseSamples.current.filter((sample) => sample.time >= now - 10500),
-      { time: now, level: microphone.level },
-    ];
-    const samples = noiseSamples.current;
-    const average = samples.reduce((sum, sample) => sum + sample.level, 0) / samples.length;
-    const coversTenSeconds = samples[0]?.time <= now - 10000;
-    setSustainedNoiseLevel(average);
-    setHasSustainedLoudNoise(coversTenSeconds && average > loudThreshold);
-  }, [loudThreshold, microphone.level, microphone.rawLevel, microphone.status]);
+  // The room is only judged while the session runs: a teacher who pauses to
+  // make an announcement is never blamed for their own voice.
+  const monitor = useRoomMonitor({
+    readLevel: microphone.readLevel,
+    goal: expectation.threshold,
+    judging: microphone.status === "on" && !calibrating && timer.isRunning,
+  });
+  const isTooLoud = monitor.state === "too-loud";
 
   const noiseTone = microphone.status !== "on"
     ? "neutral"
-    : needsTeacherResume || hasSustainedLoudNoise
+    : needsTeacherResume || isTooLoud
       ? "loud"
-      : sustainedNoiseLevel <= expectation.threshold
-      ? "good"
-      : "warn";
+      : !timer.isRunning
+        ? "neutral"
+        : microphone.level <= expectation.threshold
+          ? "good"
+          : "warn";
 
   const noiseMessage = microphone.status !== "on"
     ? t("noise.ready")
     : needsTeacherResume
       ? t("noise.paused")
-      : noiseTone === "good"
-      ? t("noise.onTrack")
-      : noiseTone === "warn"
-        ? t("noise.gettingLoud")
-        : t("noise.tooLoud");
+      : noiseTone === "neutral"
+        ? t("noise.ready")
+        : noiseTone === "good"
+          ? t("noise.onTrack")
+          : noiseTone === "warn"
+            ? t("noise.gettingLoud")
+            : t("noise.tooLoud");
 
-  const timer = useTimer(preferredMinutes);
-  const pauseTimer = timer.pause;
   const recordedCompletion = useRef(false);
-  const redAlertPlayed = useRef(false);
-  const noisePauseArmed = useRef(true);
   const stopTimerAlert = useRef(null);
   const [isTimerAlertPlaying, setIsTimerAlertPlaying] = useState(false);
 
   useEffect(() => {
-    if (!hasSustainedLoudNoise) {
-      noisePauseArmed.current = true;
-      redAlertPlayed.current = false;
-      return;
-    }
-
-    if (!trackSound || !timer.isRunning || !noisePauseArmed.current) return;
-    noisePauseArmed.current = false;
+    if (!isTooLoud || !trackSound || !timer.isRunning) return;
     setNeedsTeacherResume(true);
     pauseTimer();
-    if (!redAlertPlayed.current) {
-      redAlertPlayed.current = true;
-      playNoiseAlert();
-    }
-  }, [hasSustainedLoudNoise, pauseTimer, timer.isRunning, trackSound]);
+    playNoiseAlert();
+  }, [isTooLoud, pauseTimer, timer.isRunning, trackSound]);
 
   useEffect(() => {
     if (timer.isComplete && microphone.status === "on") microphone.stop();
@@ -280,18 +265,12 @@ const Classroom = () => {
 
   const resumeAfterNoise = () => {
     setNeedsTeacherResume(false);
-    setHasSustainedLoudNoise(false);
-    setSustainedNoiseLevel(microphone.level);
-    noiseSamples.current = [];
-    noisePauseArmed.current = false;
-    redAlertPlayed.current = false;
     timer.resume();
   };
 
   const resetTimer = () => {
     microphone.stop();
     setNeedsTeacherResume(false);
-    noisePauseArmed.current = true;
     timer.reset();
   };
 
@@ -488,7 +467,8 @@ const Classroom = () => {
     trackSound,
     setTrackSound,
     setSoundThreshold,
-    loudThreshold,
+    isTooLoud,
+    setCalibrating,
   };
 
   const timerSettings = {

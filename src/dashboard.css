@@ -216,8 +216,10 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .status-dot.warn { background: #e6b84f; box-shadow: 0 0 0 7px rgba(230, 184, 79, .18); }
 .status-dot.loud { background: #db694f; box-shadow: 0 0 0 7px rgba(219, 105, 79, .17); }
 .noise-expectation { color: #75867f; font-size: .86rem; margin: 12px 0 25px; }
-.meter { background: linear-gradient(90deg, #cce2d3 0 34%, #f3dda4 34% 67%, #efc0b0 67%); border-radius: 999px; height: 22px; overflow: hidden; padding: 5px; }
-.meter span { background: #99a7a2; border-radius: inherit; display: block; height: 100%; min-width: 0; transition: width .75s ease-out, background-color .4s ease; }
+.meter { background: linear-gradient(90deg, #cce2d3 0 34%, #f3dda4 34% 67%, #efc0b0 67%); border-radius: 999px; height: 22px; overflow: hidden; padding: 5px; position: relative; }
+/* The level is already smoothed by the microphone; the bar only follows it, so it must not add a lag of its own. */
+.meter span { background: #99a7a2; border-radius: inherit; display: block; height: 100%; min-width: 0; transition: width .1s linear, background-color .4s ease; }
+.meter .meter-goal { background: #25433d; bottom: 0; pointer-events: none; position: absolute; top: 0; width: 2px; }
 .meter span.good { background: #39765d; }.meter span.warn { background: #ce9224; }.meter span.loud { background: #c94f35; }
 .noise-scale { color: #6f807a; display: flex; font-size: .82rem; justify-content: space-between; margin: 7px 0 24px; }
 .noise-card .outline { align-self: flex-start; }
@@ -722,6 +724,8 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .quick-sound-limit > label { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 6px; }
 .sound-calibration-dialog .calibration-panel { margin-top: 20px; padding-top: 18px; }
 .calibration-footer { display: flex; justify-content: flex-end; margin-top: 24px; padding-top: 16px; border-top: 1px solid #ded7ca; }
+.calibration-level { display: grid; gap: 6px; margin-top: 4px; }
+.calibration-level small { color: #667a73; font-size: .8rem; }
 .calibration-recommendations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 20px 0; }
 .calibration-recommendations > div { padding: 16px; background: #dce9d9; border-radius: 12px; }
 .calibration-recommendations dt { font-size: .9rem; }

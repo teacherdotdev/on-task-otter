@@ -1,63 +1,93 @@
 import { useEffect, useRef, useState } from "react";
 import NoiseScale from "./NoiseScale";
 import { useTranslation } from "../../i18n";
+import { makeCalibration, sampleLevel } from "../../audio/calibration";
+import { MAX_SOUND_THRESHOLD, MIN_SOUND_THRESHOLD } from "../../data/activities";
 
+/**
+ * Calibration is two five-second samples — a silent room, then the class
+ * talking normally — turned into the 0-100 scale everything else reasons
+ * about. It samples exactly as Shy Safari does.
+ */
 const SAMPLE_SECONDS = 5;
-
-const getStableAverage = (samples) => {
-  const sorted = [...samples].sort((a, b) => a - b);
-  const trim = Math.floor(sorted.length * 0.15);
-  const stableSamples = sorted.slice(trim, sorted.length - trim || sorted.length);
-  return stableSamples.reduce((sum, value) => sum + value, 0) / Math.max(1, stableSamples.length);
-};
+/** The microphone publishes every 100ms; read at the same pace. */
+const READING_MS = 100;
 
 const NoiseCard = ({ noise, focusMode = false, embedded = false }) => {
   const { t } = useTranslation();
-  const { noiseMessage, noiseTone, expectation, microphone, activity, activities, setActivity, soundThresholds, trackSound, setTrackSound, setSoundThreshold, loudThreshold } = noise;
+  const { noiseMessage, noiseTone, expectation, microphone, activity, activities, setActivity, soundThresholds, trackSound, setTrackSound, setSoundThreshold, setCalibrating } = noise;
+  const { readUnsmoothedLevel, setCalibration } = microphone;
   const dialogRef = useRef(null);
   const [calibrationStage, setCalibrationStage] = useState("idle");
   const [secondsLeft, setSecondsLeft] = useState(SAMPLE_SECONDS);
-  const [quietSample, setQuietSample] = useState(null);
+  const [quietSample, setQuietSample] = useState(0);
   const [showSoundBar, setShowSoundBar] = useState(true);
   const [showMicrophoneControls, setShowMicrophoneControls] = useState(false);
-  const samplesRef = useRef([]);
+  const isCalibrationOpen = useRef(false);
+  /** Whether opening calibration turned the microphone on, so closing it should turn it off. */
+  const startedMicrophone = useRef(false);
   const previewThreshold = expectation.threshold;
   const previewLabel = t(`activity.${activity}.label`);
+  const sampling = calibrationStage === "quiet" || calibrationStage === "talking";
+  /**
+   * Without a running microphone every sample is zero, the two stages come
+   * out identical, and the teacher gets told the room was not quiet enough —
+   * a confident diagnosis of the wrong thing.
+   */
+  const microphoneReady = microphone.status === "on";
 
   useEffect(() => {
-    if (calibrationStage === "quiet" || calibrationStage === "talking") {
-      samplesRef.current.push(microphone.rawLevel);
-    }
-  }, [microphone.rawLevel, calibrationStage]);
-
-  useEffect(() => {
-    if (calibrationStage !== "quiet" && calibrationStage !== "talking") return;
+    if (!sampling) return;
+    const readings = [];
     setSecondsLeft(SAMPLE_SECONDS);
-    samplesRef.current = [];
+
+    // Read on a timer rather than reacting to the level: a silent room can
+    // report the same level many times in a row, and skipping those would
+    // bias the quiet sample.
+    const collect = window.setInterval(() => readings.push(readUnsmoothedLevel()), READING_MS);
     const countdown = window.setInterval(() => setSecondsLeft((value) => Math.max(0, value - 1)), 1000);
     const finish = window.setTimeout(() => {
-      const samples = samplesRef.current;
-      const average = getStableAverage(samples);
+      const average = sampleLevel(readings);
       if (calibrationStage === "quiet") {
         setQuietSample(average);
         setCalibrationStage("ready");
-      } else {
-        const calibrated = microphone.setCalibration(quietSample, average);
-        if (calibrated) {
-          microphone.stop();
-        }
-        setCalibrationStage(calibrated ? "done" : "retry");
+        return;
       }
+      const result = makeCalibration(quietSample, average);
+      if (result) setCalibration(result);
+      setCalibrationStage(result ? "done" : "retry");
     }, SAMPLE_SECONDS * 1000);
     return () => {
+      window.clearInterval(collect);
       window.clearInterval(countdown);
       window.clearTimeout(finish);
     };
-  }, [calibrationStage, microphone.setCalibration, microphone.stop, quietSample]);
+  }, [calibrationStage, quietSample, readUnsmoothedLevel, sampling, setCalibration]);
 
-  const beginCalibration = async () => {
-    if (microphone.status !== "on" && !(await microphone.start())) return;
-    setCalibrationStage("quiet");
+  // Removing an open <dialog> does not fire `close`, so say so here, or the
+  // room would stay unjudged.
+  useEffect(() => () => {
+    if (isCalibrationOpen.current) setCalibrating?.(false);
+  }, [setCalibrating]);
+
+  const openCalibration = async () => {
+    dialogRef.current.showModal();
+    isCalibrationOpen.current = true;
+    setCalibrating(true);
+    if (microphone.status !== "on" && microphone.status !== "starting") {
+      startedMicrophone.current = true;
+      await microphone.start();
+    }
+  };
+
+  const closedCalibration = () => {
+    setCalibrationStage("idle");
+    isCalibrationOpen.current = false;
+    setCalibrating(false);
+    if (startedMicrophone.current) {
+      startedMicrophone.current = false;
+      microphone.stop();
+    }
   };
 
   return (
@@ -88,8 +118,7 @@ const NoiseCard = ({ noise, focusMode = false, embedded = false }) => {
       <NoiseScale
         microphone={microphone}
         noiseTone={noiseTone}
-        greenUntil={previewThreshold}
-        redFrom={loudThreshold}
+        goal={previewThreshold}
       /></>}
 
       <div className="noise-actions">
@@ -98,13 +127,13 @@ const NoiseCard = ({ noise, focusMode = false, embedded = false }) => {
           {t("noise.showBar")}
         </label>}
         {focusMode && <button className="outline microphone-toggle" type="button" aria-expanded={showMicrophoneControls} aria-controls="focus-microphone-controls" onClick={() => setShowMicrophoneControls((visible) => !visible)}>{t("noise.selectMicrophone")}</button>}
-        {!focusMode && <button className="outline" type="button" onClick={() => dialogRef.current.showModal()}>{t("noise.openCalibration")}</button>}
+        {!focusMode && <button className="outline" type="button" onClick={openCalibration}>{t("noise.openCalibration")}</button>}
 
       </div>
 
       {focusMode && <div className="microphone-setup" id="focus-microphone-controls" hidden={!showMicrophoneControls}>
         <label htmlFor="focus-microphone-choice">{t("noise.microphone")}</label>
-        <select id="focus-microphone-choice" value={microphone.selectedDeviceId} disabled={microphone.status === "starting"} onChange={(event) => microphone.selectDevice(event.target.value, true)}>
+        <select id="focus-microphone-choice" value={microphone.selectedDeviceId} onChange={(event) => microphone.selectDevice(event.target.value)}>
           <option value="">{t("noise.defaultMicrophone")}</option>
           {microphone.devices.filter((device) => device.deviceId).map((device, index) => <option key={device.deviceId} value={device.deviceId}>{device.label || t("noise.microphoneNumber", { number: index + 1 })}</option>)}
         </select>
@@ -115,30 +144,36 @@ const NoiseCard = ({ noise, focusMode = false, embedded = false }) => {
 
       {!focusMode && (
         <div className="microphone-setup">
-          <dialog className="sound-calibration-dialog" aria-labelledby="calibration-title" ref={dialogRef} onClose={() => { setCalibrationStage("idle"); microphone.stop(); }}>
+          <dialog className="sound-calibration-dialog" aria-labelledby="calibration-title" ref={dialogRef} onClose={closedCalibration}>
             <h2 id="calibration-title">{calibrationStage === "done" ? t("calibration.recommendedTitle") : t("calibration.title")}</h2>
             {calibrationStage !== "done" && <>
             <p className="help-text">{t("calibration.help")}</p>
             <label htmlFor="microphone-choice">{t("noise.microphone")}</label>
             <select id="microphone-choice" value={microphone.selectedDeviceId} onChange={(event) => { setCalibrationStage("idle"); microphone.selectDevice(event.target.value); }}>
-              {!microphone.devices.length && <option value="">{t("noise.defaultMicrophone")}</option>}
-              {microphone.devices.map((device, index) => <option key={device.deviceId} value={device.deviceId}>{device.label || t("noise.microphoneNumber", { number: index + 1 })}</option>)}
+              <option value="">{t("noise.defaultMicrophone")}</option>
+              {microphone.devices.filter((device) => device.deviceId).map((device, index) => <option key={device.deviceId} value={device.deviceId}>{device.label || t("noise.microphoneNumber", { number: index + 1 })}</option>)}
             </select></>}
 
           <div className="calibration-panel" aria-live="polite">
-            {calibrationStage === "idle" && <><p><b>{t("calibration.introTitle")}</b> {t("calibration.introBody")}</p><button className="outline" type="button" onClick={beginCalibration}>{microphone.calibration ? t("calibration.again") : t("calibration.start")}</button></>}
+            {calibrationStage === "idle" && <><p><b>{t("calibration.introTitle")}</b> {t("calibration.introBody")}</p><button className="outline" type="button" disabled={!microphoneReady} onClick={() => setCalibrationStage("quiet")}>{microphone.calibration ? t("calibration.again") : t("calibration.start")}</button></>}
             {calibrationStage === "quiet" && <p><b>{t("calibration.step1")}</b> {t("calibration.step1Body", { seconds: secondsLeft })}</p>}
-            {calibrationStage === "ready" && <><p><b>{t("calibration.step2")}</b> {t("calibration.step2Body")}</p><button className="primary" type="button" onClick={() => setCalibrationStage("talking")}>{t("calibration.measure")}</button></>}
+            {calibrationStage === "ready" && <><p><b>{t("calibration.step2")}</b> {t("calibration.step2Body")}</p><button className="primary" type="button" disabled={!microphoneReady} onClick={() => setCalibrationStage("talking")}>{t("calibration.measure")}</button></>}
             {calibrationStage === "talking" && <p><b>{t("calibration.listening")}</b> {t("calibration.listeningBody", { seconds: secondsLeft })}</p>}
             {calibrationStage === "done" && <>
               <p>{t("calibration.doneBody")}</p>
               <dl className="calibration-recommendations">
-                <div><dt>{t("calibration.individual")}</dt><dd>30%</dd></div>
-                <div><dt>{t("calibration.group")}</dt><dd>70%</dd></div>
+                <div><dt>{t("calibration.individual")}</dt><dd>{activities.independent.threshold}%</dd></div>
+                <div><dt>{t("calibration.group")}</dt><dd>{activities.partner.threshold}%</dd></div>
               </dl>
               <p>{t("calibration.doneNote")}</p>
             </>}
-            {calibrationStage === "retry" && <><p><b>{t("calibration.retryTitle")}</b> {t("calibration.retryBody")}</p><button className="outline" type="button" onClick={() => setCalibrationStage("quiet")}>{t("calibration.restart")}</button></>}
+            {sampling && <div className="calibration-level">
+              <div className="meter" role="meter" aria-label={t("calibration.hears")} aria-valuemin="0" aria-valuemax="100" aria-valuenow={Math.round(microphone.rawLevel)}>
+                <span className="neutral" style={{ width: `${Math.min(100, microphone.rawLevel)}%` }} />
+              </div>
+              <small>{t("calibration.hears")}</small>
+            </div>}
+            {calibrationStage === "retry" && <><p><b>{t("calibration.retryTitle")}</b> {t("calibration.retryBody")}</p><button className="outline" type="button" onClick={() => setCalibrationStage("idle")}>{t("calibration.restart")}</button></>}
           </div>
 
             <div className="calibration-footer"><button className="outline" type="button" onClick={() => dialogRef.current.close()}>{calibrationStage === "done" ? t("calibration.done") : t("calibration.close")}</button></div>
@@ -147,7 +182,7 @@ const NoiseCard = ({ noise, focusMode = false, embedded = false }) => {
           <div className="sound-thresholds">
             <label>
               <span><b>{t("noise.limitTitle")}</b><small>{t("noise.limitDetail", { percent: soundThresholds[activity] })}</small></span>
-              <input type="range" min="10" max="80" value={soundThresholds[activity]} onChange={(event) => setSoundThreshold(activity, Number(event.target.value))} />
+              <input type="range" min={MIN_SOUND_THRESHOLD} max={MAX_SOUND_THRESHOLD} value={soundThresholds[activity]} onChange={(event) => setSoundThreshold(activity, Number(event.target.value))} />
             </label>
 
           </div>

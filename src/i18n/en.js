@@ -96,6 +96,7 @@ export const en = {
     "calibration.restart": "Restart calibration",
     "calibration.done": "Done",
     "calibration.close": "Close calibration",
+    "calibration.hears": "What the microphone hears",
 
     "session.label": "Focus session",
     "session.favorites": "Start a favorite",

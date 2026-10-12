@@ -3,7 +3,7 @@ import TimerControls from "./TimerControls";
 import LaunchBar from "./LaunchBar";
 import SoundPanel from "../NoiseMeter/SoundPanel";
 
-// Focus mode's session controls. They live inside the otter's room: the launch
+// On-task mode's session controls. They live inside the otter's room: the launch
 // bar under it before a session, then the timer on the wall and the sound
 // meter on the floor once the session has begun.
 const TimerCard = ({ timerSettings, session, noise }) => {

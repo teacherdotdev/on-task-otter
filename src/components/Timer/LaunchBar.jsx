@@ -57,6 +57,31 @@ const PresetMenu = ({ presets, onChoose }) => {
   );
 };
 
+// Up to 5 minutes the length steps one minute at a time, then by fives.
+const stepMinutes = (minutes, direction) => {
+  if (direction > 0) return minutes < 5 ? minutes + 1 : Math.floor(minutes / 5) * 5 + 5;
+  return minutes <= 5 ? Math.max(1, minutes - 1) : Math.ceil(minutes / 5) * 5 - 5;
+};
+
+// A captioned row of buttons, exactly one of them chosen.
+const Segments = ({ label, options, value, onChange }) => (
+  <div className="launch-group">
+    <span className="launch-caption" aria-hidden="true">{label}</span>
+    <div className="launch-segments" role="group" aria-label={label}>
+      {options.map((option) => (
+        <button
+          type="button"
+          key={option.value}
+          aria-pressed={value === option.value}
+          onClick={() => onChange(option.value)}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  </div>
+);
+
 // Before a focus session starts, the room keeps the screen: a presets menu and
 // a quick start sit in one slim bar under it.
 const LaunchBar = ({ session, onLaunch }) => {
@@ -95,37 +120,57 @@ const LaunchBar = ({ session, onLaunch }) => {
           });
         }}
       >
-        <label className="launch-field launch-minutes">
-          <input
-            type="number"
-            min="1"
-            inputMode="numeric"
-            aria-label={t("session.minutes")}
-            value={minutes}
-            onChange={(event) => setMinutes(Math.max(1, Math.floor(Number(event.target.value) || 1)))}
-          />
-          <span aria-hidden="true">{t("session.min")}</span>
-        </label>
+        <div className="launch-group">
+          <span className="launch-caption" aria-hidden="true">{t("session.length")}</span>
+          <div className="launch-stepper">
+            <button
+              type="button"
+              aria-label={t("session.shorter")}
+              disabled={minutes <= 1}
+              onClick={() => setMinutes((current) => stepMinutes(current, -1))}
+            >
+              <Icon name="minus" />
+            </button>
+            <label>
+              <input
+                type="number"
+                min="1"
+                inputMode="numeric"
+                aria-label={t("session.minutes")}
+                value={minutes}
+                onChange={(event) => setMinutes(Math.max(1, Math.floor(Number(event.target.value) || 1)))}
+              />
+              <span aria-hidden="true">{t("session.min")}</span>
+            </label>
+            <button
+              type="button"
+              aria-label={t("session.longer")}
+              onClick={() => setMinutes((current) => stepMinutes(current, 1))}
+            >
+              <Icon name="plus" />
+            </button>
+          </div>
+        </div>
 
-        <label className="launch-field launch-sound">
-          <Icon name="mic" />
-          <select aria-label={t("noise.acceptableVolume")} value={sound} onChange={(event) => setSound(event.target.value)}>
-            {Object.keys(activities).map((id) => (
-              <option key={id} value={id}>{t(`activity.${id}.label`)}</option>
-            ))}
-            <option value="off">{t("session.soundOff")}</option>
-          </select>
-        </label>
+        <Segments
+          label={t("session.soundMeter")}
+          value={sound}
+          onChange={setSound}
+          options={[
+            ...Object.keys(activities).map((id) => ({ value: id, label: t(`activity.${id}.label`) })),
+            { value: "off", label: t("session.off") },
+          ]}
+        />
 
-        <button
-          className="launch-field launch-toggle"
-          type="button"
-          aria-pressed={showCountdown}
-          onClick={() => setShowCountdown((shown) => !shown)}
-        >
-          <Icon name="clock" />
-          {t("session.countdown")}
-        </button>
+        <Segments
+          label={t("session.countdown")}
+          value={showCountdown}
+          onChange={setShowCountdown}
+          options={[
+            { value: true, label: t("session.show") },
+            { value: false, label: t("session.hide") },
+          ]}
+        />
 
         <button className="launch-start" type="submit">
           <Icon name="play" /> {t("session.startShort")}

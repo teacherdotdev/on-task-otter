@@ -180,9 +180,11 @@ export const en = {
     "otter.focusing": "In the zone...",
     "otter.idle": "Ready when you are!",
     "otter.loud": "A little quieter, please!",
+    "otter.paused": "Taking a little break.",
     "otter.atDesk": "Otter is sitting at a desk and writing",
     "otter.stateCelebrating": "Otter is celebrating",
     "otter.stateLoud": "Otter is hearing too much noise",
+    "otter.statePaused": "Otter is sitting at a desk, taking a break",
     "otter.stateIdle": "Otter is waiting",
 
     "house.stars": "stars",

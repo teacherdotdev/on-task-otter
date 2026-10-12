@@ -38,6 +38,7 @@ const HouseCard = ({ house, rewards, focusMode = false, fullScreen, children }) 
     equipped,
     isCelebrating,
     isFocusing,
+    isAtDesk,
     noiseTone,
     otterName,
     setOtterName,
@@ -128,6 +129,7 @@ const HouseCard = ({ house, rewards, focusMode = false, fullScreen, children }) 
         equipped={equipped}
         isCelebrating={isCelebrating}
         isFocusing={isFocusing}
+        isAtDesk={isAtDesk}
         noiseTone={noiseTone}
         editingMode={focusMode ? null : editingMode}
         accessoryItems={rewards.accessories}

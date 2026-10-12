@@ -179,9 +179,11 @@ export const fr = {
     "otter.focusing": "En pleine concentration...",
     "otter.idle": "Prêt quand vous l'êtes !",
     "otter.loud": "Un peu plus doucement, s'il vous plaît !",
+    "otter.paused": "Une petite pause.",
     "otter.atDesk": "Otter est assis à un bureau et écrit",
     "otter.stateCelebrating": "Otter fait la fête",
     "otter.stateLoud": "Otter entend trop de bruit",
+    "otter.statePaused": "Otter est assis à un bureau et fait une pause",
     "otter.stateIdle": "Otter attend",
 
     "house.stars": "étoiles",

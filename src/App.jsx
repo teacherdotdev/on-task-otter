@@ -502,6 +502,8 @@ const Classroom = () => {
     isPreviewing,
   };
 
+  const hasSessionStarted = timer.isRunning || timer.secondsRemaining < timer.durationSeconds;
+
   const house = {
     stars,
     houseRooms,
@@ -516,6 +518,8 @@ const Classroom = () => {
     isPreviewing,
     isCelebrating: showComplete,
     isFocusing: appMode === "focus" && timer.isRunning,
+    // From the start of a session until it ends, paused or not, the otter sits at its desk.
+    isAtDesk: appMode === "focus" && hasSessionStarted && !timer.isComplete,
     noiseTone,
     otterName: shownOtterName,
     setOtterName: changeOtterName,
@@ -575,7 +579,6 @@ const Classroom = () => {
     openSaveFile: () => setShowExportImport(true),
   };
 
-  const hasSessionStarted = timer.isRunning || timer.secondsRemaining < timer.durationSeconds;
   const isLaunching = appMode === "focus" && !hasSessionStarted;
 
   const validSaveIds = {

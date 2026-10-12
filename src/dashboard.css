@@ -85,14 +85,16 @@ h2 { font-size: 1.65rem; }
 
 .state-idle .otter { animation: otter-float 3.2s ease-in-out infinite; }
 .state-idle .otter-eye { animation: otter-blink 4.5s ease-in-out infinite; }
-.state-focusing .focus-chair, .state-focusing .focus-workspace { display: initial; }
-.state-focusing .otter-leg, .state-focusing .otter-arms, .state-focusing .otter-belly, .state-focusing .otter-belly-shade, .state-focusing .otter-belly-shine { display: none; }
+/* Paused, the otter stays at its desk but stops writing: the arm and pencil keep still. */
+.state-focusing .focus-chair, .state-focusing .focus-workspace, .state-paused .focus-chair, .state-paused .focus-workspace { display: initial; }
+.state-focusing .otter-leg, .state-focusing .otter-arms, .state-focusing .otter-belly, .state-focusing .otter-belly-shade, .state-focusing .otter-belly-shine,
+.state-paused .otter-leg, .state-paused .otter-arms, .state-paused .otter-belly, .state-paused .otter-belly-shade, .state-paused .otter-belly-shine { display: none; }
 .state-focusing .focus-writing-arm { animation: otter-write .65s ease-in-out infinite alternate; }
 .state-focusing .focus-pencil { animation: pencil-write .65s ease-in-out infinite alternate; }
 .state-focusing .focus-arm-resting { animation: resting-paw-pause 120s linear infinite; }
 .state-focusing .focus-scratch-arm { animation: otter-head-scratch 120s ease-in-out infinite; }
 .state-focusing .paper-line.line-two { animation: writing-appear 2.6s ease-in-out infinite; }
-.state-focusing .otter-eye { animation: otter-blink 4.5s ease-in-out infinite; }
+.state-focusing .otter-eye, .state-paused .otter-eye { animation: otter-blink 4.5s ease-in-out infinite; }
 .state-loud .otter { animation: otter-startle .4s ease-out both; }
 .state-loud .otter-eye { transform: scale(1.12); }
 .state-loud .otter-mouth-smile { opacity: 0; }.state-loud .otter-mouth-loud { opacity: 1; }

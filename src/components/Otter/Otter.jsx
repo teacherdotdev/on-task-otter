@@ -14,13 +14,16 @@ const slotOutlines = {
   ),
 };
 
-const Otter = ({ equipped, isCelebrating, isFocusing, noiseTone, showAccessorySlots = false }) => {
+// While a session runs the otter writes at its desk; while it is paused the
+// otter stays sitting there, paws resting, until the class carries on.
+const Otter = ({ equipped, isCelebrating, isFocusing, isAtDesk = isFocusing, noiseTone, showAccessorySlots = false }) => {
   const { t } = useTranslation();
   const isLoud = noiseTone === "loud";
-  const state = isCelebrating ? "celebrating" : isLoud ? "loud" : isFocusing ? "focusing" : "idle";
+  const state = isCelebrating ? "celebrating" : isLoud ? "loud" : isFocusing ? "focusing" : isAtDesk ? "paused" : "idle";
   const stateLabels = {
     celebrating: t("otter.stateCelebrating"),
     focusing: t("otter.atDesk"),
+    paused: t("otter.statePaused"),
     idle: t("otter.stateIdle"),
     loud: t("otter.stateLoud"),
   };

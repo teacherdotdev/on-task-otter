@@ -6,7 +6,7 @@ import { accessorySlots, slotOf } from "../../data/accessories";
 import { hasSupport } from "../../data/houseItems";
 import { useTranslation } from "../../i18n";
 
-const RoomScene = ({ room, decorations, availableItems = [], accessoryItems = [], unlockedAccessories = [], equipped, isCelebrating, isFocusing, noiseTone, editingMode, stars, isPreviewing, selectedItem, onChooseItem, onConfirmItem, children }) => {
+const RoomScene = ({ room, decorations, availableItems = [], accessoryItems = [], unlockedAccessories = [], equipped, isCelebrating, isFocusing, isAtDesk, noiseTone, editingMode, stars, isPreviewing, selectedItem, onChooseItem, onConfirmItem, children }) => {
   const { t } = useTranslation();
   // A piece that sits on another one (the duck in the bath) only shows up to
   // buy once the piece under it is in the room.
@@ -107,6 +107,7 @@ const RoomScene = ({ room, decorations, availableItems = [], accessoryItems = []
             showAccessorySlots={editingMode === "accessories"}
             isCelebrating={isCelebrating}
             isFocusing={isFocusing}
+            isAtDesk={isAtDesk}
             noiseTone={noiseTone}
           />
           {editingMode === "accessories" && (

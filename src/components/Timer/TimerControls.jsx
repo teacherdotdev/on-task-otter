@@ -2,7 +2,7 @@ import EncouragementMessage from "./EncouragementMessage";
 import Icon from "../Icon/Icon";
 import { useTranslation } from "../../i18n";
 
-// The session timer hangs on the wall of the otter's room, like a classroom clock.
+// The session timer sits in the bottom-left corner of the otter's room.
 const TimerControls = ({ timerSettings, showCountdown, hiddenTimerMode }) => {
   const { t } = useTranslation();
   const { timer, noiseTone, formatTime, needsTeacherResume, resumeAfterNoise, resetTimer } = timerSettings;
@@ -15,15 +15,7 @@ const TimerControls = ({ timerSettings, showCountdown, hiddenTimerMode }) => {
         {showCountdown ? formatTime(timer.secondsRemaining) : message}
       </div>
 
-      <p className="timer-caption">
-        {needsTeacherResume
-          ? t("session.waiting")
-          : timer.isRunning
-          ? t("session.building")
-          : showCountdown
-          ? t("session.lengthCaption", { minutes: timer.durationSeconds / 60 })
-          : t("session.label")}
-      </p>
+      {needsTeacherResume && <p className="timer-caption">{t("session.waiting")}</p>}
 
       <div className="scene-timer-buttons">
         <button
@@ -33,13 +25,12 @@ const TimerControls = ({ timerSettings, showCountdown, hiddenTimerMode }) => {
           disabled={timer.isComplete}
         >
           {!timer.isComplete && <Icon name={timer.isRunning ? "pause" : "play"} />}
+          {/* The timer only shows once a session has begun, so a stopped one is paused. */}
           {timer.isRunning
             ? t("session.pause")
             : timer.isComplete
             ? t("session.complete")
-            : needsTeacherResume
-            ? t("session.resume")
-            : t("session.startShort")}
+            : t("session.resume")}
         </button>
 
         <button

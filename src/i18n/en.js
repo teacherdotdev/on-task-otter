@@ -123,8 +123,6 @@ export const en = {
     "session.countdown": "Countdown",
     "session.startNamed": "Start {name}",
     "session.waiting": "The class is waiting for a teacher check-in.",
-    "session.building": "Your class is building focus stamina.",
-    "session.lengthCaption": "{minutes} minute focus session",
     "session.pause": "Pause session",
     "session.complete": "Session complete",
     "session.resume": "Resume session",

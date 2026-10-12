@@ -122,8 +122,6 @@ export const fr = {
     "session.countdown": "Compte à rebours",
     "session.startNamed": "Démarrer {name}",
     "session.waiting": "La classe attend l'intervention de l'enseignant.",
-    "session.building": "Votre classe développe son endurance de concentration.",
-    "session.lengthCaption": "Séance de concentration de {minutes} minutes",
     "session.pause": "Mettre la séance en pause",
     "session.complete": "Séance terminée",
     "session.resume": "Reprendre la séance",

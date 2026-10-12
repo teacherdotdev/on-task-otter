@@ -790,14 +790,14 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 /* With nothing below the room but the bar, full screen gives the room the extra height. */
 .full-screen.launching { --full-screen-width: clamp(560px, calc((100vh - 140px) * 900 / 440), calc(100vw - 48px)); }
 
-/* During a session the timer hangs on the wall and the sound meter sits on the
-   floor, both inside the room, so the class watches one picture. They grow
+/* During a session the timer sits in the bottom-left corner and the sound meter
+   in the bottom-right, both inside the room, so the class watches one picture. They grow
    with the room, so they stay readable from the back in full screen. */
 .room-stage { container-type: inline-size; }
-.scene-timer { background: rgba(37, 67, 61, .95); border: 4px solid #fffaf0; border-radius: 22px; box-shadow: 0 10px 26px rgba(37, 67, 61, .25); color: #fffaf0; left: 4cqi; min-width: 15em; padding: 10px 22px 16px; position: absolute; text-align: center; top: 5cqi; z-index: 6; }
-.scene-timer .timer-display { font-size: clamp(2.8rem, 7.5cqi, 6.5rem); line-height: 1.05; margin: 0; }
+.scene-timer { background: rgba(37, 67, 61, .95); border: 4px solid #fffaf0; border-radius: 22px; box-shadow: 0 10px 26px rgba(37, 67, 61, .25); color: #fffaf0; bottom: 3cqi; left: 3cqi; min-width: 11em; padding: 8px 16px 12px; position: absolute; text-align: center; z-index: 6; }
+.scene-timer .timer-display { font-size: clamp(2rem, 5cqi, 4.5rem); line-height: 1.05; margin: 0 0 8px; }
 .scene-timer .timer-display.time-hidden { font-size: 1rem; margin: 8px auto; max-width: 16em; min-height: 0; }
-.scene-timer .timer-caption { color: #c9d7d0; font-size: .82rem; margin: 2px auto 12px; max-width: 18em; }
+.scene-timer .timer-caption { color: #c9d7d0; font-size: .82rem; margin: 0 auto 10px; max-width: 16em; }
 .scene-timer-buttons { align-items: center; display: flex; gap: 8px; justify-content: center; }
 .scene-timer-main { align-items: center; background: #f8d97a; border: 0; border-radius: 999px; color: #25433d; cursor: pointer; display: inline-flex; font-weight: 800; gap: 8px; padding: 9px 18px; }
 .scene-timer-main:hover { background: #fbe39a; }

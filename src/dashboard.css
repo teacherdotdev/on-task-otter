@@ -556,7 +556,9 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .room-item img { filter: drop-shadow(0 5px 4px rgba(54, 85, 76, .22)); }
 .room-item-placeholder img { filter: grayscale(1); opacity: .2; }
 .otter-at-home { left: 33%; bottom: 4%; width: 25%; height: 54%; transform: none; }
-.otter-at-home .otter-scene { position: absolute; left: 50%; bottom: 0; width: 230px; height: 230px; margin-left: -115px; transform: scale(.9); transform: scale(calc(100cqw / 1000px)); }
+/* The otter grows with the room. It is sized with `scale`, not `transform`, so the
+   idle wander animation (a transform) moves it without undoing its size. */
+.otter-at-home .otter-scene { position: absolute; left: 50%; bottom: 0; width: 230px; height: 230px; margin-left: -115px; transform: none; scale: .9; scale: calc(100cqw / 1000px); }
 @media (max-width: 600px) {
   .room-scene { border-width: 4px; border-radius: 16px; }
   .room-window { border-width: 3px; }

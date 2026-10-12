@@ -1,5 +1,4 @@
 import { exportClassroomSave, importClassroomSave, SAVE_FILE_APP_NAME } from "./storage.js";
-import { t } from "../i18n";
 import { activities, MAX_SOUND_THRESHOLD, MIN_SOUND_THRESHOLD } from "../data/activities";
 
 const isFiniteNonNegativeNumber = (value) => {
@@ -32,47 +31,6 @@ const downloadSaveFile = (data, filename = getSaveFileName()) => {
   link.remove();
   URL.revokeObjectURL(url);
   return filename;
-};
-
-const openSubstituteHandoff = (filename) => {
-  const handoffWindow = window.open("", "_blank");
-  if (!handoffWindow) return;
-
-  const instructions = t("handoff.letter", { url: window.location.origin, filename });
-
-  handoffWindow.document.title = t("handoff.title");
-  handoffWindow.document.body.innerHTML = `
-    <main>
-      <p class="label">${t("handoff.title")}</p>
-      <h1>${t("handoff.pageTitle")}</h1>
-      <p>${t("handoff.pageIntro")}</p>
-      <textarea aria-label="${t("handoff.instructionsLabel")}" readonly>${instructions}</textarea>
-      <button type="button">${t("handoff.copy")}</button>
-      <p class="status" aria-live="polite"></p>
-    </main>
-    <style>
-      body { background: #fbf7ed; color: #25433d; font-family: Arial, sans-serif; margin: 0; }
-      main { margin: 56px auto; max-width: 720px; padding: 0 24px; }
-      .label { color: #d76d54; font-size: 14px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-      h1 { font-size: clamp(30px, 6vw, 48px); margin: 10px 0 16px; }
-      p { font-size: 17px; line-height: 1.55; }
-      textarea { background: #fffdf7; border: 2px solid #9bceb4; border-radius: 12px; box-sizing: border-box; color: #25433d; font: 16px/1.55 Arial, sans-serif; height: 390px; margin: 18px 0; padding: 18px; resize: vertical; width: 100%; }
-      button { background: #25433d; border: 0; border-radius: 999px; color: #fffaf0; cursor: pointer; font-size: 16px; font-weight: 700; padding: 13px 22px; }
-      button:hover { background: #39675b; }
-      .status { color: #39675b; font-weight: 700; min-height: 26px; }
-    </style>
-    <script>
-      const textarea = document.querySelector("textarea");
-      const button = document.querySelector("button");
-      const status = document.querySelector(".status");
-      textarea.focus();
-      textarea.select();
-      button.addEventListener("click", async () => {
-        await navigator.clipboard.writeText(textarea.value);
-        status.textContent = ${JSON.stringify(t("handoff.copied"))};
-      });
-    </script>
-  `;
 };
 
 const validateSaveFile = (data, validIds) => {
@@ -181,4 +139,4 @@ const restoreSaveFile = (data) => {
   importClassroomSave(data);
 };
 
-export { restoreSaveFile, validateSaveFile, createSaveFile, getSaveFileName, downloadSaveFile, openSubstituteHandoff };
+export { restoreSaveFile, validateSaveFile, createSaveFile, downloadSaveFile };

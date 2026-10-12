@@ -401,12 +401,11 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .export-import-modal h2 { margin-right: 48px; }
 .export-import-copy { color: #60756e; line-height: 1.6; margin: 15px 0 24px; }
 .export-import-included { background: #edf3e9; border: 1px solid #c4d8cc; border-radius: 16px; margin-bottom: 20px; padding: 16px 18px; }
-.export-import-included h3, .export-import-success h3, .export-import-instructions h3 { font-size: .95rem; margin: 0 0 9px; }
+.export-import-included h3 { font-size: .95rem; margin: 0 0 9px; }
 .export-import-included ul { display: grid; gap: 5px; list-style: none; margin: 0; padding: 0; }
 .export-import-included li { color: #46645b; font-size: .88rem; }
-.export-import-included p { color: #60756e; font-size: .84rem; margin: 11px 0 0; }
 .export-import-actions { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
-.export-import-primary, .export-import-secondary, .export-import-dismiss { border-radius: 999px; cursor: pointer; font-weight: 700; padding: 12px 18px; }
+.export-import-primary, .export-import-secondary { border-radius: 999px; cursor: pointer; font-weight: 700; padding: 12px 18px; }
 .export-import-primary { background: #25433d; border: 1px solid #25433d; color: #fffaf0; }
 .export-import-primary:hover { background: #39675b; }
 .export-import-secondary { background: #f8d97a; border: 1px solid #e8c35e; color: #25433d; }
@@ -414,20 +413,6 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .export-import-file { display: none; }
 .export-import-message { border-radius: 12px; font-size: .9rem; font-weight: 700; margin: 16px 0 0; padding: 10px 12px; }
 .export-import-message.error { background: #f8e8de; color: #a94d3c; }
-.export-import-success { background: #fff4d3; border: 1px solid #e8c35e; border-radius: 16px; color: #526a63; margin-top: 16px; padding: 16px 18px; }
-.export-import-success p { font-size: .88rem; margin: 5px 0; }
-.export-import-filename { overflow-wrap: anywhere; }
-.export-import-success h3:not(:first-child) { margin-top: 15px; }
-.export-import-os-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
-.export-import-os-buttons button { background: #fffaf0; border: 1px solid #d7c8b3; border-radius: 999px; color: #25433d; cursor: pointer; font-size: .86rem; font-weight: 700; padding: 7px 12px; }
-.export-import-os-buttons button.selected { background: #25433d; border-color: #25433d; color: #fffaf0; }
-.export-import-path { background: rgba(255, 250, 240, .75); border-radius: 9px; margin-top: 10px !important; padding: 8px 10px; }
-.export-import-download-note { color: #795d52; font-size: .8rem !important; margin-top: 12px !important; }
-.export-import-instructions { border-top: 1px solid #e7ded0; margin-top: 22px; padding-top: 18px; }
-.export-import-instructions ol { color: #60756e; display: grid; font-size: .86rem; gap: 8px; margin: 0; padding-left: 20px; }
-.export-import-instructions b { color: #25433d; }
-.export-import-dismiss { background: transparent; border: 0; color: #526a63; display: block; margin: 18px auto -10px; }
-.export-import-dismiss:hover { color: #25433d; text-decoration: underline; }
 
 .clear-data-section { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 48px auto 0; width: calc(100% - 48px); }
 .clear-data-trigger { background: #b84338; border: 1px solid #9f332d; border-radius: 999px; color: #fffaf0; cursor: pointer; font-size: .88rem; font-weight: 700; padding: 11px 18px; }

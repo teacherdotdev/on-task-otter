@@ -1,12 +1,12 @@
 # Teacher Guide: Stars, Sessions, and Milestones
 
-On-task Otter turns focused classroom time into a shared class goal. The class completes focus sessions, earns stars, and uses stars to decorate the otter's house or dress up the otter.
+On-task Otter turns on-task classroom time into a shared class goal. The class completes on-task sessions, earns stars, and uses stars to decorate the otter's house or dress up the otter.
 
 This guide explains how to use the system and what the class can work toward.
 
-## Set Up a Focus Session
+## Set Up an On-task Session
 
-1. Open **Session settings** using the gear button on the Focus Session card.
+1. Open **Session settings** using the gear button on the On-task Session card.
 2. Choose a session length: **5, 10, 15, or 20 minutes**.
 3. Choose the kind of activity:
    - **Independent work:** very quiet
@@ -43,12 +43,12 @@ Buying a reward lowers the available stars, but it does not lower the total star
 
 ## How Sessions Are Counted
 
-One session is counted each time a focus timer reaches zero. Every completed session counts as **one session**, whether it lasted 5, 10, 15, or 20 minutes.
+One session is counted each time an on-task timer reaches zero. Every completed session counts as **one session**, whether it lasted 5, 10, 15, or 20 minutes.
 
 For example, completing one 5-minute session and one 20-minute session gives the class:
 
 - **2 completed sessions**
-- **25 focused minutes**
+- **25 on-task minutes**
 - **25 stars earned**
 
 Only completed sessions count toward opening new rooms. Paused, reset, or unfinished sessions do not count.

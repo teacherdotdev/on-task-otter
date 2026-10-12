@@ -1,38 +1,38 @@
 # On-task Otter
 
-On-task Otter is a shared classroom focus tool that helps students build stamina for staying on task. It gives a whole class a friendly, visual reason to focus during independent work, while giving teachers a simple timer and noise meter to support classroom routines.
+On-task Otter is a shared classroom tool that helps students build stamina for staying on task. It gives a whole class a friendly, visual reason to stay on task during independent work, while giving teachers a simple timer and noise meter to support classroom routines.
 
 The class looks after an otter that cheers them on while they work. It is an original classroom tool, not affiliated with any other focus app, and it is designed for use on a classroom display, such as a projector or TV.
 
 ## The Classroom Need
 
-During activities such as an independent math warm-up, students may struggle to stay quiet and focused for the full work period. A regular timer can show how much time is left, but it does not always give students a reason to keep going.
+During activities such as an independent math warm-up, students may struggle to stay quiet and on task for the full work period. A regular timer can show how much time is left, but it does not always give students a reason to keep going.
 
-On-task Otter turns a focus session into a shared goal. When the class completes a session, their character earns stars that can be used to unlock clothes and accessories. The noise meter also helps the class notice whether the room matches the kind of work they are doing.
+On-task Otter turns an on-task session into a shared goal. When the class completes a session, their character earns stars that can be used to unlock clothes and accessories. The noise meter also helps the class notice whether the room matches the kind of work they are doing.
 
 ## Who It Helps
 
-- **Students:** Build focus stamina and tolerance for working independently for five, ten, or more minutes.
+- **Students:** Build on-task stamina and tolerance for working independently for five, ten, or more minutes.
 - **Teachers:** Use a motivating whole-class routine and a visible noise meter for classroom management.
-- **Substitute teachers:** Start a familiar focus routine without relying on one teacher's personal device.
+- **Substitute teachers:** Start a familiar on-task routine without relying on one teacher's personal device.
 
 ## MVP: The First Version
 
 The first version keeps the experience simple and useful for one classroom. It saves classroom progress on the current device, and a teacher can download it to a file to carry it to another computer. No one signs in.
 
-- A shared focus-session timer where the teacher can enter a session length in minutes, save a named setup as a favorite, and return to favorites for future sessions.
-- A classroom character that earns stars when a focus session is completed.
+- A shared on-task-session timer where the teacher can enter a session length in minutes, save a named setup as a favorite, and return to favorites for future sessions.
+- A classroom character that earns stars when an on-task session is completed.
 - A point shop where the character can get clothes and accessories.
 - A noise meter with adjustable sensitivity for the selected type of work:
   - Independent or silent work
   - Partner work
 - When the room becomes too loud, the timer pauses automatically. It resumes when the room is back on track, and the teacher can still pause or reset the session manually.
-- A history of previous focus sessions.
+- A history of previous on-task sessions.
 - A display designed to be shared with the whole class.
 
 ## A Typical Session
 
-1. The teacher selects the type of work and enters a focus-session length, or chooses a saved favorite.
+1. The teacher selects the type of work and enters an on-task-session length, or chooses a saved favorite.
 2. The class watches the timer and noise meter while they work. If the room becomes too loud, the timer pauses until the sound level returns to the goal.
 3. When the session is completed, the class earns stars for its character.
 4. The class can use earned stars to personalize the character over time.

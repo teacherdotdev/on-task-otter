@@ -1,32 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
-  <g stroke="#5a3d2b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <!-- back legs -->
-    <path d="M85 104H101L100 164Q100 167 97 167H89Q86 167 86 164z" fill="#a86f45"/>
-    <path d="M139 104H155L154 164Q154 167 151 167H143Q140 167 140 164z" fill="#a86f45"/>
-    <!-- rounded back with heart -->
-    <path d="M74 88V44C74 22 95 8 120 8C145 8 166 22 166 44V88zM120 51C111.5 45 106.5 40.5 106.5 34.5C106.5 30.5 110 28 113.5 28C117 28 119 30.5 120 33C121 30.5 123 28 126.5 28C130 28 133.5 30.5 133.5 34.5C133.5 40.5 128.5 45 120 51z" fill="#d9a066" fill-rule="evenodd"/>
-    <path d="M81 46C81 29 95 16 114 14C99 21 90 32 88 46z" fill="#fff8ea" opacity=".5" stroke="none"/>
-    <path d="M158 28C162 33 164 38 164 44V88H155V46C155 39 157 33 158 28z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 170">
+  <!-- Three-legged stool: round top seen slightly from above, one leg in front, two splayed behind. -->
+  <g stroke="#5a3d2b" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- far legs, splayed -->
+    <path d="M28 40H39L21.5 148Q20.5 152 17 152H14Q10.5 152 11.5 148z" fill="#a86f45"/>
+    <path d="M28 40H39L21.5 148Q20.5 152 17 152H14Q10.5 152 11.5 148z" fill="#a86f45" transform="matrix(-1 0 0 1 120 0)"/>
+    <!-- ring rung -->
+    <ellipse cx="60" cy="101" rx="36" ry="9" fill="none" stroke-width="8"/>
+    <ellipse cx="60" cy="101" rx="36" ry="9" fill="none" stroke="#d9a066" stroke-width="3.2"/>
+    <!-- near leg -->
+    <path d="M53 44H67L65.5 159Q65.5 163 62 163H58Q54.5 163 54.5 159z" fill="#d9a066"/>
+    <path d="M62 48H66.5L65 159Q65 162 62 162H61.5C62.5 160 62.5 157 62.5 155z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M57 56V80" fill="none" stroke="#fff8ea" stroke-width="2.2" opacity=".55"/>
     <!-- seat -->
-    <rect x="52" y="95" width="136" height="20" rx="8" fill="#d9a066"/>
-    <path d="M54 105H186V107C186 111 183 113 180 113H60C57 113 54 111 54 107z" fill="#5a3d2b" opacity=".16" stroke="none"/>
-    <!-- turned front legs -->
-    <path d="M 55.5 114 H 76.5 V 121.5 C 76.5 124 74 125.5 72.5 126.5 C 79 131.5 80.5 141.5 74 148 C 72.5 149.5 72.5 152 72.5 155.5 L 74 167 C 76.5 168 77.5 170.5 77.5 173 Q 77.5 177 74 177 H 58 Q 54.5 177 54.5 173 C 54.5 170.5 55.5 168 58 167 L 59.5 155.5 C 59.5 152 59.5 149.5 58 148 C 51.5 141.5 53 131.5 59.5 126.5 C 58 125.5 55.5 124 55.5 121.5 z" fill="#d9a066"/>
-    <path d="M 55.5 114 H 76.5 V 121.5 C 76.5 124 74 125.5 72.5 126.5 C 79 131.5 80.5 141.5 74 148 C 72.5 149.5 72.5 152 72.5 155.5 L 74 167 C 76.5 168 77.5 170.5 77.5 173 Q 77.5 177 74 177 H 58 Q 54.5 177 54.5 173 C 54.5 170.5 55.5 168 58 167 L 59.5 155.5 C 59.5 152 59.5 149.5 58 148 C 51.5 141.5 53 131.5 59.5 126.5 C 58 125.5 55.5 124 55.5 121.5 z" fill="#d9a066" transform="matrix(-1 0 0 1 240 0)"/>
-    <path d="M57 139C57 135 58.5 132.5 61 131M183 139C183 135 181.5 132.5 179 131" fill="none" stroke="#fff8ea" stroke-width="2.5" opacity=".6"/>
-    <!-- plump cushion -->
-    <path d="M70 73C90 69 150 69 170 73C178 74 184 79 184 87V95C184 102 178 105 170 105C150 107 90 107 70 105C62 105 56 102 56 95V87C56 79 62 74 70 73z" fill="#7f9cc0"/>
-    <path d="M58 87C58 80 63 75.5 70 75C90 71 150 71 170 75C177 75.5 182 80 182 87C160 94 80 94 58 87z" fill="#fff8ea" opacity=".45" stroke="none"/>
-    <path d="M57 87C80 94 160 94 183 87" fill="none" stroke-width="2.5" opacity=".5"/>
-    <path d="M72 99C102 102 138 102 168 99" fill="none" stroke-width="2.5" stroke-dasharray="6 6" opacity=".45"/>
-    <!-- ties at the cushion sides -->
-    <path d="M59 87L54 99M61 87L67 98" fill="none" stroke-width="8"/>
-    <path d="M59 87L54 99M61 87L67 98" fill="none" stroke="#e8b44f" stroke-width="2.5"/>
-    <path d="M60 86C50.5 76.5 42 79 43 86C44.5 93 51.5 93 60 86zM60 86C69.5 76.5 78 79 77 86C75.5 93 68.5 93 60 86z" fill="#e8b44f" stroke-width="3"/>
-    <circle cx="60" cy="86" r="4" fill="#e8b44f" stroke-width="3"/>
-    <path d="M179 87L174 99M181 87L187 98" fill="none" stroke-width="8"/>
-    <path d="M179 87L174 99M181 87L187 98" fill="none" stroke="#e8b44f" stroke-width="2.5"/>
-    <path d="M180 86C170.5 76.5 162 79 163 86C164.5 93 171.5 93 180 86zM180 86C189.5 76.5 198 79 197 86C195.5 93 188.5 93 180 86z" fill="#e8b44f" stroke-width="3"/>
-    <circle cx="180" cy="86" r="4" fill="#e8b44f" stroke-width="3"/>
+    <path d="M10 32V41A50 15 0 0 0 110 41V32z" fill="#d9a066"/>
+    <path d="M11.5 38A50 15 0 0 0 108.5 38V41A48.5 13.5 0 0 1 11.5 41z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <ellipse cx="60" cy="32" rx="50" ry="15" fill="#e8c290"/>
+    <!-- round cushion -->
+    <path d="M17 28V32A43 11 0 0 0 103 32V28z" fill="#6d89ad"/>
+    <ellipse cx="60" cy="28" rx="43" ry="11" fill="#7f9cc0"/>
+    <path d="M24 26C30 21 44 18.5 60 18.5C70 18.5 79 19.5 86 21.5C70 21 44 22 24 26z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <circle cx="60" cy="28" r="2.6" fill="#e8b44f" stroke-width="2"/>
   </g>
 </svg>

@@ -14,15 +14,16 @@
     <path d="M199 17V23" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".55"/>
     <rect x="160" y="21" width="30" height="7" rx="2" fill="#e3a3a0"/>
     <rect x="163" y="14.5" width="25" height="6.5" rx="2" fill="#7f9cc0"/>
+    <!-- apron with drawer -->
+    <path d="M34 40H150V52C150 54 148 56 146 56H34z" fill="#d9a066"/>
+    <path d="M35 40H149V46H35z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <rect x="63" y="44" width="62" height="9" rx="3" fill="none" stroke-width="1.2" opacity=".5"/>
+    <circle cx="94" cy="48.5" r="2.5" fill="#d8a84a" stroke-width="1.2"/>
     <!-- left turned leg -->
     <path d="M20 40H40V57C40 59 38 61 36.5 62C42 66 43 75 39.5 81C37.5 85 36.5 91 36.5 100L35.5 134C39 136 40 140 39 144C38 147 37 148 36 149H24C23 148 22 147 21 144C20 140 21 136 24.5 134L23.5 100C23.5 91 22.5 85 20.5 81C17 75 18 66 23.5 62C22 61 20 59 20 57z" fill="#d9a066"/>
     <path d="M22.5 73C22.5 70 23.5 67.5 26 66" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".6"/>
     <path d="M40 57C40 59 38 61 36.5 62C42 66 43 75 39.5 81C37.5 85 36.5 91 36.5 100L35.5 134C39 136 40 140 39 144C38 147 37 148 36 149H32C34 146 34 139 32 136L33 100C33 89 35 83 37 79C39 73 37 66 34 62C36 61 37 59 37 57V40H40z" fill="#5a3d2b" opacity=".16" stroke="none"/>
-    <!-- apron with drawer -->
-    <path d="M38 40H150V52C150 54 148 56 146 56H38z" fill="#d9a066"/>
-    <path d="M37 40H149V46H37z" fill="#5a3d2b" opacity=".18" stroke="none"/>
-    <rect x="62" y="44" width="62" height="9" rx="3" fill="none" stroke-width="1.2" opacity=".5"/>
-    <circle cx="93" cy="48.5" r="2.5" fill="#d8a84a" stroke-width="1.2"/>
+    <path d="M21 40H39V46H21z" fill="#5a3d2b" opacity=".18" stroke="none"/>
     <!-- drawer pedestal -->
     <rect x="148" y="38" width="78" height="104" rx="5" fill="#d9a066"/>
     <path d="M149 40H225V47H149z" fill="#5a3d2b" opacity=".18" stroke="none"/>

@@ -26,7 +26,7 @@ const layouts = {
     'bathroom-plant': [88, 11, 11, 2], 'face-masks': [58.9, 60.5, 5, 3], 'skin-care': [51.8, 60.5, 5, 3],
   },
   office: {
-    'office-desk': [49, 14, 30, 2], 'desk-chair': [51.5, 8, 18, 3], 'bookcase': [5, 22, 18],
+    'office-desk': [49, 14, 30, 2], 'desk-chair': [56.7, 7, 8, 3], 'bookcase': [5, 22, 18],
     'desk-lamp': [51, 45, 12, 3], 'office-plant': [88, 6, 10, 3], 'wall-calendar': [45.5, 62, 7],
     'filing-cabinet': [81, 16, 14], 'work-rug': [29, 3, 46, 0], 'wall-art': [53.5, 66, 11.5],
     'coffee-maker': [84.5, 44, 7, 3],

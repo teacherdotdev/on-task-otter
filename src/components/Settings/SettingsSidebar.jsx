@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import Icon from "../Icon/Icon";
 import { useTranslation } from "../../i18n";
+import { MAX_STARS_PER_MINUTE, MIN_STARS_PER_MINUTE, starsPerMinuteOf } from "../../data/stars";
 
 // The teacher's settings slide in from the right edge, behind the gear in the
-// page's bottom-right corner: preview mode and the classroom save file.
+// page's bottom-right corner: preview mode, how many stars a minute of focus is
+// worth, and the classroom save file.
 const SettingsSidebar = ({ settings, onClose }) => {
   const { t } = useTranslation();
-  const { isPreviewing, startPreview, stopPreview, openSaveFile } = settings;
+  const { isPreviewing, startPreview, stopPreview, starsPerMinute, setStarsPerMinute, sessionMinutes, openSaveFile } = settings;
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -52,6 +54,44 @@ const SettingsSidebar = ({ settings, onClose }) => {
           <button className={isPreviewing ? "outline" : "primary"} type="button" onClick={togglePreview}>
             {isPreviewing ? t("app.preview.exit") : t("app.preview.start")}
           </button>
+        </section>
+
+        <section className="settings-section">
+          <h3><span aria-hidden="true">★</span> {t("settings.stars.title")}</h3>
+          <p>{t("settings.stars.body")}</p>
+          <div className="stars-stepper">
+            <button
+              type="button"
+              aria-label={t("settings.stars.fewer")}
+              disabled={starsPerMinute <= MIN_STARS_PER_MINUTE}
+              onClick={() => setStarsPerMinute(starsPerMinute - 1)}
+            >
+              <Icon name="minus" />
+            </button>
+            <label>
+              <input
+                type="number"
+                min={MIN_STARS_PER_MINUTE}
+                max={MAX_STARS_PER_MINUTE}
+                step="1"
+                inputMode="numeric"
+                value={starsPerMinute}
+                onChange={(event) => setStarsPerMinute(starsPerMinuteOf(Number(event.target.value) || MIN_STARS_PER_MINUTE))}
+              />
+              <span>{t("settings.stars.unit")}</span>
+            </label>
+            <button
+              type="button"
+              aria-label={t("settings.stars.more")}
+              disabled={starsPerMinute >= MAX_STARS_PER_MINUTE}
+              onClick={() => setStarsPerMinute(starsPerMinute + 1)}
+            >
+              <Icon name="plus" />
+            </button>
+          </div>
+          <p className="settings-example">
+            {t("settings.stars.example", { minutes: sessionMinutes, stars: sessionMinutes * starsPerMinute })}
+          </p>
         </section>
 
         <section className="settings-section">

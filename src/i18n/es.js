@@ -23,6 +23,12 @@ export const es = {
     "settings.title": "Configuración de la clase",
     "settings.preview.title": "Modo de vista previa",
     "settings.preview.body": "Activa todas las habitaciones, decoraciones y accesorios para mostrar a la clase hacia dónde va. Nada de lo que elijas en la vista previa se guarda.",
+    "settings.stars.title": "Estrellas por minuto",
+    "settings.stars.body": "Cuántas estrellas gana una clase por cada minuto de una sesión de concentración terminada. Todas las clases ganan a este ritmo.",
+    "settings.stars.unit": "estrellas por minuto",
+    "settings.stars.fewer": "Menos estrellas por minuto",
+    "settings.stars.more": "Más estrellas por minuto",
+    "settings.stars.example": "Una sesión de {minutes} min gana ★ {stars}.",
     "settings.save.title": "Archivo de guardado",
     "settings.save.body": "Descarga todas las clases en un archivo o recupéralas en otra computadora.",
 

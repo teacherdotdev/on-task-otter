@@ -24,6 +24,12 @@ export const en = {
     "settings.title": "Classroom settings",
     "settings.preview.title": "Preview mode",
     "settings.preview.body": "Switch on every room, decoration and accessory to show the class what they're working towards. Nothing chosen in preview is saved.",
+    "settings.stars.title": "Stars per minute",
+    "settings.stars.body": "How many stars a class earns for each minute of a finished focus session. Every class earns at this rate.",
+    "settings.stars.unit": "stars per minute",
+    "settings.stars.fewer": "Fewer stars per minute",
+    "settings.stars.more": "More stars per minute",
+    "settings.stars.example": "A {minutes} min session earns ★ {stars}.",
     "settings.save.title": "Save file",
     "settings.save.body": "Download every class to a file, or bring them back on another computer.",
 

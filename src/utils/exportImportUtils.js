@@ -1,6 +1,7 @@
 import { exportClassroomSave, importClassroomSave, SAVE_FILE_APP_NAME, SAVE_FILE_VERSION } from "./storage.js";
 import { classFromSingleClassroom, firstClassList, updateOutfit } from "./classList.js";
 import { activities, MAX_SOUND_THRESHOLD, MIN_SOUND_THRESHOLD } from "../data/activities";
+import { MAX_STARS_PER_MINUTE, MIN_STARS_PER_MINUTE } from "../data/stars";
 
 const isFiniteNonNegativeNumber = (value) => {
   return Number.isFinite(value) && value >= 0;
@@ -41,6 +42,11 @@ const isValidSettings = (settings, validIds) =>
   settings.preferredMinutes > 0 &&
   (settings.otterName === undefined || typeof settings.otterName === "string") &&
   (settings.trackSound === undefined || typeof settings.trackSound === "boolean") &&
+  (settings.starsPerMinute === undefined || (
+    Number.isInteger(settings.starsPerMinute) &&
+    settings.starsPerMinute >= MIN_STARS_PER_MINUTE &&
+    settings.starsPerMinute <= MAX_STARS_PER_MINUTE
+  )) &&
   (settings.soundThresholds === undefined || (
     Number.isFinite(settings.soundThresholds.independent) &&
     settings.soundThresholds.independent >= MIN_SOUND_THRESHOLD &&

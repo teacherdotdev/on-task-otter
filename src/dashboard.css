@@ -911,6 +911,14 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .settings-section h3 .icon { height: 17px; width: 17px; }
 .settings-section h3 span { color: #d99a2b; }
 .settings-section > p { color: #60756e; font-size: .9rem; line-height: 1.5; margin: 0; }
+.stars-stepper { align-items: center; display: flex; gap: 8px; }
+.stars-stepper > button { align-items: center; background: #fffaf0; border: 1px solid #9eaea8; border-radius: 50%; color: #25433d; cursor: pointer; display: flex; height: 38px; justify-content: center; padding: 0; width: 38px; }
+.stars-stepper > button:hover:not(:disabled) { background: #edf3e9; border-color: #6e9588; }
+.stars-stepper > button:disabled { cursor: default; opacity: .4; }
+.stars-stepper > button .icon { height: 16px; width: 16px; }
+.stars-stepper label { align-items: center; color: #526a63; display: flex; font-size: .84rem; font-weight: 700; gap: 8px; }
+.stars-stepper input { background: #fff; border: 1px solid #b8c6bf; border-radius: 10px; color: #25433d; font: inherit; font-size: 1.05rem; font-weight: 700; padding: 6px 8px; text-align: center; width: 64px; }
+.settings-example { background: #f4eee3; border-radius: 12px; color: #40554e; font-size: .86rem; margin: 0; padding: 8px 12px; }
 @keyframes settings-fade { from { opacity: 0; } }
 @keyframes settings-slide { from { transform: translateX(100%); } }
 @media (max-width: 480px) {

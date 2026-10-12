@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { accessories, accessorySlots, toggleWorn } from "./data/accessories";
 import { activities, soundThresholdOf } from "./data/activities";
 import { hasSupport, houseItems, houseRooms } from "./data/houseItems";
+import { DEFAULT_STARS_PER_MINUTE, starsPerMinuteOf } from "./data/stars";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useClassList } from "./hooks/useClassList";
 import { useMicrophone } from "./hooks/useMicrophone";
@@ -45,6 +46,7 @@ const Classroom = () => {
       partner: activities.partner.threshold,
     },
     trackSound: true,
+    starsPerMinute: DEFAULT_STARS_PER_MINUTE,
   });
   // Each class earns its own stars and keeps its own otter outfit and rooms.
   const classes = useClassList();
@@ -66,6 +68,7 @@ const Classroom = () => {
     favoriteSessions: savedFavoriteSessions = [],
     soundThresholds: savedSoundThresholds = {},
     trackSound = true,
+    starsPerMinute: savedStarsPerMinute,
   } = settings;
   const activity = activities[savedActivity] ? savedActivity : "partner";
   const favoriteSessions = Array.isArray(savedFavoriteSessions) ? savedFavoriteSessions : [];
@@ -73,6 +76,7 @@ const Classroom = () => {
     independent: soundThresholdOf(savedSoundThresholds.independent, "independent"),
     partner: soundThresholdOf(savedSoundThresholds.partner, "partner"),
   };
+  const starsPerMinute = starsPerMinuteOf(savedStarsPerMinute);
   const { stars } = progressData;
   const { unlocked, equipped } = rewardData;
   const { activeRoom, houseItemsOwned } = houseData;
@@ -111,6 +115,11 @@ const Classroom = () => {
   const setTrackSound = (value) => setSettings((current) => ({
     ...current,
     trackSound: typeof value === "function" ? value(current.trackSound ?? true) : value,
+  }));
+
+  const setStarsPerMinute = (value) => setSettings((current) => ({
+    ...current,
+    starsPerMinute: starsPerMinuteOf(value),
   }));
 
   /** A preset is a named snapshot of the session settings as they are now. */
@@ -296,7 +305,7 @@ const Classroom = () => {
     if (recordedCompletion.current) return;
     recordedCompletion.current = true;
     const completedMinutes = timer.durationSeconds / 60;
-    const starsEarned = completedMinutes;
+    const starsEarned = completedMinutes * starsPerMinute;
     const completedSession = {
       id: Date.now(),
       date: new Date().toISOString(),
@@ -311,7 +320,7 @@ const Classroom = () => {
     stopTimerAlert.current = playTimerCompleteAlert();
     setIsTimerAlertPlaying(true);
     setShowComplete(true);
-  }, [activity, setCompletedSessions, setHistory, setStars, setTotalStars, timer.durationSeconds, timer.isComplete]);
+  }, [activity, setCompletedSessions, setHistory, setStars, setTotalStars, starsPerMinute, timer.durationSeconds, timer.isComplete]);
 
   const silenceTimerAlert = () => {
     stopTimerAlert.current?.();
@@ -524,6 +533,7 @@ const Classroom = () => {
       })),
       soundThresholds,
       trackSound,
+      starsPerMinute,
     },
     // The save file carries every class, not only the one on screen.
     onTaskOtterClasses: classes.classList,
@@ -560,6 +570,9 @@ const Classroom = () => {
     isPreviewing,
     startPreview,
     stopPreview,
+    starsPerMinute,
+    setStarsPerMinute,
+    sessionMinutes: timer.durationSeconds / 60,
     openSaveFile: () => setShowExportImport(true),
   };
 

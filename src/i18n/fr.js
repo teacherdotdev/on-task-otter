@@ -23,6 +23,12 @@ export const fr = {
     "settings.title": "Paramètres de la classe",
     "settings.preview.title": "Mode aperçu",
     "settings.preview.body": "Activez toutes les pièces, décorations et accessoires pour montrer à la classe ce qui l'attend. Rien de ce qui est choisi dans l'aperçu n'est enregistré.",
+    "settings.stars.title": "Étoiles par minute",
+    "settings.stars.body": "Le nombre d'étoiles qu'une classe gagne pour chaque minute d'une séance de concentration terminée. Toutes les classes gagnent au même rythme.",
+    "settings.stars.unit": "étoiles par minute",
+    "settings.stars.fewer": "Moins d'étoiles par minute",
+    "settings.stars.more": "Plus d'étoiles par minute",
+    "settings.stars.example": "Une séance de {minutes} min rapporte ★ {stars}.",
     "settings.save.title": "Fichier de sauvegarde",
     "settings.save.body": "Téléchargez toutes les classes dans un fichier, ou retrouvez-les sur un autre ordinateur.",
 

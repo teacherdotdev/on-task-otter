@@ -158,7 +158,6 @@ const RoomScene = ({ room, decorations, availableItems = [], accessoryItems = []
                   />
                   {!owned && (
                     <span className="room-item-price">
-                      <b>+</b>
                       <small>★ {item.cost}</small>
                     </span>
                   )}

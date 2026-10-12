@@ -244,7 +244,6 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .room-item-placeholder img { filter: grayscale(1); opacity: .2; }
 .room-item-placeholder:not(:disabled):hover { background: rgba(255, 255, 255, .3); outline: 2px dashed #7f8b88; }
 .room-item-price { align-items: center; background: #f0f1f0; border: 2px solid #929b98; border-radius: 999px; color: #40514c; display: flex; gap: 3px; left: 50%; padding: 3px 6px; pointer-events: auto; position: absolute; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; }
-.room-item-price b { font-size: .9rem; line-height: 1; }
 .room-item-price small { font-size: .7rem; font-weight: 800; }
 .accessory-placeholder { fill: #d3d6d5; opacity: .65; stroke: #929b98; stroke-dasharray: 5 4; stroke-linecap: round; stroke-width: 3; }
 .accessory-price-spots { inset: 0; position: absolute; z-index: 7; }
@@ -563,7 +562,6 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
   .window-cloud { transform: scale(.5); transform-origin: left top; }
   .room-item-price { padding: 1px 3px; border-width: 1px; }
   .room-item-price small { font-size: .55rem; }
-  .room-item-price b { font-size: .65rem; }
   .scene-purchase-card { max-width: 215px; padding: 8px; gap: 4px 8px; }
 }
 .otter-at-home { pointer-events: none; }

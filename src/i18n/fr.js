@@ -21,7 +21,7 @@ export const fr = {
     "header.saveClassroom": "Enregistrer la configuration de la classe",
     "header.backToClassroom": "← Retour à la classe",
 
-    "footer.builtBy": "Créé par l'EdTech-a-thon",
+    "footer.builtBy": "Créé par teacher.dev",
     "footer.about": "à propos",
     "footer.privacy": "confidentialité",
 
@@ -306,9 +306,9 @@ export const fr = {
 
     "about.title": "À propos",
     "about.intro": "Un outil de concentration partagée pour la classe, conçu pour les enseignants et les élèves qu'ils accompagnent chaque jour.",
-    "about.community.title": "Issu de l'EdTech-a-thon",
-    "about.community.body": "On-task Otter est un projet de l'[EdTech-a-thon](edtechathon), une communauté de créateurs qui fabriquent des outils gratuits pour les classes. Découvrez qui nous sommes et ce que nous construisons sur [edtechathon.com](edtechathon).",
-    "about.community.photo": "Participants de l'EdTech-a-thon 2026",
+    "about.community.title": "Issu de teacher.dev",
+    "about.community.body": "On-task Otter est un projet de [teacher.dev](teacherdev), une communauté de créateurs qui fabriquent des outils gratuits pour les classes. Découvrez qui nous sommes et ce que nous construisons sur [teacher.dev](teacherdev).",
+    "about.community.photo": "La communauté teacher.dev en 2026",
     "about.community.caption": "EdTech-a-thon 2026",
     "about.promise.title": "Notre promesse",
     "about.promise.paywalls": "Zéro paiement.",

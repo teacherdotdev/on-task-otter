@@ -559,8 +559,8 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .site-footer { align-items: center; color: #60756e; display: flex; flex-wrap: wrap; font-size: .88rem; gap: 10px 20px; justify-content: center; margin: 0 auto; max-width: 1180px; padding: 34px 32px 10px; }
 .site-footer a { color: inherit; text-decoration: none; }
 .site-footer a:hover { color: #25433d; text-decoration: underline; }
-.edtechathon-credit { align-items: center; display: inline-flex; font-weight: 700; gap: 8px; }
-.edtechathon-credit img { height: 24px; width: 24px; }
+.teacher-dev-credit { align-items: center; display: inline-flex; font-weight: 700; gap: 8px; }
+.teacher-dev-credit img { height: 24px; width: 24px; }
 
 
 .page-shell { display: flex; flex-direction: column; }
@@ -579,7 +579,7 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .page-section a { color: #39675b; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .page-section-heading { align-items: center; display: flex; gap: 12px; margin-bottom: 10px; }
 .page-section-heading h2 { margin: 0; }
-.edtechathon-logo { flex: 0 0 auto; height: 40px; width: 40px; }
+.teacher-dev-logo { flex: 0 0 auto; height: 40px; width: 40px; }
 .promise-list { list-style: none; margin: 0; padding: 0; }
 .promise-list li + li { margin-top: 8px; }
 .page-section a.page-button { color: #fffaf0; display: inline-block; margin-top: 16px; text-decoration: none; }

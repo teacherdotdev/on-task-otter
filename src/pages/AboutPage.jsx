@@ -1,4 +1,4 @@
-import edtechathonLogo from "../assets/edtechathon-logo.svg";
+import teacherDevLogo from "../assets/teacher-dev-logo.svg";
 import participants from "../assets/edtechathon-2026-participants.jpg";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
@@ -18,13 +18,13 @@ const AboutPage = () => {
 
         <section className="card page-section">
           <div className="page-section-heading">
-            <img className="edtechathon-logo" src={edtechathonLogo} alt="" />
+            <img className="teacher-dev-logo" src={teacherDevLogo} alt="" />
             <h2>{t("about.community.title")}</h2>
           </div>
           <p>
             <RichText
               textKey="about.community.body"
-              links={{ edtechathon: "https://edtechathon.com" }}
+              links={{ teacherdev: "https://teacher.dev" }}
             />
           </p>
 

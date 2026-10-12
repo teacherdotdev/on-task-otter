@@ -74,7 +74,7 @@ export const tList = (key) => {
 };
 
 // Links and bold words inside a phrase are written the way they are in a
-// Markdown file: "Read more at [edtechathon.com](edtechathon)" and "press
+// Markdown file: "Read more at [teacher.dev](teacherdev)" and "press
 // *Command + L*". The name in brackets is looked up in the links given to the
 // component showing the phrase.
 const RICH_PATTERN = /\[([^\]]+)\]\(([^)]+)\)|\*([^*]+)\*/g;

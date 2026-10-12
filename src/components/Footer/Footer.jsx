@@ -1,4 +1,4 @@
-import edtechathonLogo from "../../assets/edtechathon-logo.svg";
+import teacherDevLogo from "../../assets/teacher-dev-logo.svg";
 import Link from "../Link/Link";
 import { useTranslation } from "../../i18n";
 
@@ -8,12 +8,12 @@ const Footer = () => {
   return (
   <footer className="site-footer">
     <a
-      className="edtechathon-credit"
-      href="https://edtechathon.com"
+      className="teacher-dev-credit"
+      href="https://teacher.dev"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <img src={edtechathonLogo} alt="" />
+      <img src={teacherDevLogo} alt="" />
       {t("footer.builtBy")}
     </a>
     <Link href="/about">{t("footer.about")}</Link>

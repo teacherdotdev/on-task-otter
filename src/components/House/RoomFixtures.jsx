@@ -55,10 +55,15 @@ const RoomFixtures = ({ room }) => {
           <g fill={INK} stroke="none" opacity=".75">
             <ellipse cx="305" cy="239" rx="17" ry="4" /><ellipse cx="355" cy="239" rx="17" ry="4" />
           </g>
-          {/* Sink */}
-          <ellipse cx="688" cy="239" rx="47" ry="8" fill="#6fa7a0" />
-          <ellipse cx="688" cy="237.5" rx="34" ry="4" fill="#cfe3d8" strokeWidth="2" />
-          <BrassFaucet d="M711 233v-22q0-18-18-18t-18 18" />
+          {/* Farmhouse sink: its rim flush with the counter top and its apron
+              dropping through the counter edge; the tap rises behind it */}
+          <BrassFaucet d="M710 229v-20q0-13-11-13t-11 13v3" />
+          <rect x="704" y="226" width="12" height="5" rx="2" fill={BRASS} strokeWidth="2" />
+          <rect x="642" y="231" width="92" height="26" rx="5" fill="#fbf1dc" />
+          <path d="M647 250h82v4h-82z" fill={INK} stroke="none" opacity=".1" />
+          <rect x="636" y="228" width="104" height="7" rx="3.5" fill="#fbf1dc" />
+          <path d="M641 230.5h94" stroke="#6fa7a0" strokeWidth="2" opacity=".9" />
+          <path d="M648 240h30" stroke="#fff" strokeWidth="2" opacity=".7" />
           {/* Wall shelf */}
           <rect x="62" y="156" width="8" height="13" rx="3" fill="#a86f45" strokeWidth="2" />
           <rect x="210" y="156" width="8" height="13" rx="3" fill="#a86f45" strokeWidth="2" />

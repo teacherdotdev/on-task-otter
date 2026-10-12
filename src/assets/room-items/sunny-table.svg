@@ -5,7 +5,9 @@
     <path d="M204 46C206 34 214 24 226 21" fill="none" stroke="#a86f45" stroke-width="7"/>
     <circle cx="228" cy="20.5" r="6" fill="#a86f45"/>
     <path d="M207 38C209 32 212 28 216 25.5" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".5"/>
-    <!-- walnut posts -->
+    <!-- bottom shelf top, seen between the front posts -->
+    <path d="M18 125C18 121 21 117 26 117H206C211 117 214 121 214 125z" fill="#e8c290"/>
+    <!-- walnut posts, in front of the shelf top -->
     <rect x="24" y="66" width="12" height="88" rx="4" fill="#a86f45"/>
     <rect x="196" y="66" width="12" height="88" rx="4" fill="#a86f45"/>
     <path d="M202 68H206.5V156H202z" fill="#5a3d2b" opacity=".15" stroke="none"/>
@@ -19,8 +21,6 @@
     <path d="M211 158.5C215.5 165 213.5 176.5 202 178.5C210.5 174 213 166 211 158.5z" fill="#5a3d2b" opacity=".18" stroke="none"/>
     <circle cx="30" cy="166.5" r="4" fill="#fbf1dc"/>
     <circle cx="202" cy="166.5" r="4" fill="#fbf1dc"/>
-    <!-- bottom shelf -->
-    <path d="M18 125C18 121 21 117 26 117H206C211 117 214 121 214 125z" fill="#e8c290"/>
     <!-- stack of plates -->
     <path d="M40 104V117C40 120.5 43 123 48 123H88C93 123 96 120.5 96 117V104z" fill="#fbf1dc"/>
     <path d="M41 109.5C56 112 80 112 95 109.5M41 115C56 117.5 80 117.5 95 115" fill="none" stroke-width="1.5" opacity=".5"/>

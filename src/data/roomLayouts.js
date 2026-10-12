@@ -17,7 +17,7 @@ const layouts = {
     'cookie-jar': [16.7, 65.8, 7, 3], 'sunny-table': [5.2, 3, 24], 'wall-clock': [55.2, 63.6, 9],
     'herb-garden': [86.1, 47.2, 8, 3], 'recipe-board': [42.8, 58.2, 10], 'happy-toaster': [16.1, 47.2, 9, 3],
     'cake-stand': [11.1, 31, 9, 3], 'dining-table': [62.9, 3, 31], 'place-settings': [79, 27, 10, 4],
-    'kitchen-utensils': [32.3, 58.6, 9], 'dinner-feast': [66.5, 29.1, 10, 3],
+    'kitchen-utensils': [32.3, 58.6, 9], 'dinner-feast': [66.5, 27.3, 10, 3],
   },
   bathroom: {
     'bubble-bath': [61, 21, 29], 'soft-towels': [30, 54, 12], 'round-mirror': [12.7, 58.9, 11],

@@ -3,12 +3,12 @@
     <!-- steam -->
     <path d="M96 15C89 11 103 8 96 3M120 14C113 10 127 7 120 2.5M144 15C137 11 151 8 144 3" fill="none" stroke-width="5" opacity=".42"/>
     <!-- side lugs -->
-    <path d="M24 80C14 78 5 80 5 86C5 94 13 97 28 95z" fill="#c9714f"/>
-    <path d="M216 80C226 78 235 80 235 86C235 94 227 97 212 95z" fill="#c9714f"/>
-    <!-- dish wall -->
-    <path d="M20 68C21 98 34 118 62 124.5C82 127.5 158 127.5 178 124.5C206 118 219 98 220 68z" fill="#c9714f"/>
-    <path d="M196 100C208 94 218 84 221 76C219 98 206 118 178 124.5C170 126 162 126.5 154 127C176 120 190 110 196 100z" fill="#5a3d2b" opacity=".18" stroke="none"/>
-    <path d="M34 104C40 111 47 116 56 119" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".5"/>
+    <path d="M28 80C14 78 5 80 5 86C5 94 13 97 32 95z" fill="#c9714f"/>
+    <path d="M212 80C226 78 235 80 235 86C235 94 227 97 208 95z" fill="#c9714f"/>
+    <!-- dish wall: sloping sides down to a flat base narrower than the rim -->
+    <path d="M20 66L32 86A88 40 0 0 0 208 86L220 66z" fill="#c9714f"/>
+    <path d="M220 66L208 86A88 40 0 0 1 160 121.5C184 114 202 100 212 78z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M45 102C51 106.5 57 109 64 111" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".5"/>
     <!-- darker dish rim -->
     <ellipse cx="120" cy="66" rx="100" ry="47" fill="#c9714f"/>
     <ellipse cx="120" cy="66" rx="100" ry="47" fill="#5a3d2b" opacity=".28" stroke="none"/>

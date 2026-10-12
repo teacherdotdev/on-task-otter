@@ -33,7 +33,10 @@
       <circle cx="96" cy="127" r="4.5"/><circle cx="124" cy="128" r="4.5"/><circle cx="152" cy="127" r="4.5"/><circle cx="180" cy="123" r="4.5"/>
     </g>
     <!-- banana -->
-    <path d="M154 80L167 68C170 65 175 68 173 72L164 86z" fill="#a86f45"/>
+    <path d="M152.5 78L180.5 52.5L191.5 64.5L163.5 90z" fill="#f0c95a"/>
+    <path d="M158 84L186 58.5L191.5 64.5L163.5 90z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M175.5 57.5L180.5 52.5L191.5 64.5L186.5 69z" fill="#7a5340" stroke="none"/>
+    <path d="M152.5 78L180.5 52.5L191.5 64.5L163.5 90z" fill="none"/>
     <path d="M22 70C20 62 30 58 34 62C50 86 114 90 158 76C164 74 168 82 164 88C112 118 34 104 22 70z" fill="#f0c95a"/>
     <path d="M164 88C112 118 34 104 26 78C50 100 112 108 162 84z" fill="#5a3d2b" opacity=".14" stroke="none"/>
     <path d="M34 80C60 102 118 104 154 90" fill="none" stroke-width="4" opacity=".4"/>

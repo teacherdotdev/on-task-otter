@@ -1,16 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 26 240 84">
   <g stroke="#5a3d2b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-    <!-- napkin with its corner folded back -->
-    <path d="M64 34C104 30 152 29 186 32C192 32.5 195 36 196 41L204 96C205 102 201 106 195 106H110L48 58L52 42C53 37 57 34.5 64 34z" fill="#9bb58a"/>
-    <path d="M196 41 204 96C205 102 201 106 195 106H178C186 90 190 62 188 32.5C192 33 195 36 196 41z" fill="#5a3d2b" opacity=".16" stroke="none"/>
-    <path d="M48 58 110 106 95 40z" fill="#9bb58a"/>
-    <path d="M48 58 110 106 95 40z" fill="#fff8ea" opacity=".55" stroke="none"/>
-    <path d="M56 61 98 93" fill="none" stroke-width="4" stroke-dasharray="9 8" opacity=".45"/>
+    <!-- cloth placemat with stitched edge, the plate sitting fully on it -->
+    <path d="M72 34H184C189 34 192 37 193 41L200 96C200.7 100.5 197.5 104 193 104H63C58.5 104 55.3 100.5 56 96L63 41C64 37 67 34 72 34z" fill="#9bb58a"/>
+    <path d="M193 41 200 96C200.7 100.5 197.5 104 193 104H180C187 88 189 60 186.5 34.5C190 35 192.2 37.5 193 41z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M75 42H181L187 96H69z" fill="none" stroke-width="3" stroke-dasharray="7 7" opacity=".4"/>
     <!-- plate with coloured rim -->
-    <ellipse cx="134" cy="68" rx="58" ry="27" fill="#d9785a"/>
-    <ellipse cx="134" cy="68" rx="38" ry="16.5" fill="#fbf1dc" stroke-width="4" stroke-opacity=".55"/>
-    <path d="M132 57C117 57.5 105 61.5 100 67C97.5 61 111 54.5 132 57z" fill="#5a3d2b" opacity=".12" stroke="none"/>
-    <path d="M94 54C104 47 118 43.5 132 43.5" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".6"/>
+    <ellipse cx="128" cy="68" rx="52" ry="24" fill="#d9785a"/>
+    <ellipse cx="128" cy="68" rx="34" ry="14.5" fill="#fbf1dc" stroke-width="4" stroke-opacity=".55"/>
+    <path d="M126 58.5C113 59 102.5 62.5 98 67C96 61.5 107 56 126 58.5z" fill="#5a3d2b" opacity=".12" stroke="none"/>
+    <path d="M91 55C100 49 112 46 125 46" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".6"/>
     <!-- fork lying flat, foreshortened like the plate -->
     <path d="M9 72V58M18.7 72V58M28.3 72V58M38 72V58" fill="none"/>
     <path d="M9 72V59M18.7 72V59M28.3 72V59M38 72V59" fill="none" stroke="#ead9bd" stroke-width="2"/>

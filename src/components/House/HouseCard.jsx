@@ -34,7 +34,6 @@ const HouseCard = ({ house, rewards, focusMode = false, fullScreen, children }) 
     activeRoomDetails,
     roomDecorations,
     houseItems,
-    houseItemsOwned,
     buyHouseItem,
     equipped,
     isCelebrating,
@@ -47,7 +46,6 @@ const HouseCard = ({ house, rewards, focusMode = false, fullScreen, children }) 
 
   const shownName = otterName || t("otter.default");
   const activeRoomItems = houseItems.filter((item) => item.room === activeRoomDetails.id);
-  const itemsOwned = activeRoomItems.filter((item) => houseItemsOwned.includes(item.id)).length;
 
   const closeEditor = () => {
     setEditingMode(null);
@@ -92,12 +90,6 @@ const HouseCard = ({ house, rewards, focusMode = false, fullScreen, children }) 
           <span className="scene-chip-star" aria-hidden="true">★</span>
           <b>{stars}</b> <span className="scene-chip-word">{t("house.stars")}</span>
         </p>
-        {!editingMode && (
-          <p className="scene-chip" title={t("house.itemsDetail")}>
-            <Icon name="sofa" />
-            <b>{itemsOwned}/{activeRoomItems.length}</b> <span className="scene-chip-word">{t("house.items")}</span>
-          </p>
-        )}
       </div>
 
       <div className="scene-overlay scene-overlay-end" role="toolbar" aria-label={t("house.actions")}>

@@ -195,8 +195,6 @@ export const en = {
 
     "house.stars": "stars",
     "house.classStarsDetail": "This class's stars, earned by finishing focus sessions",
-    "house.items": "items",
-    "house.itemsDetail": "Items bought for this room",
     "house.actions": "Room tools",
     "house.chooseRoom": "Choose room",
     "house.decorate": "Decorate room",

@@ -194,8 +194,6 @@ export const es = {
 
     "house.stars": "estrellas",
     "house.classStarsDetail": "Estrellas de esta clase, ganadas al terminar sesiones de concentración",
-    "house.items": "objetos",
-    "house.itemsDetail": "Objetos comprados para esta habitación",
     "house.actions": "Herramientas de la habitación",
     "house.chooseRoom": "Elegir habitación",
     "house.decorate": "Decorar la habitación",

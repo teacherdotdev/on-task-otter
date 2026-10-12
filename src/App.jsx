@@ -481,7 +481,6 @@ const Classroom = () => {
     setTrackSound,
     setSoundThreshold,
     isTooLoud,
-    openMicrophoneSetup,
   };
 
   const timerSettings = {

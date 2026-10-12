@@ -7,7 +7,7 @@ import { useTranslation } from "../../i18n";
 // teacher can fold it away to a single button so the class watches only the otter.
 const SoundPanel = ({ noise }) => {
   const { t } = useTranslation();
-  const { noiseMessage, noiseTone, expectation, microphone, activity, openMicrophoneSetup } = noise;
+  const { noiseMessage, noiseTone, expectation, microphone } = noise;
   const [showSoundBar, setShowSoundBar] = useState(true);
 
   if (!showSoundBar) {
@@ -34,15 +34,6 @@ const SoundPanel = ({ noise }) => {
         <button
           className="scene-sound-button"
           type="button"
-          aria-label={t("noise.selectMicrophone")}
-          title={t("noise.selectMicrophone")}
-          onClick={openMicrophoneSetup}
-        >
-          <Icon name="mic" />
-        </button>
-        <button
-          className="scene-sound-button"
-          type="button"
           aria-label={t("noise.hideBar")}
           title={t("noise.hideBar")}
           onClick={() => setShowSoundBar(false)}
@@ -51,14 +42,10 @@ const SoundPanel = ({ noise }) => {
         </button>
       </header>
 
-      <p className="scene-sound-goal">
-        {t("noise.goal", { activity: t(`activity.${activity}.label`).toLowerCase() })}
-        {" "}<b>{t(`activity.${activity}.detail`)}</b>
-      </p>
       <NoiseScale microphone={microphone} noiseTone={noiseTone} goal={expectation.threshold} />
 
       {microphone.status === "denied" && <p className="help-text">{t("noise.denied")}</p>}
-      {microphone.status === "missing" && <p className="help-text">{t("noise.missing")} {t("noise.missingFocus")}</p>}
+      {microphone.status === "missing" && <p className="help-text">{t("noise.missing")} {t("noise.missingSetup")}</p>}
       {microphone.status === "unsupported" && <p className="help-text">{t("noise.unsupported")}</p>}
     </section>
   );

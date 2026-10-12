@@ -19,7 +19,6 @@ const NoiseScale = ({ microphone, noiseTone, goal }) => {
         <span className={noiseTone} style={{ width: `${level}%` }} />
         <i className="meter-goal" style={{ left: `${goal}%` }} aria-hidden="true" />
       </div>
-      <div className="noise-scale"><span>{t("noise.scale.quiet")}</span><span>{t("noise.scale.talking")}</span><span>{t("noise.scale.lively")}</span></div>
     </section>
   );
 };

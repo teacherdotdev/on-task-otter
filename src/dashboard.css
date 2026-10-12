@@ -526,8 +526,6 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
   .progress-summary { flex-direction: column; }
   .class-goal { align-items: flex-start; }
   .milestone-pieces { grid-template-columns: 1fr; }
-  .export-import-trigger { font-size: 0; padding: 9px 12px; }
-  .export-import-trigger::after { content: "Save Setup"; font-size: .82rem; }
   .export-import-modal { padding: 32px 22px 26px; }
    .export-import-actions { grid-template-columns: 1fr; }
    .clear-data-section { margin-top: 36px; width: auto; }
@@ -675,9 +673,6 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .scene-shop-toolbar { position: static; transform: none; width: max-content; max-width: 100%; margin: 10px auto 0; }
 
 .session-setup-fields > fieldset { margin: 0 0 16px; padding: 0; border: 0; }
-.sound-calibration-dialog { width: min(520px, calc(100vw - 40px)); box-sizing: border-box; max-height: 85vh; overflow: auto; padding: 28px; border: 1px solid #ded7ca; border-radius: 22px; background: #fffaf0; color: #25433d; text-align: left; }
-.sound-calibration-dialog::backdrop { background: rgba(20, 40, 34, .55); }
-.sound-calibration-dialog h2 { margin-top: 0; }
 
 .session-duration { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .session-duration .quick-durations { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
@@ -701,14 +696,8 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .timer-controls { width: 100%; min-width: 0; }
 .timer-controls .focus-launcher { width: 100%; max-width: 480px; margin-inline: auto; box-sizing: border-box; }
 .quick-sound-limit > label { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 6px; }
-.sound-calibration-dialog .calibration-panel { margin-top: 20px; padding-top: 18px; }
-.calibration-footer { display: flex; justify-content: flex-end; margin-top: 24px; padding-top: 16px; border-top: 1px solid #ded7ca; }
 .calibration-level { display: grid; gap: 6px; margin-top: 4px; }
 .calibration-level small { color: #667a73; font-size: .8rem; }
-.calibration-recommendations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 20px 0; }
-.calibration-recommendations > div { padding: 16px; background: #dce9d9; border-radius: 12px; }
-.calibration-recommendations dt { font-size: .9rem; }
-.calibration-recommendations dd { margin: 8px 0 0; font-size: 1.8rem; font-weight: 700; }
 
 .preset-name { display: grid; gap: 6px; max-width: 480px; margin-bottom: 18px; color: #526a63; font-size: .9rem; font-weight: 700; }
 .preset-name input { min-width: 0; background: #fffaf0; border: 1px solid #b8c6bf; border-radius: 10px; color: #25433d; font: inherit; padding: 9px 10px; }
@@ -730,3 +719,33 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
 .support-modal > .modal-close:hover { background: #eadfd2; color: #25433d; }
 .support-copy { color: #60756e; line-height: 1.6; margin: 15px 0 0; }
 .support-copy a { color: #25433d; font-weight: 700; }
+
+/* The Microphone window: one microphone and calibration for every preset and class. */
+.app-header-actions .microphone-trigger { align-items: center; display: inline-flex; gap: 6px; }
+.microphone-trigger .icon { height: 15px; width: 15px; }
+.microphone-section { display: grid; gap: 8px; }
+.microphone-section > label { color: #526a63; font-size: .8rem; font-weight: 700; }
+.microphone-choice-row { display: flex; gap: 8px; }
+.microphone-choice-row select { background: #fff; border: 1px solid #b8c6bf; border-radius: 12px; color: #25433d; flex: 1; font: inherit; min-width: 0; padding: 10px 12px; }
+.microphone-choice-row .outline { flex: 0 0 auto; }
+.microphone-problem { color: #b84338; font-size: .88rem; margin: 0; }
+.microphone-modal h2 { margin-top: 0; }
+.microphone-modal .calibration-panel { margin-top: 22px; padding-top: 18px; }
+.microphone-modal .calibration-panel h3 { align-items: center; display: flex; flex-wrap: wrap; font-size: 1rem; gap: 10px; justify-content: space-between; margin: 0 0 8px; }
+.calibration-status { background: #f8e3dc; border-radius: 999px; color: #a1452f; font-size: .74rem; font-weight: 700; padding: 3px 10px; }
+.calibration-status.calibrated { background: #e1eee4; color: #2f6a52; }
+.text-button { background: none; border: 0; color: #2f6a52; cursor: pointer; font: inherit; font-weight: 700; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+.text-button:hover { color: #25433d; }
+
+@media (max-width: 760px) {
+  .microphone-trigger .microphone-trigger-word { display: none; }
+}
+@media (max-width: 760px) {
+  .microphone-trigger { padding: 9px 11px; }
+}
+@media (max-width: 480px) {
+  .app-header { gap: 8px; }
+  .app-header-actions { flex-wrap: nowrap; gap: 6px; }
+  .class-picker-button { max-width: 130px; }
+}
+

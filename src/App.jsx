@@ -17,6 +17,7 @@ import HouseCard from "./components/House/HouseCard";
 import SessionCompletionModal from "./components/SessionCompleteModal/SessionCompletionModal";
 import ExportImportModal from "./components/ExportImport/ExportImportModal";
 import ClearDataModal from "./components/ClearData/ClearDataModal";
+import MicrophoneModal from "./components/Microphone/MicrophoneModal";
 import Footer from "./components/Footer/Footer";
 import LanguagePicker from "./components/Language/LanguagePicker";
 import SupportButton from "./components/Support/SupportButton";
@@ -203,6 +204,8 @@ const Classroom = () => {
   const [showComplete, setShowComplete] = useState(false);
   const [showExportImport, setShowExportImport] = useState(false);
   const [showClearData, setShowClearData] = useState(false);
+  const [showMicrophone, setShowMicrophone] = useState(false);
+  const openMicrophoneSetup = () => setShowMicrophone(true);
   const [appMode, setAppMode] = useState("configure");
   const fullScreen = useFullScreen();
   const isFocusFullScreen = appMode === "focus" && fullScreen.isFullScreen;
@@ -469,7 +472,7 @@ const Classroom = () => {
     setTrackSound,
     setSoundThreshold,
     isTooLoud,
-    setCalibrating,
+    openMicrophoneSetup,
   };
 
   const timerSettings = {
@@ -536,6 +539,7 @@ const Classroom = () => {
   const header = {
     points,
     onOpenExportImport: () => setShowExportImport(true),
+    onOpenMicrophone: openMicrophoneSetup,
   };
 
   const validSaveIds = {
@@ -623,6 +627,14 @@ const Classroom = () => {
           classroomData={classroomData}
           validIds={validSaveIds}
           onClose={() => setShowExportImport(false)}
+        />
+      )}
+
+      {showMicrophone && (
+        <MicrophoneModal
+          microphone={microphone}
+          setCalibrating={setCalibrating}
+          onClose={() => setShowMicrophone(false)}
         />
       )}
 

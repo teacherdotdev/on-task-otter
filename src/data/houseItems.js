@@ -49,6 +49,17 @@ const nextRoomPrice = (room) => {
   return 30 + (pricePosition + retiredMobileOffset) * 5;
 };
 
+// The plainest piece in each room costs next to nothing, so a class can buy
+// something for a room almost as soon as they start.
+const starterItems = new Set(["window-curtains", "nightstand", "kitchen-utensils", "bath-mat", "work-rug"]);
+const starterPrice = 5;
+// A starter still takes its place in the room's price ladder, so the rest of
+// the room keeps its prices.
+const priceFor = (id, room) => {
+  const roomPrice = nextRoomPrice(room);
+  return starterItems.has(id) ? starterPrice : roomPrice;
+};
+
 // These items are drawn sitting on another item, so a class can only buy one
 // once the piece it rests on is in the room.
 const sitsOn = {
@@ -67,7 +78,7 @@ const sitsOn = {
 // Each item's name lives in the translations, under "item.<id>".
 const item = (id, _cost, room, symbol, _color, sceneType = "floor") => ({
   id,
-  cost: nextRoomPrice(room),
+  cost: priceFor(id, room),
   room,
   symbol,
   sceneType,

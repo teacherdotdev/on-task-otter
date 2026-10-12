@@ -1,5 +1,6 @@
 import Link from "../Link/Link";
 import OtterMark from "../Otter/OtterMark";
+import ClassPicker from "../Classes/ClassPicker";
 import Icon from "../Icon/Icon";
 import { useTranslation } from "../../i18n";
 
@@ -7,13 +8,15 @@ import { useTranslation } from "../../i18n";
 // appear when a classroom was handed to it.
 const Header = ({ header, rightLink }) => {
   const { t } = useTranslation();
-  const { onOpenExportImport, onOpenMicrophone } = header ?? {};
+  const { onOpenExportImport, onOpenMicrophone, classes } = header ?? {};
   return (
     <header className="app-header">
-      <Link className="brand" href="/">
-        <OtterMark />
-        {t("app.name")}
-      </Link>
+      <div className="app-header-start">
+        <Link className="brand" href="/">
+          <OtterMark />
+          <span className="brand-name">{t("app.name")}</span>
+        </Link>
+      </div>
 
       {header && (
         <>
@@ -28,6 +31,7 @@ const Header = ({ header, rightLink }) => {
               <span className="microphone-trigger-word">{t("mic.title")}</span>
             </button>
             <button className="export-import-trigger" type="button" onClick={onOpenExportImport}>{t("header.saveClassroom")}</button>
+            {classes && <ClassPicker {...classes} />}
           </div>
         </>
       )}

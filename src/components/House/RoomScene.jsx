@@ -2,7 +2,7 @@ import RoomFixtures from "./RoomFixtures";
 import Otter from "../Otter/Otter";
 import { useTranslation } from "../../i18n";
 
-const RoomScene = ({ room, decorations, availableItems = [], accessoryItems = [], unlockedAccessories = [], equipped, isCelebrating, isFocusing, noiseTone, otterName, focusMode = false, editingMode, points, isPreviewing, selectedItem, onChooseItem, onConfirmItem, onCloseEditor }) => {
+const RoomScene = ({ room, decorations, availableItems = [], accessoryItems = [], unlockedAccessories = [], equipped, isCelebrating, isFocusing, noiseTone, otterName, focusMode = false, editingMode, stars, isPreviewing, selectedItem, onChooseItem, onConfirmItem, onCloseEditor }) => {
   const { t } = useTranslation();
   const visibleItems = editingMode === "decorations" ? availableItems : decorations;
   const selectedIsOwned = selectedItem && (
@@ -17,7 +17,7 @@ const RoomScene = ({ room, decorations, availableItems = [], accessoryItems = []
       {editingMode && (
         <div className="scene-shop-toolbar">
           <b>{editingMode === "decorations" ? t("scene.chooseItem") : t("scene.chooseClothing")}</b>
-          <span>{isPreviewing ? t("scene.preview") : t("scene.stars", { points })}</span>
+          <span>{isPreviewing ? t("scene.preview") : t("scene.stars", { stars })}</span>
           <button type="button" onClick={onCloseEditor}>{t("scene.done")}</button>
         </div>
       )}
@@ -129,15 +129,15 @@ const RoomScene = ({ room, decorations, availableItems = [], accessoryItems = []
             <small>{editingMode === "decorations" ? t("scene.roomDecoration") : t("scene.otterClothing")}</small>
             <h3>{editingMode === "decorations" ? t(`item.${selectedItem.id}`) : t(`accessory.${selectedItem.id}`)}</h3>
             <b>{selectedIsOwned ? t("scene.alreadyOwned") : `★ ${selectedItem.cost}`}</b>
-            {!isPreviewing && !selectedIsOwned && <p>{t("scene.starsLeft", { stars: Math.max(0, points - selectedItem.cost) })}</p>}
+            {!isPreviewing && !selectedIsOwned && <p>{t("scene.starsLeft", { stars: Math.max(0, stars - selectedItem.cost) })}</p>}
           </div>
           <button
             className="scene-purchase-button"
             type="button"
-            disabled={!isPreviewing && !selectedIsOwned && points < selectedItem.cost}
+            disabled={!isPreviewing && !selectedIsOwned && stars < selectedItem.cost}
             onClick={() => onConfirmItem(selectedItem)}
           >
-            {isPreviewing ? t("scene.placeInPreview") : selectedIsOwned ? t("scene.wearIt") : points < selectedItem.cost ? t("scene.notEnough") : t("scene.buyFor", { cost: selectedItem.cost })}
+            {isPreviewing ? t("scene.placeInPreview") : selectedIsOwned ? t("scene.wearIt") : stars < selectedItem.cost ? t("scene.notEnough") : t("scene.buyFor", { cost: selectedItem.cost })}
           </button>
         </aside>
       )}

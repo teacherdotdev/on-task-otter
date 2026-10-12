@@ -3,6 +3,7 @@ import { accessories } from "./data/accessories";
 import { activities, soundThresholdOf } from "./data/activities";
 import { houseItems, houseRooms } from "./data/houseItems";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useClassList } from "./hooks/useClassList";
 import { useMicrophone } from "./hooks/useMicrophone";
 import { useRoomMonitor } from "./hooks/useRoomMonitor";
 import { useFullScreen } from "./hooks/useFullScreen";
@@ -17,6 +18,7 @@ import HouseCard from "./components/House/HouseCard";
 import SessionCompletionModal from "./components/SessionCompleteModal/SessionCompletionModal";
 import ExportImportModal from "./components/ExportImport/ExportImportModal";
 import ClearDataModal from "./components/ClearData/ClearDataModal";
+import ClassesModal from "./components/Classes/ClassesModal";
 import MicrophoneModal from "./components/Microphone/MicrophoneModal";
 import Footer from "./components/Footer/Footer";
 import LanguagePicker from "./components/Language/LanguagePicker";
@@ -25,13 +27,13 @@ import AboutPage from "./pages/AboutPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import { useRoute } from "./hooks/useRoute";
 import { useTranslation } from "./i18n";
-import { clearClassroomData } from "./utils/storage";
+import { clearClassroomData, SETTINGS_KEY } from "./utils/storage";
 
 const Classroom = () => {
   const { t } = useTranslation();
 
   // persistent classroom data
-  const [settings, setSettings] = useLocalStorage("onTaskOtterSettings", {
+  const [settings, setSettings] = useLocalStorage(SETTINGS_KEY, {
     activity: "independent",
     preferredMinutes: 15,
     otterName: "Otter",
@@ -42,20 +44,18 @@ const Classroom = () => {
     },
     trackSound: true,
   });
-  const [progressData, setProgressData] = useLocalStorage("onTaskOtterProgress", {
-    points: 0,
-    totalPoints: 0,
-    completedSessions: 0,
-    history: [],
-  });
-  const [rewardData, setRewardData] = useLocalStorage("onTaskOtterRewards", {
-    unlocked: [],
-    equipped: [],
-  });
-  const [houseData, setHouseData] = useLocalStorage("onTaskOtterHouse", {
-    activeRoom: "living",
-    houseItemsOwned: [],
-  });
+  // Each class earns its own stars and keeps its own otter outfit and rooms.
+  const classes = useClassList();
+  const {
+    progress: progressData,
+    rewards: rewardData,
+    house: houseData,
+  } = classes.currentClass;
+  const {
+    setProgress: setProgressData,
+    setRewards: setRewardData,
+    setHouse: setHouseData,
+  } = classes;
 
   const {
     activity: savedActivity,
@@ -71,9 +71,7 @@ const Classroom = () => {
     independent: soundThresholdOf(savedSoundThresholds.independent, "independent"),
     partner: soundThresholdOf(savedSoundThresholds.partner, "partner"),
   };
-  const { points, history = [] } = progressData;
-  // Older saved classrooms may only have session history, not this total.
-  const completedSessions = progressData.completedSessions ?? history.length;
+  const { stars } = progressData;
   const { unlocked, equipped } = rewardData;
   const { activeRoom, houseItemsOwned } = houseData;
 
@@ -135,19 +133,19 @@ const Classroom = () => {
       .filter((favorite) => favorite.id !== id),
   }));
 
-  const setPoints = (value) => setProgressData(
+  const setStars = (value) => setProgressData(
     (current) => (
       {
-        ...current, points: typeof value === "function"
-          ? value(current.points)
+        ...current, stars: typeof value === "function"
+          ? value(current.stars)
           : value
       }
     ));
-  const setTotalPoints = (value) => setProgressData(
+  const setTotalStars = (value) => setProgressData(
     (current) => (
       {
-        ...current, totalPoints: typeof value === "function"
-          ? value(current.totalPoints)
+        ...current, totalStars: typeof value === "function"
+          ? value(current.totalStars)
           : value
       }
     ));
@@ -204,6 +202,7 @@ const Classroom = () => {
   const [showComplete, setShowComplete] = useState(false);
   const [showExportImport, setShowExportImport] = useState(false);
   const [showClearData, setShowClearData] = useState(false);
+  const [showClasses, setShowClasses] = useState(false);
   const [showMicrophone, setShowMicrophone] = useState(false);
   const openMicrophoneSetup = () => setShowMicrophone(true);
   const [appMode, setAppMode] = useState("configure");
@@ -291,16 +290,16 @@ const Classroom = () => {
       date: new Date().toISOString(),
       minutes: completedMinutes,
       activity,
-      pointsEarned: completedMinutes,
+      starsEarned: completedMinutes,
     };
-    setPoints((value) => value + completedMinutes);
-    setTotalPoints((value) => value + completedMinutes);
+    setStars((value) => value + completedMinutes);
+    setTotalStars((value) => value + completedMinutes);
     setCompletedSessions((value) => value + 1);
     setHistory((sessions) => [completedSession, ...sessions]);
     stopTimerAlert.current = playTimerCompleteAlert();
     setIsTimerAlertPlaying(true);
     setShowComplete(true);
-  }, [activity, setCompletedSessions, setHistory, setPoints, setTotalPoints, timer.durationSeconds, timer.isComplete]);
+  }, [activity, setCompletedSessions, setHistory, setStars, setTotalStars, timer.durationSeconds, timer.isComplete]);
 
   const silenceTimerAlert = () => {
     stopTimerAlert.current?.();
@@ -324,8 +323,6 @@ const Classroom = () => {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [showComplete, closeCompletionModal]);
 
-  const sessionCount = completedSessions;
-
   const unlockedRoomIds = houseRooms
     .filter((room, index) => {
       const earlierRooms = houseRooms.slice(0, index);
@@ -346,8 +343,8 @@ const Classroom = () => {
       );
       return;
     }
-    if (points < item.cost) return;
-    setPoints((value) => value - item.cost);
+    if (stars < item.cost) return;
+    setStars((value) => value - item.cost);
     setUnlocked((items) => [...items, item.id]);
     setEquipped((items) => [...items, item.id]);
   }
@@ -361,16 +358,16 @@ const Classroom = () => {
     if (
       !unlockedRoomIds.includes(item.room)
       || houseItemsOwned.includes(item.id) 
-      || points < item.cost
+      || stars < item.cost
     ) return;
 
-    setPoints((value) => value - item.cost);
+    setStars((value) => value - item.cost);
     setHouseItemsOwned((items) => [...items, item.id]);
   }
 
   // Preview mode lets a teacher walk through every room and every customization
   // at once, so they can show a class where the year is heading. Nothing chosen
-  // in preview is saved: the class keeps the points, rooms, and decorations it
+  // in preview is saved: the class keeps the stars, rooms, and decorations it
   // actually earned.
   const [preview, setPreview] = useState(null);
   const isPreviewing = preview !== null;
@@ -486,7 +483,7 @@ const Classroom = () => {
   };
 
   const rewards = {
-    points,
+    stars,
     accessories,
     unlocked: shownUnlocked,
     equipped: shownEquipped,
@@ -495,7 +492,7 @@ const Classroom = () => {
   };
 
   const house = {
-    points,
+    stars,
     houseRooms,
     activeRoom: shownActiveRoom,
     setActiveRoom: chooseRoom,
@@ -528,18 +525,36 @@ const Classroom = () => {
       soundThresholds,
       trackSound,
     },
-    onTaskOtterProgress: {
-      ...progressData,
-      completedSessions: sessionCount,
-    },
-    onTaskOtterRewards: rewardData,
-    onTaskOtterHouse: houseData,
+    // The save file carries every class, not only the one on screen.
+    onTaskOtterClasses: classes.classList,
+  };
+
+  // A session belongs to the class that started it, so switching classes
+  // starts the next one fresh.
+  const switchClass = (id) => {
+    if (id === classes.currentClass.id) return;
+    resetTimer();
+    stopPreview();
+    classes.select(id);
+  };
+
+  const removeClass = (id) => {
+    if (id === classes.currentClass.id) {
+      resetTimer();
+      stopPreview();
+    }
+    classes.remove(id);
   };
 
   const header = {
-    points,
     onOpenExportImport: () => setShowExportImport(true),
     onOpenMicrophone: openMicrophoneSetup,
+    classes: {
+      list: classes.classList.classes,
+      currentId: classes.currentClass.id,
+      select: switchClass,
+      onEdit: () => setShowClasses(true),
+    },
   };
 
   const validSaveIds = {
@@ -635,6 +650,17 @@ const Classroom = () => {
           microphone={microphone}
           setCalibrating={setCalibrating}
           onClose={() => setShowMicrophone(false)}
+        />
+      )}
+
+      {showClasses && (
+        <ClassesModal
+          classes={classes.classList.classes}
+          currentId={classes.currentClass.id}
+          onAdd={classes.add}
+          onRename={classes.rename}
+          onDelete={removeClass}
+          onClose={() => setShowClasses(false)}
         />
       )}
 

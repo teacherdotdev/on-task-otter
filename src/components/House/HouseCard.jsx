@@ -11,7 +11,7 @@ const HouseCard = ({ house, rewards, focusMode = false }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showActions, setShowActions] = useState(true);
   const {
-    points,
+    stars,
     houseRooms,
     activeRoom,
     setActiveRoom,
@@ -54,7 +54,7 @@ const HouseCard = ({ house, rewards, focusMode = false }) => {
         </div>
         <div className="house-stats">
           <p className="house-class-points">
-            <span aria-hidden="true">★</span> <strong>{points}</strong> {t("house.classPoints")}
+            <span aria-hidden="true">★</span> <strong>{stars}</strong> {t("house.classPoints")}
           </p>
           <div className="house-progress">
           <span><b>{activeRoomItems.length - itemsStillNeeded}</b> {t("house.roomItems", { total: activeRoomItems.length })}</span>
@@ -95,7 +95,7 @@ const HouseCard = ({ house, rewards, focusMode = false }) => {
         editingMode={focusMode ? null : editingMode}
         accessoryItems={rewards.accessories}
         unlockedAccessories={rewards.unlocked}
-        points={points}
+        stars={stars}
         isPreviewing={isPreviewing}
         selectedItem={selectedItem}
         onChooseItem={setSelectedItem}

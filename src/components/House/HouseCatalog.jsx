@@ -4,7 +4,7 @@ const HouseCatalog = ({
   room,
   items,
   ownedItems,
-  points,
+  stars,
   buyHouseItem,
   isPreviewing,
   titleId,
@@ -21,7 +21,7 @@ const HouseCatalog = ({
           <p className="catalog-label">{t("catalog.label")}</p>
           <h2 id={titleId}>{t("catalog.title", { room: t(`room.${room.id}.name`).toLowerCase() })}</h2>
         </div>
-        <span className="points-badge">{isPreviewing ? t("scene.preview") : t("scene.stars", { points })}</span>
+        <span className="points-badge">{isPreviewing ? t("scene.preview") : t("scene.stars", { stars })}</span>
       </div>
 
       <div className="reward-list">
@@ -45,7 +45,7 @@ const HouseCatalog = ({
 
               <button
                 type="button"
-                disabled={!isPreviewing && (owned || points < item.cost)}
+                disabled={!isPreviewing && (owned || stars < item.cost)}
                 onClick={() => buyHouseItem(item)}
               >
                 {isPreviewing ? (owned ? t("catalog.takeAway") : t("catalog.place")) : owned ? t("catalog.placed") : t("catalog.buy")}

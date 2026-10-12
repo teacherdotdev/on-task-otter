@@ -1,6 +1,6 @@
 import { useTranslation } from "../../i18n";
 
-const RewardList = ({ points, accessories, unlocked, equipped, buyOrEquip, isPreviewing }) => {
+const RewardList = ({ stars, accessories, unlocked, equipped, buyOrEquip, isPreviewing }) => {
   const { t } = useTranslation();
   const rewardItems = accessories.map((item) => {
     const owned = unlocked.includes(item.id);
@@ -25,7 +25,7 @@ const RewardList = ({ points, accessories, unlocked, equipped, buyOrEquip, isPre
 
         <button
           type="button"
-          disabled={!isPreviewing && !owned && points < item.cost}
+          disabled={!isPreviewing && !owned && stars < item.cost}
           onClick={() => buyOrEquip(item)}
         >
           {owned

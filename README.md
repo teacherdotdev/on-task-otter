@@ -8,7 +8,7 @@ The class looks after an otter that cheers them on while they work. It is an ori
 
 During activities such as an independent math warm-up, students may struggle to stay quiet and focused for the full work period. A regular timer can show how much time is left, but it does not always give students a reason to keep going.
 
-On-task Otter turns a focus session into a shared goal. When the class completes a session, their character earns points that can be used to unlock clothes and accessories. The noise meter also helps the class notice whether the room matches the kind of work they are doing.
+On-task Otter turns a focus session into a shared goal. When the class completes a session, their character earns stars that can be used to unlock clothes and accessories. The noise meter also helps the class notice whether the room matches the kind of work they are doing.
 
 ## Who It Helps
 
@@ -21,7 +21,7 @@ On-task Otter turns a focus session into a shared goal. When the class completes
 The first version keeps the experience simple and useful for one classroom. It saves classroom progress on the current device, and a teacher can download it to a file to carry it to another computer. No one signs in.
 
 - A shared focus-session timer where the teacher can enter a session length in minutes, save a named setup as a favorite, and return to favorites for future sessions.
-- A classroom character that earns points when a focus session is completed.
+- A classroom character that earns stars when a focus session is completed.
 - A point shop where the character can get clothes and accessories.
 - A noise meter with adjustable sensitivity for the selected type of work:
   - Independent or silent work
@@ -34,8 +34,8 @@ The first version keeps the experience simple and useful for one classroom. It s
 
 1. The teacher selects the type of work and enters a focus-session length, or chooses a saved favorite.
 2. The class watches the timer and noise meter while they work. If the room becomes too loud, the timer pauses until the sound level returns to the goal.
-3. When the session is completed, the class earns points for its character.
-4. The class can use earned points to personalize the character over time.
+3. When the session is completed, the class earns stars for its character.
+4. The class can use earned stars to personalize the character over time.
 
 ## Saving a Classroom
 
@@ -43,9 +43,13 @@ On-task Otter has no accounts. Everything a class earns is kept in the browser o
 the computer it was earned on, and saves itself as it changes.
 
 To move a classroom to another computer, or keep a backup, the teacher presses
-**Save Classroom Setup** and downloads a save file. It holds the class points,
-the timer settings and favorites, the reward shop, the otter's house, and the
-session history. Restoring that file on any computer brings the classroom back.
+**Save Classroom Setup** and downloads a save file. It holds every class (each
+one's stars, session history, otter outfit and rooms) and the timer settings and
+session presets they share. Restoring that file on any computer brings every
+class back.
+
+A teacher with several classes picks the class on screen from the menu beside
+the logo. Each class earns its own stars and keeps its own otter outfit and rooms.
 
 ## Later Ideas
 

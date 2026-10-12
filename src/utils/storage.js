@@ -1,11 +1,21 @@
-export const SAVE_FILE_APP_NAME = "On-task Otter";
+import { classFromSingleClassroom, firstClassList, isClassList } from "./classList.js";
 
-export const CLASSROOM_STORAGE_KEYS = [
-  "onTaskOtterSettings",
-  "onTaskOtterProgress",
-  "onTaskOtterRewards",
-  "onTaskOtterHouse",
-];
+export const SAVE_FILE_APP_NAME = "On-task Otter";
+export const SAVE_FILE_VERSION = 2;
+
+export const SETTINGS_KEY = "onTaskOtterSettings";
+export const CLASSES_KEY = "onTaskOtterClasses";
+
+export const CLASSROOM_STORAGE_KEYS = [SETTINGS_KEY, CLASSES_KEY];
+
+// Before a teacher could keep several classes, the one classroom's progress
+// lived in these keys. They are moved into the first class the next time the
+// page opens.
+const SINGLE_CLASSROOM_KEYS = {
+  progress: "onTaskOtterProgress",
+  rewards: "onTaskOtterRewards",
+  house: "onTaskOtterHouse",
+};
 
 const readStoredValue = (key) => {
   const value = localStorage.getItem(key);
@@ -19,10 +29,17 @@ export const saveData = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+const removeSingleClassroomKeys = () => {
+  for (const key of Object.values(SINGLE_CLASSROOM_KEYS)) {
+    localStorage.removeItem(key);
+  }
+}
+
 export const clearClassroomData = () => {
   for (const key of CLASSROOM_STORAGE_KEYS) {
     localStorage.removeItem(key);
   }
+  removeSingleClassroomKeys();
 }
 
 export const loadData = (key, fallback) => {
@@ -36,28 +53,43 @@ export const loadData = (key, fallback) => {
   }
 }
 
-export const exportClassroomSave = (data) => {
-  const progress = data.onTaskOtterProgress;
-  const completedSessions = Number.isInteger(progress?.completedSessions)
-    ? progress.completedSessions
-    : progress?.history?.length ?? 0;
-
-  return {
-    app: SAVE_FILE_APP_NAME,
-    version: 1,
-    createdAt: new Date().toISOString(),
-    data: {
-      ...data,
-      onTaskOtterProgress: {
-        ...progress,
-        completedSessions,
-      },
-    },
-  };
+const readSingleClassroom = () => {
+  const classroom = {};
+  for (const [part, key] of Object.entries(SINGLE_CLASSROOM_KEYS)) {
+    try {
+      classroom[part] = readStoredValue(key);
+    } catch {
+      classroom[part] = undefined;
+    }
+  }
+  return classroom;
 }
 
+/** The saved classes, or a first class holding whatever was saved before classes existed. */
+export const loadClassList = () => {
+  const saved = loadData(CLASSES_KEY);
+  if (isClassList(saved)) return saved;
+
+  try {
+    const list = firstClassList(classFromSingleClassroom(readSingleClassroom()));
+    saveData(CLASSES_KEY, list);
+    removeSingleClassroomKeys();
+    return list;
+  } catch {
+    // Browser storage is unavailable: the class lasts until the page closes.
+    return firstClassList();
+  }
+}
+
+export const exportClassroomSave = (data) => ({
+  app: SAVE_FILE_APP_NAME,
+  version: SAVE_FILE_VERSION,
+  createdAt: new Date().toISOString(),
+  data,
+});
+
 export const importClassroomSave = (save) => {
-  if (!save || save.app !== SAVE_FILE_APP_NAME || save.version !== 1 || !save.data) {
+  if (!save || save.app !== SAVE_FILE_APP_NAME || save.version !== SAVE_FILE_VERSION || !save.data) {
     throw new Error("Invalid classroom save file");
   }
 
@@ -68,4 +100,5 @@ export const importClassroomSave = (save) => {
   for (const key of CLASSROOM_STORAGE_KEYS) {
     saveData(key, save.data[key]);
   }
+  removeSingleClassroomKeys();
 }

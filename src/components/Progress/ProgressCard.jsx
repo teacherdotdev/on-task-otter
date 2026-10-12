@@ -5,8 +5,8 @@ const ProgressCard = ({ progress }) => {
   const {
     totalMinutes,
     history,
-    totalPoints,
-    points,
+    totalStars,
+    stars,
     activities,
     classMilestones,
     houseItems,
@@ -40,11 +40,11 @@ const ProgressCard = ({ progress }) => {
 
       <div className="progress-summary">
         <span>
-          <b>{totalPoints}</b> {t("progress.totalPoints")}
+          <b>{totalStars}</b> {t("progress.totalStars")}
         </span>
 
         <span>
-          <b>{points}</b> {t("progress.available")}
+          <b>{stars}</b> {t("progress.available")}
         </span>
       </div>
 
@@ -103,7 +103,7 @@ const ProgressCard = ({ progress }) => {
               </em>
 
               <strong>
-                +{session.pointsEarned} ★
+                +{session.starsEarned} ★
               </strong>
             </li>
           ))}

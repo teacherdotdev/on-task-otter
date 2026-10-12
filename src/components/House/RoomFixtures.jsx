@@ -84,9 +84,12 @@ const RoomFixtures = ({ room }) => {
           <path d="m49 246 20-23h216l-17 23z" fill="#fbf1dc" />
           <rect x="49" y="246" width="219" height="13" rx="3" fill="#ead9bd" />
           {/* Basin and brass tap */}
-          <ellipse cx="164" cy="239" rx="56" ry="12" fill="#6fa7a0" />
-          <ellipse cx="164" cy="236" rx="44" ry="7" fill="#d3e6dc" strokeWidth="2" />
-          <BrassFaucet d="M186 229v-23q0-14-15-14t-15 14" />
+          <BrassFaucet d="M188 222v-18q0-13-15-13t-15 13" />
+          <rect x="179" y="219" width="18" height="7" rx="3" fill={BRASS} strokeWidth="2" />
+          <ellipse cx="162" cy="236" rx="46" ry="8.5" fill="#6fa7a0" />
+          <ellipse cx="162" cy="237" rx="35" ry="5" fill="#d3e6dc" strokeWidth="2" />
+          <path d="M128 236.5a35 5 0 0 1 68 0q-34-3.5-68 0z" fill={INK} stroke="none" opacity=".16" />
+          <ellipse cx="166" cy="238.5" rx="3.5" ry="1.5" fill={INK} stroke="none" opacity=".45" />
           {/* Stubby legs */}
           <rect x="76" y="346" width="11" height="12" rx="4" fill="#a86f45" strokeWidth="2" />
           <rect x="236" y="346" width="11" height="12" rx="4" fill="#a86f45" strokeWidth="2" />

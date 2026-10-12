@@ -21,7 +21,7 @@ const layouts = {
   },
   bathroom: {
     'bubble-bath': [61, 21, 29], 'soft-towels': [30, 54, 12], 'round-mirror': [12.7, 58.9, 11],
-    'toothbrush-cup': [6.9, 46.4, 5, 3], 'bath-mat': [61.5, 5.8, 28, 2], 'soap-set': [24.7, 46.4, 5, 3],
+    'toothbrush-cup': [7.4, 46.4, 4.2, 3], 'bath-mat': [61.5, 5.8, 28, 2], 'soap-set': [24.7, 46.4, 5, 3],
     'wash-basket': [1.5, 6, 11, 2], 'shower-curtain': [64, 38.3, 31, 0], 'rubber-duck': [78, 42, 5, 3],
     'bathroom-plant': [88, 11, 11, 2], 'face-masks': [58.9, 60.5, 5, 3], 'skin-care': [51.8, 60.5, 5, 3],
   },

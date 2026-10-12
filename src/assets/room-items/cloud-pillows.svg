@@ -1,30 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100">
-  <g stroke="#5a3d2b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <!-- big denim cloud pillow (back) -->
-    <path d="M30 97C14 97 8 81 16 71C10 57 24 45 40 49C42 29 62 17 82 23C92 7 128 3 144 19C160 11 184 19 184 39C204 37 224 51 220 69C232 77 226 97 210 97C150 99 90 99 30 97z" fill="#7f9cc0"/>
-    <path d="M17 69C13 58 26 49 39 53C41 32 62 21 80 27C92 12 124 8 140 22C124 18 100 20 88 32C70 28 50 38 46 56C34 54 22 60 17 69z" fill="#fff8ea" opacity=".45" stroke="none"/>
-    <path d="M220 69C232 77 226 97 210 97C150 99 90 99 30 97C22 97 16.5 93 14 87.5C60 93 160 92 204 88C214 87 219 80 220 69z" fill="#5a3d2b" opacity=".16" stroke="none"/>
-    <path d="M24 78C20 72 24 62 36 61M50 50C54 38 66 30 82 32M92 24C104 14 126 13 138 24M150 26C164 22 176 28 178 42C192 44 208 52 210 66" fill="none" stroke-width="1.5" stroke-dasharray="4 3.5" opacity=".45"/>
-    <path d="M40 49C41 53 43 56 46 58M82 23C82 27 84 30 87 32M144 19C143 23 141 26 138 28M184 39C183 43 181 46 178 48" fill="none" stroke-width="1.5" opacity=".5"/>
-    <!-- cream square pillow (front right) -->
-    <g transform="translate(176 58) rotate(2)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 92">
+  <!-- Drawn to sit on the sunny sofa's seat: x 0-150 here is sofa x 45-195 and
+       y 0-92 is sofa y 16-108, so the pillows fit between its arms. -->
+  <g stroke="#5a3d2b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- soft shadow where the pillows press into the seat -->
+    <path d="M12 85C40 91 112 91 142 85C142 89 136 92 128 92H24C16 92 12 89 12 85z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <!-- big denim cloud pillow (back, leaning on the backrest) -->
+    <path d="M30 84C18 84 13 73 19 66C13 56 22 46 33 49C35 36 50 28 63 33C70 21 92 19 101 30C112 24 128 32 127 45C138 46 142 58 135 66C141 73 137 84 125 84C100 86.5 54 86.5 30 84z" fill="#7f9cc0"/>
+    <path d="M20 64C16 56 24 50 34 53C36 40 49 33 61 37C69 26 88 24 97 31C87 29 74 31 66 40C55 37 43 44 40 57C32 55 25 58 20 64z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <path d="M135 66C141 73 137 84 125 84C100 86.5 54 86.5 30 84C24.5 84 20.5 81.5 18.5 78C50 82 104 81.5 126 78C132 77 135 72 135 66z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M38 52C40 42 50 37 61 39M72 31C80 25 92 25 98 32M108 32C117 30 123 36 123 45C130 47 134 54 132 61" fill="none" stroke-width="1.2" stroke-dasharray="3 3" opacity=".45"/>
+    <path d="M33 49C34 52 36 54 38 55M63 33C63 36 65 38 67 39M101 30C100 33 99 35 96 36M127 45C126 48 124 50 121 51" fill="none" stroke-width="1.2" opacity=".5"/>
+    <!-- cream square pillow (front right, leaning on the arm) -->
+    <g transform="translate(117 61) rotate(7) scale(.6)" stroke-width="3.6">
       <path d="M-41 -37C-30 -29 -22 -35 0 -35C22 -35 30 -29 41 -37C36 -26 40 -14 40 0C40 14 36 26 41 37C30 29 22 35 0 35C-22 35 -30 29 -41 37C-36 26 -40 14 -40 0C-40 -14 -36 -26 -41 -37z" fill="#fbf1dc"/>
       <path d="M-39 -35C-29 -27.5 -22 -33.5 0 -33.5C12 -33.5 20 -32 26 -30C12 -27 -14 -27 -32 -25C-35 -14 -36 0 -35 12C-38.5 2 -39 -12 -38 -24C-37.5 -28 -38 -32 -39 -35z" fill="#fff8ea" opacity=".6" stroke="none"/>
       <path d="M39.5 -10C40 -6 40 -3 40 0C40 14 36 26 41 37C30 29 22 35 0 35C-22 35 -30 29 -41 37C-12 26 22 26 31 24C34 14 35 2 39.5 -10z" fill="#5a3d2b" opacity=".16" stroke="none"/>
-      <path d="M-35 -31q5 2 8 6M35 -31q-5 2-8 6M-35 31q5-2 8-6M35 31q-5-2-8-6" fill="none" stroke-width="1.5" opacity=".45"/>
-      
-    <path d="M-5 -4q-4-3-9-3M5 -4q4-3 9-3M-5 4q-4 3-9 3M5 4q4 3 9 3" fill="none" stroke-width="1.5" opacity=".45"/>
-    <circle cx="0" cy="0" r="4.5" fill="#a86f45"/>
-    <circle cx="-1.3" cy="-1.3" r="1.4" fill="#fff8ea" opacity=".6" stroke="none"/>
+      <path d="M-35 -31q5 2 8 6M35 -31q-5 2-8 6M-35 31q5-2 8-6M35 31q-5-2-8-6" fill="none" stroke-width="2" opacity=".45"/>
+      <path d="M-5 -4q-4-3-9-3M5 -4q4-3 9-3M-5 4q-4 3-9 3M5 4q4 3 9 3" fill="none" stroke-width="2" opacity=".45"/>
+      <circle cx="0" cy="0" r="5" fill="#a86f45"/>
+      <circle cx="-1.4" cy="-1.4" r="1.6" fill="#fff8ea" opacity=".6" stroke="none"/>
     </g>
-    <!-- dusty-rose round cushion (front left) -->
-    <ellipse cx="66" cy="68" rx="33" ry="29" fill="#e3a3a0"/>
-    <path d="M36 60C40 48 52 41 66 41C56 44 46 50 42 62C40 68 38 70 36 60z" fill="#fff8ea" opacity=".55" stroke="none"/>
-    <path d="M99 68C99 84 84 97 66 97C52 97 40 90 36 79C48 88 70 90 84 82C92 78 96 74 99 68z" fill="#5a3d2b" opacity=".16" stroke="none"/>
-    <ellipse cx="66" cy="68" rx="27.5" ry="23.5" fill="none" stroke-width="1.5" stroke-dasharray="4 3.5" opacity=".5"/>
-    
-    <path d="M61 64q-4-3-9-3M71 64q4-3 9-3M61 72q-4 3-9 3M71 72q4 3 9 3" fill="none" stroke-width="1.5" opacity=".45"/>
-    <circle cx="66" cy="68" r="4.5" fill="#a86f45"/>
-    <circle cx="64.7" cy="66.7" r="1.4" fill="#fff8ea" opacity=".6" stroke="none"/>
+    <!-- dusty-rose round cushion (front left, leaning on the arm) -->
+    <g transform="translate(30 65) rotate(-6) scale(.72) translate(-66 -68)" stroke-width="3">
+      <ellipse cx="66" cy="68" rx="33" ry="29" fill="#e3a3a0"/>
+      <path d="M36 60C40 48 52 41 66 41C56 44 46 50 42 62C40 68 38 70 36 60z" fill="#fff8ea" opacity=".55" stroke="none"/>
+      <path d="M99 68C99 84 84 97 66 97C52 97 40 90 36 79C48 88 70 90 84 82C92 78 96 74 99 68z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+      <ellipse cx="66" cy="68" rx="27.5" ry="23.5" fill="none" stroke-width="1.7" stroke-dasharray="4 4" opacity=".5"/>
+      <path d="M61 64q-4-3-9-3M71 64q4-3 9-3M61 72q-4 3-9 3M71 72q4 3 9 3" fill="none" stroke-width="1.7" opacity=".45"/>
+      <circle cx="66" cy="68" r="5" fill="#a86f45"/>
+      <circle cx="64.6" cy="66.6" r="1.6" fill="#fff8ea" opacity=".6" stroke="none"/>
+    </g>
   </g>
 </svg>

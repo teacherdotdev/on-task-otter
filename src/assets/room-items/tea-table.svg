@@ -19,7 +19,6 @@
     <path d="M168 92C176 90 180 95 178 99C176 103 171 104 167 103" fill="none" stroke-width="5"/>
     <path d="M168 92C176 90 180 95 178 99C176 103 171 104 167 103" fill="none" stroke="#fbf1dc" stroke-width="1.5"/>
     <path d="M142 90H170C170 100 166 108 156 108C146 108 142 100 142 90z" fill="#fbf1dc"/>
-    <path d="M142.5 95H169.5C169 98 168.5 100 167.5 102H144.5C143.5 100 143 98 142.5 95z" fill="#6fa7a0" stroke="none"/>
     <path d="M164 92C164 100 162 105 157 107.5C164 107 169 101 170 90z" fill="#5a3d2b" opacity=".15" stroke="none"/>
     <ellipse cx="156" cy="90" rx="14" ry="3.5" fill="#a86f45"/>
     <!-- teapot spout + handle -->

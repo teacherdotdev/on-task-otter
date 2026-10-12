@@ -2,7 +2,7 @@
 // Depth puts rugs behind furniture and tabletop objects above their supports.
 const layouts = {
   living: {
-    'story-lamp': [3, 22, 15, 1], 'sunny-sofa': [10, 21, 28, 2], 'cloud-pillows': [13.7, 39.7, 19.6, 3],
+    'story-lamp': [0.5, 22, 15, 1], 'sunny-sofa': [10, 21, 28, 2], 'cloud-pillows': [15.25, 38.66, 17.5, 3],
     'family-photo': [19, 65, 10], 'tea-table': [13, 3, 22, 4], 'rainbow-rug': [15, 3, 44, 0],
     'book-nook': [55.5, 23, 17], 'record-player': [57.5, 56, 13, 3], 'window-curtains': [72, 49, 25],
     'leafy-plant': [85.5, 21, 12],

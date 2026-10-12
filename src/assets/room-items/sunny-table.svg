@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <g stroke="#5a3d2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- bent-wood handle at the right end -->
+    <path d="M204 46C206 34 214 24 226 21" fill="none" stroke-width="12"/>
+    <path d="M204 46C206 34 214 24 226 21" fill="none" stroke="#a86f45" stroke-width="7"/>
+    <circle cx="228" cy="20.5" r="6" fill="#a86f45"/>
+    <path d="M207 38C209 32 212 28 216 25.5" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".5"/>
+    <!-- bottom shelf top, seen between the front posts -->
+    <path d="M18 125C18 121 21 117 26 117H206C211 117 214 121 214 125z" fill="#e8c290"/>
+    <!-- walnut posts, in front of the shelf top -->
+    <rect x="24" y="66" width="12" height="88" rx="4" fill="#a86f45"/>
+    <rect x="196" y="66" width="12" height="88" rx="4" fill="#a86f45"/>
+    <path d="M202 68H206.5V156H202z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <path d="M30 68H25.5V156H30z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <!-- casters -->
+    <rect x="21" y="149" width="18" height="10" rx="4" fill="#d8a84a"/>
+    <rect x="193" y="149" width="18" height="10" rx="4" fill="#d8a84a"/>
+    <circle cx="30" cy="166.5" r="12" fill="#9bb58a"/>
+    <circle cx="202" cy="166.5" r="12" fill="#9bb58a"/>
+    <path d="M39 158.5C43.5 165 41.5 176.5 30 178.5C38.5 174 41 166 39 158.5z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M211 158.5C215.5 165 213.5 176.5 202 178.5C210.5 174 213 166 211 158.5z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <circle cx="30" cy="166.5" r="4" fill="#fbf1dc"/>
+    <circle cx="202" cy="166.5" r="4" fill="#fbf1dc"/>
+    <!-- stack of plates -->
+    <path d="M40 104V117C40 120.5 43 123 48 123H88C93 123 96 120.5 96 117V104z" fill="#fbf1dc"/>
+    <path d="M41 109.5C56 112 80 112 95 109.5M41 115C56 117.5 80 117.5 95 115" fill="none" stroke-width="1.5" opacity=".5"/>
+    <path d="M88 107.5C92 107 94.5 106 94.5 105V117C94.5 120 92 121.5 88 121.5H82C86 118 88 113 88 107.5z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <ellipse cx="68" cy="104" rx="28" ry="5.5" fill="#fbf1dc"/>
+    <ellipse cx="68" cy="104" rx="16" ry="2.5" fill="none" stroke="#e8b44f" stroke-width="1.5"/>
+    <!-- little tin -->
+    <rect x="142" y="99" width="32" height="24" rx="5" fill="#9bb58a"/>
+    <path d="M163 100.5C170 100.5 172.5 102 172.5 106V117C172.5 120 170 121.5 166 121.5H162C165 116 165 106 163 100.5z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <path d="M147 106V114" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".55"/>
+    <path d="M158 115.5C154 112.5 152 110.5 152 108.5C152 106.5 154.5 105.5 156 107.5L158 109.5L160 107.5C161.5 105.5 164 106.5 164 108.5C164 110.5 162 112.5 158 115.5z" fill="#e3a3a0" stroke-width="1.5"/>
+    <rect x="139" y="93" width="38" height="9" rx="4" fill="#d8a84a"/>
+    <path d="M143 96H160" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".55"/>
+    <rect x="14" y="123" width="204" height="15" rx="6" fill="#d9a066"/>
+    <path d="M15 131.5H217V132C217 135 214.5 137 211.5 137H20.5C17.5 137 15 135 15 132z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M20 127.5H66" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".5"/>
+    <!-- top shelf: flat and empty -->
+    <path d="M14 47C14 43 17 39 22 39H210C215 39 218 43 218 47z" fill="#e8c290"/>
+    <path d="M60 43.5C90 42 130 42 160 43.5" fill="none" stroke-width="1.5" opacity=".3"/>
+    <rect x="10" y="45" width="212" height="26" rx="7" fill="#d9a066"/>
+    <path d="M11 61.5H221V63C221 67 218 70 214 70H18C14 70 11 67 11 63z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M17 50H74" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".5"/>
+    <!-- drawer -->
+    <rect x="84" y="50.5" width="64" height="15" rx="4" fill="#e8c290" stroke-width="1.5"/>
+    <circle cx="116" cy="58" r="3.5" fill="#d8a84a"/>
+    <path d="M168 55C176 53 186 53.5 194 56" fill="none" stroke-width="1.5" opacity=".35"/>
+  </g>
+</svg>

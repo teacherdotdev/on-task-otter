@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 210">
+  <g stroke="#5a3d2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- steam -->
+    <path d="M190 140C182 130 198 122 190 110M208 140C200 130 216 122 208 110" fill="none" stroke-width="5" opacity=".45"/>
+    <!-- machine: head, column and base in one piece -->
+    <path d="M38 14H140C153 14 164 25 164 38V52C164 65 153 76 140 76H84C78 76 74 80 74 86V162C74 168 78 172 84 172H150C161 172 168 179 168 190V196C168 202 164 206 158 206H26C19 206 14 201 14 194V38C14 25 25 14 38 14z" fill="#6fa7a0"/>
+    <path d="M20 40C20 28 28 20 40 20H130C120 24 70 24 46 26C34 27 26 32 20 40z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M74 76H140C150 76 158 72 162 64V52C156 60 148 62 140 62H84C78 62 74 66 74 72z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M18 186H164V194C164 199 161 202 157 202H27C22 202 18 198 18 193z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <!-- control panel -->
+    <rect x="28" y="96" width="32" height="52" rx="10" fill="#fbf1dc" stroke-width="5"/>
+    <circle cx="44" cy="134" r="6" fill="#d9785a" stroke-width="4"/>
+    <path d="M38 110H50" fill="none" stroke-width="5" opacity=".45"/>
+    <!-- drip spout -->
+    <path d="M104 76H134L128 86H110z" fill="#5a3d2b" opacity=".35"/>
+    <!-- glass pot -->
+    <path d="M156 112C172 112 174 120 174 134C174 146 170 152 158 152" fill="none" stroke-width="20"/>
+    <path d="M156 112C172 112 174 120 174 134C174 146 170 152 158 152" fill="none" stroke="#6fa7a0" stroke-width="6"/>
+    <path d="M98 90H140V98C140 106 158 116 158 142C158 160 150 172 136 172H102C88 172 80 160 80 142C80 116 98 106 98 98z" fill="#fbf1dc"/>
+    <path d="M84 126H154C157 132 158 136 158 142C158 160 150 172 136 172H102C88 172 80 160 80 142C80 136 81 132 84 126z" fill="#a86f45" stroke="none"/>
+    <path d="M84 126H154C157 132 158 136 158 142C158 160 150 172 136 172H102C88 172 80 160 80 142C80 136 81 132 84 126z" fill="#5a3d2b" opacity=".35" stroke="none"/>
+    <path d="M84 126H154" fill="none" stroke-width="5" opacity=".55"/>
+    <path d="M98 90H140V98C140 106 158 116 158 142C158 160 150 172 136 172H102C88 172 80 160 80 142C80 116 98 106 98 98z" fill="none"/>
+    <path d="M92 138C92 148 94 156 100 162" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".6"/>
+    <rect x="94" y="84" width="50" height="14" rx="6" fill="#6fa7a0"/>
+    <!-- mug -->
+    <path d="M216 166C234 166 234 192 214 190" fill="none" stroke-width="20"/>
+    <path d="M216 166C234 166 234 192 214 190" fill="none" stroke="#d9785a" stroke-width="6"/>
+    <path d="M176 152H218V192C218 200 212 206 204 206H190C182 206 176 200 176 192z" fill="#d9785a"/>
+    <path d="M206 158V190C206 196 203 200 198 202H204C210 202 214 198 214 192V158z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M184 164V184" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".55"/>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 450">
+  <!-- warm glow -->
+  <circle cx="120" cy="100" r="96" fill="#ffe7a3" opacity=".35"/>
+  <circle cx="120" cy="100" r="70" fill="#ffe7a3" opacity=".4"/>
+  <g stroke="#5a3d2b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- brass pole -->
+    <rect x="110" y="132" width="20" height="290" rx="10" fill="#d8a84a"/>
+    <path d="M116 160V400" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".55"/>
+    <path d="M126 160V400" fill="none" stroke-width="2.5" opacity=".25"/>
+    <!-- weighted foot -->
+    <path d="M78 436C78 422 97 414 120 414C143 414 162 422 162 436z" fill="#d8a84a"/>
+    <path d="M90 426C95 421 103 418 111 417.5" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".6"/>
+    <rect x="62" y="433" width="116" height="15" rx="7.5" fill="#d8a84a"/>
+    <path d="M68 442H172" fill="none" stroke-width="2.5" opacity=".3"/>
+    <!-- brass collars -->
+    <rect x="102" y="140" width="36" height="14" rx="7" fill="#d8a84a"/>
+    <rect x="102" y="285" width="36" height="16" rx="8" fill="#d8a84a"/>
+    <path d="M108 291H120" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".6"/>
+    <!-- finial -->
+    <circle cx="120" cy="28" r="6.5" fill="#d8a84a"/>
+    <!-- pleated shade -->
+    <ellipse cx="120" cy="40" rx="35" ry="6" fill="#ffe7a3"/>
+    <path d="M85 40C85 43 100 46 120 46C140 46 155 43 155 40L193 128C181 136 152 140 120 140C88 140 59 136 47 128z" fill="#fbf1dc"/>
+    <path d="M143.5 44.5 168.5 136M131.5 45.5 144.5 139M120 46V140M108.5 45.5 95.5 139M96.5 44.5 71.5 136" fill="none" stroke-width="2.5" opacity=".35"/>
+    <path d="M155 40 193 128C186 133 177 135.5 168 136.5L143.5 44.5C150 43.3 155 41.7 155 40z" fill="#5a3d2b" opacity=".12" stroke="none"/>
+    <path d="M85 40 47 128C53 131.5 60 134 68 135.5L96.5 44.5C90 43.3 85 41.7 85 40z" fill="#fff8ea" opacity=".6" stroke="none"/>
+    <path d="M51 119C64 127 90 131 120 131C150 131 176 127 189 119L193 128C181 136 152 140 120 140C88 140 59 136 47 128z" fill="#e3a3a0"/>
+  </g>
+</svg>

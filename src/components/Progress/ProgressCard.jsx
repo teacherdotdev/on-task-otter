@@ -1,9 +1,12 @@
+import { useTranslation } from "../../i18n";
+
 const ProgressCard = ({ progress }) => {
+  const { t } = useTranslation();
   const {
     totalMinutes,
     history,
-    totalPoints,
-    points,
+    totalStars,
+    stars,
     activities,
     classMilestones,
     houseItems,
@@ -26,47 +29,53 @@ const ProgressCard = ({ progress }) => {
     <section className="card history-card">
       <div className="card-heading">
         <div>
-          <p className="card-label">Class progress</p>
-          <h2>{totalMinutes} focused minutes</h2>
+          <p className="card-label">{t("progress.label")}</p>
+          <h2>{t("progress.minutes", { minutes: totalMinutes })}</h2>
         </div>
 
         <span className="session-count">
-          {history.length} sessions
+          {t("progress.sessions", { count: history.length })}
         </span>
       </div>
 
       <div className="progress-summary">
         <span>
-          <b>{totalPoints}</b> total points earned
+          <b>{totalStars}</b> {t("progress.totalStars")}
         </span>
 
         <span>
-          <b>{points}</b> available now
+          <b>{stars}</b> {t("progress.available")}
         </span>
       </div>
 
-      <div className="class-goal" aria-label={`Class milestone progress: ${collectedItems} of ${milestoneItems.length} items collected`}>
+      <div className="class-goal" aria-label={t("progress.milestoneLabel", { collected: collectedItems, total: milestoneItems.length })}>
         <div className="class-goal-icon" aria-hidden="true">{activeMilestone.icon}</div>
         <div className="class-goal-copy">
-          <p className="class-goal-label">{milestoneRoom.name} milestone · {activeMilestoneIndex + 1} of {classMilestones.length}</p>
-          <h3>{activeMilestone.name}</h3>
+          <p className="class-goal-label">{t("progress.milestoneRoom", {
+            room: t(`room.${milestoneRoom.id}.name`),
+            index: activeMilestoneIndex + 1,
+            total: classMilestones.length,
+          })}</p>
+          <h3>{t(`milestone.${activeMilestone.id}`)}</h3>
           <p>
             {milestoneComplete
-              ? "Complete! Every piece is in your inventory."
-              : `Collect ${milestoneItems.length - collectedItems} more piece${milestoneItems.length - collectedItems === 1 ? "" : "s"} to complete this space. Focus together to earn points for each piece.`}
+              ? t("progress.milestoneComplete")
+              : milestoneItems.length - collectedItems === 1
+              ? t("progress.milestoneRemainingOne")
+              : t("progress.milestoneRemaining", { remaining: milestoneItems.length - collectedItems })}
           </p>
           <div className="class-goal-meter" aria-hidden="true">
             <span style={{ width: `${progressToReward}%` }} />
           </div>
-          <small>{collectedItems} / {milestoneItems.length} pieces collected</small>
+          <small>{t("progress.piecesCollected", { collected: collectedItems, total: milestoneItems.length })}</small>
           <div className="milestone-pieces">
             {milestoneItems.map((item) => {
               const owned = houseItemsOwned.includes(item.id);
               return (
                 <div className={owned ? "collected" : ""} key={item.id}>
                   <img src={item.image} alt="" />
-                  <span>{item.name}</span>
-                  <b>{owned ? "Collected" : `★ ${item.cost}`}</b>
+                  <span>{t(`item.${item.id}`)}</span>
+                  <b>{owned ? t("progress.collected") : `★ ${item.cost}`}</b>
                 </div>
               );
             })}
@@ -85,21 +94,23 @@ const ProgressCard = ({ progress }) => {
                 })}
               </span>
 
-              <b>{session.minutes} min</b>
+              <b>{t("session.minutesShort", { minutes: session.minutes })}</b>
 
               <em>
-                {activities[session.activity]?.label ?? "Focus session"}
+                {activities[session.activity]
+                  ? t(`activity.${session.activity}.label`)
+                  : t("progress.focusSession")}
               </em>
 
               <strong>
-                +{session.pointsEarned} ★
+                +{session.starsEarned} ★
               </strong>
             </li>
           ))}
         </ul>
       ) : (
         <p className="empty-state">
-          Completed focus sessions will appear here.
+          {t("progress.empty")}
         </p>
       )}
     </section>

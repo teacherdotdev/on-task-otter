@@ -1,4 +1,7 @@
-import { exportClassroomSave, importClassroomSave, SAVE_FILE_APP_NAME } from "./storage.js";
+import { exportClassroomSave, importClassroomSave, SAVE_FILE_APP_NAME, SAVE_FILE_VERSION } from "./storage.js";
+import { classFromSingleClassroom, firstClassList, updateOutfit } from "./classList.js";
+import { activities, MAX_SOUND_THRESHOLD, MIN_SOUND_THRESHOLD } from "../data/activities";
+import { MAX_STARS_PER_MINUTE, MIN_STARS_PER_MINUTE } from "../data/stars";
 
 const isFiniteNonNegativeNumber = (value) => {
   return Number.isFinite(value) && value >= 0;
@@ -32,118 +35,54 @@ const downloadSaveFile = (data, filename = getSaveFileName()) => {
   return filename;
 };
 
-const openSubstituteHandoff = (filename) => {
-  const handoffWindow = window.open("", "_blank");
-  if (!handoffWindow) return;
+const isValidSettings = (settings, validIds) =>
+  settings &&
+  validIds.activities.includes(settings.activity) &&
+  Number.isFinite(settings.preferredMinutes) &&
+  settings.preferredMinutes > 0 &&
+  (settings.otterName === undefined || typeof settings.otterName === "string") &&
+  (settings.trackSound === undefined || typeof settings.trackSound === "boolean") &&
+  (settings.starsPerMinute === undefined || (
+    Number.isInteger(settings.starsPerMinute) &&
+    settings.starsPerMinute >= MIN_STARS_PER_MINUTE &&
+    settings.starsPerMinute <= MAX_STARS_PER_MINUTE
+  )) &&
+  (settings.soundThresholds === undefined || (
+    Number.isFinite(settings.soundThresholds.independent) &&
+    settings.soundThresholds.independent >= MIN_SOUND_THRESHOLD &&
+    settings.soundThresholds.independent <= MAX_SOUND_THRESHOLD &&
+    Number.isFinite(settings.soundThresholds.partner) &&
+    settings.soundThresholds.partner >= MIN_SOUND_THRESHOLD &&
+    settings.soundThresholds.partner <= MAX_SOUND_THRESHOLD
+  )) &&
+  (settings.favoriteSessions === undefined || (
+    Array.isArray(settings.favoriteSessions) &&
+    settings.favoriteSessions.every((favorite) =>
+      favorite &&
+      (typeof favorite.id === "number" || typeof favorite.id === "string") &&
+      typeof favorite.name === "string" &&
+      favorite.name.length > 0 &&
+      Number.isFinite(favorite.minutes) &&
+      favorite.minutes > 0 &&
+      (favorite.trackSound === undefined || typeof favorite.trackSound === "boolean") &&
+      validIds.activities.includes(favorite.activity)
+    )
+  ));
 
-  const instructions = `Hello,
-
-Thank you for covering our class today. On-task Otter is ready to use at:
-${window.location.origin}
-
-The classroom's saved setup is in the On-task Otter Classroom Save JSON file that was shared with you. Please do not edit or rename that file.
-
-To use it:
-1. Open the On-task Otter webpage above.
-2. Select "Save Classroom Setup" near the top of the page.
-3. Select "Restore Classroom Save."
-4. Choose the downloaded file named "${filename}".
-5. The page will refresh with our timer settings, points, rewards, and classroom setup.
-
-When you are finished, you can create a new Classroom Save File from the same menu if you would like to pass along the updated classroom progress.
-
-Thank you!`;
-
-  handoffWindow.document.title = "On-task Otter Substitute Handoff";
-  handoffWindow.document.body.innerHTML = `
-    <main>
-      <p class="label">On-task Otter Substitute Handoff</p>
-      <h1>Ready-to-send instructions</h1>
-      <p>Copy this message into an email, text, or substitute plan. The classroom save file is downloading separately.</p>
-      <textarea aria-label="Substitute teacher instructions" readonly>${instructions}</textarea>
-      <button type="button">Copy instructions</button>
-      <p class="status" aria-live="polite"></p>
-    </main>
-    <style>
-      body { background: #fbf7ed; color: #25433d; font-family: Arial, sans-serif; margin: 0; }
-      main { margin: 56px auto; max-width: 720px; padding: 0 24px; }
-      .label { color: #d76d54; font-size: 14px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-      h1 { font-size: clamp(30px, 6vw, 48px); margin: 10px 0 16px; }
-      p { font-size: 17px; line-height: 1.55; }
-      textarea { background: #fffdf7; border: 2px solid #9bceb4; border-radius: 12px; box-sizing: border-box; color: #25433d; font: 16px/1.55 Arial, sans-serif; height: 390px; margin: 18px 0; padding: 18px; resize: vertical; width: 100%; }
-      button { background: #25433d; border: 0; border-radius: 999px; color: #fffaf0; cursor: pointer; font-size: 16px; font-weight: 700; padding: 13px 22px; }
-      button:hover { background: #39675b; }
-      .status { color: #39675b; font-weight: 700; min-height: 26px; }
-    </style>
-    <script>
-      const textarea = document.querySelector("textarea");
-      const button = document.querySelector("button");
-      const status = document.querySelector(".status");
-      textarea.focus();
-      textarea.select();
-      button.addEventListener("click", async () => {
-        await navigator.clipboard.writeText(textarea.value);
-        status.textContent = "Instructions copied.";
-      });
-    </script>
-  `;
-};
-
-const validateSaveFile = (data, validIds) => {
-  if (
-    !data
-    || data.app !== SAVE_FILE_APP_NAME
-    || data.version !== 1
-    || !data.data
-  ) {
-    throw new Error("Invalid classroom save file");
-  }
-
-  const settings = data.data.onTaskOtterSettings;
-  const progress = data.data.onTaskOtterProgress;
-  const rewards = data.data.onTaskOtterRewards;
-  const house = data.data.onTaskOtterHouse;
+const isValidClass = (classroom, validIds) => {
+  const { progress, rewards, house } = classroom ?? {};
   const validHistory = Array.isArray(progress?.history) && progress.history.every((session) =>
     session &&
     isFiniteNonNegativeNumber(session.minutes) &&
-    isFiniteNonNegativeNumber(session.pointsEarned) &&
+    isFiniteNonNegativeNumber(session.starsEarned) &&
     typeof session.date === "string" &&
     validIds.activities.includes(session.activity)
   );
 
-  const validSettings =
-    settings &&
-    validIds.activities.includes(settings.activity) &&
-    Number.isFinite(settings.preferredMinutes) &&
-    settings.preferredMinutes > 0 &&
-    (settings.otterName === undefined || typeof settings.otterName === "string") &&
-    (settings.trackSound === undefined || typeof settings.trackSound === "boolean") &&
-    (settings.soundThresholds === undefined || (
-      Number.isFinite(settings.soundThresholds.independent) &&
-      settings.soundThresholds.independent >= 10 &&
-      settings.soundThresholds.independent <= 80 &&
-      Number.isFinite(settings.soundThresholds.partner) &&
-      settings.soundThresholds.partner >= 10 &&
-      settings.soundThresholds.partner <= 80
-    )) &&
-    (settings.favoriteSessions === undefined || (
-      Array.isArray(settings.favoriteSessions) &&
-      settings.favoriteSessions.every((favorite) =>
-        favorite &&
-        (typeof favorite.id === "number" || typeof favorite.id === "string") &&
-        typeof favorite.name === "string" &&
-        favorite.name.length > 0 &&
-        Number.isFinite(favorite.minutes) &&
-        favorite.minutes > 0 &&
-        (favorite.trackSound === undefined || typeof favorite.trackSound === "boolean") &&
-        validIds.activities.includes(favorite.activity)
-      )
-    ));
-
   const validProgress =
     progress &&
-    isFiniteNonNegativeNumber(progress.points) &&
-    isFiniteNonNegativeNumber(progress.totalPoints) &&
+    isFiniteNonNegativeNumber(progress.stars) &&
+    isFiniteNonNegativeNumber(progress.totalStars) &&
     Number.isInteger(progress.completedSessions) &&
     progress.completedSessions >= 0 &&
     validHistory;
@@ -161,28 +100,86 @@ const validateSaveFile = (data, validIds) => {
     isStringArray(house.houseItemsOwned) &&
     house.houseItemsOwned.every((id) => validIds.houseItems.includes(id));
 
+  return typeof classroom.id === "string"
+    && typeof classroom.name === "string"
+    && validProgress
+    && validRewards
+    && validHouse;
+};
+
+/**
+ * Version 1 files were made before a teacher could keep several classes. Their
+ * one classroom becomes the first class.
+ */
+const SINGLE_CLASSROOM_SAVE_KEYS = [
+  "onTaskOtterSettings",
+  "onTaskOtterProgress",
+  "onTaskOtterRewards",
+  "onTaskOtterHouse",
+];
+
+const upgradeSingleClassroomSave = (save) => ({
+  ...save,
+  version: SAVE_FILE_VERSION,
+  data: {
+    onTaskOtterSettings: save.data.onTaskOtterSettings,
+    onTaskOtterClasses: firstClassList(classFromSingleClassroom({
+      progress: save.data.onTaskOtterProgress,
+      rewards: save.data.onTaskOtterRewards,
+      house: save.data.onTaskOtterHouse,
+    })),
+  },
+});
+
+const validateSaveFile = (file, validIds) => {
   if (
-    !validSettings 
-    || !validProgress 
-    || !validRewards 
-    || !validHouse
+    !file
+    || file.app !== SAVE_FILE_APP_NAME
+    || ![1, SAVE_FILE_VERSION].includes(file.version)
+    || !file.data
+    || (file.version === 1 && !SINGLE_CLASSROOM_SAVE_KEYS.every((key) => file.data[key]))
   ) {
     throw new Error("Invalid classroom save file");
   }
 
-  data.data.onTaskOtterRewards = {
-    unlocked: [...new Set(rewards.unlocked)],
-    equipped: [...new Set(rewards.equipped)],
-  };
+  const data = file.version === 1 ? upgradeSingleClassroomSave(file) : file;
+  const settings = data.data.onTaskOtterSettings;
+  const classList = data.data.onTaskOtterClasses;
+  if (Array.isArray(classList?.classes)) classList.classes = classList.classes.map(updateOutfit);
+
+  if (
+    !isValidSettings(settings, validIds)
+    || !Array.isArray(classList?.classes)
+    || classList.classes.length === 0
+    || !classList.classes.every((classroom) => isValidClass(classroom, validIds))
+  ) {
+    throw new Error("Invalid classroom save file");
+  }
+
   data.data.onTaskOtterSettings = {
     ...settings,
     otterName: settings.otterName ?? "Otter",
     favoriteSessions: settings.favoriteSessions ?? [],
-    soundThresholds: settings.soundThresholds ?? { independent: 22, partner: 48 },
+    soundThresholds: settings.soundThresholds ?? {
+      independent: activities.independent.threshold,
+      partner: activities.partner.threshold,
+    },
   };
-  data.data.onTaskOtterHouse = {
-    activeRoom: house.activeRoom,
-    houseItemsOwned: [...new Set(house.houseItemsOwned)],
+  data.data.onTaskOtterClasses = {
+    currentId: classList.classes.some((classroom) => classroom.id === classList.currentId)
+      ? classList.currentId
+      : classList.classes[0].id,
+    classes: classList.classes.map((classroom) => ({
+      ...classroom,
+      rewards: {
+        unlocked: [...new Set(classroom.rewards.unlocked)],
+        equipped: [...new Set(classroom.rewards.equipped)],
+      },
+      house: {
+        activeRoom: classroom.house.activeRoom,
+        houseItemsOwned: [...new Set(classroom.house.houseItemsOwned)],
+      },
+    })),
   };
 
   return data;
@@ -192,4 +189,4 @@ const restoreSaveFile = (data) => {
   importClassroomSave(data);
 };
 
-export { restoreSaveFile, validateSaveFile, createSaveFile, getSaveFileName, downloadSaveFile, openSubstituteHandoff };
+export { restoreSaveFile, validateSaveFile, createSaveFile, downloadSaveFile };

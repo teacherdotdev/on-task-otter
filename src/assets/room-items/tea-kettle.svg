@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 190">
+  <g stroke="#5a3d2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- steam -->
+    <path d="M214 66C204 56 222 48 212 36C204 26 216 18 212 10M232 64C226 54 238 46 230 34" fill="none" stroke-width="11"/>
+    <path d="M214 66C204 56 222 48 212 36C204 26 216 18 212 10M232 64C226 54 238 46 230 34" fill="none" stroke="#fff8ea" stroke-width="4.5"/>
+    <!-- wooden handle -->
+    <path d="M70 98C60 42 82 20 112 20C142 20 164 42 154 98" fill="none" stroke-width="22"/>
+    <path d="M70 98C60 42 82 20 112 20C142 20 164 42 154 98" fill="none" stroke="#a86f45" stroke-width="12"/>
+    <path d="M78 46C84 34 94 28 106 27" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".5"/>
+    <!-- spout -->
+    <path d="M176 120C194 118 204 104 212 90L218 80C220 76 228 74 232 78C234 82 230 84 228 88C218 118 206 150 180 160z" fill="#6fa7a0"/>
+    <!-- belly -->
+    <path d="M66 184C36 176 28 136 46 108C62 86 86 80 112 80C138 80 162 86 178 108C196 136 188 176 158 184z" fill="#6fa7a0"/>
+    <path d="M42 132C44 118 50 106 60 98C74 88 88 85 102 84C86 90 70 98 60 110C52 118 46 126 42 132z" fill="#fff8ea" opacity=".55" stroke="none"/>
+    <path d="M172 100C192 126 192 172 160 182C176 166 182 136 172 100z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <!-- flower -->
+    <g fill="#fbf1dc" stroke-width="4.5">
+      <circle cx="104" cy="126" r="9"/><circle cx="115" cy="134" r="9"/><circle cx="111" cy="147" r="9"/><circle cx="97" cy="147" r="9"/><circle cx="93" cy="134" r="9"/>
+    </g>
+    <circle cx="104" cy="138" r="6" fill="#e8b44f" stroke-width="4.5"/>
+    <!-- foot ring -->
+    <rect x="62" y="176" width="100" height="10" rx="5" fill="#6fa7a0"/>
+    <rect x="62" y="176" width="100" height="10" rx="5" fill="#5a3d2b" opacity=".2" stroke="none"/>
+    <!-- lid -->
+    <path d="M80 84C82 66 96 60 112 60C128 60 142 66 144 84z" fill="#6fa7a0"/>
+    <path d="M86 78C88 70 96 65 106 64" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <rect x="72" y="80" width="80" height="12" rx="6" fill="#6fa7a0"/>
+    <circle cx="112" cy="54" r="9" fill="#a86f45"/>
+  </g>
+</svg>

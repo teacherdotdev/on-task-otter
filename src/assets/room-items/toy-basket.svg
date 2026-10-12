@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 220">
+  <g stroke="#5a3d2b" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- basket inside -->
+    <ellipse cx="120" cy="114" rx="104" ry="14" fill="#a86f45"/>
+    <!-- wooden block -->
+    <g transform="rotate(12 196 96)">
+      <rect x="176" y="76" width="40" height="40" rx="7" fill="#9bb58a"/>
+      <rect x="186" y="86" width="20" height="20" rx="4" fill="#fbf1dc" stroke-width="3.5"/>
+    </g>
+    <!-- ball -->
+    <circle cx="154" cy="96" r="27" fill="#d9785a"/>
+    <path d="M127.5 92C140 100 166 100 180.5 90" fill="none" stroke="#fbf1dc" stroke-width="7" stroke-linecap="butt"/>
+    <path d="M138 80C141 75 146 72 151 71" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".6"/>
+    <!-- teddy bear -->
+    <ellipse cx="86" cy="118" rx="36" ry="12" fill="#a86f45"/>
+    <circle cx="56" cy="42" r="15" fill="#a86f45"/>
+    <circle cx="56" cy="42" r="7" fill="#e3a3a0" stroke="none"/>
+    <circle cx="116" cy="42" r="15" fill="#a86f45"/>
+    <circle cx="116" cy="42" r="7" fill="#e3a3a0" stroke="none"/>
+    <path d="M86 32C110 32 124 50 124 74C124 98 108 114 86 114C64 114 48 98 48 74C48 50 62 32 86 32z" fill="#a86f45"/>
+    <path d="M56 62C60 48 70 40 82 38C70 44 62 52 56 62z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <ellipse cx="86" cy="86" rx="18" ry="14" fill="#ead9bd"/>
+    <circle cx="72" cy="68" r="4.5" fill="#5a3d2b" stroke="none"/>
+    <circle cx="100" cy="68" r="4.5" fill="#5a3d2b" stroke="none"/>
+    <circle cx="73.5" cy="66.5" r="1.5" fill="#fff8ea" stroke="none"/>
+    <circle cx="101.5" cy="66.5" r="1.5" fill="#fff8ea" stroke="none"/>
+    <ellipse cx="86" cy="80" rx="6" ry="4.5" fill="#5a3d2b" stroke="none"/>
+    <path d="M86 84V89M79 90Q86 96 93 90" fill="none" stroke-width="3.5"/>
+    <!-- basket body -->
+    <path d="M24 124C26 158 32 192 50 208C57 214 66 217 78 217H162C174 217 183 214 190 208C208 192 214 158 216 124z" fill="#e8c290"/>
+    <path d="M200 132H216C214 162 208 192 190 208C183 214 174 217 162 217H150C176 206 196 176 200 132z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <path d="M30 152C90 160 150 160 210 152" fill="none" stroke-width="3.5" stroke-dasharray="12 10" opacity=".45"/>
+    <path d="M36 180C92 188 148 188 204 180" fill="none" stroke-width="3.5" stroke-dasharray="12 10" stroke-dashoffset="11" opacity=".45"/>
+    <!-- rim -->
+    <path d="M22 112C80 124 160 124 218 112C226 110 230 116 230 122C230 128 226 132 218 134C160 146 80 146 22 134C14 132 10 128 10 122C10 116 14 110 22 112z" fill="#d9a066"/>
+    <path d="M24 117.5C80 129 160 129 216 117.5" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+    <path d="M35 119.5L29 131.5M53 122L47 134M71 124L65 136M89 125.5L83 137.5M107 126.5L101 138.5M125 126.5L119 138.5M143 126L137 138M161 125L155 137M179 123.5L173 135.5M197 121.5L191 133.5" fill="none" stroke-width="3.5" opacity=".4"/>
+    <!-- teddy paw over the rim -->
+    <ellipse cx="112" cy="125" rx="14" ry="11" fill="#a86f45"/>
+    <path d="M106 129V133M112 130V134M118 129V133" fill="none" stroke-width="3" opacity=".5"/>
+  </g>
+</svg>

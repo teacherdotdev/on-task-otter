@@ -1,7 +1,11 @@
 import Otter from "../Otter/Otter";
 import Modal from "../Modal/Modal";
+import RichText from "../Text/RichText";
+import { useTranslation } from "../../i18n";
 
 const CompletionModal = ({ equipped, showComplete, duration, isTimerAlertPlaying, onClose, onSilenceAlert }) => {
+  const { t } = useTranslation();
+
   return (
     <Modal
       isOpen={showComplete}
@@ -20,25 +24,25 @@ const CompletionModal = ({ equipped, showComplete, duration, isTimerAlertPlaying
         </div>
 
         <p className="eyebrow">
-          Focus session complete
+          {t("complete.eyebrow")}
         </p>
 
         <h2 id="complete-title">
-          Beautiful work, class!
+          {t("complete.title")}
         </h2>
 
         <p>
-          Your class completed <b>{duration}</b> of shared focus.
+          <RichText textKey="complete.body" values={{ duration }} />
         </p>
 
         <div className="completion-actions">
           {isTimerAlertPlaying && (
             <button className="outline" type="button" autoFocus onClick={onSilenceAlert}>
-              Turn off alarm
+              {t("complete.silence")}
             </button>
           )}
           <button className="primary" type="button" autoFocus={!isTimerAlertPlaying} onClick={onClose}>
-            Celebrate
+            {t("complete.done")}
           </button>
         </div>
     </Modal>

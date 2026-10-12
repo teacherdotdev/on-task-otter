@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 165">
+  <g stroke="#5a3d2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- back legs -->
+    <path d="M68 118h16v6c6 2 7 13-2 17c-1 2 2 4 2 7q0 2.5-2.5 2.5h-11q-2.5 0-2.5-2.5c0-3 3-5 2-7c-9-4-8-15-2-17z" fill="#a86f45"/>
+    <path d="M156 118h16v6c6 2 7 13-2 17c-1 2 2 4 2 7q0 2.5-2.5 2.5h-11q-2.5 0-2.5-2.5c0-3 3-5 2-7c-9-4-8-15-2-17z" fill="#a86f45"/>
+    <path d="M68 118h16v6c6 2 7 13-2 17c-1 2 2 4 2 7q0 2.5-2.5 2.5h-11q-2.5 0-2.5-2.5c0-3 3-5 2-7c-9-4-8-15-2-17zM156 118h16v6c6 2 7 13-2 17c-1 2 2 4 2 7q0 2.5-2.5 2.5h-11q-2.5 0-2.5-2.5c0-3 3-5 2-7c-9-4-8-15-2-17z" fill="#5a3d2b" opacity=".22" stroke="none"/>
+    <!-- front legs -->
+    <path d="M36 131h16v6c6 2 7 13-2 17c-1 2 2 4 2 7q0 2.5-2.5 2.5h-11q-2.5 0-2.5-2.5c0-3 3-5 2-7c-9-4-8-15-2-17z" fill="#a86f45"/>
+    <path d="M188 131h16v6c6 2 7 13-2 17c-1 2 2 4 2 7q0 2.5-2.5 2.5h-11q-2.5 0-2.5-2.5c0-3 3-5 2-7c-9-4-8-15-2-17z" fill="#a86f45"/>
+    <path d="M35 146c0-3 1-5 3.5-5.5M189 146c0-3 1-5 3.5-5.5" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".6"/>
+    <!-- table edge + top -->
+    <path d="M8 106V114A112 22 0 0 0 232 114V106z" fill="#d9a066"/>
+    <path d="M8 109A112 22 0 0 0 232 109V114A112 22 0 0 1 8 114z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <ellipse cx="120" cy="106" rx="112" ry="22" fill="#d9a066"/>
+    <path d="M14 100C24 90 60 85 100 84C70 86 34 92 22 102C20 104 17 104 14 100z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M150 122C176 120 196 115 206 109M30 110C40 115 56 118 70 119" fill="none" stroke-width="1.5" opacity=".35"/>
+    <!-- saucer + cup -->
+    <ellipse cx="156" cy="108" rx="20" ry="6" fill="#fbf1dc"/>
+    <path d="M168 92C176 90 180 95 178 99C176 103 171 104 167 103" fill="none" stroke-width="5"/>
+    <path d="M168 92C176 90 180 95 178 99C176 103 171 104 167 103" fill="none" stroke="#fbf1dc" stroke-width="1.5"/>
+    <path d="M142 90H170C170 100 166 108 156 108C146 108 142 100 142 90z" fill="#fbf1dc"/>
+    <path d="M164 92C164 100 162 105 157 107.5C164 107 169 101 170 90z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <ellipse cx="156" cy="90" rx="14" ry="3.5" fill="#a86f45"/>
+    <!-- teapot spout + handle -->
+    <path d="M70 92C62 90 58 82 52 72" fill="none" stroke-width="11"/>
+    <path d="M70 92C62 90 58 82 52 72" fill="none" stroke="#6fa7a0" stroke-width="6"/>
+    <path d="M123 74C138 72 140 92 126 98" fill="none" stroke-width="11"/>
+    <path d="M123 74C138 72 140 92 126 98" fill="none" stroke="#6fa7a0" stroke-width="6"/>
+    <!-- teapot body -->
+    <path d="M98 64C116 64 130 74 130 88C130 99 122 106 112 107H84C74 106 66 99 66 88C66 74 80 64 98 64z" fill="#6fa7a0"/>
+    <path d="M122 72C129 78 131 90 126 98C122 104 117 106.5 112 107H96C112 104 124 94 122 72z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M74 82C76 76 81 72 87 70" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".55"/>
+    <path d="M68 92C80 96 116 96 128 92" fill="none" stroke-width="1.5" stroke-dasharray="4 3.5" opacity=".45"/>
+    <!-- lid -->
+    <ellipse cx="98" cy="65" rx="20" ry="4.5" fill="#6fa7a0"/>
+    <path d="M84 64C84 56 90 52 98 52C106 52 112 56 112 64C106 66 90 66 84 64z" fill="#6fa7a0"/>
+    <circle cx="98" cy="48" r="4.5" fill="#fbf1dc"/>
+    <path d="M89 59C90 56.5 92.5 55 95 54.5" fill="none" stroke="#fff8ea" stroke-width="2.5" opacity=".55"/>
+    <!-- steam -->
+    <path d="M50 62C44 56 54 50 48 42M58 58C52 52 62 46 56 38M103 38C98 32 107 26 102 18" fill="none" stroke-width="2" opacity=".4"/>
+    <!-- stacked books -->
+    <rect x="182" y="102" width="38" height="11" rx="3" fill="#a98fbf"/>
+    <path d="M211 104.5H219.5V110.5H211z" fill="#fbf1dc" stroke="none"/>
+    <path d="M211 102.5V112.5" fill="none" stroke-width="1.5" opacity=".5"/>
+    <path d="M182.5 109H211V112.5H185C183.5 112.5 182.5 111.5 182.5 110z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <g transform="rotate(-5 202 97)">
+      <rect x="186" y="92" width="32" height="10" rx="3" fill="#9bb58a"/>
+      <path d="M210 94.5H217.5V99.5H210z" fill="#fbf1dc" stroke="none"/>
+      <path d="M210 92.5V101.5" fill="none" stroke-width="1.5" opacity=".5"/>
+    </g>
+  </g>
+</svg>

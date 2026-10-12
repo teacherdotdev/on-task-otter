@@ -8,7 +8,7 @@ The class looks after an otter that cheers them on while they work. It is an ori
 
 During activities such as an independent math warm-up, students may struggle to stay quiet and focused for the full work period. A regular timer can show how much time is left, but it does not always give students a reason to keep going.
 
-On-task Otter turns a focus session into a shared goal. When the class completes a session, their character earns points that can be used to unlock clothes and accessories. The noise meter also helps the class notice whether the room matches the kind of work they are doing.
+On-task Otter turns a focus session into a shared goal. When the class completes a session, their character earns stars that can be used to unlock clothes and accessories. The noise meter also helps the class notice whether the room matches the kind of work they are doing.
 
 ## Who It Helps
 
@@ -18,10 +18,10 @@ On-task Otter turns a focus session into a shared goal. When the class completes
 
 ## MVP: The First Version
 
-The first version keeps the experience simple and useful for one classroom. It saves classroom progress on the current device, with an optional teacher account for carrying that progress between computers. Students never sign in.
+The first version keeps the experience simple and useful for one classroom. It saves classroom progress on the current device, and a teacher can download it to a file to carry it to another computer. No one signs in.
 
 - A shared focus-session timer where the teacher can enter a session length in minutes, save a named setup as a favorite, and return to favorites for future sessions.
-- A classroom character that earns points when a focus session is completed.
+- A classroom character that earns stars when a focus session is completed.
 - A point shop where the character can get clothes and accessories.
 - A noise meter with adjustable sensitivity for the selected type of work:
   - Independent or silent work
@@ -34,19 +34,22 @@ The first version keeps the experience simple and useful for one classroom. It s
 
 1. The teacher selects the type of work and enters a focus-session length, or chooses a saved favorite.
 2. The class watches the timer and noise meter while they work. If the room becomes too loud, the timer pauses until the sound level returns to the goal.
-3. When the session is completed, the class earns points for its character.
-4. The class can use earned points to personalize the character over time.
+3. When the session is completed, the class earns stars for its character.
+4. The class can use earned stars to personalize the character over time.
 
-## Teacher Accounts
+## Saving a Classroom
 
-On-task Otter works with no account at all: everything a class earns stays on the
-computer it was earned on. A teacher who wants their classroom to follow them can
-make an account with an email and password. From then on the class points, the
-timer settings, the reward shop, and the otter's house save themselves
-as they change, and come back by signing in on any computer.
+On-task Otter has no accounts. Everything a class earns is kept in the browser on
+the computer it was earned on, and saves itself as it changes.
 
-Signing in loads the classroom saved to that account, replacing whatever is on the
-screen. Signing out leaves the classroom on that computer untouched.
+To move a classroom to another computer, or keep a backup, the teacher presses
+**Save Classroom Setup** and downloads a save file. It holds every class (each
+one's stars, session history, otter outfit and rooms) and the timer settings and
+session presets they share. Restoring that file on any computer brings every
+class back.
+
+A teacher with several classes picks the class on screen from the menu beside
+the logo. Each class earns its own stars and keeps its own otter outfit and rooms.
 
 ## Later Ideas
 
@@ -79,24 +82,7 @@ You will need [Bun](https://bun.sh/) installed on your computer.
    bun run dev
    ```
 
-3. Start the accounts database in a second terminal:
-
-   ```bash
-   bun run db
-   ```
-
-   The first time on a new computer, run `bun run db:install` once to download it.
-
-4. Open the local address shown in your terminal to view the app.
-
-Copy `.env.example` to `.env.local` if you need to point the app at a database
-somewhere other than the one running alongside it.
-
-### Reviewing teacher accounts
-
-The database comes with its own admin page, reachable at `/_/` on the same
-address as the app. Sign in there to see the list of teacher accounts and the
-classroom saved with each one.
+3. Open the local address shown in your terminal to view the app.
 
 To create a production build, run:
 
@@ -124,22 +110,6 @@ it are answered:
   `/privacy` as you move around it, so every address that is not a real file
   loads that page. A teacher can refresh, bookmark, or share any of those links
   and still land on a working app instead of a "not found" screen.
-- Addresses starting with `/api` and `/_` are left out of that rule, because they
-  belong to PocketBase. Without this, a sign-in request would be answered with
-  the page itself, and the app would report a confusing error instead of a clear
-  one.
 - Each build names its files after their contents, so browsers keep them for a
   year, while the page itself is checked on every visit. A classroom always opens
   the newest version without a hard refresh.
-
-### Teacher accounts on the published site
-
-Vercel hosts the website only. PocketBase keeps its records in a file and needs
-to stay running, so it lives on its own always-on computer rather than on Vercel.
-Until it has one, the published site works fully on its own, saving each
-classroom on the computer it is used on, and only the optional teacher accounts
-are unavailable.
-
-Once PocketBase is running somewhere with its own web address, add a
-`VITE_POCKETBASE_URL` environment variable in the Vercel project settings, set it
-to that address, and redeploy. Nothing in `vercel.json` needs to change.

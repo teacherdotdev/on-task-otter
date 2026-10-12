@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <g stroke="#5a3d2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- bed posts -->
+    <rect x="13" y="44" width="18" height="110" rx="6" fill="#a86f45"/>
+    <rect x="209" y="44" width="18" height="110" rx="6" fill="#a86f45"/>
+    <circle cx="22" cy="36" r="9" fill="#a86f45"/>
+    <circle cx="218" cy="36" r="9" fill="#a86f45"/>
+    <rect x="15" y="43" width="14" height="7" rx="3.5" fill="#a86f45"/>
+    <rect x="211" y="43" width="14" height="7" rx="3.5" fill="#a86f45"/>
+    <path d="M17 34C17 31 19 29 22 29" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".6"/>
+    <path d="M213 34C213 31 215 29 218 29" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".6"/>
+    <!-- arched headboard -->
+    <path d="M30 150V64C30 40 70 12 120 12C170 12 210 40 210 64V150z" fill="#d9a066"/>
+    <path d="M36 62C38 42 74 18 120 18C150 18 176 28 192 41C172 30 150 25 120 25C80 25 46 44 36 62z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M210 64V150H196V74C196 60 186 46 172 36C192 44 210 54 210 64z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M44 72C48 50 80 30 120 30C160 30 192 50 196 72" fill="none" stroke-width="1.2" opacity=".45"/>
+    <!-- pillows -->
+    <path d="M194 36C172 27 140 27 120 32C114 34 113 39 115 45C111 55 111 66 114 76C113 81 117 83 122 82C144 86 172 86 190 83C196 82 199 79 197 73C201 62 201 52 198 43C200 39 198 37 194 36z" fill="#fbf1dc"/>
+    <path d="M112 60C140 67 176 67 200 59C200 64 199 69 197 73C199 79 196 82 190 83C172 86 144 86 122 82C117 83 113 81 114 76C112 70 112 65 112 60z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M46 37C70 27 100 27 120 33C127 35 128 40 126 46C130 56 130 66 126 76C127 81 123 83 118 82C96 86 68 86 50 83C44 82 41 79 43 73C39 62 39 52 42 43C40 39 42 37 46 37z" fill="#fbf1dc"/>
+    <path d="M45 44C47 40 52 38 58 37C76 32 98 32 116 36C98 36 78 38 60 42C54 43 49 44 45 44z" fill="#fff8ea" opacity=".7" stroke="none"/>
+    <path d="M40 60C68 67 100 67 129 60C129 66 128 71 126 76C127 81 123 83 118 82C96 86 68 86 50 83C44 82 41 79 43 73C41 69 40 65 40 60z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <!-- base rail -->
+    <rect x="14" y="146" width="212" height="21" rx="8" fill="#d9a066"/>
+    <!-- turned legs -->
+    <path d="M22 166H36V169C40 170 40 174 35 176C34 177 36 178 36 179Q36 180 35 180H23Q22 180 22 179C22 178 24 177 23 176C18 174 18 170 22 169z" fill="#a86f45"/>
+    <path d="M204 166H218V169C222 170 222 174 217 176C216 177 218 178 218 179Q218 180 217 180H205Q204 180 204 179C204 178 206 177 205 176C200 174 200 170 204 169z" fill="#a86f45"/>
+    <!-- thick duvet -->
+    <path d="M30 80C28 92 24 104 20 114C18 120 17 126 17 134V148C17 155 22 159 30 159C70 162 170 162 210 159C218 159 223 155 223 148V134C223 126 222 120 220 114C216 104 212 92 210 80z" fill="#7f9cc0"/>
+    <path d="M19 120C60 128 180 128 221 120C222 124 223 128 223 134V148C223 155 218 159 210 159C170 162 70 162 30 159C22 159 17 155 17 148V134C17 128 18 124 19 120z" fill="#5a3d2b" opacity=".13" stroke="none"/>
+    <path d="M19 120C60 128 180 128 221 120" fill="none" stroke-width="1.2" opacity=".5"/>
+    <path d="M30 98C40 96 50 95 60 95" fill="none" stroke="#fff8ea" stroke-width="2.5" opacity=".5"/>
+    <!-- folded-back top edge -->
+    <path d="M32 72C70 66 170 66 208 72C215 73 217 78 216 83C215 88 211 90 206 90C160 93 80 93 34 90C29 90 25 88 24 83C23 78 25 73 32 72z" fill="#fbf1dc"/>
+    <path d="M24 83C40 86 200 86 216 83C214 87 210.5 89.5 206 90C160 93 80 93 34 90C29.5 89.5 26 87 24 83z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M36 79C80 76 160 76 204 79" fill="none" stroke-width="1.2" stroke-dasharray="4 3.5" opacity=".45"/>
+  </g>
+</svg>

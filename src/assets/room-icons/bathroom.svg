@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#f4e5ca"/>
+  <path d="M0 40H64V50A14 14 0 0 1 50 64H14A14 14 0 0 1 0 50z" fill="#dab993"/>
+  <rect y="38" width="64" height="3" fill="#8a5a3a"/>
+  <g stroke="#5a3d2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- gold faucet -->
+    <path d="M10.5 31V16C10.5 11.5 13 9 16.5 9C20 9 22 11.5 22 15V17" fill="none" stroke-width="6"/>
+    <path d="M10.5 31V16C10.5 11.5 13 9 16.5 9C20 9 22 11.5 22 15V17" fill="none" stroke="#d8a84a" stroke-width="2.6"/>
+    <path d="M19.5 17H24.5L25.5 21H18.5z" fill="#d8a84a"/>
+    <!-- floor shadow -->
+    <ellipse cx="32" cy="56" rx="24" ry="2.3" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <!-- claw feet -->
+    <path d="M15 47C15.5 50 14 51.5 12.5 52.5C11.5 53.3 11 54.5 11.3 56H20.8C21 54.8 20 53.5 19.5 52.5C19 51 19.5 49 21 47z" fill="#d8a84a"/>
+    <path d="M49 47C48.5 50 50 51.5 51.5 52.5C52.5 53.3 53 54.5 52.7 56H43.2C43 54.8 44 53.5 44.5 52.5C45 51 44.5 49 43 47z" fill="#d8a84a"/>
+    <!-- bubble heap -->
+    <path d="M13 31A5 5 0 0 1 20 25A7 7 0 0 1 30 17.5A7.5 7.5 0 0 1 41 18A6.5 6.5 0 0 1 48 23.5A5 5 0 0 1 54 31z" fill="#bfe3f2"/>
+    <path d="M30 26A4.5 4.5 0 0 1 38 23M37 20A4 4 0 0 1 44 21.5" fill="none" stroke-width="1.8" opacity=".25"/>
+    <!-- loose bubbles -->
+    <circle cx="48.5" cy="12.5" r="3" fill="#bfe3f2"/>
+    <circle cx="53.5" cy="7.5" r="2.2" fill="#bfe3f2"/>
+    <!-- tub body -->
+    <path d="M8.5 34C8.5 44 15 50 23 50H41C49 50 55.5 44 55.5 34z" fill="#fbf1dc"/>
+    <path d="M11.5 43.5C14.5 47.8 18.5 50 23 50H41C45.5 50 49.5 47.8 52.5 43.5C42 46.5 22 46.5 11.5 43.5z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <!-- rim -->
+    <rect x="6" y="30" width="52" height="5.5" rx="2.75" fill="#fbf1dc"/>
+    <!-- foam spilling on the rim -->
+    <g fill="#bfe3f2">
+      <circle cx="16" cy="30" r="3"/>
+      <circle cx="24.5" cy="28" r="5"/>
+      <circle cx="36" cy="29.5" r="3.5"/>
+      <circle cx="46" cy="28.5" r="4.5"/>
+    </g>
+    <g fill="none" stroke="#fff" stroke-width="1.6" opacity=".9">
+      <path d="M21.5 26C22 25 23 24.3 24.5 24.3"/>
+      <path d="M43.5 26.5C44 25.5 45 25 46 25"/>
+      <path d="M27 20.5C28 19.5 29 19 30.5 19"/>
+    </g>
+  </g>
+</svg>

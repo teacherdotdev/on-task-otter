@@ -431,7 +431,6 @@ Session is saved to history
 
 Ideas for future versions of On-task Otter:
 
-* Teacher accounts and authentication
 * Multiple classroom profiles
 * Student avatars
 * Classroom analytics dashboard

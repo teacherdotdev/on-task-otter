@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <!-- warm glow -->
+  <circle cx="114" cy="80" r="72" fill="#ffe7a3" opacity=".35"/>
+  <circle cx="114" cy="80" r="60" fill="#ffe7a3" opacity=".4"/>
+  <g stroke="#5a3d2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- stem -->
+    <rect x="105" y="122" width="18" height="34" rx="7" fill="#a86f45"/>
+    <!-- round wooden base -->
+    <path d="M68 168C68 153 90 145 114 145C138 145 160 153 160 168z" fill="#d9a066"/>
+    <path d="M80 158C85 153 93 151 101 150" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".6"/>
+    <rect x="56" y="162" width="116" height="14" rx="7" fill="#a86f45"/>
+    <!-- crescent moon -->
+    <path d="M118.9 22.2A56 56 0 1 0 164.6 102.1A46 46 0 0 1 118.9 22.2z" fill="#ffe7a3"/>
+    <path d="M66.4 107.5A56 56 0 0 0 164.6 102.1A46 46 0 0 1 149.7 107.3A56 56 0 0 1 66.4 107.5z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M71 62C75 50 84 41 95 36" fill="none" stroke="#fff8ea" stroke-width="6" opacity=".6"/>
+    <!-- sleepy face -->
+    <path d="M77 66Q83 72 89 66" fill="none" stroke-width="5" opacity=".7"/>
+    <circle cx="80" cy="82" r="6" fill="#e3a3a0" stroke="none" opacity=".8"/>
+    <!-- hanging star -->
+    <path d="M120 27V58" fill="none" stroke-width="4" opacity=".6"/>
+    <path d="M120 56L125 66.5L136.5 68L128 76L130 87.5L120 82L110 87.5L112 76L103.5 68L115 66.5z" fill="#e8b44f" stroke-width="5"/>
+  </g>
+</svg>

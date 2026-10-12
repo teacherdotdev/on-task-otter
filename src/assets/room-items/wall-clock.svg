@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#5a3d2b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- painted wooden rim -->
+    <circle cx="120" cy="140" r="94" fill="#9bb58a"/>
+    <path d="M35 117A88 88 0 0 1 143 55A119 119 0 0 0 35 117z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M205 163A88 88 0 0 1 97 225A145 145 0 0 0 205 163z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <!-- cream face -->
+    <circle cx="120" cy="140" r="73" fill="#fbf1dc"/>
+    <path d="M51 128A70 70 0 0 1 155 79.5A86 86 0 0 0 51 128z" fill="#5a3d2b" opacity=".12" stroke="none"/>
+    <!-- ticks -->
+    <path d="M120 79V90M181 140H170M120 201V190M59 140H70" fill="none" stroke-width="6"/>
+    <g fill="#5a3d2b" stroke="none" opacity=".7">
+      <circle cx="148.5" cy="90.5" r="4"/><circle cx="169.5" cy="111.5" r="4"/><circle cx="169.5" cy="168.5" r="4"/><circle cx="148.5" cy="189.5" r="4"/>
+      <circle cx="91.5" cy="189.5" r="4"/><circle cx="70.5" cy="168.5" r="4"/><circle cx="70.5" cy="111.5" r="4"/><circle cx="91.5" cy="90.5" r="4"/>
+    </g>
+    <!-- hands at ten past ten -->
+    <path d="M120 140L92 120.5" fill="none" stroke-width="10"/>
+    <path d="M120 140L165 114" fill="none" stroke-width="6.5"/>
+    <circle cx="120" cy="140" r="8" fill="#d8a84a" stroke-width="5"/>
+    <!-- little robin perched on top -->
+    <path d="M95 33L73 20C70 18.5 67.5 21.5 69 24.5L74 35L92 45z" fill="#a86f45"/>
+    <ellipse cx="112" cy="33" rx="22" ry="14.5" fill="#d9785a"/>
+    <path d="M122 28C131 31 134.5 38 131 43C127 46.5 120 47.5 113 47.5C120 43 123 36 122 28z" fill="#fbf1dc" stroke="none"/>
+    <path d="M95 31C102 24.5 114 25 120 33C113 38.5 101 38 95 31z" fill="#5a3d2b" opacity=".22" stroke="none"/>
+    <path d="M150 16.5 161.5 21 150 25.5z" fill="#e8b44f" stroke-width="4.5"/>
+    <circle cx="138" cy="21" r="13" fill="#d9785a"/>
+    <path d="M128 19C128.5 14 132 10.5 136.5 10" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".55"/>
+    <circle cx="141.5" cy="18.5" r="3.5" fill="#5a3d2b" stroke="none"/>
+  </g>
+</svg>

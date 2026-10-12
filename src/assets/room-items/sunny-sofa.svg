@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <g stroke="#5a3d2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- turned legs -->
+    <path d="M29 155h14v6c4 2 4 8-1 11c-1 1 1 3 1 5q0 2-2 2h-10q-2 0-2-2c0-2 2-4 1-5c-5-3-5-9-1-11z" fill="#a86f45"/>
+    <path d="M197 155h14v6c4 2 4 8-1 11c-1 1 1 3 1 5q0 2-2 2h-10q-2 0-2-2c0-2 2-4 1-5c-5-3-5-9-1-11z" fill="#a86f45"/>
+    <path d="M31 166c0-2 1-3 3-3" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".6"/>
+    <path d="M199 166c0-2 1-3 3-3" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".6"/>
+    <!-- tufted back -->
+    <path d="M24 112V44C24 28 36 20 54 21C80 16 100 12 120 12C140 12 160 16 186 21C204 20 216 28 216 44V112z" fill="#e8b44f"/>
+    <path d="M30 42C32 31 41 26 54 27C80 22 100 18 120 18C140 18 160 22 186 27C198 26 207 31 210 40C202 33 194 32 185 33C160 28 140 24 120 24C100 24 80 28 55 33C45 32 36 35 30 42z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <path d="M24 82C70 92 170 92 216 82V112H24z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M40 62 64 35 92 64 120 35 148 64 176 35 200 62M64 93 92 64 120 93 148 64 176 93" fill="none" stroke-width="1.2" opacity=".35"/>
+    <g fill="#5a3d2b" stroke="none">
+      <circle cx="64" cy="35" r="3.75"/><circle cx="120" cy="35" r="3.75"/><circle cx="176" cy="35" r="3.75"/>
+      <circle cx="92" cy="64" r="3.75"/><circle cx="148" cy="64" r="3.75"/>
+    </g>
+    <!-- base rail -->
+    <rect x="28" y="126" width="184" height="36" rx="13" fill="#e8b44f"/>
+    <path d="M29 140H211V149C211 156 206 161 199 161H41C34 161 29 156 29 149z" fill="#5a3d2b" opacity=".22" stroke="none"/>
+    <path d="M42 153H198" fill="none" stroke-width="1.2" stroke-dasharray="4 3.5" opacity=".45"/>
+    <!-- seat cushions -->
+    <path d="M48 89C70 86 100 86 115 89C121 90 124 95 124 101V134C124 141 119 145 112 145C95 147 66 147 50 145C43 144 39 140 39 134V98C39 93 43 89 48 89z" fill="#e8b44f"/>
+    <path d="M40 98C40 93 44 90 48 90C70 87 100 87 115 90C120 91 123 95 123 101V109C100 117 62 117 40 109z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <path d="M40 109C62 117 100 117 123 109" fill="none" stroke-width="1.2" opacity=".5"/>
+    <path d="M113 97V138" fill="none" stroke-width="6" opacity=".2"/>
+    <path d="M192 89C170 86 140 86 125 89C119 90 116 95 116 101V134C116 141 121 145 128 145C145 147 174 147 190 145C197 144 201 140 201 134V98C201 93 197 89 192 89z" fill="#e8b44f"/>
+    <path d="M200 98C200 93 196 90 192 90C170 87 140 87 125 90C120 91 117 95 117 101V110C142 119 178 118 200 109z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <path d="M200 109C178 118 142 119 117 110" fill="none" stroke-width="1.2" opacity=".5"/>
+    <!-- rolled arms -->
+    <path d="M47 158V84C47 71 37 62 25 62C13 62 4 71 4 84C4 93 8 99 12 102C10 120 10 140 12 152C13 159 18 162 24 162H43C45 162 47 160 47 158z" fill="#e8b44f"/>
+    <path d="M193 158V84C193 71 203 62 215 62C227 62 236 71 236 84C236 93 232 99 228 102C230 120 230 140 228 152C227 159 222 162 216 162H197C195 162 193 160 193 158z" fill="#e8b44f"/>
+    <path d="M10 81C11 72 18 67 25 67C30 67 34 69 37 72C28 69 18 71 10 81z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M200 77C203 71 209 67 215 67C219 67 223 68 226 71C217 69 208 71 200 77z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M12 102C22 108 38 108 47 104V121C36 115 22 114 11 117z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M228 102C218 108 202 108 193 104V121C204 115 218 114 229 117z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M229 117C230 130 230 142 228 152C227 159 222 162 216 162H210C218 154 221 136 220 116z" fill="#5a3d2b" opacity=".12" stroke="none"/>
+    <path d="M16 89C14 79 24 73 31 78C37 83 32 92 26 90C22 89 23 84 26 84" fill="none" stroke-width="1.2" opacity=".55"/>
+    <path d="M224 89C226 79 216 73 209 78C203 83 208 92 214 90C218 89 217 84 214 84" fill="none" stroke-width="1.2" opacity=".55"/>
+  </g>
+</svg>

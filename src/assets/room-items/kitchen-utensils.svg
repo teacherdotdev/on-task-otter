@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <g stroke="#5a3d2b" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- chunky wooden rail with walnut end caps -->
+    <rect x="12" y="10" width="216" height="28" rx="14" fill="#d9a066"/>
+    <path d="M22 16.5H218" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <path d="M13 28H227V30C227 34 224 37 220 37H20C16 37 13 34 13 30z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <rect x="6" y="6" width="18" height="36" rx="8" fill="#a86f45"/>
+    <rect x="216" y="6" width="18" height="36" rx="8" fill="#a86f45"/>
+    <!-- brass hooks -->
+    <path d="M37 24C37 2 51 2 51 22V44C51 51 44 51 44 56M113 24C113 2 127 2 127 22V44C127 51 120 51 120 56M189 24C189 2 203 2 203 22V44C203 51 196 51 196 56" fill="none" stroke-width="10"/>
+    <path d="M37 24C37 2 51 2 51 22V44C51 51 44 51 44 56M113 24C113 2 127 2 127 22V44C127 51 120 51 120 56M189 24C189 2 203 2 203 22V44C203 51 196 51 196 56" fill="none" stroke="#d8a84a" stroke-width="4"/>
+    <!-- wooden spoon -->
+    <path d="M38 60C38 52 50 52 50 60L48.5 97C60 101 67 115 67 134C67 155 57 170 44 170C31 170 21 155 21 134C21 115 28 101 39.5 97z" fill="#d9a066"/>
+    <ellipse cx="45" cy="137" rx="13" ry="22" fill="#5a3d2b" opacity=".2" stroke="none"/>
+    <path d="M27 128C27 118 30 111 35 107" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <!-- teal enamel ladle -->
+    <path d="M115 60C115 52 125 52 125 60L124 110H116z" fill="#6fa7a0"/>
+    <path d="M89 113C89 149 103 170 120 170C137 170 151 149 151 113z" fill="#6fa7a0"/>
+    <path d="M131 121C131 145 127 158 120 165C138 164 147 145 148 121z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M97 126C98 139 101 149 106 156" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <ellipse cx="120" cy="113" rx="32" ry="8.5" fill="#6fa7a0"/>
+    <ellipse cx="120" cy="113.5" rx="27" ry="6" fill="#5a3d2b" opacity=".35" stroke="none"/>
+    <!-- brass balloon whisk -->
+    <path d="M196 94C170 116 164 150 178 166C186 175 206 175 214 166C228 150 222 116 196 94z" fill="#d8a84a" opacity=".3" stroke="none"/>
+    <path d="M196 94C184 118 181 150 188 166C191 171 194 172 196 172M196 94C208 118 211 150 204 166C201 171 198 172 196 172M196 94V172" fill="none" stroke-width="8"/>
+    <path d="M196 94C184 118 181 150 188 166C191 171 194 172 196 172M196 94C208 118 211 150 204 166C201 171 198 172 196 172M196 94V172" fill="none" stroke="#d8a84a" stroke-width="3.5"/>
+    <path d="M196 94C170 116 164 150 178 166C186 175 206 175 214 166C228 150 222 116 196 94z" fill="none" stroke-width="10"/>
+    <path d="M196 94C170 116 164 150 178 166C186 175 206 175 214 166C228 150 222 116 196 94z" fill="none" stroke="#d8a84a" stroke-width="4.5"/>
+    <path d="M188 60C188 52 204 52 204 60V92C204 98 188 98 188 92z" fill="#a86f45"/>
+    <path d="M192.5 64V86" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+  </g>
+</svg>

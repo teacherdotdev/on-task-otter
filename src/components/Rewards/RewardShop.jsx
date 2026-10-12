@@ -1,21 +1,23 @@
 import RewardList from "./RewardList";
+import { useTranslation } from "../../i18n";
 
 const RewardShop = ({ rewards, titleId }) => {
-  const { points, accessories, unlocked, equipped, buyOrEquip, isPreviewing } = rewards;
+  const { t } = useTranslation();
+  const { stars, accessories, unlocked, equipped, buyOrEquip, isPreviewing } = rewards;
 
   return (
     <div className="shop-card">
       <div className="card-heading">
         <div>
-          <p className="card-label">Reward shelf</p>
-          <h2 id={titleId}>Dress up your class otter.</h2>
+          <p className="card-label">{t("shop.label")}</p>
+          <h2 id={titleId}>{t("shop.title")}</h2>
         </div>
 
-        <span className="points-badge">{isPreviewing ? "Preview" : `★ ${points} stars`}</span>
+        <span className="points-badge">{isPreviewing ? t("scene.preview") : t("scene.stars", { stars })}</span>
       </div>
 
       <RewardList
-        points={points}
+        stars={stars}
         accessories={accessories}
         unlocked={unlocked}
         equipped={equipped}

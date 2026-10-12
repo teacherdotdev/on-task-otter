@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#5a3d2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- recessed base -->
+    <rect x="58" y="214" width="124" height="23.75" rx="5" fill="#9bb58a"/>
+    <rect x="58" y="214" width="124" height="23.75" rx="5" fill="#5a3d2b" opacity=".4" stroke="none"/>
+    <!-- metal body, flat top -->
+    <rect x="50" y="5" width="140" height="216" rx="12" fill="#9bb58a"/>
+    <rect x="50" y="5" width="140" height="216" rx="12" fill="#5a3d2b" opacity=".2" stroke="none"/>
+    <path d="M55 24V202" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".45"/>
+    <!-- drawers -->
+    <rect x="60" y="14" width="120" height="62" rx="9" fill="#9bb58a"/>
+    <path d="M60 62H180V67C180 72 176 76 171 76H69C64 76 60 72 60 67z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <path d="M67 20.5H86" fill="none" stroke="#fff8ea" stroke-width="2.7" opacity=".55"/>
+    <rect x="99" y="23" width="42" height="18" rx="3" fill="#d8a84a"/>
+    <rect x="104" y="27" width="32" height="10" rx="1.5" fill="#ffffff" stroke-width="2.7"/>
+    <rect x="94" y="52" width="52" height="10" rx="5" fill="#d8a84a"/>
+    <path d="M100 55.5H124" fill="none" stroke="#fff8ea" stroke-width="2.7" opacity=".6"/>
+    <rect x="60" y="82" width="120" height="62" rx="9" fill="#9bb58a"/>
+    <path d="M60 130H180V135C180 140 176 144 171 144H69C64 144 60 140 60 135z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <path d="M67 88.5H86" fill="none" stroke="#fff8ea" stroke-width="2.7" opacity=".55"/>
+    <rect x="99" y="91" width="42" height="18" rx="3" fill="#d8a84a"/>
+    <rect x="104" y="95" width="32" height="10" rx="1.5" fill="#ffffff" stroke-width="2.7"/>
+    <rect x="94" y="120" width="52" height="10" rx="5" fill="#d8a84a"/>
+    <path d="M100 123.5H124" fill="none" stroke="#fff8ea" stroke-width="2.7" opacity=".6"/>
+    <rect x="60" y="150" width="120" height="62" rx="9" fill="#9bb58a"/>
+    <path d="M60 198H180V203C180 208 176 212 171 212H69C64 212 60 208 60 203z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <path d="M67 156.5H86" fill="none" stroke="#fff8ea" stroke-width="2.7" opacity=".55"/>
+    <rect x="99" y="159" width="42" height="18" rx="3" fill="#d8a84a"/>
+    <rect x="104" y="163" width="32" height="10" rx="1.5" fill="#ffffff" stroke-width="2.7"/>
+    <rect x="94" y="188" width="52" height="10" rx="5" fill="#d8a84a"/>
+    <path d="M100 191.5H124" fill="none" stroke="#fff8ea" stroke-width="2.7" opacity=".6"/>
+    <!-- sticky note over the drawer edge -->
+    <g transform="rotate(10 178 52)">
+      <rect x="166" y="40" width="24" height="24" rx="3" fill="#e8b44f" stroke-width="3"/>
+      <path d="M171 49H184M171 55H180" fill="none" stroke-width="2.7" opacity=".45"/>
+    </g>
+  </g>
+</svg>

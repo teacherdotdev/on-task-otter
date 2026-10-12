@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160">
+  <g stroke="#5a3d2b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- wall brackets and rail -->
+    <rect x="12" y="12" width="16" height="28" rx="8" fill="#a86f45"/>
+    <rect x="212" y="12" width="16" height="28" rx="8" fill="#a86f45"/>
+    <rect x="16" y="20" width="208" height="12" rx="6" fill="#d9a066"/>
+    <path d="M24 24.5H34M208 24.5H214" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".6"/>
+    <!-- rose towel: back layer peeking at the hem -->
+    <path d="M42 130C42 143 45 149 52 149C78 146.5 104 146.5 126 149C133 149 136 144 136 130z" fill="#e3a3a0"/>
+    <path d="M42 130C42 143 45 149 52 149C78 146.5 104 146.5 126 149C133 149 136 144 136 130z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <!-- rose towel: front layer -->
+    <path d="M38 28C38 19 43 14 51 14C75 12 100 12 125 14C133 14 138 19 138 28C139 60 142 100 141 132C141 138 137 141 131 140C116 138 104 141 89 140.5C74 140 60 138 46 140.5C40 141 36 138 36 132C36 100 36 60 38 28z" fill="#e3a3a0"/>
+    <path d="M43 26C43 21 46 18.5 52 18.5C75 16.5 100 16.5 124 18.5C127 18.5 130 19.5 131.5 21C110 20 70 20 50 22C47 22.5 44.5 24 43 26z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M38 34C70 40 106 40 138 34C138.5 42 138.5 46 138.5 48C106 52 70 52 37.5 48C37.5 44 37.7 40 38 34z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M38 34C70 40 106 40 138 34" fill="none" stroke-width="3" opacity=".5"/>
+    <path d="M38 112C70 116 108 116 140 112L140 124C108 128 70 128 37.8 124z" fill="#fbf1dc"/>
+    <path d="M44 118.5C74 121.5 104 121.5 134 118.5" fill="none" stroke="#d9785a" stroke-width="3" stroke-dasharray="6 6" opacity=".8"/>
+    <path d="M62 54C60 72 61 90 64 104M110 56C113 74 113 92 110 106" fill="none" stroke-width="3" opacity=".35"/>
+    <!-- cream towel: back layer -->
+    <path d="M132 108C132 120 135 125 141 125C160 123 180 123 196 125C202 125 204 120 204 108z" fill="#fbf1dc"/>
+    <path d="M132 108C132 120 135 125 141 125C160 123 180 123 196 125C202 125 204 120 204 108z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <!-- cream towel: front layer -->
+    <path d="M128 28C128 19 133 14 141 14C160 12.5 178 12.5 196 14C204 14 208 19 208 28C209 52 211 82 210 110C210 116 206 119 200 118C189 116.5 180 119 168 118.5C158 118 148 116 137 118.5C131 119 127 116 127 110C126 82 126 52 128 28z" fill="#fbf1dc"/>
+    <path d="M133 26C133 21 136 18.5 142 18.5C160 17 178 17 195 18.5C198 18.5 200 19.5 201.5 21C182 20 160 20 140 22C137 22.5 134.5 24 133 26z" fill="#fff8ea" opacity=".6" stroke="none"/>
+    <path d="M128 34C154 39.5 182 39.5 208 34C208.5 42 208.5 46 208.5 48C182 52 154 52 127.5 48C127.5 44 127.7 40 128 34z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M128 34C154 39.5 182 39.5 208 34" fill="none" stroke-width="3" opacity=".5"/>
+    <path d="M208.6 50C209.5 72 209.8 94 209 110C209 116 205 119 199 118C196 117.6 193 117.3 190 117C198 110 200 80 198 50z" fill="#5a3d2b" opacity=".12" stroke="none"/>
+    <path d="M127.6 90C156 94 182 94 209.6 90L209.4 102C182 106 156 106 127.4 102z" fill="#e3a3a0"/>
+    <path d="M133 96.5C158 99.5 180 99.5 204 96.5" fill="none" stroke="#fbf1dc" stroke-width="3" stroke-dasharray="6 6" opacity=".9"/>
+    <path d="M168 54C170 68 170 78 168 86" fill="none" stroke-width="3" opacity=".35"/>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 190">
+  <g stroke="#5a3d2b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <!-- cream pump bottle, leaning left -->
+    <g transform="rotate(-5 140 184.5)">
+      <rect x="172" y="30" width="14" height="46" rx="4" fill="#ead9bd"/>
+      <path d="M160 16C160 12 163 10 167 10H206C216 10 224 14 228 22L229 26C230 30 223 32 221 28L218 26H167C163 26 160 24 160 20z" fill="#d8a84a"/>
+      <rect x="160" y="68" width="38" height="20" rx="6" fill="#d8a84a"/>
+      <path d="M164 88H194C210 88 220 98 220 112V170C220 179 215 184.5 206 184.5H152C143 184.5 138 179 138 170V112C138 98 148 88 164 88z" fill="#fbf1dc"/>
+      <path d="M220 118V170C220 179 215 184.5 206 184.5H194C202 182 206 176 206 168V118z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+      <rect x="138" y="126" width="82" height="32" fill="#7f9cc0" stroke-width="6.5"/>
+      <path d="M150 112C152 104 156 100 162 99" fill="none" stroke="#fff8ea" stroke-width="8" opacity=".7"/>
+    </g>
+    <!-- dusty rose tube standing on its flip cap, leaning right -->
+    <g transform="rotate(6 94 184.5)">
+      <path d="M22 30H106L102 140C102 148 98 152 92 152H36C30 152 26 148 26 140z" fill="#e3a3a0"/>
+      <path d="M106 30 102 140C102 148 98 152 92 152H82C88 150 90 146 90 140L93 30z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+      <path d="M38 62H90L89 106H39z" fill="#fbf1dc" stroke-width="6.5"/>
+      <path d="M34 42 36 132" fill="none" stroke="#fff8ea" stroke-width="8" opacity=".6"/>
+      <path d="M14 12H114V30C114 34 112 36 108 36H20C16 36 14 34 14 30z" fill="#e3a3a0"/>
+      <path d="M34 18V30M51 18V30M68 18V30M85 18V30M100 18V30" fill="none" stroke-width="5" opacity=".4"/>
+      <!-- flip cap -->
+      <path d="M38 150H90C94 150 96 152 96 156V176C96 182 93 184.5 87 184.5H41C35 184.5 32 182 32 176V156C32 152 34 150 38 150z" fill="#fbf1dc"/>
+      <path d="M33 162H95" fill="none" stroke-width="5" opacity=".5"/>
+      <path d="M96 156H101C104 156 105 158 105 160V162" fill="none" stroke-width="7"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200">
+  <!-- warm glow -->
+  <circle cx="182" cy="106" r="52" fill="#ffe7a3" opacity=".35"/>
+  <circle cx="182" cy="100" r="36" fill="#ffe7a3" opacity=".4"/>
+  <g stroke="#5a3d2b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- arms -->
+    <path d="M76 166L50 70L164 30" fill="none" stroke-width="22"/>
+    <path d="M76 166L50 70L164 30" fill="none" stroke="#d8a84a" stroke-width="12"/>
+    <path d="M68.5 142.5L55 92.5M67 63L142 36.5" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".55"/>
+    <!-- weighted base -->
+    <path d="M34 190C34 177 52 168 76 168C100 168 118 177 118 190z" fill="#9bb58a"/>
+    <path d="M45 181C50 176.5 58 174 67 173" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".6"/>
+    <rect x="24" y="186" width="104" height="11.5" rx="5.75" fill="#9bb58a"/>
+    <path d="M30 193H122" fill="none" stroke-width="3" opacity=".3"/>
+    <!-- joints -->
+    <circle cx="76" cy="166" r="11" fill="#d8a84a"/>
+    <circle cx="50" cy="70" r="14" fill="#d8a84a"/>
+    <circle cx="50" cy="70" r="3" fill="#5a3d2b" stroke="none"/>
+    <!-- dome shade -->
+    <g transform="rotate(-14 172 34)">
+      <circle cx="172" cy="31" r="10" fill="#d8a84a"/>
+      <path d="M140 86C140 60 150 36 172 36C194 36 204 60 204 86z" fill="#9bb58a"/>
+      <path d="M146 80C146 64 152 48 163 41C156 52 153 64 153 80z" fill="#fff8ea" opacity=".5" stroke="none"/>
+      <path d="M191 42C199 52 202 68 202 84H192C193 68 193 54 191 42z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+      <circle cx="172" cy="90" r="10" fill="#fff8ea"/>
+      <ellipse cx="172" cy="86" rx="32" ry="6" fill="#ffe7a3"/>
+    </g>
+  </g>
+</svg>

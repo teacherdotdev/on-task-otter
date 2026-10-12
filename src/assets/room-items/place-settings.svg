@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 26 240 84">
+  <g stroke="#5a3d2b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- cloth placemat with stitched edge, the plate sitting fully on it -->
+    <path d="M72 34H184C189 34 192 37 193 41L200 96C200.7 100.5 197.5 104 193 104H63C58.5 104 55.3 100.5 56 96L63 41C64 37 67 34 72 34z" fill="#9bb58a"/>
+    <path d="M193 41 200 96C200.7 100.5 197.5 104 193 104H180C187 88 189 60 186.5 34.5C190 35 192.2 37.5 193 41z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M75 42H181L187 96H69z" fill="none" stroke-width="3" stroke-dasharray="7 7" opacity=".4"/>
+    <!-- plate with coloured rim -->
+    <ellipse cx="128" cy="68" rx="52" ry="24" fill="#d9785a"/>
+    <ellipse cx="128" cy="68" rx="34" ry="14.5" fill="#fbf1dc" stroke-width="4" stroke-opacity=".55"/>
+    <path d="M126 58.5C113 59 102.5 62.5 98 67C96 61.5 107 56 126 58.5z" fill="#5a3d2b" opacity=".12" stroke="none"/>
+    <path d="M91 55C100 49 112 46 125 46" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".6"/>
+    <!-- fork lying flat, foreshortened like the plate -->
+    <path d="M9 72V58M18.7 72V58M28.3 72V58M38 72V58" fill="none"/>
+    <path d="M9 72V59M18.7 72V59M28.3 72V59M38 72V59" fill="none" stroke="#ead9bd" stroke-width="2"/>
+    <path d="M9 70H38V73C38 77 34 79.5 29 80V85H18V80C13 79.5 9 77 9 73z" fill="#ead9bd"/>
+    <rect x="13.5" y="82" width="20" height="24" rx="10" fill="#d9a066"/>
+    <path d="M19 89V97" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <!-- knife lying flat: short blade with a straight back -->
+    <path d="M211 84V52C211 48 214.5 45 218.5 45C225 45 229 53 229 64V84z" fill="#ead9bd"/>
+    <path d="M216.5 54C217 51 218.5 49.5 220.5 49" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".6"/>
+    <rect x="210" y="82" width="20" height="24" rx="10" fill="#d9a066"/>
+    <path d="M215.5 89V97" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+  </g>
+</svg>

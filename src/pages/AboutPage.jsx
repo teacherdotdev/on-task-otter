@@ -1,69 +1,63 @@
-import edtechathonLogo from "../assets/edtechathon-logo.svg";
+import teacherDevLogo from "../assets/teacher-dev-logo.svg";
 import participants from "../assets/edtechathon-2026-participants.jpg";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import RichText from "../components/Text/RichText";
+import { useTranslation } from "../i18n";
 
-const AboutPage = () => (
-  <div className="app-shell page-shell">
-    <Header rightLink={{ href: "/", label: "← Back to the classroom" }} />
+const AboutPage = () => {
+  const { t } = useTranslation();
 
-    <main className="page">
-      <h1 className="page-title">About</h1>
-      <p className="page-intro">
-        A shared focus tool for classrooms, built for teachers and the students they
-        sit with every day.
-      </p>
+  return (
+    <div className="app-shell page-shell">
+      <Header rightLink={{ href: "/", label: t("header.backToClassroom") }} />
 
-      <section className="card page-section">
-        <div className="page-section-heading">
-          <img className="edtechathon-logo" src={edtechathonLogo} alt="" />
-          <h2>From the EdTech-a-thon</h2>
-        </div>
-        <p>
-          On-task Otter is a project from the{" "}
-          <a href="https://edtechathon.com" target="_blank" rel="noopener noreferrer">
-            EdTech-a-thon
+      <main className="page">
+        <h1 className="page-title">{t("about.title")}</h1>
+        <p className="page-intro">{t("about.intro")}</p>
+
+        <section className="card page-section">
+          <div className="page-section-heading">
+            <img className="teacher-dev-logo" src={teacherDevLogo} alt="" />
+            <h2>{t("about.community.title")}</h2>
+          </div>
+          <p>
+            <RichText
+              textKey="about.community.body"
+              links={{ teacherdev: "https://teacher.dev" }}
+            />
+          </p>
+
+          <figure className="participants-photo">
+            <img src={participants} alt={t("about.community.photo")} />
+            <figcaption className="handwriting">{t("about.community.caption")}</figcaption>
+          </figure>
+        </section>
+
+        <section className="card page-section">
+          <h2>{t("about.promise.title")}</h2>
+          <ul className="promise-list">
+            <li><b>{t("about.promise.paywalls")}</b></li>
+            <li><b>{t("about.promise.ads")}</b></li>
+            <li><b>{t("about.promise.tracking")}</b></li>
+          </ul>
+        </section>
+
+        <section className="card page-section">
+          <h2>{t("about.feedback.title")}</h2>
+          <p>{t("about.feedback.body")}</p>
+          <a
+            className="primary page-button"
+            href="mailto:support@teacher.dev?subject=On-task%20Otter%20feedback"
+          >
+            {t("about.feedback.button")}
           </a>
-          , a community of builders making free tools for classrooms. Learn more about
-          who we are and what else we are building at{" "}
-          <a href="https://edtechathon.com" target="_blank" rel="noopener noreferrer">
-            edtechathon.com
-          </a>
-          .
-        </p>
+        </section>
+      </main>
 
-        <figure className="participants-photo">
-          <img src={participants} alt="Participants of the 2026 EdTech-a-thon" />
-          <figcaption className="handwriting">EdTech-a-thon 2026</figcaption>
-        </figure>
-      </section>
-
-      <section className="card page-section">
-        <h2>Our promise</h2>
-        <ul className="promise-list">
-          <li><b>Zero paywalls.</b></li>
-          <li><b>Zero ads.</b></li>
-          <li><b>Zero tracking of personal data.</b></li>
-        </ul>
-      </section>
-
-      <section className="card page-section">
-        <h2>Feedback &amp; ideas</h2>
-        <p>
-          We would love to hear from you. Tell us what is working, what is not, or pitch
-          us an idea for a tool you wish existed. We are here to help.
-        </p>
-        <a
-          className="primary page-button"
-          href="mailto:support@teacher.dev?subject=On-task%20Otter%20feedback"
-        >
-          Email support@teacher.dev
-        </a>
-      </section>
-    </main>
-
-    <Footer />
-  </div>
-);
+      <Footer />
+    </div>
+  );
+};
 
 export default AboutPage;

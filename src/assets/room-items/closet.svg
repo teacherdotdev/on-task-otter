@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280">
+  <g stroke="#5a3d2b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- bun feet -->
+    <path d="M34 261h20v4c4 2 4 8-1 10q-1 1-1 2v1q0 2-2 2h-12q-2 0-2-2v-1q0-1-1-2c-5-2-5-8-1-10z" fill="#a86f45"/>
+    <path d="M186 261h20v4c4 2 4 8-1 10q-1 1-1 2v1q0 2-2 2h-12q-2 0-2-2v-1q0-1-1-2c-5-2-5-8-1-10z" fill="#a86f45"/>
+    <path d="M36 271c0-2 1-3 3-3.5" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".6"/>
+    <path d="M188 271c0-2 1-3 3-3.5" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".6"/>
+    <!-- arched body -->
+    <path d="M30 262Q24 262 24 256V52C24 40 30 34 42 32C70 18 96 12 120 12C144 12 170 18 198 32C210 34 216 40 216 52V256Q216 262 210 262z" fill="#d9a066"/>
+    <path d="M28 50C29 41 34 37 42 36C70 22 96 16 120 16C140 16 158 19 176 25C156 21 138 21 120 21C98 21 74 27 48 40C38 42 31 45 28 50z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M206 34C212 37 216 43 216 52V256Q216 262 210 262H206z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M25 252H215V256Q215 261 210 261H30Q25 261 25 256z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <!-- dark gap where the right door stands ajar -->
+    <path d="M114 28H126V214H114z" fill="#5a3d2b" opacity=".9" stroke="none"/>
+    <!-- left door -->
+    <path d="M117 30V212H40Q34 212 34 206V60C34 54 37 50 43 47C66 36 90 30 112 28Q117 28 117 30z" fill="#d9a066"/>
+    <path d="M102 52V196Q102 200 98 200H49Q45 200 45 196V72C45 66 50 62 56 60C70 54 84 51 96 50Q102 49 102 52z" fill="#fff8ea" opacity=".3" stroke="none"/>
+    <path d="M102 52V196Q102 200 98 200H49Q45 200 45 196V72C45 66 50 62 56 60C70 54 84 51 96 50Q102 49 102 52z" fill="none" stroke-width="2" opacity=".45"/>
+    <path d="M60 90C66 110 64 130 70 150" fill="none" stroke-width="2" opacity=".35"/>
+    <circle cx="109" cy="106" r="5" fill="#a86f45"/>
+    <!-- striped scarf spilling out of the gap -->
+    <path d="M121 110C100 130 82 165 78 206C86 210 92 206 100 209C108 212 114 208 122 210C122 180 126 150 134 118z" fill="#d9785a"/>
+    <path d="M103 132L128 146.5L126 157.5L97 142.5z" fill="#e8b44f" stroke="none"/>
+    <path d="M88 162.5L123.5 175.5L123 186.5L84 175.5z" fill="#e8b44f" stroke="none"/>
+    <path d="M113 128C102 144 94 166 92 196" fill="none" stroke-width="2" opacity=".35"/>
+    <path d="M82 209 80 217M90 209 89 217M98 209 98 217M106 210 107 218M114 210 115 218" fill="none" stroke-width="2.5"/>
+    <!-- right door, swung open a crack -->
+    <path d="M121 33L130 29V212L121 216z" fill="#e8c290"/>
+    <path d="M130 29V212H200Q206 212 206 206V60C206 54 203 50 197 47C176 37 154 31 136 28Q130 28 130 29z" fill="#d9a066"/>
+    <path d="M145 51V196Q145 200 149 200H191Q195 200 195 196V72C195 66 190 62 184 60C172 54 161 51 151 50Q145 49 145 51z" fill="#fff8ea" opacity=".3" stroke="none"/>
+    <path d="M145 51V196Q145 200 149 200H191Q195 200 195 196V72C195 66 190 62 184 60C172 54 161 51 151 50Q145 49 145 51z" fill="none" stroke-width="2" opacity=".45"/>
+    <circle cx="139" cy="106" r="5" fill="#a86f45"/>
+    <!-- bottom drawer -->
+    <rect x="34" y="220" width="172" height="32" rx="8" fill="#d9a066"/>
+    <path d="M35 228Q35 221 42 221H198Q205 221 205 228z" fill="#fff8ea" opacity=".35" stroke="none"/>
+    <circle cx="92" cy="237" r="5" fill="#a86f45"/>
+    <circle cx="148" cy="237" r="5" fill="#a86f45"/>
+  </g>
+</svg>

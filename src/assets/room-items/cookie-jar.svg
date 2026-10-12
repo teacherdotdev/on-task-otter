@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170">
+  <g stroke="#5a3d2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- glass jar body -->
+    <path d="M70 46V54C42 56 30 66 30 84V144C30 158 40 165 56 165H160C176 165 186 158 186 144V84C186 66 174 56 146 54V46z" fill="#fbf1dc"/>
+    <path d="M70 46V54C42 56 30 66 30 84V144C30 158 40 165 56 165H160C176 165 186 158 186 144V84C186 66 174 56 146 54V46z" fill="#6fa7a0" opacity=".3" stroke="none"/>
+    <!-- cookies inside -->
+    <circle cx="64" cy="137" r="24" fill="#c8843c" stroke-width="5"/>
+    <path d="M82.6 126.2A21.5 21.5 0 0 1 53.3 155.6A23.7 23.7 0 0 0 82.6 126.2z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M47 134C48 127 52 121 59 119" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".45"/>
+    <circle cx="152" cy="137" r="24" fill="#c8843c" stroke-width="5"/>
+    <path d="M170.6 126.2A21.5 21.5 0 0 1 141.2 155.6A23.7 23.7 0 0 0 170.6 126.2z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M135 134C136 127 140 121 147 119" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".45"/>
+    <circle cx="108" cy="139" r="24" fill="#c8843c" stroke-width="5"/>
+    <path d="M126.6 128.2A21.5 21.5 0 0 1 97.2 157.6A23.7 23.7 0 0 0 126.6 128.2z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M91 136C92 129 96 123 103 121" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".45"/>
+    <circle cx="86" cy="101" r="24" fill="#c8843c" stroke-width="5"/>
+    <path d="M104.6 90.2A21.5 21.5 0 0 1 75.2 119.6A23.7 23.7 0 0 0 104.6 90.2z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M69 98C70 91 74 85 81 83" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".45"/>
+    <circle cx="134" cy="99" r="24" fill="#c8843c" stroke-width="5"/>
+    <path d="M152.6 88.2A21.5 21.5 0 0 1 123.2 117.6A23.7 23.7 0 0 0 152.6 88.2z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M117 96C118 89 122 83 129 81" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".45"/>
+    <circle cx="110" cy="72" r="22" fill="#c8843c" stroke-width="5"/>
+    <path d="M126.9 62.2A19.5 19.5 0 0 1 100.2 88.9A21.8 21.8 0 0 0 126.9 62.2z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M95 69C96 62 98 58 105 56" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".45"/>
+    <g fill="#5a3d2b" stroke="none">
+      <circle cx="55" cy="129" r="5"/><circle cx="71" cy="133" r="5"/><circle cx="60" cy="146" r="5"/><circle cx="74" cy="147" r="5"/>
+      <circle cx="99" cy="131" r="5"/><circle cx="115" cy="134" r="5"/><circle cx="104" cy="148" r="5"/><circle cx="118" cy="149" r="5"/>
+      <circle cx="143" cy="129" r="5"/><circle cx="159" cy="132" r="5"/><circle cx="147" cy="146" r="5"/><circle cx="162" cy="146" r="5"/>
+      <circle cx="77" cy="94" r="5"/><circle cx="93" cy="96" r="5"/><circle cx="82" cy="110" r="5"/>
+      <circle cx="126" cy="92" r="5"/><circle cx="142" cy="95" r="5"/><circle cx="131" cy="108" r="5"/><circle cx="144" cy="108" r="5"/>
+      <circle cx="101" cy="68" r="5"/><circle cx="117" cy="66" r="5"/><circle cx="112" cy="78" r="5"/>
+    </g>
+    <!-- glass shadow, glint, outline -->
+    <path d="M168 62C178 68 182 75 182 86V144C182 154 176 160 164 161H150C166 156 172 148 172 136V86C172 76 170 68 168 62z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M44 82V148" fill="none" stroke="#fff8ea" stroke-width="9" opacity=".8"/>
+    <path d="M58 66C62 63 66 62 70 61.5" fill="none" stroke="#fff8ea" stroke-width="6" opacity=".7"/>
+    <path d="M70 46V54C42 56 30 66 30 84V144C30 158 40 165 56 165H160C176 165 186 158 186 144V84C186 66 174 56 146 54V46" fill="none"/>
+    <!-- lid -->
+    <path d="M64 34C66 24 84 19 108 19C132 19 150 24 152 34z" fill="#6fa7a0"/>
+    <rect x="54" y="32" width="108" height="18" rx="9" fill="#6fa7a0"/>
+    <path d="M58 46H158" fill="none" stroke-width="4" opacity=".3"/>
+    <path d="M74 28C80 24 88 22.5 96 22" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".55"/>
+    <rect x="100" y="13" width="16" height="9" rx="3" fill="#6fa7a0" stroke-width="6"/>
+    <circle cx="108" cy="13" r="9" fill="#6fa7a0"/>
+    <path d="M104 11C105 9.5 106 9 107.5 8.5" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".6"/>
+    <!-- leaning cookie -->
+    <path d="M200 124H206A21 21 0 0 1 206 166H200z" fill="#a86f45"/>
+    <circle cx="200" cy="145" r="21" fill="#c8843c"/>
+    <path d="M211.9 134.7A18.5 18.5 0 0 1 192.4 162A22.5 22.5 0 0 0 211.9 134.7z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M185 141C186 134 190 130 196 129" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+    <g fill="#5a3d2b" stroke="none">
+      <circle cx="193" cy="139" r="5"/><circle cx="208" cy="141" r="4.5"/><circle cx="198" cy="154" r="5"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <g stroke="#5a3d2b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- honey-wood frame -->
+    <rect x="10" y="8" width="220" height="164" rx="10" fill="#d9a066"/>
+    <path d="M15 22Q15 13 24 13H216Q222 13 224 17Q219 25.5 210 25.5H30Q22 25.5 15.5 30z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <path d="M225 20V158Q225 167 216 167H24Q18 167 16 163Q22 155 30 155H210Q213 155 213 152V30Q213 22 225 20z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M14 12 30 28M226 12 210 28M14 168 30 152M226 168 210 152" fill="none" stroke-width="3" opacity=".4"/>
+    <!-- cream mat -->
+    <rect x="28" y="26" width="184" height="128" rx="4" fill="#fbf1dc"/>
+    <!-- the print -->
+    <rect x="46" y="42" width="148" height="96" rx="2" fill="#ffe7a3" stroke-width="3"/>
+    <path d="M47.5 43.5H192.5V48H52V136.5H47.5z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <circle cx="94" cy="96" r="27" fill="#d9785a" stroke-width="3"/>
+    <path d="M78 89C80 81 86 76 93 75" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <path d="M149 108V88A12 12 0 0 1 173 88V108H166V89A5 5 0 0 0 156 89V108z" fill="#e3a3a0" stroke-width="3"/>
+    <path d="M47.5 112C70 98 98 98 124 108C150 98 172 92 192.5 98V136.5H47.5z" fill="#9bb58a" stroke-width="3"/>
+    <path d="M47.5 128C80 114 130 114 192.5 127V136.5H47.5z" fill="#e8b44f" stroke-width="3"/>
+    <rect x="46" y="42" width="148" height="96" rx="2" fill="none" stroke-width="3"/>
+  </g>
+</svg>

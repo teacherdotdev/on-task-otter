@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 190">
+  <g stroke="#5a3d2b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- turned legs -->
+    <path d="M37.5 151.5h21v9c6 3 6 12-1.5 16.5c-1.5 1.5 1.5 4.5 1.5 7.5q0 3-3 3h-15q-3 0-3-3c0-3 3-6 1.5-7.5c-7.5-4.5-7.5-13.5-1.5-16.5z" fill="#a86f45"/>
+    <path d="M181.5 151.5h21v9c6 3 6 12-1.5 16.5c-1.5 1.5 1.5 4.5 1.5 7.5q0 3-3 3h-15q-3 0-3-3c0-3 3-6 1.5-7.5c-7.5-4.5-7.5-13.5-1.5-16.5z" fill="#a86f45"/>
+    <path d="M41 168c0-3 1.5-4.5 4.5-4.5" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".6"/>
+    <path d="M185 168c0-3 1.5-4.5 4.5-4.5" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".6"/>
+    <!-- cabinet body -->
+    <rect x="22" y="24" width="196" height="136" rx="12" fill="#d9a066"/>
+    <path d="M196 34H218V148C218 154.5 212.5 160 206 160H196z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M22 34H218V44C160 48 80 48 22 44z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <!-- drawers -->
+    <rect x="36" y="50" width="168" height="44" rx="10" fill="#e8c290"/>
+    <rect x="36" y="104" width="168" height="44" rx="10" fill="#e8c290"/>
+    <path d="M38 80C80 86 160 86 202 80V84C202 89.5 197.5 94 192 94H48C42.5 94 38 89.5 38 84z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M38 134C80 140 160 140 202 134V138C202 143.5 197.5 148 192 148H48C42.5 148 38 143.5 38 138z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M52 62C64 58 80 58 92 61" fill="none" stroke-width="3" opacity=".35"/>
+    <path d="M150 118C162 114 176 114 188 117" fill="none" stroke-width="3" opacity=".35"/>
+    <!-- brass knobs -->
+    <circle cx="120" cy="72" r="9.5" fill="#d8a84a"/>
+    <circle cx="120" cy="126" r="9.5" fill="#d8a84a"/>
+    <path d="M115.5 70.5c.5-2 2-3.5 4-4" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".6"/>
+    <path d="M115.5 124.5c.5-2 2-3.5 4-4" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".6"/>
+    <!-- table top -->
+    <path d="M26 5H214C221 5 225 8 228 13L231 22H9L12 13C15 8 19 5 26 5z" fill="#d9a066"/>
+    <path d="M24 9H216C220 9 222 11 223.5 14H16.5C18 11 20 9 24 9z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <rect x="7" y="18" width="226" height="18" rx="9" fill="#d9a066"/>
+    <path d="M8 28H232C232 32 228.5 35 224.5 35H15.5C11.5 35 8 32 8 28z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+  </g>
+</svg>

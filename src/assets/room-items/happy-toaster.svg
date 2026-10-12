@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160">
+  <g stroke="#5a3d2b" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- lever -->
+    <rect x="204" y="82" width="32" height="16" rx="8" fill="#e8b44f"/>
+    <g transform="translate(-6 0)">
+    <!-- toast popping up (behind the body) -->
+    <g transform="translate(0 8) rotate(-6 84 62)">
+      <path d="M56 66V30C50 20 56 8 68 9C76 2 92 2 100 9C112 8 118 20 112 30V66z" fill="#d9a066"/>
+      <path d="M65 64V33C61 26 65 18 72 18.5C78 13 90 13 96 18.5C103 18 107 26 103 33V64z" fill="#e8c290" stroke="none"/>
+    </g>
+    <g transform="translate(0 9) rotate(5 156 62)">
+      <path d="M122 66V28C116 18 122 6 134 7C142 0 158 0 166 7C178 6 184 18 178 28V66z" fill="#d9a066"/>
+      <path d="M131 64V31C127 24 131 16 138 16.5C144 11 156 11 162 16.5C169 16 173 24 169 31V64z" fill="#e8c290" stroke="none"/>
+    </g>
+    <!-- little feet -->
+    <rect x="40" y="140" width="26" height="16.5" rx="6" fill="#a86f45"/>
+    <rect x="174" y="140" width="26" height="16.5" rx="6" fill="#a86f45"/>
+    <!-- body -->
+    <path d="M18 138V96C18 66 36 52 70 52H170C204 52 222 66 222 96V138C222 146 216 150 208 150H32C24 150 18 146 18 138z" fill="#7f9cc0"/>
+    <path d="M222 112V138C222 146 216 150 208 150H32C24 150 18 146 18 138V128C60 136 160 134 222 112z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M26 96C26 72 42 60 70 60H112C80 64 58 70 46 80C36 88 30 96 26 104z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <path d="M60 62H108M132 62H180" fill="none" stroke-width="4" opacity=".45"/>
+    <!-- face -->
+    <circle cx="94" cy="100" r="7" fill="#5a3d2b" stroke="none"/>
+    <circle cx="146" cy="100" r="7" fill="#5a3d2b" stroke="none"/>
+    <circle cx="96.5" cy="97.5" r="2.5" fill="#fff8ea" stroke="none"/>
+    <circle cx="148.5" cy="97.5" r="2.5" fill="#fff8ea" stroke="none"/>
+    <path d="M110 112C115 119 125 119 130 112" fill="none" stroke-width="4.5"/>
+    <ellipse cx="74" cy="114" rx="10" ry="6.5" fill="#e3a3a0" stroke="none" opacity=".8"/>
+    <ellipse cx="166" cy="114" rx="10" ry="6.5" fill="#e3a3a0" stroke="none" opacity=".8"/>
+    </g>
+  </g>
+</svg>

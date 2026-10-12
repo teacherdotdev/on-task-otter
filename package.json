@@ -5,8 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 8000",
-    "db": "./pocketbase serve --http=127.0.0.1:8091 --hooksDir=pb_hooks --migrationsDir=pb_migrations",
-    "db:install": "./deploy/install-pocketbase.sh",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0"
   },
@@ -15,7 +13,6 @@
     "vite": "^8.1.5"
   },
   "dependencies": {
-    "pocketbase": "^0.27.3",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   }

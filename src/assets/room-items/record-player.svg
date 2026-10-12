@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150">
+  <g stroke="#5a3d2b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- music notes -->
+    <g fill="#5a3d2b">
+      <ellipse cx="211" cy="38" rx="6.5" ry="5" transform="rotate(-20 211 38)"/>
+      <path d="M217 36V12C222 15 229 17 228 26" fill="none" stroke-width="3.5"/>
+      <ellipse cx="19" cy="44" rx="5.5" ry="4.2" transform="rotate(-20 19 44)"/>
+      <path d="M24 42.5V24" fill="none" stroke-width="3.5"/>
+    </g>
+    <!-- propped lid -->
+    <path d="M38 60 44 14Q45 6 53 6H187Q195 6 196 14L202 60z" fill="#6fa7a0"/>
+    <path d="M45.5 14.5Q46.5 8.5 53 8.5H187Q190 8.5 192 10C150 11.5 80 11.5 48 16z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M50 58 54 22Q55 16 61 16H179Q185 16 186 22L190 58z" fill="#fbf1dc" stroke-width="3.5"/>
+    <path d="M60 54 63 29Q64 25 68 25H172Q176 25 177 29L180 54" fill="none" stroke-width="2.5" stroke-dasharray="6 5" opacity=".4"/>
+    <path d="M178 17.75Q184 17.75 184.5 22L188 56.25H180L176 25Q175 20 170 17.75z" fill="#5a3d2b" opacity=".12" stroke="none"/>
+    <!-- case front -->
+    <path d="M12 102H228V134Q228 147.5 214 147.5H26Q12 147.5 12 134z" fill="#6fa7a0"/>
+    <path d="M13.75 128H226.25V134Q226.25 145.75 214 145.75H26Q13.75 145.75 13.75 134z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M24 138H216" fill="none" stroke-width="2.5" stroke-dasharray="6 5" opacity=".4"/>
+    <rect x="28" y="114" width="72" height="20" rx="8" fill="#ead9bd" stroke-width="3.5"/>
+    <path d="M38 121H90M38 127H90" fill="none" stroke-width="2.5" opacity=".4"/>
+    <circle cx="178" cy="122" r="7" fill="#d8a84a" stroke-width="3.5"/>
+    <circle cx="202" cy="122" r="7" fill="#d8a84a" stroke-width="3.5"/>
+    <!-- deck -->
+    <path d="M32 54H208Q214 54 216 60L228 100Q230 106 224 106H16Q10 106 12 100L24 60Q26 54 32 54z" fill="#6fa7a0"/>
+    <path d="M40 60H200Q204 60 205 63L214 97Q215 100 211 100H29Q25 100 26 97L35 63Q36 60 40 60z" fill="#fbf1dc" stroke-width="3.5"/>
+    <!-- latches -->
+    <rect x="48" y="100" width="16" height="13" rx="4" fill="#d8a84a" stroke-width="3.5"/>
+    <rect x="176" y="100" width="16" height="13" rx="4" fill="#d8a84a" stroke-width="3.5"/>
+    <!-- record -->
+    <ellipse cx="104" cy="83" rx="57" ry="18" fill="#5a3d2b" opacity=".25" stroke="none"/>
+    <ellipse cx="104" cy="80" rx="56" ry="18" fill="#3a2b26"/>
+    <ellipse cx="104" cy="80" rx="38" ry="12" fill="none" stroke="#fff8ea" stroke-width="2.5" opacity=".25"/>
+    <path d="M60 76C66 70 78 66.5 92 65.5" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".45"/>
+    <ellipse cx="104" cy="80" rx="16" ry="5.5" fill="#d9785a" stroke-width="3"/>
+    <!-- tone arm -->
+    <ellipse cx="188" cy="70" rx="10" ry="6" fill="#d8a84a"/>
+    <path d="M188 69C196 82 186 92 156 89" fill="none" stroke-width="9"/>
+    <path d="M188 69C196 82 186 92 156 89" fill="none" stroke="#fbf1dc" stroke-width="3.5"/>
+    <rect x="144" y="84" width="16" height="9" rx="3" fill="#d8a84a" stroke-width="3.5" transform="rotate(-6 152 88)"/>
+  </g>
+</svg>

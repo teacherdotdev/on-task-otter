@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 240">
+  <g stroke="#5a3d2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- tumbler rim and opening -->
+    <ellipse cx="80" cy="150" rx="46" ry="10" fill="#e8b44f"/>
+    <ellipse cx="80" cy="151" rx="35" ry="5" fill="#5a3d2b" opacity=".45" stroke="none"/>
+    <!-- denim toothbrush, leaning left, bristles facing out -->
+    <g transform="translate(68 232) rotate(-9)">
+      <rect x="-26" y="-200" width="20" height="44" rx="5" fill="#fff8ea" stroke-width="6"/>
+      <path d="M-23 -185H-10M-23 -171H-10" fill="none" stroke="#9fc4dc" stroke-width="5"/>
+      <path d="M-11 -40V-140C-11 -146-9 -150-9 -154V-198C-9 -204-5 -208 0 -208S9 -204 9 -198V-154C9 -150 11 -146 11 -140V-40z" fill="#7f9cc0"/>
+      <path d="M-3 -122V-70" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".6"/>
+    </g>
+    <!-- terracotta toothbrush, leaning right, bristles facing out -->
+    <g transform="translate(92 232) rotate(11)">
+      <rect x="6" y="-190" width="20" height="44" rx="5" fill="#fff8ea" stroke-width="6"/>
+      <path d="M10 -175H23M10 -161H23" fill="none" stroke="#9fc4dc" stroke-width="5"/>
+      <path d="M11 -40V-130C11 -136 9 -140 9 -144V-188C9 -194 5 -198 0 -198S-9 -194-9 -188V-144C-9 -140-11 -136-11 -130V-40z" fill="#d9785a"/>
+      <path d="M-3 -112V-66" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".6"/>
+    </g>
+    <!-- straight-sided tumbler body -->
+    <path d="M34 150A46 10 0 0 0 126 150V217C126 226.5 120 232.5 110.5 232.5H49.5C40 232.5 34 226.5 34 217z" fill="#e8b44f"/>
+    <path d="M126 157V217C126 226.5 120 232.5 110.5 232.5H101C108 230 112 225 112 217V159C118 159 123 157 126 154z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M47 170V214" fill="none" stroke="#fff8ea" stroke-width="7" opacity=".55"/>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150">
+  <g stroke="#5a3d2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- desk top -->
+    <path d="M18 16H222C225 16 227 17.5 228 20L234 30H6L12 20C13 17.5 15 16 18 16z" fill="#e8c290"/>
+    <path d="M18 17.5H222C224 17.5 225.5 18.5 226.3 20.5L227.5 23H12.5L13.7 20.5C14.5 18.5 16 17.5 18 17.5z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M44 26C70 24 96 27 124 25.5" fill="none" stroke-width="1.2" opacity=".35"/>
+    <!-- pencil mug and notebooks -->
+    <path d="M200 16L196.5 5M207 16L208.5 4.5M212 16L217.5 6.5" fill="none" stroke-width="7"/>
+    <path d="M200 16L197.3 7.5M207 16L208.2 7M212 16L216.3 8.8" fill="none" stroke-width="3.5" stroke="#e8b44f"/>
+    <path d="M207 16L208.2 7" fill="none" stroke-width="3.5" stroke="#d9785a"/>
+    <path d="M212 16L216.3 8.8" fill="none" stroke-width="3.5" stroke="#9bb58a"/>
+    <path d="M196 13H216V24C216 27 214 28 211 28H201C198 28 196 27 196 24z" fill="#6fa7a0"/>
+    <path d="M216 16C222 16 222 24 216 24" fill="none" stroke-width="2"/>
+    <path d="M199 17V23" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".55"/>
+    <rect x="160" y="21" width="30" height="7" rx="2" fill="#e3a3a0"/>
+    <rect x="163" y="14.5" width="25" height="6.5" rx="2" fill="#7f9cc0"/>
+    <!-- apron with drawer -->
+    <path d="M34 40H150V52C150 54 148 56 146 56H34z" fill="#d9a066"/>
+    <path d="M35 40H149V46H35z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <rect x="63" y="44" width="62" height="9" rx="3" fill="none" stroke-width="1.2" opacity=".5"/>
+    <circle cx="94" cy="48.5" r="2.5" fill="#d8a84a" stroke-width="1.2"/>
+    <!-- left turned leg -->
+    <path d="M20 40H40V57C40 59 38 61 36.5 62C42 66 43 75 39.5 81C37.5 85 36.5 91 36.5 100L35.5 134C39 136 40 140 39 144C38 147 37 148 36 149H24C23 148 22 147 21 144C20 140 21 136 24.5 134L23.5 100C23.5 91 22.5 85 20.5 81C17 75 18 66 23.5 62C22 61 20 59 20 57z" fill="#d9a066"/>
+    <path d="M22.5 73C22.5 70 23.5 67.5 26 66" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".6"/>
+    <path d="M40 57C40 59 38 61 36.5 62C42 66 43 75 39.5 81C37.5 85 36.5 91 36.5 100L35.5 134C39 136 40 140 39 144C38 147 37 148 36 149H32C34 146 34 139 32 136L33 100C33 89 35 83 37 79C39 73 37 66 34 62C36 61 37 59 37 57V40H40z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M21 40H39V46H21z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <!-- drawer pedestal -->
+    <rect x="148" y="38" width="78" height="104" rx="5" fill="#d9a066"/>
+    <path d="M149 40H225V47H149z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M216 47H225V137C225 139.5 223.5 141 221 141H216z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <rect x="156" y="51" width="60" height="25" rx="4" fill="#e8c290"/>
+    <rect x="156" y="82" width="60" height="25" rx="4" fill="#e8c290"/>
+    <rect x="156" y="113" width="60" height="23" rx="4" fill="#e8c290"/>
+    <path d="M159 55H200M159 86H200M159 117H200" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".55"/>
+    <g fill="#d8a84a">
+      <circle cx="186" cy="63.5" r="4"/><circle cx="186" cy="94.5" r="4"/><circle cx="186" cy="124.5" r="4"/>
+    </g>
+    <path d="M152 141H166V144C166 147 164 149 161 149H157C154 149 152 147 152 144zM208 141H222V144C222 147 220 149 217 149H213C210 149 208 147 208 144z" fill="#a86f45"/>
+    <!-- front edge of top -->
+    <rect x="5" y="29" width="230" height="11" rx="5" fill="#d9a066"/>
+    <path d="M6 35H234C234 38 232 39 229.5 39H10.5C8 39 6 38 6 35z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+  </g>
+</svg>

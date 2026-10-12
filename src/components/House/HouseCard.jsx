@@ -1,156 +1,152 @@
-import { useEffect, useState } from "react";
-import RoomTabs from "./RoomTabs";
+import { useState } from "react";
+import RoomPicker from "./RoomPicker";
 import RoomScene from "./RoomScene";
-import Modal from "../Modal/Modal";
+import Icon from "../Icon/Icon";
+import { useTranslation } from "../../i18n";
 
-const HouseCard = ({ house, rewards, focusMode = false }) => {
-  const [openShop, setOpenShop] = useState(null);
+// A round icon button that sits on top of the room. The label shows as a
+// tooltip, so the room itself stays uncluttered.
+const SceneButton = ({ icon, label, pressed, onClick }) => (
+  <button
+    className="scene-icon-button"
+    type="button"
+    aria-label={label}
+    aria-pressed={pressed}
+    data-tooltip={label}
+    onClick={onClick}
+  >
+    <Icon name={icon} />
+  </button>
+);
+
+// In focus mode the session's timer and sound meter come in as children, so
+// they sit inside the room instead of under it.
+const HouseCard = ({ house, rewards, focusMode = false, fullScreen, children }) => {
+  const { t } = useTranslation();
+  const [isRenaming, setIsRenaming] = useState(false);
   const [editingMode, setEditingMode] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [showActions, setShowActions] = useState(true);
   const {
-    points,
+    stars,
     houseRooms,
     activeRoom,
     setActiveRoom,
     activeRoomDetails,
     roomDecorations,
     houseItems,
-    houseItemsOwned,
     buyHouseItem,
-    unlockedRoomIds,
     equipped,
     isCelebrating,
     isFocusing,
+    isAtDesk,
     noiseTone,
     otterName,
     setOtterName,
     isPreviewing,
   } = house;
 
+  const shownName = otterName || t("otter.default");
   const activeRoomItems = houseItems.filter((item) => item.room === activeRoomDetails.id);
-  const itemsStillNeeded = activeRoomItems.filter((item) => !houseItemsOwned.includes(item.id)).length;
-  const allRoomsUnlocked = unlockedRoomIds.length === houseRooms.length;
 
-  useEffect(() => {
-    if (!openShop) return;
+  const closeEditor = () => {
+    setEditingMode(null);
+    setSelectedItem(null);
+  };
 
-    const closeOnEscape = (event) => {
-      if (event.key === "Escape") setOpenShop(null);
-    }
+  const toggleEditing = (mode) => {
+    setEditingMode((current) => current === mode ? null : mode);
+    setSelectedItem(null);
+  };
 
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [openShop]);
+  const configureOverlay = (
+    <>
+      <div className="scene-overlay scene-overlay-start">
+        {editingMode === "decorations" ? null : isRenaming ? (
+          <form className="scene-chip otter-name-tag" onSubmit={(event) => {
+            event.preventDefault();
+            setIsRenaming(false);
+          }}>
+            <input
+              type="text"
+              aria-label={t("house.nameField")}
+              value={otterName}
+              maxLength="30"
+              autoFocus
+              placeholder={t("otter.default")}
+              onChange={(event) => setOtterName(event.target.value)}
+              onBlur={() => setIsRenaming(false)}
+              onKeyDown={(event) => event.key === "Escape" && setIsRenaming(false)}
+            />
+            <button type="submit" aria-label={t("house.saveName")}><Icon name="check" /></button>
+          </form>
+        ) : (
+          <div className="scene-chip otter-name-tag">
+            <b>{shownName}</b>
+            <button type="button" aria-label={t("house.nameOtter")} title={t("house.nameOtter")} onClick={() => setIsRenaming(true)}>
+              <Icon name="pencil" />
+            </button>
+          </div>
+        )}
+        <p className="scene-chip" title={t("house.classStarsDetail")}>
+          <span className="scene-chip-star" aria-hidden="true">★</span>
+          <b>{stars}</b> <span className="scene-chip-word">{t("house.stars")}</span>
+        </p>
+      </div>
+
+      <div className="scene-overlay scene-overlay-end" role="toolbar" aria-label={t("house.actions")}>
+        <RoomPicker rooms={houseRooms} activeRoom={activeRoom} setActiveRoom={setActiveRoom} />
+        <SceneButton icon="sofa" label={t("house.decorate")} pressed={editingMode === "decorations"} onClick={() => toggleEditing("decorations")} />
+        <SceneButton icon="shirt" label={t("house.dressUp")} pressed={editingMode === "accessories"} onClick={() => toggleEditing("accessories")} />
+      </div>
+
+      {editingMode && (
+        <div className="scene-overlay scene-overlay-bottom">
+          <button className="scene-exit-button" type="button" onClick={closeEditor}>
+            <Icon name="check" />
+            {editingMode === "decorations" ? t("scene.exitDecorating") : t("scene.exitDressing")}
+          </button>
+        </div>
+      )}
+    </>
+  );
+
+  const focusOverlay = fullScreen?.isSupported && (
+    <div className="scene-overlay scene-overlay-end">
+      <SceneButton
+        icon={fullScreen.isFullScreen ? "minimize" : "maximize"}
+        label={fullScreen.isFullScreen ? t("app.fullScreen.exit") : t("app.fullScreen.enter")}
+        onClick={fullScreen.isFullScreen ? fullScreen.exit : fullScreen.enter}
+      />
+    </div>
+  );
 
   return (
     <section className="house-card" id="dashboard">
-      {!focusMode && <div className="house-heading">
-        <div>
-          <p className="card-label">{otterName || "Otter"}'s house</p>
-          <h2>{otterName || "Otter"} is ready to focus</h2>
-        </div>
-        <div className="house-stats">
-          <p className="house-class-points">
-            <span aria-hidden="true">★</span> <strong>{points}</strong> class points
-          </p>
-          <div className="house-progress">
-          <span><b>{activeRoomItems.length - itemsStillNeeded}</b> of {activeRoomItems.length} room items bought</span>
-          <small>{allRoomsUnlocked ? "Every room is available!" : "Buy every item to open the next room"}</small>
-          </div>
-        </div>
-      </div>}
-
-      {!focusMode && <div className={`house-actions ${showActions ? "" : "collapsed"}`}>
-        {showActions && (
-          <>
-            <button className="outline" type="button" onClick={() => setOpenShop("rooms")}>Choose room</button>
-            <button className="outline" type="button" onClick={() => { setEditingMode((mode) => mode === "decorations" ? null : "decorations"); setSelectedItem(null); }}>Decorate room</button>
-            <button className="outline" type="button" onClick={() => { setEditingMode((mode) => mode === "accessories" ? null : "accessories"); setSelectedItem(null); }}>Dress up otter</button>
-            <button className="outline" type="button" onClick={() => setOpenShop("name")}>Name your otter</button>
-          </>
-        )}
-        <button
-          className="house-actions-toggle"
-          type="button"
-          aria-expanded={showActions}
-          onClick={() => setShowActions((visible) => !visible)}
-        >
-          {showActions ? "Hide house actions" : "Show house actions"}
-        </button>
-      </div>}
-
       <RoomScene
         room={activeRoomDetails}
         decorations={roomDecorations}
-        availableItems={houseItems.filter((item) => item.room === activeRoomDetails.id)}
+        availableItems={activeRoomItems}
         equipped={equipped}
         isCelebrating={isCelebrating}
         isFocusing={isFocusing}
+        isAtDesk={isAtDesk}
         noiseTone={noiseTone}
-        otterName={otterName || "Otter"}
-        focusMode={focusMode}
         editingMode={focusMode ? null : editingMode}
         accessoryItems={rewards.accessories}
         unlockedAccessories={rewards.unlocked}
-        points={points}
+        stars={stars}
         isPreviewing={isPreviewing}
-        selectedItem={selectedItem}
+        selectedItem={focusMode ? null : selectedItem}
         onChooseItem={setSelectedItem}
-        onCloseEditor={() => { setEditingMode(null); setSelectedItem(null); }}
         onConfirmItem={(item) => {
           if (editingMode === "decorations") buyHouseItem(item);
           else rewards.buyOrEquip(item);
           setSelectedItem(null);
         }}
-      />
-
-      {!focusMode && openShop && (
-        <Modal
-          isOpen={Boolean(openShop)}
-          onClose={() => setOpenShop(null)}
-          className="shop-modal"
-          ariaLabelledBy="shop-title"
-          closeLabel="Close shop"
-        >
-            {openShop === "name" ? (
-              <form className="otter-name-modal" onSubmit={(event) => {
-                event.preventDefault();
-                setOpenShop(null);
-              }}>
-                <p className="card-label">Your otter</p>
-                <h2 id="shop-title">What should we call your otter?</h2>
-                <label className="otter-name-field">
-                  <span>Otter&apos;s name</span>
-                  <input
-                    type="text"
-                    value={otterName}
-                    maxLength="30"
-                    autoFocus
-                    onChange={(event) => setOtterName(event.target.value)}
-                    placeholder="Otter"
-                  />
-                </label>
-                <button className="outline" type="submit">Save name</button>
-              </form>
-            ) : openShop === "rooms" ? (
-              <div className="room-picker">
-                <p className="card-label">Otter&apos;s house</p>
-                <h2 id="shop-title">Choose a room to focus in</h2>
-                <RoomTabs
-                  rooms={houseRooms}
-                  activeRoom={activeRoom}
-                  setActiveRoom={(room) => {
-                    setActiveRoom(room);
-                    setOpenShop(null);
-                  }}
-                  unlockedRoomIds={unlockedRoomIds}
-                  unlockAll={isPreviewing}
-                />
-              </div>
-            ) : null}
-        </Modal>
-      )}
+      >
+        {focusMode ? focusOverlay : configureOverlay}
+        {focusMode && children}
+      </RoomScene>
     </section>
   );
 };

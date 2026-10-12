@@ -1,20 +1,25 @@
-import edtechathonLogo from "../../assets/edtechathon-logo.svg";
+import teacherDevLogo from "../../assets/teacher-dev-logo.svg";
 import Link from "../Link/Link";
+import { useTranslation } from "../../i18n";
 
-const Footer = () => (
+const Footer = () => {
+  const { t } = useTranslation();
+
+  return (
   <footer className="site-footer">
     <a
-      className="edtechathon-credit"
-      href="https://edtechathon.com"
+      className="teacher-dev-credit"
+      href="https://teacher.dev"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <img src={edtechathonLogo} alt="" />
-      Built by the EdTech-a-thon
+      <img src={teacherDevLogo} alt="" />
+      {t("footer.builtBy")}
     </a>
-    <Link href="/about">about</Link>
-    <Link href="/privacy">privacy</Link>
+    <Link href="/about">{t("footer.about")}</Link>
+    <Link href="/privacy">{t("footer.privacy")}</Link>
   </footer>
-);
+  );
+};
 
 export default Footer;

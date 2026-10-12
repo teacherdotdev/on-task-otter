@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <g stroke="#5a3d2b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- bunting -->
+    <path d="M12 11Q120 30 228 11" fill="none" stroke-width="2.5"/>
+    <path d="M18 12L36 15L25 27.5z" fill="#d9785a" stroke-width="3"/>
+    <path d="M44.5 16L62.5 18L52 31z" fill="#e8b44f" stroke-width="3"/>
+    <path d="M71 18.5L89 20L79.5 33z" fill="#9bb58a" stroke-width="3"/>
+    <path d="M97.5 20L115.5 20.5L106.5 34.5z" fill="#e3a3a0" stroke-width="3"/>
+    <path d="M124.5 20.5L142.5 20L133.5 34.5z" fill="#7f9cc0" stroke-width="3"/>
+    <path d="M151 20L169 18.5L160.5 33z" fill="#e8b44f" stroke-width="3"/>
+    <path d="M177.5 18L195.5 16L188 31z" fill="#d9785a" stroke-width="3"/>
+    <path d="M204 15L222 12L215 27.5z" fill="#9bb58a" stroke-width="3"/>
+    <!-- hanging strings and nails -->
+    <path d="M64 40 39 58M64 40 89 58M157 38 141 56M157 38 173 56M199 96 181 121M199 96 217 121" fill="none" stroke-width="2.5" opacity=".7"/>
+    <g fill="#d8a84a" stroke-width="2.5">
+      <circle cx="12" cy="11" r="4"/><circle cx="228" cy="11" r="4"/><circle cx="64" cy="40" r="4"/><circle cx="157" cy="38" r="4"/><circle cx="199" cy="96" r="4"/>
+    </g>
+    <!-- crayon house drawing, honey frame -->
+    <rect x="17" y="52" width="94" height="120" rx="9" fill="#d9a066"/>
+    <path d="M99 64V160H29L19.5 169.5A9 9 0 0 0 26 172H102A9 9 0 0 0 111 163V61A9 9 0 0 0 108.5 54.5z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M26 57.5H95M22.5 63V146" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".55"/>
+    <rect x="29" y="64" width="70" height="96" rx="4" fill="#fbf1dc" stroke-width="2.5"/>
+    <g stroke="none">
+      <path d="M31 149C38.5 145 45 147.5 52 145.5C58.5 144 65.5 147.5 72 145.5C79 144 87 147.5 97 145.5L97 158L31 158z" fill="#9bb58a"/>
+      <path d="M42.5 108.5L84 106L85.5 148.5L44 148z" fill="#e8b44f"/>
+      <path d="M35.5 111L63.5 81L92.5 108.5z" fill="#d9785a"/>
+      <path d="M56 148.5L56 132.5C56 126.5 68 126.5 68 132.5L68 148.5z" fill="#7f9cc0"/>
+      <path d="M72 114.5L81 114.5L81 122L72 122z" fill="#7f9cc0"/>
+      <circle cx="44" cy="77" r="6.5" fill="#e8b44f"/>
+    </g>
+    <path d="M53 81L56.5 82.5M47.5 86.5L49 90M40 86.5L38.5 90M34.5 81L31 82.5M34.5 73.5L31 72M40 68L38.5 64.5M47.5 68L49 64.5M53 73.5L56.5 72" fill="none" stroke="#e8b44f" stroke-width="3"/>
+    <path d="M42.5 108.5L84 106L85.5 148.5L44 148zM35.5 111L63.5 81L92.5 108.5" fill="none" stroke-width="2" opacity=".5"/>
+    <rect x="29" y="64" width="70" height="96" rx="4" fill="none" stroke-width="2.5"/>
+    <!-- round moon frame, walnut -->
+    <circle cx="157" cy="86" r="36" fill="#a86f45"/>
+    <path d="M188 68A36 36 0 0 1 139 117L144 108.5A26 26 0 0 0 179.5 73z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M128 75.5A31.0 31.0 0 0 1 147.5 56.5" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".55"/>
+    <circle cx="157" cy="86" r="26" fill="#7f9cc0" stroke-width="2.5"/>
+    <path d="M161 70A17 17 0 1 0 173 96A13.5 13.5 0 0 1 161 70z" fill="#e8b44f" stroke-width="2.5"/>
+    <g fill="#fbf1dc" stroke="none"><circle cx="169.5" cy="75" r="2.8"/><circle cx="143" cy="98.5" r="2.2"/></g>
+    <!-- heart frame, dusty rose -->
+    <path d="M199 128.5C194 118.5 183.5 115.5 175.5 118.5C166.5 122 164 132.5 168 141.5C173 153.5 188.5 162.5 199 171.5C209.5 162.5 225 153.5 230 141.5C234 132.5 231.5 122 222.5 118.5C214.5 115.5 204 118.5 199 128.5z" fill="#e3a3a0"/>
+    <path d="M229.5 126C233.5 132.5 233 138 230 141.5C225 153.5 209.5 162.5 199 171.5C203 165 212 157.5 218.5 149.5C225 141.5 229 134 229.5 126z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M171.5 131.5C173 125 177 122 182 121.5" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".6"/>
+    <path d="M199 134.5C196 128 189.5 126.5 185 128C179.5 130.5 178 137 180.5 142C183.5 149 193 154.5 199 160C205 154.5 214.5 149 217.5 142C220 137 218.5 130.5 213 128C208.5 126.5 202 128 199 134.5z" fill="#fbf1dc" stroke-width="2.5"/>
+    <path d="M199 139.5C197.5 136.5 194.5 136 192.5 136.5C190 138 189 140.5 190.5 143.5C191.5 146.5 196 149 199 151.5C202 149 206.5 146.5 207.5 143.5C209 140.5 208 138 205.5 136.5C203.5 136 200.5 136.5 199 139.5z" fill="#d9785a" stroke="none"/>
+  </g>
+</svg>
+

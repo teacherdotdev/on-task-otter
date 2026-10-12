@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200">
+  <g stroke="#5a3d2b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- footed stand -->
+    <rect x="110" y="146" width="20" height="38" rx="7" fill="#6fa7a0"/>
+    <path d="M122 150H126.5V180H122z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M78 196.5C78 186 96 179 120 179C144 179 162 186 162 196.5z" fill="#6fa7a0"/>
+    <path d="M90 190C95 186 102 184 109 183" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <path d="M22 134V139A98 15 0 0 0 218 139V134z" fill="#6fa7a0"/>
+    <path d="M22 139A98 15 0 0 0 218 139V137C190 150 50 150 22 137z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <ellipse cx="120" cy="134" rx="98" ry="15" fill="#6fa7a0"/>
+    <path d="M34 131C42 127 54 124.5 66 123.5" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <!-- cake: pink sponge with a cream filling -->
+    <path d="M44 58V128A76 12 0 0 0 196 128V58z" fill="#e3a3a0"/>
+    <path d="M44 100A76 12 0 0 0 196 100V110A76 12 0 0 1 44 110z" fill="#fbf1dc" stroke-width="4.5"/>
+    <path d="M196 60V128C196 133 186 136.5 172 138.5C178 128 180 100 178 60z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M50 118C50 124 52 127 56 129.5" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <!-- frosting with drips -->
+    <path d="M44 58A76 12 0 0 1 196 58V70Q191 79 186.5 76V83.5A8.5 8.5 0 0 1 169.5 83.5V79Q160 85 150.5 81V99A8.5 8.5 0 0 1 133.5 99V82Q124 87 114.5 82V87.5A8.5 8.5 0 0 1 97.5 87.5V81.5Q87 86 76.5 80V92.5A8.5 8.5 0 0 1 59.5 92.5V77.5Q52 80.5 44 70z" fill="#fbf1dc"/>
+    <path d="M60 54C72 50 88 48.5 104 48" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".6"/>
+    <!-- sprinkles -->
+    <path d="M150 54.5L157 53M84 59L90 61M138 62L144 60" fill="none" stroke="#e8b44f" stroke-width="4"/>
+    <!-- cherry -->
+    <path d="M122 34C123 22 128 13 138 8" fill="none" stroke-width="5"/>
+    <circle cx="120" cy="42" r="13" fill="#c9714f"/>
+    <path d="M113 38C114 35 116 33.5 118.5 33" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".6"/>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 190">
+  <g stroke="#5a3d2b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- folded cream towel -->
+    <path d="M116 90C114 66 116 50 126 47C144 43 164 43 178 47C188 50 192 60 192 90z" fill="#fbf1dc"/>
+    <path d="M115.3 57C142 53 168 53 191 57.5L191.6 66C168 62 142 62 115 66z" fill="#e3a3a0"/>
+    <path d="M115 74C142 70 168 70 192 74V84C168 80 142 80 115.2 84z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M115 74C142 70 168 70 192 74" fill="none" stroke-width="3" opacity=".45"/>
+    <!-- rumpled sage T-shirt with a collar notch -->
+    <path d="M56 90C54 84 54 79 55 75L44 78C39 72 41 63 50 59L78 50C84 61 98 61 104 50L130 57C139 61 141 69 136 75L125 73C127 79 127 85 125 90z" fill="#9bb58a"/>
+    <path d="M78 50C84 61 98 61 104 50C100 66 82 66 78 50z" fill="#5a3d2b" opacity=".22" stroke="none"/>
+    <path d="M78 50C82 66 100 66 104 50" fill="none" stroke-width="3" opacity=".6"/>
+    <path d="M55 75C56 70 58 66 60 64M125 73C124 69 122 66 120 64" fill="none" stroke-width="3" opacity=".45"/>
+    <path d="M50 66C53 62 58 60 62 59" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".55"/>
+    <!-- cut-out side handles -->
+    <path d="M50 102C34 100 14 102 14 115C14 128 34 130 50 128zM21 115C21 111.5 25 109 30 109C35 109 39 111.5 39 115C39 118.5 35 121 30 121C25 121 21 118.5 21 115z" fill="#d9a066" fill-rule="evenodd"/>
+    <path d="M190 102C206 100 226 102 226 115C226 128 206 130 190 128zM219 115C219 111.5 215 109 210 109C205 109 201 111.5 201 115C201 118.5 205 121 210 121C215 121 219 118.5 219 115z" fill="#d9a066" fill-rule="evenodd"/>
+    <!-- wicker body -->
+    <path d="M46 94C42 124 44 160 52 176C56 184 62 187.5 70 187.5H170C178 187.5 184 184 188 176C196 160 198 124 194 94z" fill="#d9a066"/>
+    <path d="M58 110Q120 116 182 110M57 128Q120 134 183 128M58 146Q120 152 182 146M60 164Q120 170 180 164" fill="none" stroke="#a86f45" stroke-width="9" stroke-dasharray="8 14" opacity=".55"/>
+    <path d="M58 119Q120 125 182 119M57 137Q120 143 183 137M59 155Q120 161 181 155M63 173Q120 179 177 173" fill="none" stroke="#a86f45" stroke-width="9" stroke-dasharray="8 14" stroke-dashoffset="11" opacity=".55"/>
+    <path d="M194.5 100C197 128 194 160 188 176C184 184 178 187.5 170 187.5H160C176 176 184 140 182 100z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <!-- rolled rim -->
+    <rect x="34" y="80" width="172" height="20" rx="10" fill="#e8c290"/>
+    <path d="M44 86H120" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".6"/>
+    <!-- mustard striped sleeve over the rim -->
+    <path d="M66 80C58 98 56 116 58 134L82 136C80 118 82 100 90 82z" fill="#e8b44f"/>
+    <path d="M62 104L86 107M59 120L82 122" fill="none" stroke="#d9785a" stroke-width="5"/>
+    <path d="M58 132C64 136 76 138 82 136L83 146C76 149 64 147 58 143z" fill="#fbf1dc"/>
+    <!-- plum sock over the rim -->
+    <path d="M132 78L136 112C137 124 144 132 156 134L170 135C178 135 182 130 181 124C180 118 174 116 168 116L157 114C155 104 154 92 154 78z" fill="#a98fbf"/>
+    <path d="M132 78H154C154 81 154.1 85 154.3 88C147 90.5 140 90.5 133.2 88z" fill="#fbf1dc" stroke="none"/>
+    <path d="M135.8 110L136 112C137 124 144 132 156 134C155 129.5 155.5 126.5 156.5 125C148 123 142 118 140.5 109.5z" fill="#fbf1dc" stroke="none"/>
+    <path d="M168 116C174 116 180 118 181 124C182 130 178 135 170 135C173.5 129 173.5 121 168 116z" fill="#fbf1dc" stroke="none"/>
+    <path d="M133.2 88C140 90.5 147 90.5 154.3 88M140.5 109.5C142 118 148 123 156.5 125M168 116C173.5 121 173.5 129 170 135" fill="none" stroke-width="3" opacity=".5"/>
+  </g>
+</svg>

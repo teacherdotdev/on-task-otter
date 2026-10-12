@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 185">
+  <g stroke="#5a3d2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- brass rod -->
+    <rect x="10" y="10" width="220" height="7" rx="3.5" fill="#d8a84a"/>
+    <path d="M16 12.5H120" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".6"/>
+    <circle cx="9" cy="13.5" r="5.5" fill="#d8a84a"/>
+    <circle cx="231" cy="13.5" r="5.5" fill="#d8a84a"/>
+    <!-- curtain, tied back -->
+    <path d="M16 22 q11.5 3 23 0 q11.5 3 23 0 q11.5 3 23 0 q11.5 3 23 0 q11.5 3 23 0 q11.5 3 23 0 q11.5 3 23 0 C178 50 120 92 80 114L79 124C92 136 104 156 108 172 q-11.75 8 -23.5 0 q-11.75 8 -23.5 0 q-11.75 8 -23.5 0 q-11.75 8 -23.5 0 C12 140 18 128 18 120C18 112 13 60 16 22z" fill="#9bb58a"/>
+    <path d="M154 22q11.5 3 23 0C178 50 120 92 80 114L70 111C80 100 140 64 154 25z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M79 124C92 136 104 156 108 172q-11.75 8 -23.5 0C80 158 74 140 66 125z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M19 30C17 60 21 96 22 112H27C26 96 23 62 24 30z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M50 25C48 70 32 100 30 112M85 25C82 70 48 98 44 112M120 25C116 66 66 98 58 112M152 25C140 64 84 100 70 110M30 126C28 140 33 156 37.5 172M46 126C48 142 56 158 61 172M60 126C68 142 78 158 84.5 172" fill="none" stroke-width="1.2" opacity=".4"/>
+    <g fill="#fbf1dc" stroke-width="1.2">
+      <circle cx="35" cy="46" r="5"/>
+      <circle cx="68" cy="40" r="4"/>
+      <circle cx="102" cy="48" r="6"/>
+      <circle cx="140" cy="36" r="4.5"/>
+      <circle cx="120" cy="66" r="4"/>
+      <circle cx="80" cy="76" r="4.5"/>
+      <circle cx="42" cy="88" r="5"/>
+      <circle cx="28" cy="146" r="4"/>
+      <circle cx="54" cy="140" r="5"/>
+      <circle cx="74" cy="156" r="4"/>
+    </g>
+    <!-- scalloped rose hem trim -->
+    <path d="M108 172 q-11.75 8 -23.5 0 q-11.75 8 -23.5 0 q-11.75 8 -23.5 0 q-11.75 8 -23.5 0 L13.5 164 q11.5 8 23 0 q11.5 8 23 0 q11.5 8 23 0 q11.5 8 23 0z" fill="#e3a3a0"/>
+    <!-- rings -->
+    <g fill="none">
+      <circle cx="16" cy="17" r="5.5" stroke-width="5"/> <circle cx="39" cy="17" r="5.5" stroke-width="5"/> <circle cx="62" cy="17" r="5.5" stroke-width="5"/> <circle cx="85" cy="17" r="5.5" stroke-width="5"/> <circle cx="108" cy="17" r="5.5" stroke-width="5"/> <circle cx="131" cy="17" r="5.5" stroke-width="5"/> <circle cx="154" cy="17" r="5.5" stroke-width="5"/> <circle cx="177" cy="17" r="5.5" stroke-width="5"/>
+      <circle cx="16" cy="17" r="5.5" stroke="#d8a84a" stroke-width="2"/> <circle cx="39" cy="17" r="5.5" stroke="#d8a84a" stroke-width="2"/> <circle cx="62" cy="17" r="5.5" stroke="#d8a84a" stroke-width="2"/> <circle cx="85" cy="17" r="5.5" stroke="#d8a84a" stroke-width="2"/> <circle cx="108" cy="17" r="5.5" stroke="#d8a84a" stroke-width="2"/> <circle cx="131" cy="17" r="5.5" stroke="#d8a84a" stroke-width="2"/> <circle cx="154" cy="17" r="5.5" stroke="#d8a84a" stroke-width="2"/> <circle cx="177" cy="17" r="5.5" stroke="#d8a84a" stroke-width="2"/>
+    </g>
+    <!-- tieback with a bow -->
+    <path d="M15 113Q48 109 81 112L80 123Q48 121 16 125z" fill="#e3a3a0"/>
+    <path d="M45 120L39 133L44 131.5L48 121.5zM49 120L55 132.5L50 131L46 121.5z" fill="#e3a3a0"/>
+    <path d="M47 117C40 106 30 110 32 117C33 124 41 123 47 117zM47 117C54 106 64 110 62 117C61 124 53 123 47 117z" fill="#e3a3a0"/>
+    <circle cx="47" cy="117.5" r="3.5" fill="#e3a3a0"/>
+  </g>
+</svg>

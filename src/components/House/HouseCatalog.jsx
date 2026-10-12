@@ -1,12 +1,15 @@
+import { useTranslation } from "../../i18n";
+
 const HouseCatalog = ({
   room,
   items,
   ownedItems,
-  points,
+  stars,
   buyHouseItem,
   isPreviewing,
   titleId,
 }) => {
+  const { t } = useTranslation();
   const catalogItems = items.filter(
     (item) => item.room === room.id
   );
@@ -15,10 +18,10 @@ const HouseCatalog = ({
     <div className="house-catalog">
       <div className="catalog-heading">
         <div>
-          <p className="catalog-label">House shop</p>
-          <h2 id={titleId}>Decorate the {room.name.toLowerCase()}</h2>
+          <p className="catalog-label">{t("catalog.label")}</p>
+          <h2 id={titleId}>{t("catalog.title", { room: t(`room.${room.id}.name`).toLowerCase() })}</h2>
         </div>
-        <span className="points-badge">{isPreviewing ? "Preview" : `★ ${points} stars`}</span>
+        <span className="points-badge">{isPreviewing ? t("scene.preview") : t("scene.stars", { stars })}</span>
       </div>
 
       <div className="reward-list">
@@ -34,18 +37,18 @@ const HouseCatalog = ({
               />
 
               <div>
-                <b>{item.name}</b>
+                <b>{t(`item.${item.id}`)}</b>
                 <small>
-                  {owned ? "In this room" : `★ ${item.cost}`}
+                  {owned ? t("catalog.inRoom") : `★ ${item.cost}`}
                 </small>
               </div>
 
               <button
                 type="button"
-                disabled={!isPreviewing && (owned || points < item.cost)}
+                disabled={!isPreviewing && (owned || stars < item.cost)}
                 onClick={() => buyHouseItem(item)}
               >
-                {isPreviewing ? (owned ? "Take away" : "Place") : owned ? "Placed" : "Buy"}
+                {isPreviewing ? (owned ? t("catalog.takeAway") : t("catalog.place")) : owned ? t("catalog.placed") : t("catalog.buy")}
               </button>
             </article>
           );

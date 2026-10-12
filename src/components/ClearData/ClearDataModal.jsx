@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { createSaveFile, downloadSaveFile } from "../../utils/exportImportUtils";
 import Modal from "../Modal/Modal";
+import { useTranslation } from "../../i18n";
 
-const ClearDataModal = ({ classroomData, isSignedIn, onClose, onConfirm }) => {
+const ClearDataModal = ({ classroomData, onClose, onConfirm }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const closeOnEscape = (event) => {
       if (event.key === "Escape") onClose();
@@ -22,25 +25,19 @@ const ClearDataModal = ({ classroomData, isSignedIn, onClose, onConfirm }) => {
       onClose={onClose}
       className="clear-data-modal"
       ariaLabelledBy="clear-data-title"
-      closeLabel="Close erase data window"
+      closeLabel={t("clear.close")}
     >
-        <p className="clear-data-label">Permanent action</p>
-        <h2 id="clear-data-title">Are you super sure you want to erase the data?</h2>
-        <p className="clear-data-copy">There&apos;s no going back. We recommend saving first.</p>
-        {isSignedIn && (
-          <p className="clear-data-copy">
-            This also empties the classroom saved to your teacher account, so it will not come
-            back on your other computers.
-          </p>
-        )}
+        <p className="clear-data-label">{t("clear.label")}</p>
+        <h2 id="clear-data-title">{t("clear.title")}</h2>
+        <p className="clear-data-copy">{t("clear.copy")}</p>
 
         <button className="clear-data-save" type="button" onClick={saveBeforeErasing}>
-          Save classroom setup first
+          {t("clear.saveFirst")}
         </button>
 
         <div className="clear-data-actions">
-          <button className="clear-data-cancel" type="button" onClick={onClose}>Keep my data</button>
-          <button className="clear-data-confirm" type="button" onClick={onConfirm}>Erase saved data</button>
+          <button className="clear-data-cancel" type="button" onClick={onClose}>{t("clear.cancel")}</button>
+          <button className="clear-data-confirm" type="button" onClick={onConfirm}>{t("clear.confirm")}</button>
         </div>
     </Modal>
   );

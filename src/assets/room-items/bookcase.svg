@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280">
+  <g stroke="#5a3d2b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- bun feet -->
+    <path d="M38 264H62V269C62 275 57 278.5 50 278.5C43 278.5 38 275 38 269z" fill="#a86f45"/>
+    <path d="M178 264H202V269C202 275 197 278.5 190 278.5C183 278.5 178 275 178 269z" fill="#a86f45"/>
+    <!-- carcass -->
+    <rect x="28" y="52" width="184" height="204" rx="6" fill="#a86f45"/>
+    <path d="M30 60H36V248H30z" fill="#fff8ea" opacity=".35" stroke="none"/>
+    <path d="M204 60H210V248H204z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <!-- plinth -->
+    <rect x="22" y="248" width="196" height="18" rx="6" fill="#a86f45"/>
+    <path d="M23.5 258H216.5V260C216.5 263 214 264.5 211 264.5H29C26 264.5 23.5 263 23.5 260z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <!-- shelf interior -->
+    <rect x="40" y="64" width="160" height="180" rx="4" fill="#a86f45"/>
+    <rect x="40" y="64" width="160" height="180" rx="4" fill="#5a3d2b" opacity=".35" stroke="none"/>
+    <g fill="#5a3d2b" opacity=".2" stroke="none">
+      <rect x="41.5" y="65.5" width="157" height="7"/>
+      <rect x="41.5" y="126" width="157" height="7"/>
+      <rect x="41.5" y="188" width="157" height="7"/>
+    </g>
+    <!-- top shelf: books, a leaner, a framed photo -->
+    <rect x="44" y="72" width="15" height="46" rx="2" fill="#d9785a"/>
+    <rect x="59" y="78" width="12" height="40" rx="2" fill="#e8b44f"/>
+    <rect x="71" y="70" width="17" height="48" rx="2" fill="#7f9cc0"/>
+    <rect x="88" y="76" width="13" height="42" rx="2" fill="#9bb58a"/>
+    <rect x="101" y="74" width="13" height="44" rx="2" fill="#a98fbf" transform="rotate(14 114 118)"/>
+    <path d="M44 79H59M44 110H59M71 78H88M71 110H88" fill="none" stroke-width="1.8" opacity=".45"/>
+    <rect x="138" y="78" width="54" height="40" rx="4" fill="#e8c290"/>
+    <rect x="146" y="85" width="38" height="26" rx="2" fill="#7f9cc0"/>
+    <circle cx="174" cy="93" r="4.5" fill="#e8b44f" stroke-width="1.8"/>
+    <path d="M146 111V103C154 96 162 98 168 103C173 100 180 101 184 105V111z" fill="#9bb58a" stroke-width="1.8"/>
+    <!-- middle shelf: a lying stack, upright books -->
+    <rect x="44" y="168" width="56" height="12" rx="2" fill="#9bb58a"/>
+    <rect x="49" y="156" width="50" height="12" rx="2" fill="#d9785a"/>
+    <rect x="45" y="145" width="52" height="11" rx="2" fill="#e8b44f"/>
+    <rect x="104" y="134" width="14" height="46" rx="2" fill="#a98fbf"/>
+    <rect x="118" y="140" width="16" height="40" rx="2" fill="#fbf1dc"/>
+    <rect x="134" y="132" width="13" height="48" rx="2" fill="#d9785a"/>
+    <rect x="147" y="138" width="15" height="42" rx="2" fill="#7f9cc0"/>
+    <rect x="162" y="136" width="12" height="44" rx="2" fill="#e8b44f"/>
+    <rect x="176" y="140" width="13" height="40" rx="2" fill="#9bb58a" transform="rotate(10 189 180)"/>
+    <path d="M118 147H134M118 172H134M147 145H162" fill="none" stroke-width="1.8" opacity=".45"/>
+    <!-- bottom shelf: tall books and a globe -->
+    <rect x="44" y="192" width="16" height="52" rx="2" fill="#7f9cc0"/>
+    <rect x="60" y="198" width="13" height="46" rx="2" fill="#e8b44f"/>
+    <rect x="73" y="194" width="15" height="50" rx="2" fill="#9bb58a"/>
+    <rect x="88" y="200" width="14" height="44" rx="2" fill="#d9785a"/>
+    <rect x="102" y="196" width="12" height="48" rx="2" fill="#a98fbf"/>
+    <rect x="116" y="202" width="13" height="42" rx="2" fill="#fbf1dc" transform="rotate(16 129 244)"/>
+    <path d="M44 200H60M44 236H60M73 202H88M88 236H102" fill="none" stroke-width="1.8" opacity=".45"/>
+    <path d="M170 228V238" fill="none" stroke-width="7"/>
+    <path d="M170 228V238" fill="none" stroke="#d8a84a" stroke-width="2"/>
+    <rect x="156" y="237" width="28" height="7" rx="3.5" fill="#d8a84a"/>
+    <circle cx="170" cy="212" r="16" fill="#6fa7a0"/>
+    <path d="M160 202C164 200 170 203 168 208C166 212 160 212 158 210C156 207 157 204 160 202zM172 214C177 211 183 213 184 217C182 222 177 225 173 223C170 221 170 216 172 214z" fill="#9bb58a" stroke-width="1.8"/>
+    <path d="M160 204C162 201 165 199 168 198.5" fill="none" stroke="#fff8ea" stroke-width="2.5" opacity=".6"/>
+    <path d="M170 192A20 20 0 0 1 170 232" fill="none" stroke-width="7"/>
+    <path d="M170 192A20 20 0 0 1 170 232" fill="none" stroke="#d8a84a" stroke-width="2"/>
+    <!-- shelf boards -->
+    <rect x="38" y="118" width="164" height="8" rx="2" fill="#a86f45"/>
+    <rect x="38" y="180" width="164" height="8" rx="2" fill="#a86f45"/>
+    <path d="M44 120.5H196M44 182.5H196" fill="none" stroke="#fff8ea" stroke-width="1.8" opacity=".45"/>
+    <!-- crown -->
+    <rect x="20" y="42" width="200" height="16" rx="7" fill="#a86f45"/>
+    <path d="M28 46.5H212" fill="none" stroke="#fff8ea" stroke-width="2.5" opacity=".5"/>
+    <path d="M150 52C170 50 190 51 208 53" fill="none" stroke-width="1.8" opacity=".4"/>
+    <!-- trailing pothos -->
+    <path d="M50 26C36 30 30 40 30 52C30 72 35 90 32 110C29 130 35 148 32 166" fill="none" stroke-width="5"/>
+    <path d="M50 26C36 30 30 40 30 52C30 72 35 90 32 110C29 130 35 148 32 166" fill="none" stroke="#7fae6e" stroke-width="2"/>
+    <path d="M76 28C90 32 95 40 97 50C99 58 97 66 99 76" fill="none" stroke-width="5"/>
+    <path d="M76 28C90 32 95 40 97 50C99 58 97 66 99 76" fill="none" stroke="#7fae6e" stroke-width="2"/>
+    <g fill="#5b8c5a" stroke-width="2.2">
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(46 19) rotate(65) scale(1.45)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(84 19) rotate(-65) scale(1.45)"/>
+    </g>
+    <g fill="#7fae6e" stroke-width="2.2">
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(55 15) rotate(25) scale(1.45)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(75 15) rotate(-25) scale(1.45)"/>
+    </g>
+    <g fill="#a8cc8c" stroke-width="2.2">
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(65 16) rotate(0) scale(1.45)"/>
+    </g>
+    <!-- pot -->
+    <path d="M46 24H80L77 38C76.5 40.5 75 42 72.5 42H53.5C51 42 49.5 40.5 49 38z" fill="#c9714f"/>
+    <rect x="43" y="19" width="40" height="8" rx="4" fill="#c9714f"/>
+    <path d="M49 22.5H66" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".5"/>
+    <g fill="#5b8c5a" stroke-width="2.2">
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(24 60) rotate(40) scale(1.3)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(38 120) rotate(-35) scale(1.3)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(103 48) rotate(-35) scale(1.3)"/>
+    </g>
+    <g fill="#7fae6e" stroke-width="2.2">
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(38 80) rotate(-35) scale(1.3)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(26 140) rotate(35) scale(1.3)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(91 64) rotate(35) scale(1.3)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(32 174) rotate(0) scale(1.3)"/>
+    </g>
+    <g fill="#a8cc8c" stroke-width="2.2">
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(26 100) rotate(35) scale(1.3)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(37 158) rotate(-30) scale(1.3)"/>
+      <path d="M0 10C-4 6-7 1-7-3C-7-6-3-7 0-4C3-7 7-6 7-3C7 1 4 6 0 10z" transform="translate(100 82) rotate(0) scale(1.3)"/>
+    </g>
+  </g>
+</svg>

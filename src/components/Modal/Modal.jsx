@@ -1,15 +1,17 @@
 import ModalBackdrop from "./ModalBackdrop";
 import ModalBox from "./ModalBox"
+import { useTranslation } from "../../i18n";
 
 const Modal = ({
   isOpen,
   onClose,
   className = "",
   ariaLabelledBy,
-  closeLabel = "Close modal",
+  closeLabel,
   showCloseButton = true,
   children,
 }) => {
+  const { t } = useTranslation();
   if (!isOpen) return null;
 
   return (
@@ -18,7 +20,7 @@ const Modal = ({
         className={className}
         onClose={onClose}
         ariaLabelledBy={ariaLabelledBy}
-        closeLabel={closeLabel}
+        closeLabel={closeLabel ?? t("modal.close")}
         showCloseButton={showCloseButton}
       >
         {children}

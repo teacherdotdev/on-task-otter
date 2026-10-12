@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160">
+  <g stroke="#5a3d2b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <!-- body with upturned tail -->
+    <path d="M22 72C36 84 62 90 96 88H176C196 92 206 108 202 124C198 142 180 154 152 154H70C40 154 18 132 18 100C18 88 19 79 22 72z" fill="#f3cc5c"/>
+    <path d="M32.5 139C42 148.5 55 154 70 154H152C166 154 177.5 151 186 145.5C140 150 80 150 32.5 139z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M36 90C52 97 70 100 92 99" fill="none" stroke="#fff8ea" stroke-width="6" opacity=".55"/>
+    <!-- wing -->
+    <path d="M62 106C80 100 120 100 142 110C138 128 112 136 90 130C76 126 66 118 62 106z" fill="#e8b44f" stroke-width="6.5"/>
+    <!-- beak -->
+    <path d="M178 46C198 38 222 41 229 53C234 67 222 80 205 80C193 80 185 78 178 75z" fill="#e58c4e"/>
+    <!-- head -->
+    <circle cx="150" cy="58" r="42" fill="#f3cc5c"/>
+    <path d="M109 51A42 42 0 0 1 142.5 16.5A50 50 0 0 0 109 51z" fill="#fff8ea" opacity=".55" stroke="none"/>
+    <ellipse cx="166" cy="76" rx="11" ry="7" fill="#e3a3a0" opacity=".8" stroke="none"/>
+    <circle cx="162" cy="48" r="8.5" fill="#5a3d2b" stroke="none"/>
+    <circle cx="159" cy="45" r="3" fill="#fff8ea" stroke="none"/>
+  </g>
+</svg>

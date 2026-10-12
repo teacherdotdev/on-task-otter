@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150">
+  <g stroke="#5a3d2b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- big sage bowl: foot, inside -->
+    <rect x="84" y="124" width="72" height="22.5" rx="6" fill="#9bb58a"/>
+    <ellipse cx="120" cy="80" rx="108" ry="14" fill="#fbf1dc"/>
+    <path d="M16 79C34 71 72 67 120 67C168 67 206 71 224 79C198 75 162 73 120 73C78 73 42 75 16 79z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <!-- mustard bowl: inside -->
+    <ellipse cx="118" cy="52" rx="78" ry="11" fill="#fbf1dc"/>
+    <!-- dusty rose bowl: inside, wooden spoon -->
+    <ellipse cx="122" cy="25" rx="52" ry="9" fill="#fbf1dc"/>
+    <path d="M73 24C84 19 102 17 122 17C142 17 160 19 171 24C155 21 140 20.5 122 20.5C104 20.5 89 21 73 24z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M138 46 196 9" fill="none" stroke-width="19"/>
+    <path d="M138 46 196 9" fill="none" stroke="#d9a066" stroke-width="6"/>
+    <path d="M146 37 175 19" fill="none" stroke="#fff8ea" stroke-width="2.5" opacity=".55"/>
+    <path d="M70 25A52 9 0 0 0 174 25C174 48 160 66 140 70H104C84 66 70 48 70 25z" fill="#e3a3a0"/>
+    <path d="M162 32C167 31 171 29 173 27C172 48 160 64 142 69H136C153 61 161 48 162 32z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M80 38C81 45 84 51 88 56" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".55"/>
+    <!-- mustard bowl: front wall -->
+    <path d="M40 52A78 11 0 0 0 196 52C196 80 178 102 146 106H90C58 102 40 80 40 52z" fill="#e8b44f"/>
+    <path d="M180 60C188 59 193 57 195 55C194 80 177 101 148 105H138C164 96 179 82 180 60z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M51 67C53 76 58 84 65 90" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".55"/>
+    <!-- big sage bowl: front wall -->
+    <path d="M12 80A108 14 0 0 0 228 80C228 110 202 132 162 135H78C38 132 12 110 12 80z" fill="#9bb58a"/>
+    <path d="M206 90C216 88 223 85 227 82C226 110 201 131 164 134H150C186 124 204 110 206 90z" fill="#5a3d2b" opacity=".16" stroke="none"/>
+    <path d="M30 112C50 121 80 124 120 124C160 124 190 121 210 112" fill="none" stroke="#fbf1dc" stroke-width="5" stroke-dasharray="0.5 11"/>
+    <path d="M25 98C29 108 36 116 46 122" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".55"/>
+  </g>
+</svg>

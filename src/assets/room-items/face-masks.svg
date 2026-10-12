@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180">
+  <g stroke="#5a3d2b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <!-- round-shouldered cream jar, open -->
+    <path d="M38 82C28 88 22 98 22 110V158C22 168 28 174.5 38 174.5H126C136 174.5 142 168 142 158V110C142 98 136 88 126 82z" fill="#fbf1dc"/>
+    <path d="M142 114V158C142 168 136 174.5 126 174.5H114C122 172 126 166 126 158V114z" fill="#5a3d2b" opacity=".14" stroke="none"/>
+    <path d="M36 110V150" fill="none" stroke="#fff8ea" stroke-width="8" opacity=".9"/>
+    <!-- jar mouth full of green mask -->
+    <ellipse cx="82" cy="80" rx="50" ry="15" fill="#7fae6e"/>
+    <path d="M36 80C36 76 40 73 46 71" fill="none" stroke="#ead9bd" stroke-width="5"/>
+    <path d="M64 80C62 62 92 54 100 68C104 76 96 82 86 80" fill="#7fae6e" stroke-width="7"/>
+    <path d="M74 70C76 65 82 62 88 62" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".7"/>
+    <!-- plum lid leaning on the jar's side -->
+    <g transform="rotate(16 180 118)">
+      <ellipse cx="188" cy="118" rx="30" ry="44" fill="#a98fbf"/>
+      <ellipse cx="188" cy="118" rx="30" ry="44" fill="#5a3d2b" opacity=".2" stroke="none"/>
+      <ellipse cx="178" cy="118" rx="30" ry="44" fill="#a98fbf"/>
+      <ellipse cx="179" cy="118" rx="18" ry="29" fill="none" stroke-width="6.5" opacity=".4"/>
+      <path d="M156 100C158 92 162 86 168 82" fill="none" stroke="#fff8ea" stroke-width="7" opacity=".6"/>
+    </g>
+    <!-- cucumber slices lying in front -->
+    <ellipse cx="198" cy="158" rx="36" ry="13" fill="#5b8c5a"/>
+    <ellipse cx="198" cy="158" rx="36" ry="13" fill="#5a3d2b" opacity=".25" stroke="none"/>
+    <ellipse cx="198" cy="151" rx="36" ry="16" fill="#5b8c5a"/>
+    <ellipse cx="198" cy="151" rx="25" ry="10" fill="#c8dfa8" stroke="none"/>
+    <ellipse cx="140" cy="160" rx="34" ry="12" fill="#5b8c5a"/>
+    <ellipse cx="140" cy="160" rx="34" ry="12" fill="#5a3d2b" opacity=".25" stroke="none"/>
+    <ellipse cx="140" cy="153" rx="34" ry="15" fill="#5b8c5a"/>
+    <ellipse cx="140" cy="153" rx="23" ry="9" fill="#c8dfa8" stroke="none"/>
+    <g fill="#fbf1dc" stroke="none">
+      <ellipse cx="130" cy="153" rx="4" ry="3"/><ellipse cx="140" cy="149" rx="4" ry="3"/><ellipse cx="150" cy="153" rx="4" ry="3"/><ellipse cx="140" cy="157" rx="4" ry="3"/>
+      <ellipse cx="188" cy="151" rx="4" ry="3"/><ellipse cx="198" cy="147" rx="4" ry="3"/><ellipse cx="208" cy="151" rx="4" ry="3"/><ellipse cx="198" cy="155" rx="4" ry="3"/>
+    </g>
+  </g>
+</svg>

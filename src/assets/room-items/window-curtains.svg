@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 185">
+  <g stroke="#5a3d2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- left panel -->
+    <path d="M14 16Q22 15.5 30 16Q38 15.5 46 16Q54 15.5 62 16Q70 15.5 79 16C79 50 62 84 45 98C53 122 62 150 69 172C62 177 55 172 47 175C39 178 31 173 23 176C18 177 13 176 11 173C9 150 11 122 16 103C12 80 12 42 14 16z" fill="#e3a3a0"/>
+    <path d="M14.5 22C15 40 15 60 17 80C19 60 20 40 15.5 23z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M45 98C53 122 62 150 69 172C66 173.5 63.5 174 61 174C56 150 50 124 42 102z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <g fill="#fbf1dc" stroke="none" opacity=".75"><circle cx="34" cy="40" r="2.5"/><circle cx="52" cy="34" r="2.5"/><circle cx="28" cy="64" r="2.5"/><circle cx="46" cy="60" r="2.5"/><circle cx="22" cy="128" r="2.5"/><circle cx="36" cy="140" r="2.5"/><circle cx="50" cy="150" r="2.5"/><circle cx="28" cy="160" r="2.5"/><circle cx="60" cy="163" r="2.5"/></g>
+    <path d="M26 19C26 50 26 80 29 99M42 19C44 52 40 80 35 99M58 19C58 50 50 80 40 99M24 108C22 130 20 152 20 174M33 108C35 132 38 152 41 174M41 106C46 130 52 152 57 173" fill="none" stroke-width="1.5" opacity=".4"/>
+    <path d="M8 103C8 98 11 96 16 96C26 96 36 95 46 93C51 92 53 96 52 100C51 104 49 106 44 106C34 107 24 108 14 109C10 109 8 107 8 103z" fill="#9bb58a"/>
+    <!-- right panel -->
+    <path d="M226 16Q218 15.5 210 16Q202 15.5 194 16Q186 15.5 178 16Q170 15.5 161 16C162 48 179 83 196 97C188 121 179 150 172 172C179 176 186 172 194 175C202 177 209 173 217 176C222 177 227 175 229 172C231 150 229 121 224 102C228 79 228 42 226 16z" fill="#e3a3a0"/>
+    <path d="M178 21C181 45 189 70 199 86C191 70 186 46 185 21z" fill="#fff8ea" opacity=".5" stroke="none"/>
+    <path d="M224 102C228 79 228 42 226 16Q223 18.5 220 18C221.5 42 222 78 218 101C222 122 224 150 222.3 176C224.6 175.3 227.1 174 229 172C231 150 229 121 224 102Z" fill="#5a3d2b" opacity=".15" stroke="none"/>
+    <g fill="#fbf1dc" stroke="none" opacity=".75"><circle cx="206" cy="40" r="2.5"/><circle cx="190" cy="34" r="2.5"/><circle cx="212" cy="64" r="2.5"/><circle cx="194" cy="60" r="2.5"/><circle cx="218" cy="128" r="2.5"/><circle cx="204" cy="140" r="2.5"/><circle cx="190" cy="150" r="2.5"/><circle cx="212" cy="160" r="2.5"/><circle cx="180" cy="163" r="2.5"/></g>
+    <path d="M214 19C214 50 214 80 211 98M198 19C196 52 200 80 205 98M182 19C182 50 190 80 200 98M216 107C218 130 220 152 220 174M207 107C205 132 202 152 199 174M199 105C194 129 188 152 183 173" fill="none" stroke-width="1.5" opacity=".4"/>
+    <path d="M232 102C232 97 229 95 224 95C214 95 204 94 194 92C189 91 187 95 188 99C189 103 191 105 196 105C206 106 216 107 226 108C230 108 232 106 232 102z" fill="#9bb58a"/>
+    <!-- hem stitching -->
+    <path d="M14 166C30 164 50 163 64 160M226 166C210 164 190 163 176 160" fill="none" stroke-width="1.5" stroke-dasharray="4 4" opacity=".45"/>
+    <!-- rings, rod, finials -->
+    <g fill="#d8a84a"><circle cx="14" cy="14" r="4.5"/><circle cx="30" cy="14" r="4.5"/><circle cx="46" cy="14" r="4.5"/><circle cx="62" cy="14" r="4.5"/><circle cx="79" cy="14" r="4.5"/><circle cx="161" cy="14" r="4.5"/><circle cx="178" cy="14" r="4.5"/><circle cx="194" cy="14" r="4.5"/><circle cx="210" cy="14" r="4.5"/><circle cx="226" cy="14" r="4.5"/></g>
+    <rect x="10" y="7" width="220" height="8" rx="4" fill="#a86f45"/>
+    <path d="M16 9.5H224" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".5"/>
+    <circle cx="9.5" cy="11" r="6.5" fill="#d9a066"/><circle cx="230.5" cy="11" r="6.5" fill="#d9a066"/>
+    <path d="M6.5 9C7 7.5 8 7 9.5 7M227.5 9C228 7.5 229 7 230.5 7" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".6"/>
+  </g>
+</svg>

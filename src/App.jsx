@@ -1,71 +1,84 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { accessories } from "./data/accessories";
-import { activities } from "./data/activities";
-import { houseItems, houseRooms } from "./data/houseItems";
+import { useEffect, useRef, useState } from "react";
+import { accessories, accessorySlots, toggleWorn } from "./data/accessories";
+import { activities, soundThresholdOf } from "./data/activities";
+import { hasSupport, houseItems, houseRooms } from "./data/houseItems";
+import { DEFAULT_STARS_PER_MINUTE, starsPerMinuteOf } from "./data/stars";
 import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useTeacherAccount } from "./hooks/useTeacherAccount";
+import { useClassList } from "./hooks/useClassList";
 import { useMicrophone } from "./hooks/useMicrophone";
+import { useRoomMonitor } from "./hooks/useRoomMonitor";
 import { useFullScreen } from "./hooks/useFullScreen";
 import { useTimer } from "./hooks/useTimer";
 import { formatTime } from "./utils/formatTime";
 import { playNoiseAlert } from "./utils/playNoiseAlert";
 import { playTimerCompleteAlert } from "./utils/playTimerCompleteAlert";
 import Header from "./components/Header/Header";
-import NoiseCard from "./components/NoiseMeter/NoiseCard";
 import TimerCard from "./components/Timer/TimerCard";
 import HouseCard from "./components/House/HouseCard";
+import SessionPresets from "./components/SessionSettings/SessionPresets";
 import SessionCompletionModal from "./components/SessionCompleteModal/SessionCompletionModal";
 import ExportImportModal from "./components/ExportImport/ExportImportModal";
 import ClearDataModal from "./components/ClearData/ClearDataModal";
-import AccountModal from "./components/Account/AccountModal";
+import ClassesModal from "./components/Classes/ClassesModal";
+import MicrophoneModal from "./components/Microphone/MicrophoneModal";
+import SettingsSidebar from "./components/Settings/SettingsSidebar";
+import StarAdjustmentModal from "./components/Settings/StarAdjustmentModal";
 import Footer from "./components/Footer/Footer";
+import Icon from "./components/Icon/Icon";
+import LanguagePicker from "./components/Language/LanguagePicker";
+import SupportButton from "./components/Support/SupportButton";
 import AboutPage from "./pages/AboutPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import { useRoute } from "./hooks/useRoute";
-import { clearClassroomData } from "./utils/storage";
+import { useTranslation } from "./i18n";
+import { clearClassroomData, SETTINGS_KEY } from "./utils/storage";
 
 const Classroom = () => {
+  const { t } = useTranslation();
+
   // persistent classroom data
-  const [settings, setSettings] = useLocalStorage("onTaskOtterSettings", {
+  const [settings, setSettings] = useLocalStorage(SETTINGS_KEY, {
     activity: "independent",
     preferredMinutes: 15,
     otterName: "Otter",
     favoriteSessions: [],
-    soundThresholds: { independent: 22, partner: 48 },
+    soundThresholds: {
+      independent: activities.independent.threshold,
+      partner: activities.partner.threshold,
+    },
     trackSound: true,
+    starsPerMinute: DEFAULT_STARS_PER_MINUTE,
   });
-  const [progressData, setProgressData] = useLocalStorage("onTaskOtterProgress", {
-    points: 0,
-    totalPoints: 0,
-    completedSessions: 0,
-    history: [],
-  });
-  const [rewardData, setRewardData] = useLocalStorage("onTaskOtterRewards", {
-    unlocked: [],
-    equipped: [],
-  });
-  const [houseData, setHouseData] = useLocalStorage("onTaskOtterHouse", {
-    activeRoom: "living",
-    houseItemsOwned: [],
-  });
+  // Each class earns its own stars and keeps its own otter outfit and rooms.
+  const classes = useClassList();
+  const {
+    progress: progressData,
+    rewards: rewardData,
+    house: houseData,
+  } = classes.currentClass;
+  const {
+    setProgress: setProgressData,
+    setRewards: setRewardData,
+    setHouse: setHouseData,
+  } = classes;
 
   const {
     activity: savedActivity,
     preferredMinutes,
-    otterName = "Otter",
+    otterName = t("otter.default"),
     favoriteSessions: savedFavoriteSessions = [],
     soundThresholds: savedSoundThresholds = {},
     trackSound = true,
+    starsPerMinute: savedStarsPerMinute,
   } = settings;
   const activity = activities[savedActivity] ? savedActivity : "partner";
   const favoriteSessions = Array.isArray(savedFavoriteSessions) ? savedFavoriteSessions : [];
   const soundThresholds = {
-    independent: savedSoundThresholds.independent ?? activities.independent.threshold,
-    partner: savedSoundThresholds.partner ?? activities.partner.threshold,
+    independent: soundThresholdOf(savedSoundThresholds.independent, "independent"),
+    partner: soundThresholdOf(savedSoundThresholds.partner, "partner"),
   };
-  const { points, history = [] } = progressData;
-  // Older saved classrooms may only have session history, not this total.
-  const completedSessions = progressData.completedSessions ?? history.length;
+  const starsPerMinute = starsPerMinuteOf(savedStarsPerMinute);
+  const { stars } = progressData;
   const { unlocked, equipped } = rewardData;
   const { activeRoom, houseItemsOwned } = houseData;
 
@@ -94,8 +107,8 @@ const Classroom = () => {
   const setSoundThreshold = (activityId, value) => setSettings((current) => ({
     ...current,
     soundThresholds: {
-      independent: current.soundThresholds?.independent ?? activities.independent.threshold,
-      partner: current.soundThresholds?.partner ?? activities.partner.threshold,
+      independent: soundThresholdOf(current.soundThresholds?.independent, "independent"),
+      partner: soundThresholdOf(current.soundThresholds?.partner, "partner"),
       [activityId]: value,
     },
   }));
@@ -105,20 +118,33 @@ const Classroom = () => {
     trackSound: typeof value === "function" ? value(current.trackSound ?? true) : value,
   }));
 
+  const setStarsPerMinute = (value) => setSettings((current) => ({
+    ...current,
+    starsPerMinute: starsPerMinuteOf(value),
+  }));
+
+  /** A preset is a named snapshot of the session settings as they are now. */
+  const presetFromSettings = (current, name, display) => ({
+    name,
+    ...display,
+    soundThreshold: soundThresholds[activity],
+    activity: activities[current.activity] ? current.activity : "partner",
+    minutes: current.preferredMinutes,
+    trackSound: current.trackSound ?? true,
+  });
+
   const saveFavoriteSession = (name, display) => setSettings((current) => ({
     ...current,
     favoriteSessions: [
       ...(Array.isArray(current.favoriteSessions) ? current.favoriteSessions : []),
-      {
-        id: Date.now(),
-        name,
-        ...display,
-        soundThreshold: soundThresholds[activity],
-        activity: activities[current.activity] ? current.activity : "partner",
-        minutes: current.preferredMinutes,
-        trackSound: current.trackSound ?? true,
-      },
+      { id: Date.now(), ...presetFromSettings(current, name, display) },
     ],
+  }));
+
+  const updateFavoriteSession = (id, name, display) => setSettings((current) => ({
+    ...current,
+    favoriteSessions: (Array.isArray(current.favoriteSessions) ? current.favoriteSessions : [])
+      .map((favorite) => favorite.id === id ? { ...favorite, ...presetFromSettings(current, name, display) } : favorite),
   }));
 
   const deleteFavoriteSession = (id) => setSettings((current) => ({
@@ -127,19 +153,19 @@ const Classroom = () => {
       .filter((favorite) => favorite.id !== id),
   }));
 
-  const setPoints = (value) => setProgressData(
+  const setStars = (value) => setProgressData(
     (current) => (
       {
-        ...current, points: typeof value === "function"
-          ? value(current.points)
+        ...current, stars: typeof value === "function"
+          ? value(current.stars)
           : value
       }
     ));
-  const setTotalPoints = (value) => setProgressData(
+  const setTotalStars = (value) => setProgressData(
     (current) => (
       {
-        ...current, totalPoints: typeof value === "function"
-          ? value(current.totalPoints)
+        ...current, totalStars: typeof value === "function"
+          ? value(current.totalStars)
           : value
       }
     ));
@@ -195,8 +221,12 @@ const Classroom = () => {
   // temporary session state
   const [showComplete, setShowComplete] = useState(false);
   const [showExportImport, setShowExportImport] = useState(false);
-  const [showAccount, setShowAccount] = useState(false);
   const [showClearData, setShowClearData] = useState(false);
+  const [showClasses, setShowClasses] = useState(false);
+  const [showMicrophone, setShowMicrophone] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showStarAdjustment, setShowStarAdjustment] = useState(false);
+  const openMicrophoneSetup = () => setShowMicrophone(true);
   const [appMode, setAppMode] = useState("configure");
   const fullScreen = useFullScreen();
   const isFocusFullScreen = appMode === "focus" && fullScreen.isFullScreen;
@@ -204,74 +234,55 @@ const Classroom = () => {
   // runtime state
   const expectation = { ...activities[activity], threshold: soundThresholds[activity] };
   const microphone = useMicrophone();
-  const loudThreshold = expectation.threshold + 18;
-  const noiseSamples = useRef([]);
-  const [sustainedNoiseLevel, setSustainedNoiseLevel] = useState(0);
-  const [hasSustainedLoudNoise, setHasSustainedLoudNoise] = useState(false);
+  const timer = useTimer(preferredMinutes);
+  const pauseTimer = timer.pause;
+  /**
+   * True while the calibration popup is open. The class is being asked to
+   * talk on purpose, so the room is not judged.
+   */
+  const [calibrating, setCalibrating] = useState(false);
   const [needsTeacherResume, setNeedsTeacherResume] = useState(false);
-
-  useEffect(() => {
-    if (microphone.status !== "on") {
-      noiseSamples.current = [];
-      setSustainedNoiseLevel(0);
-      setHasSustainedLoudNoise(false);
-      return;
-    }
-
-    const now = Date.now();
-    noiseSamples.current = [
-      ...noiseSamples.current.filter((sample) => sample.time >= now - 10500),
-      { time: now, level: microphone.level },
-    ];
-    const samples = noiseSamples.current;
-    const average = samples.reduce((sum, sample) => sum + sample.level, 0) / samples.length;
-    const coversTenSeconds = samples[0]?.time <= now - 10000;
-    setSustainedNoiseLevel(average);
-    setHasSustainedLoudNoise(coversTenSeconds && average > loudThreshold);
-  }, [loudThreshold, microphone.level, microphone.rawLevel, microphone.status]);
+  // The room is only judged while the session runs: a teacher who pauses to
+  // make an announcement is never blamed for their own voice.
+  const monitor = useRoomMonitor({
+    readLevel: microphone.readLevel,
+    goal: expectation.threshold,
+    judging: microphone.status === "on" && !calibrating && timer.isRunning,
+  });
+  const isTooLoud = monitor.state === "too-loud";
 
   const noiseTone = microphone.status !== "on"
     ? "neutral"
-    : needsTeacherResume || hasSustainedLoudNoise
+    : needsTeacherResume || isTooLoud
       ? "loud"
-      : sustainedNoiseLevel <= expectation.threshold
-      ? "good"
-      : "warn";
+      : !timer.isRunning
+        ? "neutral"
+        : microphone.level <= expectation.threshold
+          ? "good"
+          : "warn";
 
   const noiseMessage = microphone.status !== "on"
-    ? "Ready when you are"
+    ? t("noise.ready")
     : needsTeacherResume
-      ? "Paused for a teacher check-in"
-      : noiseTone === "good"
-      ? "On track"
-      : noiseTone === "warn"
-        ? "Getting loud"
-        : "Too loud";
+      ? t("noise.paused")
+      : noiseTone === "neutral"
+        ? t("noise.ready")
+        : noiseTone === "good"
+          ? t("noise.onTrack")
+          : noiseTone === "warn"
+            ? t("noise.gettingLoud")
+            : t("noise.tooLoud");
 
-  const timer = useTimer(preferredMinutes);
-  const pauseTimer = timer.pause;
   const recordedCompletion = useRef(false);
-  const redAlertPlayed = useRef(false);
-  const noisePauseArmed = useRef(true);
   const stopTimerAlert = useRef(null);
   const [isTimerAlertPlaying, setIsTimerAlertPlaying] = useState(false);
 
   useEffect(() => {
-    if (!hasSustainedLoudNoise) {
-      noisePauseArmed.current = true;
-      redAlertPlayed.current = false;
-      return;
-    }
-
-    if (!trackSound || !timer.isRunning || !noisePauseArmed.current) return;
-    noisePauseArmed.current = false;
+    if (!isTooLoud || !trackSound || !timer.isRunning) return;
     setNeedsTeacherResume(true);
     pauseTimer();
-    if (!redAlertPlayed.current) {
-      redAlertPlayed.current = true;
-      playNoiseAlert();
-    }
-  }, [hasSustainedLoudNoise, pauseTimer, timer.isRunning, trackSound]);
+    playNoiseAlert();
+  }, [isTooLoud, pauseTimer, timer.isRunning, trackSound]);
 
   useEffect(() => {
     if (timer.isComplete && microphone.status === "on") microphone.stop();
@@ -279,18 +290,12 @@ const Classroom = () => {
 
   const resumeAfterNoise = () => {
     setNeedsTeacherResume(false);
-    setHasSustainedLoudNoise(false);
-    setSustainedNoiseLevel(microphone.level);
-    noiseSamples.current = [];
-    noisePauseArmed.current = false;
-    redAlertPlayed.current = false;
     timer.resume();
   };
 
   const resetTimer = () => {
     microphone.stop();
     setNeedsTeacherResume(false);
-    noisePauseArmed.current = true;
     timer.reset();
   };
 
@@ -302,21 +307,22 @@ const Classroom = () => {
     if (recordedCompletion.current) return;
     recordedCompletion.current = true;
     const completedMinutes = timer.durationSeconds / 60;
+    const starsEarned = completedMinutes * starsPerMinute;
     const completedSession = {
       id: Date.now(),
       date: new Date().toISOString(),
       minutes: completedMinutes,
       activity,
-      pointsEarned: completedMinutes,
+      starsEarned,
     };
-    setPoints((value) => value + completedMinutes);
-    setTotalPoints((value) => value + completedMinutes);
+    setStars((value) => value + starsEarned);
+    setTotalStars((value) => value + starsEarned);
     setCompletedSessions((value) => value + 1);
     setHistory((sessions) => [completedSession, ...sessions]);
     stopTimerAlert.current = playTimerCompleteAlert();
     setIsTimerAlertPlaying(true);
     setShowComplete(true);
-  }, [activity, setCompletedSessions, setHistory, setPoints, setTotalPoints, timer.durationSeconds, timer.isComplete]);
+  }, [activity, setCompletedSessions, setHistory, setStars, setTotalStars, starsPerMinute, timer.durationSeconds, timer.isComplete]);
 
   const silenceTimerAlert = () => {
     stopTimerAlert.current?.();
@@ -340,32 +346,15 @@ const Classroom = () => {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [showComplete, closeCompletionModal]);
 
-  const sessionCount = completedSessions;
-
-  const unlockedRoomIds = houseRooms
-    .filter((room, index) => {
-      const earlierRooms = houseRooms.slice(0, index);
-      return earlierRooms.every((earlierRoom) =>
-        houseItems
-          .filter((item) => item.room === earlierRoom.id)
-          .every((item) => houseItemsOwned.includes(item.id))
-      );
-    })
-    .map((room) => room.id);
-
   const buyOrEquip = (item) => {
     if (unlocked.includes(item.id)) {
-      setEquipped(
-        (items) => items.includes(item.id) 
-        ? items.filter((id) => id !== item.id) 
-        : [...items, item.id]
-      );
+      setEquipped((items) => toggleWorn(items, item.id));
       return;
     }
-    if (points < item.cost) return;
-    setPoints((value) => value - item.cost);
+    if (stars < item.cost) return;
+    setStars((value) => value - item.cost);
     setUnlocked((items) => [...items, item.id]);
-    setEquipped((items) => [...items, item.id]);
+    setEquipped((items) => toggleWorn(items, item.id));
   }
 
   const chooseDuration = (seconds) => {
@@ -374,19 +363,15 @@ const Classroom = () => {
   };
 
   const buyHouseItem = (item) => {
-    if (
-      !unlockedRoomIds.includes(item.room)
-      || houseItemsOwned.includes(item.id) 
-      || points < item.cost
-    ) return;
+    if (houseItemsOwned.includes(item.id) || !hasSupport(item, houseItemsOwned) || stars < item.cost) return;
 
-    setPoints((value) => value - item.cost);
+    setStars((value) => value - item.cost);
     setHouseItemsOwned((items) => [...items, item.id]);
   }
 
   // Preview mode lets a teacher walk through every room and every customization
   // at once, so they can show a class where the year is heading. Nothing chosen
-  // in preview is saved: the class keeps the points, rooms, and decorations it
+  // in preview is saved: the class keeps the stars, rooms, and decorations it
   // actually earned.
   const [preview, setPreview] = useState(null);
   const isPreviewing = preview !== null;
@@ -394,7 +379,8 @@ const Classroom = () => {
   const startPreview = () => setPreview({
     activeRoom: houseRooms[0].id,
     houseItemsOwned: houseItems.map((item) => item.id),
-    equipped: accessories.map((item) => item.id),
+    // The fanciest hat and glasses, to show what the class is working towards.
+    equipped: accessorySlots.map((slot) => accessories.findLast((item) => item.slot === slot).id),
     otterName,
   });
 
@@ -412,9 +398,9 @@ const Classroom = () => {
   // the rest of the time.
   const shownActiveRoom = isPreviewing
     ? preview.activeRoom
-    : unlockedRoomIds.includes(activeRoom)
+    : houseRooms.some((room) => room.id === activeRoom)
       ? activeRoom
-      : unlockedRoomIds.at(-1);
+      : houseRooms[0].id;
   const shownHouseItemsOwned = isPreviewing ? preview.houseItemsOwned : houseItemsOwned;
   const shownEquipped = isPreviewing ? preview.equipped : equipped;
   const shownUnlocked = isPreviewing ? accessories.map((item) => item.id) : unlocked;
@@ -430,20 +416,28 @@ const Classroom = () => {
     setPreview((current) => ({ ...current, activeRoom: room }));
   };
 
-  /** In preview every piece is free to place or take away again. */
+  /**
+   * In preview every piece is free to place or take away again. Taking a piece
+   * away also takes away whatever sits on it, so nothing is left floating.
+   */
   const placeOrBuyHouseItem = (item) => {
     if (!isPreviewing) return buyHouseItem(item);
-    setPreview((current) => ({
-      ...current,
-      houseItemsOwned: togglePreviewId(current.houseItemsOwned, item.id),
-    }));
+    setPreview((current) => {
+      const owned = current.houseItemsOwned;
+      if (!owned.includes(item.id) && !hasSupport(item, owned)) return current;
+      const placed = togglePreviewId(owned, item.id);
+      return {
+        ...current,
+        houseItemsOwned: placed.filter((id) => hasSupport(houseItems.find((piece) => piece.id === id), placed)),
+      };
+    });
   };
 
   const wearOrBuyAccessory = (item) => {
     if (!isPreviewing) return buyOrEquip(item);
     setPreview((current) => ({
       ...current,
-      equipped: togglePreviewId(current.equipped, item.id),
+      equipped: toggleWorn(current.equipped, item.id),
     }));
   };
 
@@ -460,6 +454,7 @@ const Classroom = () => {
     setActivity,
     favoriteSessions,
     saveFavoriteSession,
+    updateFavoriteSession,
     deleteFavoriteSession,
     trackSound,
     setTrackSound,
@@ -487,7 +482,7 @@ const Classroom = () => {
     trackSound,
     setTrackSound,
     setSoundThreshold,
-    loudThreshold,
+    isTooLoud,
   };
 
   const timerSettings = {
@@ -501,7 +496,7 @@ const Classroom = () => {
   };
 
   const rewards = {
-    points,
+    stars,
     accessories,
     unlocked: shownUnlocked,
     equipped: shownEquipped,
@@ -509,8 +504,10 @@ const Classroom = () => {
     isPreviewing,
   };
 
+  const hasSessionStarted = timer.isRunning || timer.secondsRemaining < timer.durationSeconds;
+
   const house = {
-    points,
+    stars,
     houseRooms,
     activeRoom: shownActiveRoom,
     setActiveRoom: chooseRoom,
@@ -519,13 +516,12 @@ const Classroom = () => {
     houseItems,
     houseItemsOwned: shownHouseItemsOwned,
     buyHouseItem: placeOrBuyHouseItem,
-    unlockedRoomIds: isPreviewing ? houseRooms.map((room) => room.id) : unlockedRoomIds,
     equipped: shownEquipped,
     isPreviewing,
-    startPreview,
-    stopPreview,
     isCelebrating: showComplete,
     isFocusing: appMode === "focus" && timer.isRunning,
+    // From the start of a session until it ends, paused or not, the otter sits at its desk.
+    isAtDesk: appMode === "focus" && hasSessionStarted && !timer.isComplete,
     noiseTone,
     otterName: shownOtterName,
     setOtterName: changeOtterName,
@@ -542,31 +538,51 @@ const Classroom = () => {
       })),
       soundThresholds,
       trackSound,
+      starsPerMinute,
     },
-    onTaskOtterProgress: {
-      ...progressData,
-      completedSessions: sessionCount,
-    },
-    onTaskOtterRewards: rewardData,
-    onTaskOtterHouse: houseData,
+    // The save file carries every class, not only the one on screen.
+    onTaskOtterClasses: classes.classList,
   };
 
-  // Puts a classroom loaded from a teacher's account onto the screen.
-  const applyClassroom = useCallback((classroom) => {
-    setSettings(classroom.onTaskOtterSettings);
-    setProgressData(classroom.onTaskOtterProgress);
-    setRewardData(classroom.onTaskOtterRewards);
-    setHouseData(classroom.onTaskOtterHouse);
-  }, [setHouseData, setProgressData, setRewardData, setSettings]);
+  // A session belongs to the class that started it, so switching classes
+  // starts the next one fresh.
+  const switchClass = (id) => {
+    if (id === classes.currentClass.id) return;
+    resetTimer();
+    stopPreview();
+    classes.select(id);
+  };
 
-  const account = useTeacherAccount({ classroomData, applyClassroom });
+  const removeClass = (id) => {
+    if (id === classes.currentClass.id) {
+      resetTimer();
+      stopPreview();
+    }
+    classes.remove(id);
+  };
 
   const header = {
-    points,
-    account,
-    onOpenAccount: () => setShowAccount(true),
-    onOpenExportImport: () => setShowExportImport(true),
+    onOpenMicrophone: openMicrophoneSetup,
+    classes: {
+      list: classes.classList.classes,
+      currentId: classes.currentClass.id,
+      select: switchClass,
+      onEdit: () => setShowClasses(true),
+    },
   };
+
+  const teacherSettings = {
+    isPreviewing,
+    startPreview,
+    stopPreview,
+    starsPerMinute,
+    setStarsPerMinute,
+    sessionMinutes: timer.durationSeconds / 60,
+    openSaveFile: () => setShowExportImport(true),
+    openStarAdjustment: () => setShowStarAdjustment(true),
+  };
+
+  const isLaunching = appMode === "focus" && !hasSessionStarted;
 
   const validSaveIds = {
     activities: [...Object.keys(activities), "presentation"],
@@ -575,38 +591,34 @@ const Classroom = () => {
     rooms: houseRooms.map((room) => room.id),
   };
 
-  const eraseSavedData = async () => {
-    // A signed-in teacher's account is emptied too, so the erased classroom
-    // cannot come back the next time they open On-task Otter.
-    try {
-      await account.eraseSavedClassroom();
-    } catch {
-      // This device is still erased even if the account could not be reached.
-    }
+  const eraseSavedData = () => {
     clearClassroomData();
     window.location.reload();
   };
 
   return (
-    <main className={`app-shell mode-${appMode} ${isPreviewing ? "previewing" : ""} ${isFocusFullScreen ? "full-screen" : ""}`}>
+    <main className={`app-shell mode-${appMode} ${isPreviewing ? "previewing" : ""} ${isFocusFullScreen ? "full-screen" : ""} ${isLaunching ? "launching" : ""}`}>
+      {/* Everything above the footer grows to fill the screen, so the footer
+          sits at the bottom of the window even when the page is short. */}
+      <div className="app-content">
       {isPreviewing && (
         <div className="preview-bar" role="status">
-          <b>Preview mode</b>
-          <small>Every room and decoration is switched on. Nothing here is saved.</small>
-          <button className="outline" type="button" onClick={stopPreview}>Exit preview</button>
+          <b>{t("app.preview.title")}</b>
+          <small>{t("app.preview.body")}</small>
+          <button className="outline" type="button" onClick={stopPreview}>{t("app.preview.exit")}</button>
         </div>
       )}
 
       <Header header={header} />
 
-      <nav className="mode-switcher" aria-label="Classroom mode">
+      <nav className="mode-switcher" aria-label={t("app.mode.label")}>
         <button
           className={appMode === "configure" ? "selected" : ""}
           type="button"
           aria-pressed={appMode === "configure"}
           onClick={() => setAppMode("configure")}
         >
-          Configure
+          {t("app.mode.configure")}
         </button>
         <button
           className={appMode === "focus" ? "selected" : ""}
@@ -614,37 +626,15 @@ const Classroom = () => {
           aria-pressed={appMode === "focus"}
           onClick={enterFocusMode}
         >
-          Focus
+          {t("app.mode.focus")}
         </button>
       </nav>
 
-      {appMode === "focus" && fullScreen.isSupported && (
-        <button
-          className="outline full-screen-toggle"
-          type="button"
-          onClick={isFocusFullScreen ? fullScreen.exit : fullScreen.enter}
-        >
-          {isFocusFullScreen ? "Exit full screen" : "⛶ Full screen"}
-        </button>
-      )}
+      <HouseCard house={house} rewards={rewards} focusMode={appMode === "focus"} fullScreen={fullScreen}>
+        <TimerCard timerSettings={timerSettings} session={session} noise={noise} />
+      </HouseCard>
 
-      <HouseCard house={house} rewards={rewards} focusMode={appMode === "focus"} />
-
-      <div className="dashboard-grid focus-controls">
-        <TimerCard timerSettings={timerSettings} session={session} noise={noise} focusMode={appMode === "focus"} />
-
-        {appMode === "focus" && trackSound && !timer.isComplete && (timer.isRunning || timer.secondsRemaining < timer.durationSeconds) && <NoiseCard noise={noise} focusMode />}
-
-      </div>
-
-      {appMode === "configure" && <div className="clear-data-section">
-        <button className="preview-trigger" type="button" onClick={isPreviewing ? stopPreview : startPreview}>
-          {isPreviewing ? "Exit preview mode" : "Preview everything"}
-        </button>
-        <button className="clear-data-trigger" type="button" onClick={() => setShowClearData(true)}>
-          Erase saved data
-        </button>
-      </div>}
+      {appMode === "configure" && <SessionPresets session={session} noise={noise} />}
 
       <SessionCompletionModal
         equipped={shownEquipped}
@@ -652,12 +642,8 @@ const Classroom = () => {
         isTimerAlertPlaying={isTimerAlertPlaying}
         onClose={closeCompletionModal}
         onSilenceAlert={silenceTimerAlert}
-        duration={`${timer.durationSeconds / 60} minutes`}
+        duration={t("complete.duration", { minutes: timer.durationSeconds / 60 })}
       />
-
-      {showAccount && (
-        <AccountModal account={account} onClose={() => setShowAccount(false)} />
-      )}
 
       {showExportImport && (
         <ExportImportModal
@@ -667,25 +653,83 @@ const Classroom = () => {
         />
       )}
 
+      {showMicrophone && (
+        <MicrophoneModal
+          microphone={microphone}
+          setCalibrating={setCalibrating}
+          onClose={() => setShowMicrophone(false)}
+        />
+      )}
+
+      {showClasses && (
+        <ClassesModal
+          classes={classes.classList.classes}
+          currentId={classes.currentClass.id}
+          onAdd={classes.add}
+          onRename={classes.rename}
+          onDelete={removeClass}
+          onClose={() => setShowClasses(false)}
+        />
+      )}
+
+      {showSettings && (
+        <SettingsSidebar settings={teacherSettings} onClose={() => setShowSettings(false)} />
+      )}
+
+      {showStarAdjustment && (
+        <StarAdjustmentModal
+          className={classes.currentClass.name || t("classes.unnamed")}
+          stars={stars}
+          onAdjust={(change) => setStars((value) => Math.max(0, value + change))}
+          onClose={() => setShowStarAdjustment(false)}
+        />
+      )}
+
       {showClearData && (
         <ClearDataModal
           classroomData={classroomData}
-          isSignedIn={Boolean(account.teacher)}
           onClose={() => setShowClearData(false)}
           onConfirm={eraseSavedData}
         />
       )}
+      </div>
 
       <Footer />
+
+      {/* Settings sit in the page's bottom-right corner, opposite the language
+          and help buttons, while the classroom is being set up. */}
+      {appMode === "configure" && (
+        <button
+          className="settings-trigger"
+          type="button"
+          aria-label={t("settings.open")}
+          aria-haspopup="dialog"
+          aria-expanded={showSettings}
+          data-tooltip={t("settings.open")}
+          onClick={() => setShowSettings(true)}
+        >
+          <Icon name="settings" />
+        </button>
+      )}
     </main>
   );
 };
 
 const App = () => {
   const route = useRoute();
-  if (route === "/about") return <AboutPage />;
-  if (route === "/privacy") return <PrivacyPage />;
-  return <Classroom />;
+  const page = route === "/about"
+    ? <AboutPage />
+    : route === "/privacy"
+      ? <PrivacyPage />
+      : <Classroom />;
+
+  return (
+    <>
+      {page}
+      <SupportButton />
+      <LanguagePicker />
+    </>
+  );
 };
 
 export default App;

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#5a3d2b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M114 146Q111.5 135 108 124" fill="none" stroke-width="11"/>
+    <path d="M114 146Q111.5 135 108 124" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M109.5 123.5Q120.5 101 110.5 101Q114 80 102 82Q103.5 62 91.5 66Q89.5 47.5 79 53Q74 37.5 65.5 44.5Q56 32.5 51 40.5Q38.5 35 37 42.5Q25.5 46 28 54Q34.5 59 40 55Q42.5 61.5 47.5 57Q46.5 66 55 62Q51 71.5 63 70Q57 80 72 81Q64 90.5 81 94.5Q72.5 103 90.5 110Q83.5 117 106 125z" fill="#5b8c5a"/>
+    <path d="M106.5 120.5Q72.5 40.5 37.5 49" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M126 146Q128.5 135 132 124" fill="none" stroke-width="11"/>
+    <path d="M126 146Q128.5 135 132 124" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M134 125Q156.5 117 149.5 110Q167.5 103 159 94.5Q176 90.5 168 81Q183 80 177 70Q189 71.5 185 62Q193.5 66 192.5 57Q197.5 61.5 200 55Q205.5 59 212 54Q214.5 46 203 42.5Q201.5 35 189 40.5Q184 32.5 174.5 44.5Q166 37.5 161 53Q150.5 47.5 148.5 66Q136.5 62 138 82Q126 80 129.5 101Q119.5 101 130.5 123.5z" fill="#5b8c5a"/>
+    <path d="M133.5 120.5Q167.5 40.5 202.5 49" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M118 146Q116.5 135 115 123.5" fill="none" stroke-width="11"/>
+    <path d="M118 146Q116.5 135 115 123.5" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M117 123.5Q131.5 104.5 122 101.5Q131 83.5 119.5 81.5Q127 64 115 63.5Q120.5 46.5 109 47Q111.5 31.5 101.5 33Q100.5 19 92.5 22.5Q87 11.5 81.5 16Q72 12 70 20Q71.5 27.5 76 27.5Q73.5 33.5 80 33Q74.5 39.5 84.5 42.5Q76.5 48.5 88.5 54.5Q79 61 92.5 69.5Q82.5 75.5 96.5 86.5Q86.5 92.5 101.5 105.5Q93.5 110.5 113 124z" fill="#5b8c5a"/>
+    <path d="M114.5 120Q102 33.5 78 21.5" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M122 146Q124 135 125.5 123.5" fill="none" stroke-width="11"/>
+    <path d="M122 146Q124 135 125.5 123.5" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M127.5 124Q147.5 111 139.5 105.5Q154.5 93 145 87Q159 76 149.5 70Q162.5 61.5 153.5 55Q165 49.5 157.5 43Q167 41 161.5 34.5Q168 35 166 29Q170 29.5 172 22Q170.5 14 161 17.5Q155.5 12.5 149.5 23Q141.5 20 140.5 33.5Q130.5 31.5 133 47Q121.5 46.5 126.5 63.5Q115 64 122 81.5Q110.5 83 119 101.5Q109.5 104 123.5 123.5z" fill="#5b8c5a"/>
+    <path d="M126.5 120Q140 33.5 164 23" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M112 146Q105.5 137 98.5 129.5" fill="none" stroke-width="11"/>
+    <path d="M112 146Q105.5 137 98.5 129.5" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M100 128Q101.5 104.5 92.5 108.5Q88 89.5 78.5 97Q71.5 80 63.5 89.5Q53.5 75.5 48.5 86.5Q35.5 77 33.5 88Q19.5 85 20.5 94Q8.5 98 11.5 104.5Q4 114 10 120Q18.5 121 21.5 113Q27.5 116 29 109Q34.5 116 37 108Q39.5 118 45 109.5Q45 121 55 112.5Q52.5 124.5 66 118Q62 129 78.5 125.5Q75 134.5 97 131z" fill="#7fae6e"/>
+    <path d="M96 127Q40 77.5 16 109.5" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M74.5 119.5Q60.5 110.5 49.5 107" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+    <path d="M128 146Q134.5 137 141.5 129.5" fill="none" stroke-width="11"/>
+    <path d="M128 146Q134.5 137 141.5 129.5" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M143 131Q165 134.5 161.5 125.5Q178 129 174 118Q187.5 124.5 185 112.5Q195 121 195 109.5Q200.5 118 203 108Q205.5 116 211 109Q212.5 116 218.5 113Q221.5 121 230 120Q236 114 228.5 104.5Q231.5 98 219.5 94Q220.5 85 206.5 88Q204.5 77 191.5 86.5Q186.5 75.5 176.5 89.5Q168.5 80 161.5 97Q152 89.5 147.5 108.5Q138.5 104.5 140 128z" fill="#7fae6e"/>
+    <path d="M144 127Q200 77.5 224 109.5" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M165.5 119.5Q179.5 110.5 190.5 107" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+    <path d="M120 146Q119.5 136 119.5 125.5" fill="none" stroke-width="11"/>
+    <path d="M120 146Q119.5 136 119.5 125.5" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M121.5 125.5Q137 110 129 106.5Q140 91.5 130 88Q141 74 130.5 70.5Q140.5 58 130.5 54.5Q140 44 131 40Q139.5 32.5 132.5 28.5Q139 23.5 134 19.5Q138 16.5 134 10Q127.5 5.5 123.5 13.5Q117 12.5 117.5 24Q109 24.5 113 37Q103 38.5 109.5 52.5Q99 55 108 69.5Q97 73 107.5 88Q97.5 91.5 109 106.5Q100.5 110.5 117.5 125.5z" fill="#7fae6e"/>
+    <path d="M119 122Q116 41 129 15.5" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M111 98Q110 77 112 58.5" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+    <!-- little wooden stand -->
+    <path d="M72.5 208h15v4c5.5 2.5 5.5 11-1 14c-1 1 1.5 4 2 7q.5 4.5-3 4.5h-11q-3.5 0-3-4.5c.5-3 3-6 2-7c-6.5-3-6.5-11.5-1-14z" fill="#a86f45"/>
+    <path d="M74.5 216.5q-1 2.5 0 5.5" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".55"/>
+    <path d="M152.5 208h15v4c5.5 2.5 5.5 11-1 14c-1 1 1.5 4 2 7q.5 4.5-3 4.5h-11q-3.5 0-3-4.5c.5-3 3-6 2-7c-6.5-3-6.5-11.5-1-14z" fill="#a86f45"/>
+    <path d="M154.5 216.5q-1 2.5 0 5.5" fill="none" stroke="#fff8ea" stroke-width="3" opacity=".55"/>
+    <rect x="58" y="196" width="124" height="14" rx="6" fill="#d9a066"/>
+    <path d="M66 201H118" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+    <!-- glazed teal pot -->
+    <path d="M74 150C74 172 78 188 88 198H152C162 188 166 172 166 150z" fill="#6fa7a0"/>
+    <path d="M152 156C152 174 148 186 140 194H152C160 186 164 172 164 156z" fill="#5a3d2b" opacity=".18" stroke="none"/>
+    <path d="M84 160C84 172 86 182 92 189" fill="none" stroke="#fff8ea" stroke-width="5" opacity=".45"/>
+    <path d="M77 176C98 182 142 182 163 176" fill="none" stroke="#fbf1dc" stroke-width="6" opacity=".9"/>
+    <rect x="66" y="138" width="108" height="18" rx="8" fill="#6fa7a0"/>
+    <path d="M76 144H124" fill="none" stroke="#fff8ea" stroke-width="4" opacity=".5"/>
+    <path d="M108 146Q100 140 92.5 136" fill="none" stroke-width="11"/>
+    <path d="M108 146Q100 140 92.5 136" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M93 134Q87.5 112.5 81.5 120Q70 105.5 65.5 116Q51 106 50 117.5Q33 113.5 36 124.5Q19.5 127.5 25 136.5Q11.5 144.5 17.5 151.5Q8 164.5 13 170Q9 186.5 16 192Q24 188.5 25.5 173Q32.5 171.5 32.5 158.5Q41 160 40 149Q48.5 154 48 143Q55 151.5 56 140.5Q60 151 64.5 139.5Q65.5 150.5 75.5 140Q75 149 91.5 137.5z" fill="#a8cc8c"/>
+    <path d="M89.5 134.5Q31.5 113 19 173.5" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M70.5 136.5Q58.5 135.5 49.5 139" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+    <path d="M132 146Q140 140 147.5 136" fill="none" stroke-width="11"/>
+    <path d="M132 146Q140 140 147.5 136" fill="none" stroke="#7fae6e" stroke-width="4"/>
+    <path d="M148.5 137.5Q165 149 164.5 140Q174.5 150.5 175.5 139.5Q180 151 184 140.5Q185 151.5 192 143Q191.5 154 200 149Q199 160 207.5 158.5Q207.5 171.5 214.5 173Q216 188.5 224 192Q231 186.5 227 170Q232 164.5 222.5 151.5Q228.5 144.5 215 136.5Q220.5 127.5 204 124.5Q207 113.5 190 117.5Q189 106 174.5 116Q170 105.5 158.5 120Q152.5 112.5 147 134z" fill="#a8cc8c"/>
+    <path d="M150.5 134.5Q208.5 113 221 173.5" fill="none" stroke-width="3" opacity=".4"/>
+    <path d="M169.5 136.5Q181.5 135.5 190.5 139" fill="none" stroke="#fff8ea" stroke-width="3.5" opacity=".5"/>
+  </g>
+</svg>

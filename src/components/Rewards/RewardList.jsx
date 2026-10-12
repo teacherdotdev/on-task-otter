@@ -1,35 +1,39 @@
-const RewardList = ({ points, accessories, unlocked, equipped, buyOrEquip, isPreviewing }) => {
-    const rewardItems = accessories.map((item) => {
+import { AccessoryIcon } from "../Otter/AccessoryArt";
+import { useTranslation } from "../../i18n";
+
+const RewardList = ({ stars, accessories, unlocked, equipped, buyOrEquip, isPreviewing }) => {
+  const { t } = useTranslation();
+  const rewardItems = accessories.map((item) => {
     const owned = unlocked.includes(item.id);
     const wearing = equipped.includes(item.id);
 
     return (
       <article className="reward" key={item.id}>
         <span className="reward-icon" aria-hidden="true">
-          {item.icon}
+          <AccessoryIcon id={item.id} />
         </span>
 
         <div>
-          <b>{item.name}</b>
+          <b>{t(`accessory.${item.id}`)}</b>
           <small>
             {owned
               ? wearing
-                ? "Wearing now"
-                : "Unlocked"
+                ? t("shop.wearing")
+                : t("shop.unlocked")
               : `★ ${item.cost}`}
           </small>
         </div>
 
         <button
           type="button"
-          disabled={!isPreviewing && !owned && points < item.cost}
+          disabled={!isPreviewing && !owned && stars < item.cost}
           onClick={() => buyOrEquip(item)}
         >
           {owned
             ? wearing
-              ? "Remove"
-              : "Wear"
-            : "Unlock"}
+              ? t("shop.remove")
+              : t("shop.wear")
+            : t("shop.unlock")}
         </button>
       </article>
     );

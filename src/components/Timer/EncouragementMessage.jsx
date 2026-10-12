@@ -1,21 +1,21 @@
-import {encouragementMessages, getProgressMessageType} from "../../data/encouragementMessages";
+import { getProgressMessageType } from "../../data/encouragementMessages";
 import { useState } from "react";
+import { useTranslation } from "../../i18n";
 
 const EncouragementMessage = ({ mode, timer, noiseTone }) => {
-  const [genericMessage] = useState(() => {
-    const messages = encouragementMessages.generic;
-    const randomIndex = Math.floor(Math.random() * messages.length);
-    return messages[randomIndex];
-  })
+  const { t, tList } = useTranslation();
+  const [genericIndex] = useState(() =>
+    Math.floor(Math.random() * tList("encouragement.generic").length)
+  );
 
   if (mode === "none") return null;
 
   if (noiseTone === "loud") {
-    return <p>Too loud, but you can get back on track!</p>;
+    return <p>{t("encouragement.loud")}</p>;
   }
 
   if (mode === "generic") {
-    return <p>{genericMessage}</p>;
+    return <p>{tList("encouragement.generic")[genericIndex]}</p>;
   }
 
   const totalSeconds = timer.durationSeconds;
@@ -26,7 +26,7 @@ const EncouragementMessage = ({ mode, timer, noiseTone }) => {
 
   return (
     <p>
-      {encouragementMessages[type][0]}
+      {tList(`encouragement.${type}`)[0]}
     </p>
   );
 };

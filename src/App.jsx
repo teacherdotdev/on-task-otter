@@ -22,6 +22,7 @@ import ClearDataModal from "./components/ClearData/ClearDataModal";
 import ClassesModal from "./components/Classes/ClassesModal";
 import MicrophoneModal from "./components/Microphone/MicrophoneModal";
 import SettingsSidebar from "./components/Settings/SettingsSidebar";
+import StarAdjustmentModal from "./components/Settings/StarAdjustmentModal";
 import Footer from "./components/Footer/Footer";
 import Icon from "./components/Icon/Icon";
 import LanguagePicker from "./components/Language/LanguagePicker";
@@ -224,6 +225,7 @@ const Classroom = () => {
   const [showClasses, setShowClasses] = useState(false);
   const [showMicrophone, setShowMicrophone] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showStarAdjustment, setShowStarAdjustment] = useState(false);
   const openMicrophoneSetup = () => setShowMicrophone(true);
   const [appMode, setAppMode] = useState("configure");
   const fullScreen = useFullScreen();
@@ -577,6 +579,7 @@ const Classroom = () => {
     setStarsPerMinute,
     sessionMinutes: timer.durationSeconds / 60,
     openSaveFile: () => setShowExportImport(true),
+    openStarAdjustment: () => setShowStarAdjustment(true),
   };
 
   const isLaunching = appMode === "focus" && !hasSessionStarted;
@@ -671,6 +674,15 @@ const Classroom = () => {
 
       {showSettings && (
         <SettingsSidebar settings={teacherSettings} onClose={() => setShowSettings(false)} />
+      )}
+
+      {showStarAdjustment && (
+        <StarAdjustmentModal
+          className={classes.currentClass.name || t("classes.unnamed")}
+          stars={stars}
+          onAdjust={(change) => setStars((value) => Math.max(0, value + change))}
+          onClose={() => setShowStarAdjustment(false)}
+        />
       )}
 
       {showClearData && (

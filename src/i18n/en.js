@@ -30,6 +30,7 @@ export const en = {
     "settings.stars.fewer": "Fewer stars per minute",
     "settings.stars.more": "More stars per minute",
     "settings.stars.example": "A {minutes} min session earns ★ {stars}.",
+    "settings.stars.adjust": "Manual adjustment",
     "settings.save.title": "Save file",
     "settings.save.body": "Download every class to a file, or bring them back on another computer.",
 
@@ -302,6 +303,15 @@ export const en = {
     "clear.saveFirst": "Save classroom configuration first",
     "clear.cancel": "Keep my data",
     "clear.confirm": "Erase saved data",
+    "adjust.close": "Close manual adjustment",
+    "adjust.label": "Manual adjustment",
+    "adjust.title": "Add or remove stars",
+    "adjust.current": "{className} has ★ {stars} to spend.",
+    "adjust.unit": "stars",
+    "adjust.fewer": "Fewer stars",
+    "adjust.more": "More stars",
+    "adjust.remove": "Remove ★ {stars}",
+    "adjust.add": "Add ★ {stars}",
 
     "complete.eyebrow": "Focus session complete",
     "complete.title": "Beautiful work, class!",

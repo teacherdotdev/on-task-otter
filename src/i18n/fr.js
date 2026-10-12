@@ -29,6 +29,7 @@ export const fr = {
     "settings.stars.fewer": "Moins d'étoiles par minute",
     "settings.stars.more": "Plus d'étoiles par minute",
     "settings.stars.example": "Une séance de {minutes} min rapporte ★ {stars}.",
+    "settings.stars.adjust": "Ajustement manuel",
     "settings.save.title": "Fichier de sauvegarde",
     "settings.save.body": "Téléchargez toutes les classes dans un fichier, ou retrouvez-les sur un autre ordinateur.",
 
@@ -301,6 +302,15 @@ export const fr = {
     "clear.saveFirst": "Enregistrer d'abord la configuration de la classe",
     "clear.cancel": "Garder mes données",
     "clear.confirm": "Effacer les données enregistrées",
+    "adjust.close": "Fermer l'ajustement manuel",
+    "adjust.label": "Ajustement manuel",
+    "adjust.title": "Ajouter ou retirer des étoiles",
+    "adjust.current": "{className} a ★ {stars} à dépenser.",
+    "adjust.unit": "étoiles",
+    "adjust.fewer": "Moins d'étoiles",
+    "adjust.more": "Plus d'étoiles",
+    "adjust.remove": "Retirer ★ {stars}",
+    "adjust.add": "Ajouter ★ {stars}",
 
     "complete.eyebrow": "Séance de concentration terminée",
     "complete.title": "Magnifique travail, les élèves !",

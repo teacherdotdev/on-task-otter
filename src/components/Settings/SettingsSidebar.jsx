@@ -8,7 +8,7 @@ import { MAX_STARS_PER_MINUTE, MIN_STARS_PER_MINUTE, starsPerMinuteOf } from "..
 // worth, and the classroom save file.
 const SettingsSidebar = ({ settings, onClose }) => {
   const { t } = useTranslation();
-  const { isPreviewing, startPreview, stopPreview, starsPerMinute, setStarsPerMinute, sessionMinutes, openSaveFile } = settings;
+  const { isPreviewing, startPreview, stopPreview, starsPerMinute, setStarsPerMinute, sessionMinutes, openSaveFile, openStarAdjustment } = settings;
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -23,6 +23,11 @@ const SettingsSidebar = ({ settings, onClose }) => {
     if (isPreviewing) return stopPreview();
     startPreview();
     onClose();
+  };
+
+  const adjustStars = () => {
+    onClose();
+    openStarAdjustment();
   };
 
   const saveClassroom = () => {
@@ -92,6 +97,9 @@ const SettingsSidebar = ({ settings, onClose }) => {
           <p className="settings-example">
             {t("settings.stars.example", { minutes: sessionMinutes, stars: sessionMinutes * starsPerMinute })}
           </p>
+          <button className="outline settings-small-button" type="button" onClick={adjustStars}>
+            {t("settings.stars.adjust")}
+          </button>
         </section>
 
         <section className="settings-section">

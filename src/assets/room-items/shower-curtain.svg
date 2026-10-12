@@ -1,17 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 185">
   <g stroke="#5a3d2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <!-- shower head on the right -->
-    <path d="M222 32H210V48" fill="none" stroke-width="8"/>
-    <path d="M222 32H210V48" fill="none" stroke="#d8a84a" stroke-width="4"/>
-    <circle cx="223" cy="32" r="6" fill="#d8a84a"/>
-    <path d="M201 47H219C221 47 222 48 223 50L229 60C230 62 229 64 227 64H193C191 64 190 62 191 60L197 50C198 48 199 47 201 47z" fill="#d8a84a"/>
-    <path d="M200 52.5C201 51 202 50.5 204 50.5" fill="none" stroke="#fff8ea" stroke-width="2" opacity=".6"/>
-    <path d="M192.2 58H227.8L229 60C230 62 229 64 227 64H193C191 64 190 62 191 60z" fill="#5a3d2b" opacity=".16" stroke="none"/>
-    <g fill="#6fa7a0" stroke="none">
-      <path d="M200 71C198 74 197.5 76 200 76.5C202.5 76 202 74 200 71z"/>
-      <path d="M210 77C208 80 207.5 82 210 82.5C212.5 82 212 80 210 77z"/>
-      <path d="M220 71C218 74 217.5 76 220 76.5C222.5 76 222 74 220 71z"/>
-    </g>
     <!-- brass rod -->
     <rect x="10" y="10" width="220" height="7" rx="3.5" fill="#d8a84a"/>
     <path d="M16 12.5H120" fill="none" stroke="#fff8ea" stroke-width="1.5" opacity=".6"/>

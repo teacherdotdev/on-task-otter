@@ -9,8 +9,7 @@
     <ellipse cx="60" cy="101" rx="36" ry="9" fill="none" stroke="#d9a066" stroke-width="3.2"/>
     <!-- near leg -->
     <path d="M53 44H67L65.5 159Q65.5 163 62 163H58Q54.5 163 54.5 159z" fill="#d9a066"/>
-    <path d="M62 48H66.5L65 159Q65 162 62 162H61.5C62.5 160 62.5 157 62.5 155z" fill="#5a3d2b" opacity=".16" stroke="none"/>
-    <path d="M57 56V80" fill="none" stroke="#fff8ea" stroke-width="2.2" opacity=".55"/>
+    <path d="M60 56V84" fill="none" stroke="#fff8ea" stroke-width="2.2" opacity=".55"/>
     <!-- seat -->
     <path d="M10 32V41A50 15 0 0 0 110 41V32z" fill="#d9a066"/>
     <path d="M11.5 38A50 15 0 0 0 108.5 38V41A48.5 13.5 0 0 1 11.5 41z" fill="#5a3d2b" opacity=".18" stroke="none"/>
@@ -18,7 +17,7 @@
     <!-- round cushion -->
     <path d="M17 28V32A43 11 0 0 0 103 32V28z" fill="#6d89ad"/>
     <ellipse cx="60" cy="28" rx="43" ry="11" fill="#7f9cc0"/>
-    <path d="M24 26C30 21 44 18.5 60 18.5C70 18.5 79 19.5 86 21.5C70 21 44 22 24 26z" fill="#fff8ea" opacity=".45" stroke="none"/>
+    <path d="M27 25C35 20.5 47 18.5 60 18.5C73 18.5 85 20.5 93 25C79 21.5 41 21.5 27 25z" fill="#fff8ea" opacity=".45" stroke="none"/>
     <circle cx="60" cy="28" r="2.6" fill="#e8b44f" stroke-width="2"/>
   </g>
 </svg>

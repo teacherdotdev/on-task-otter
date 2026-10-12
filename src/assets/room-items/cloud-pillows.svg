@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100">
-  <g stroke="#5a3d2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="#5a3d2b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
     <!-- big denim cloud pillow (back) -->
     <path d="M30 97C14 97 8 81 16 71C10 57 24 45 40 49C42 29 62 17 82 23C92 7 128 3 144 19C160 11 184 19 184 39C204 37 224 51 220 69C232 77 226 97 210 97C150 99 90 99 30 97z" fill="#7f9cc0"/>
     <path d="M17 69C13 58 26 49 39 53C41 32 62 21 80 27C92 12 124 8 140 22C124 18 100 20 88 32C70 28 50 38 46 56C34 54 22 60 17 69z" fill="#fff8ea" opacity=".45" stroke="none"/>

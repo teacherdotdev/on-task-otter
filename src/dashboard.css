@@ -53,23 +53,24 @@ h2 { font-size: 1.65rem; }
 .otter-belly-shade { fill: #5a3d2b; opacity: .1; }
 .otter-belly-shine { fill: #fffaf2; opacity: .9; }
 .otter-muzzle { fill: #fdf3e3; stroke: #5a3d2b; stroke-linejoin: round; stroke-width: 3; }
-.otter-blush { fill: #ec8478; opacity: .4; }
 .otter-nose { fill: #3f2a1e; }
 .otter-nose-shine { fill: none; opacity: .55; stroke: #fff8ea; stroke-linecap: round; stroke-width: 2.5; }
 .otter-whiskers { fill: none; opacity: .5; stroke: #5a3d2b; stroke-linecap: round; stroke-width: 2.5; }
 .otter-limb-line { fill: none; stroke: #5a3d2b; stroke-linecap: round; stroke-width: 21; }
 .otter-limb-fur { fill: none; stroke: #b5774c; stroke-linecap: round; stroke-width: 13; }
-.otter-paw, .otter-foot, .focus-paw { fill: #b5774c; stroke: #5a3d2b; stroke-width: 4; }
+.limb-outline { fill: #5a3d2b; stroke: #5a3d2b; stroke-linejoin: round; stroke-width: 8; }
+.limb-fill { fill: #b5774c; }
+.otter-foot { fill: #b5774c; stroke: #5a3d2b; stroke-width: 4; }
 .otter-toes { fill: none; opacity: .5; stroke: #5a3d2b; stroke-linecap: round; stroke-width: 2.5; }
-.otter-arm, .otter-leg { transform-box: view-box; transition: transform .28s ease; }
-.otter-arm-left { transform-origin: 52px 116px; }.otter-arm-right { transform-origin: 168px 116px; }
+.otter-leg { transform-box: view-box; transition: transform .28s ease; }
+.otter-arms-loud, .otter-arms-cheer, .state-loud .otter-arms-rest, .state-celebrating .otter-arms-rest { display: none; }
+.state-loud .otter-arms-loud, .state-celebrating .otter-arms-cheer { display: initial; }
 .otter-leg-left { transform-origin: 84px 172px; }.otter-leg-right { transform-origin: 136px 172px; }
 .otter-eye { transform-box: fill-box; transform-origin: center; }
 .otter-eye ellipse { fill: #3f2a1e; }.otter-eye circle { fill: #fffaf0; }
 .otter-mouth { fill: none; opacity: 0; stroke: #3f2a1e; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5; }
 .otter-mouth-smile { opacity: 1; }
 .otter-mouth-loud, .otter-mouth-celebrate { fill: #6e3b2e; }
-.otter-heart { fill: #e5786a; }
 .otter-glasses { fill: rgba(164, 216, 228, .45); stroke: #5a3d2b; stroke-linecap: round; stroke-width: 3.5; }
 .otter-glasses .glasses-shine { fill: none; opacity: .7; stroke: #fffaf0; stroke-width: 2; }
 .otter-hat path:first-child { fill: #7f9cc0; stroke: #5a3d2b; stroke-linejoin: round; stroke-width: 3.5; }
@@ -77,10 +78,9 @@ h2 { font-size: 1.65rem; }
 .otter-bow path { fill: #e8b44f; stroke: #5a3d2b; stroke-linejoin: round; stroke-width: 3.5; }.otter-bow circle { fill: #d9785a; stroke: #5a3d2b; stroke-width: 3; }
 .focus-chair, .focus-workspace { display: none; }
 .focus-chair { fill: none; stroke: #7f9cc0; stroke-linecap: round; stroke-linejoin: round; stroke-width: 12; }
-.focus-scratch-arm { opacity: 0; transform-box: view-box; transform-origin: 54px 120px; }
-.scratch-lines { fill: none; stroke: #d9a066; stroke-linecap: round; stroke-width: 3; }
-.focus-writing-arm { transform-box: view-box; transform-origin: 166px 119px; }
-.focus-pencil { transform-box: view-box; transform-origin: 129px 151px; }
+.focus-scratch-arm { opacity: 0; transform-box: view-box; transform-origin: 65px 161px; }
+.focus-writing-arm { transform-box: view-box; transform-origin: 155px 147px; }
+.focus-pencil { transform-box: view-box; transform-origin: 141px 162px; }
 .pencil-body { fill: none; stroke: #e8b44f; stroke-linecap: round; stroke-width: 6; }
 .pencil-tip { fill: none; stroke: #5a3d2b; stroke-linecap: round; stroke-width: 3; }
 .pencil-eraser { fill: none; stroke: #e3a3a0; stroke-linecap: round; stroke-width: 6; }
@@ -95,7 +95,7 @@ h2 { font-size: 1.65rem; }
 .state-idle .otter { animation: otter-float 3.2s ease-in-out infinite; }
 .state-idle .otter-eye { animation: otter-blink 4.5s ease-in-out infinite; }
 .state-focusing .focus-chair, .state-focusing .focus-workspace { display: initial; }
-.state-focusing .otter-leg, .state-focusing .otter-arm, .state-focusing .otter-belly, .state-focusing .otter-belly-shade, .state-focusing .otter-belly-shine, .state-focusing .otter-heart { display: none; }
+.state-focusing .otter-leg, .state-focusing .otter-arms, .state-focusing .otter-belly, .state-focusing .otter-belly-shade, .state-focusing .otter-belly-shine { display: none; }
 .state-focusing .focus-writing-arm { animation: otter-write .65s ease-in-out infinite alternate; }
 .state-focusing .focus-pencil { animation: pencil-write .65s ease-in-out infinite alternate; }
 .state-focusing .focus-arm-resting { animation: resting-paw-pause 120s linear infinite; }
@@ -103,11 +103,9 @@ h2 { font-size: 1.65rem; }
 .state-focusing .paper-line.line-two { animation: writing-appear 2.6s ease-in-out infinite; }
 .state-focusing .otter-eye { animation: otter-blink 4.5s ease-in-out infinite; }
 .state-loud .otter { animation: otter-startle .4s ease-out both; }
-.state-loud .otter-arm-left { transform: rotate(88deg); }.state-loud .otter-arm-right { transform: rotate(-88deg); }
 .state-loud .otter-eye { transform: scale(1.12); }
 .state-loud .otter-mouth-smile { opacity: 0; }.state-loud .otter-mouth-loud { opacity: 1; }
 .state-celebrating .otter { animation: otter-celebrate .72s ease-in-out infinite; }
-.state-celebrating .otter-arm-left { transform: rotate(110deg); }.state-celebrating .otter-arm-right { transform: rotate(-110deg); }
 .state-celebrating .otter-leg-left { animation: otter-feet-left .72s ease-in-out infinite; }.state-celebrating .otter-leg-right { animation: otter-feet-right .72s ease-in-out infinite; }
 .state-celebrating .otter-mouth-smile { opacity: 0; }.state-celebrating .otter-mouth-celebrate { opacity: 1; }
 .state-celebrating .sparkle { animation: sparkle-pop .8s ease-in-out infinite alternate; opacity: 1; }
@@ -116,7 +114,7 @@ h2 { font-size: 1.65rem; }
 @keyframes otter-float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-7px) rotate(1deg); } }
 @keyframes otter-blink { 0%, 44%, 50%, 100% { transform: scaleY(1); } 47% { transform: scaleY(.08); } }
 @keyframes otter-write { from { transform: rotate(-3deg) translate(-2px, 0); } to { transform: rotate(3deg) translate(3px, 1px); } }
-@keyframes pencil-write { from { transform: rotate(-2deg); } to { transform: translate(5px, 1px) rotate(3deg); } }
+@keyframes pencil-write { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
 @keyframes resting-paw-pause { 0%, 96.9%, 99.6%, 100% { opacity: 1; } 97%, 99.5% { opacity: 0; } }
 @keyframes otter-head-scratch {
   0%, 96.9%, 99.6%, 100% { opacity: 0; transform: rotate(-8deg); }

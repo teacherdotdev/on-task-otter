@@ -4,6 +4,8 @@
 //
 // The list is saved as { currentId, classes: [{ id, name, progress, rewards, house }] }.
 
+import { accessorySlots, retiredAccessories, slotOf } from "../data/accessories.js";
+
 /** Long enough for "Period 3 — Year 9 Science". */
 export const MAX_CLASS_NAME_LENGTH = 40;
 
@@ -46,6 +48,28 @@ export const classFromSingleClassroom = ({ progress, rewards, house }, name = ""
       activeRoom: house?.activeRoom ?? "living",
       houseItemsOwned: house?.houseItemsOwned ?? [],
     },
+  };
+};
+
+/**
+ * Brings a class's otter outfit up to date with the shop: stars come back for
+ * retired accessories, and the otter keeps on one hat and one pair of glasses.
+ */
+export const updateOutfit = (classroom) => {
+  const { unlocked, equipped } = classroom?.rewards ?? {};
+  const stars = classroom?.progress?.stars;
+  if (!Array.isArray(unlocked) || !Array.isArray(equipped) || !Number.isFinite(stars)) return classroom;
+
+  const refund = unlocked.reduce((total, id) => total + (retiredAccessories[id] ?? 0), 0);
+  const worn = accessorySlots
+    .map((slot) => equipped.findLast((id) => slotOf(id) === slot))
+    .filter(Boolean);
+  if (refund === 0 && worn.length === equipped.length) return classroom;
+
+  return {
+    ...classroom,
+    progress: { ...classroom.progress, stars: stars + refund },
+    rewards: { unlocked: unlocked.filter((id) => !(id in retiredAccessories)), equipped: worn },
   };
 };
 

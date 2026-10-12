@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { accessories } from "./data/accessories";
+import { accessories, accessorySlots, toggleWorn } from "./data/accessories";
 import { activities, soundThresholdOf } from "./data/activities";
-import { houseItems, houseRooms } from "./data/houseItems";
+import { hasSupport, houseItems, houseRooms } from "./data/houseItems";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useClassList } from "./hooks/useClassList";
 import { useMicrophone } from "./hooks/useMicrophone";
@@ -12,15 +12,17 @@ import { formatTime } from "./utils/formatTime";
 import { playNoiseAlert } from "./utils/playNoiseAlert";
 import { playTimerCompleteAlert } from "./utils/playTimerCompleteAlert";
 import Header from "./components/Header/Header";
-import NoiseCard from "./components/NoiseMeter/NoiseCard";
 import TimerCard from "./components/Timer/TimerCard";
 import HouseCard from "./components/House/HouseCard";
+import SessionPresets from "./components/SessionSettings/SessionPresets";
 import SessionCompletionModal from "./components/SessionCompleteModal/SessionCompletionModal";
 import ExportImportModal from "./components/ExportImport/ExportImportModal";
 import ClearDataModal from "./components/ClearData/ClearDataModal";
 import ClassesModal from "./components/Classes/ClassesModal";
 import MicrophoneModal from "./components/Microphone/MicrophoneModal";
+import SettingsSidebar from "./components/Settings/SettingsSidebar";
 import Footer from "./components/Footer/Footer";
+import Icon from "./components/Icon/Icon";
 import LanguagePicker from "./components/Language/LanguagePicker";
 import SupportButton from "./components/Support/SupportButton";
 import AboutPage from "./pages/AboutPage";
@@ -111,20 +113,28 @@ const Classroom = () => {
     trackSound: typeof value === "function" ? value(current.trackSound ?? true) : value,
   }));
 
+  /** A preset is a named snapshot of the session settings as they are now. */
+  const presetFromSettings = (current, name, display) => ({
+    name,
+    ...display,
+    soundThreshold: soundThresholds[activity],
+    activity: activities[current.activity] ? current.activity : "partner",
+    minutes: current.preferredMinutes,
+    trackSound: current.trackSound ?? true,
+  });
+
   const saveFavoriteSession = (name, display) => setSettings((current) => ({
     ...current,
     favoriteSessions: [
       ...(Array.isArray(current.favoriteSessions) ? current.favoriteSessions : []),
-      {
-        id: Date.now(),
-        name,
-        ...display,
-        soundThreshold: soundThresholds[activity],
-        activity: activities[current.activity] ? current.activity : "partner",
-        minutes: current.preferredMinutes,
-        trackSound: current.trackSound ?? true,
-      },
+      { id: Date.now(), ...presetFromSettings(current, name, display) },
     ],
+  }));
+
+  const updateFavoriteSession = (id, name, display) => setSettings((current) => ({
+    ...current,
+    favoriteSessions: (Array.isArray(current.favoriteSessions) ? current.favoriteSessions : [])
+      .map((favorite) => favorite.id === id ? { ...favorite, ...presetFromSettings(current, name, display) } : favorite),
   }));
 
   const deleteFavoriteSession = (id) => setSettings((current) => ({
@@ -204,6 +214,7 @@ const Classroom = () => {
   const [showClearData, setShowClearData] = useState(false);
   const [showClasses, setShowClasses] = useState(false);
   const [showMicrophone, setShowMicrophone] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const openMicrophoneSetup = () => setShowMicrophone(true);
   const [appMode, setAppMode] = useState("configure");
   const fullScreen = useFullScreen();
@@ -285,15 +296,16 @@ const Classroom = () => {
     if (recordedCompletion.current) return;
     recordedCompletion.current = true;
     const completedMinutes = timer.durationSeconds / 60;
+    const starsEarned = completedMinutes;
     const completedSession = {
       id: Date.now(),
       date: new Date().toISOString(),
       minutes: completedMinutes,
       activity,
-      starsEarned: completedMinutes,
+      starsEarned,
     };
-    setStars((value) => value + completedMinutes);
-    setTotalStars((value) => value + completedMinutes);
+    setStars((value) => value + starsEarned);
+    setTotalStars((value) => value + starsEarned);
     setCompletedSessions((value) => value + 1);
     setHistory((sessions) => [completedSession, ...sessions]);
     stopTimerAlert.current = playTimerCompleteAlert();
@@ -323,30 +335,15 @@ const Classroom = () => {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [showComplete, closeCompletionModal]);
 
-  const unlockedRoomIds = houseRooms
-    .filter((room, index) => {
-      const earlierRooms = houseRooms.slice(0, index);
-      return earlierRooms.every((earlierRoom) =>
-        houseItems
-          .filter((item) => item.room === earlierRoom.id)
-          .every((item) => houseItemsOwned.includes(item.id))
-      );
-    })
-    .map((room) => room.id);
-
   const buyOrEquip = (item) => {
     if (unlocked.includes(item.id)) {
-      setEquipped(
-        (items) => items.includes(item.id) 
-        ? items.filter((id) => id !== item.id) 
-        : [...items, item.id]
-      );
+      setEquipped((items) => toggleWorn(items, item.id));
       return;
     }
     if (stars < item.cost) return;
     setStars((value) => value - item.cost);
     setUnlocked((items) => [...items, item.id]);
-    setEquipped((items) => [...items, item.id]);
+    setEquipped((items) => toggleWorn(items, item.id));
   }
 
   const chooseDuration = (seconds) => {
@@ -355,11 +352,7 @@ const Classroom = () => {
   };
 
   const buyHouseItem = (item) => {
-    if (
-      !unlockedRoomIds.includes(item.room)
-      || houseItemsOwned.includes(item.id) 
-      || stars < item.cost
-    ) return;
+    if (houseItemsOwned.includes(item.id) || !hasSupport(item, houseItemsOwned) || stars < item.cost) return;
 
     setStars((value) => value - item.cost);
     setHouseItemsOwned((items) => [...items, item.id]);
@@ -375,7 +368,8 @@ const Classroom = () => {
   const startPreview = () => setPreview({
     activeRoom: houseRooms[0].id,
     houseItemsOwned: houseItems.map((item) => item.id),
-    equipped: accessories.map((item) => item.id),
+    // The fanciest hat and glasses, to show what the class is working towards.
+    equipped: accessorySlots.map((slot) => accessories.findLast((item) => item.slot === slot).id),
     otterName,
   });
 
@@ -393,9 +387,9 @@ const Classroom = () => {
   // the rest of the time.
   const shownActiveRoom = isPreviewing
     ? preview.activeRoom
-    : unlockedRoomIds.includes(activeRoom)
+    : houseRooms.some((room) => room.id === activeRoom)
       ? activeRoom
-      : unlockedRoomIds.at(-1);
+      : houseRooms[0].id;
   const shownHouseItemsOwned = isPreviewing ? preview.houseItemsOwned : houseItemsOwned;
   const shownEquipped = isPreviewing ? preview.equipped : equipped;
   const shownUnlocked = isPreviewing ? accessories.map((item) => item.id) : unlocked;
@@ -411,20 +405,28 @@ const Classroom = () => {
     setPreview((current) => ({ ...current, activeRoom: room }));
   };
 
-  /** In preview every piece is free to place or take away again. */
+  /**
+   * In preview every piece is free to place or take away again. Taking a piece
+   * away also takes away whatever sits on it, so nothing is left floating.
+   */
   const placeOrBuyHouseItem = (item) => {
     if (!isPreviewing) return buyHouseItem(item);
-    setPreview((current) => ({
-      ...current,
-      houseItemsOwned: togglePreviewId(current.houseItemsOwned, item.id),
-    }));
+    setPreview((current) => {
+      const owned = current.houseItemsOwned;
+      if (!owned.includes(item.id) && !hasSupport(item, owned)) return current;
+      const placed = togglePreviewId(owned, item.id);
+      return {
+        ...current,
+        houseItemsOwned: placed.filter((id) => hasSupport(houseItems.find((piece) => piece.id === id), placed)),
+      };
+    });
   };
 
   const wearOrBuyAccessory = (item) => {
     if (!isPreviewing) return buyOrEquip(item);
     setPreview((current) => ({
       ...current,
-      equipped: togglePreviewId(current.equipped, item.id),
+      equipped: toggleWorn(current.equipped, item.id),
     }));
   };
 
@@ -441,6 +443,7 @@ const Classroom = () => {
     setActivity,
     favoriteSessions,
     saveFavoriteSession,
+    updateFavoriteSession,
     deleteFavoriteSession,
     trackSound,
     setTrackSound,
@@ -501,11 +504,8 @@ const Classroom = () => {
     houseItems,
     houseItemsOwned: shownHouseItemsOwned,
     buyHouseItem: placeOrBuyHouseItem,
-    unlockedRoomIds: isPreviewing ? houseRooms.map((room) => room.id) : unlockedRoomIds,
     equipped: shownEquipped,
     isPreviewing,
-    startPreview,
-    stopPreview,
     isCelebrating: showComplete,
     isFocusing: appMode === "focus" && timer.isRunning,
     noiseTone,
@@ -547,7 +547,6 @@ const Classroom = () => {
   };
 
   const header = {
-    onOpenExportImport: () => setShowExportImport(true),
     onOpenMicrophone: openMicrophoneSetup,
     classes: {
       list: classes.classList.classes,
@@ -556,6 +555,16 @@ const Classroom = () => {
       onEdit: () => setShowClasses(true),
     },
   };
+
+  const teacherSettings = {
+    isPreviewing,
+    startPreview,
+    stopPreview,
+    openSaveFile: () => setShowExportImport(true),
+  };
+
+  const hasSessionStarted = timer.isRunning || timer.secondsRemaining < timer.durationSeconds;
+  const isLaunching = appMode === "focus" && !hasSessionStarted;
 
   const validSaveIds = {
     activities: [...Object.keys(activities), "presentation"],
@@ -570,7 +579,10 @@ const Classroom = () => {
   };
 
   return (
-    <main className={`app-shell mode-${appMode} ${isPreviewing ? "previewing" : ""} ${isFocusFullScreen ? "full-screen" : ""}`}>
+    <main className={`app-shell mode-${appMode} ${isPreviewing ? "previewing" : ""} ${isFocusFullScreen ? "full-screen" : ""} ${isLaunching ? "launching" : ""}`}>
+      {/* Everything above the footer grows to fill the screen, so the footer
+          sits at the bottom of the window even when the page is short. */}
+      <div className="app-content">
       {isPreviewing && (
         <div className="preview-bar" role="status">
           <b>{t("app.preview.title")}</b>
@@ -600,33 +612,11 @@ const Classroom = () => {
         </button>
       </nav>
 
-      {appMode === "focus" && fullScreen.isSupported && (
-        <button
-          className="outline full-screen-toggle"
-          type="button"
-          onClick={isFocusFullScreen ? fullScreen.exit : fullScreen.enter}
-        >
-          {isFocusFullScreen ? t("app.fullScreen.exit") : t("app.fullScreen.enter")}
-        </button>
-      )}
+      <HouseCard house={house} rewards={rewards} focusMode={appMode === "focus"} fullScreen={fullScreen}>
+        <TimerCard timerSettings={timerSettings} session={session} noise={noise} />
+      </HouseCard>
 
-      <HouseCard house={house} rewards={rewards} focusMode={appMode === "focus"} />
-
-      <div className="dashboard-grid focus-controls">
-        <TimerCard timerSettings={timerSettings} session={session} noise={noise} focusMode={appMode === "focus"} />
-
-        {appMode === "focus" && trackSound && !timer.isComplete && (timer.isRunning || timer.secondsRemaining < timer.durationSeconds) && <NoiseCard noise={noise} focusMode />}
-
-      </div>
-
-      {appMode === "configure" && <div className="clear-data-section">
-        <button className="preview-trigger" type="button" onClick={isPreviewing ? stopPreview : startPreview}>
-          {isPreviewing ? t("app.preview.stop") : t("app.preview.start")}
-        </button>
-        <button className="clear-data-trigger" type="button" onClick={() => setShowClearData(true)}>
-          {t("app.eraseData")}
-        </button>
-      </div>}
+      {appMode === "configure" && <SessionPresets session={session} noise={noise} />}
 
       <SessionCompletionModal
         equipped={shownEquipped}
@@ -664,6 +654,10 @@ const Classroom = () => {
         />
       )}
 
+      {showSettings && (
+        <SettingsSidebar settings={teacherSettings} onClose={() => setShowSettings(false)} />
+      )}
+
       {showClearData && (
         <ClearDataModal
           classroomData={classroomData}
@@ -671,8 +665,25 @@ const Classroom = () => {
           onConfirm={eraseSavedData}
         />
       )}
+      </div>
 
       <Footer />
+
+      {/* Settings sit in the page's bottom-right corner, opposite the language
+          and help buttons, while the classroom is being set up. */}
+      {appMode === "configure" && (
+        <button
+          className="settings-trigger"
+          type="button"
+          aria-label={t("settings.open")}
+          aria-haspopup="dialog"
+          aria-expanded={showSettings}
+          data-tooltip={t("settings.open")}
+          onClick={() => setShowSettings(true)}
+        >
+          <Icon name="settings" />
+        </button>
+      )}
     </main>
   );
 };

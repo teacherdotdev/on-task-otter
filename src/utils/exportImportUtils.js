@@ -1,5 +1,5 @@
 import { exportClassroomSave, importClassroomSave, SAVE_FILE_APP_NAME, SAVE_FILE_VERSION } from "./storage.js";
-import { classFromSingleClassroom, firstClassList } from "./classList.js";
+import { classFromSingleClassroom, firstClassList, updateOutfit } from "./classList.js";
 import { activities, MAX_SOUND_THRESHOLD, MIN_SOUND_THRESHOLD } from "../data/activities";
 
 const isFiniteNonNegativeNumber = (value) => {
@@ -139,6 +139,7 @@ const validateSaveFile = (file, validIds) => {
   const data = file.version === 1 ? upgradeSingleClassroomSave(file) : file;
   const settings = data.data.onTaskOtterSettings;
   const classList = data.data.onTaskOtterClasses;
+  if (Array.isArray(classList?.classes)) classList.classes = classList.classes.map(updateOutfit);
 
   if (
     !isValidSettings(settings, validIds)

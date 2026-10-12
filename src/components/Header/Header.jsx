@@ -8,7 +8,7 @@ import { useTranslation } from "../../i18n";
 // appear when a classroom was handed to it.
 const Header = ({ header, rightLink }) => {
   const { t } = useTranslation();
-  const { onOpenExportImport, onOpenMicrophone, classes } = header ?? {};
+  const { onOpenMicrophone, classes } = header ?? {};
   return (
     <header className="app-header">
       <div className="app-header-start">
@@ -30,7 +30,6 @@ const Header = ({ header, rightLink }) => {
               <Icon name="mic" />
               <span className="microphone-trigger-word">{t("mic.title")}</span>
             </button>
-            <button className="export-import-trigger" type="button" onClick={onOpenExportImport}>{t("header.saveClassroom")}</button>
             {classes && <ClassPicker {...classes} />}
           </div>
         </>

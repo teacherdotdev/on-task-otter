@@ -1,4 +1,18 @@
 import { useTranslation } from "../../i18n";
+import { slotOf } from "../../data/accessories";
+import { accessoryArt } from "./AccessoryArt";
+
+// Gray outlines that show where a hat or glasses would go while dressing up.
+const slotOutlines = {
+  hat: <path d="M68 45 C66 21 86 8 110 8 C134 8 154 21 152 45Z" />,
+  glasses: (
+    <>
+      <rect x="72" y="78" width="31" height="24" rx="10" />
+      <rect x="121" y="76" width="31" height="24" rx="10" />
+      <path d="M103 87 C109 84 115 84 121 86" />
+    </>
+  ),
+};
 
 const Otter = ({ equipped, isCelebrating, isFocusing, noiseTone, showAccessorySlots = false }) => {
   const { t } = useTranslation();
@@ -107,41 +121,11 @@ const Otter = ({ equipped, isCelebrating, isFocusing, noiseTone, showAccessorySl
               <path className="otter-toes" d="M174.5 105 L176.5 101.5 M180 108 L182 104.5" />
             </g>
           </g>
-          {equipped.includes("glasses") && (
-            <g className="otter-glasses">
-              <rect x="72" y="78" width="31" height="24" rx="10" />
-              <rect x="121" y="76" width="31" height="24" rx="10" />
-              <path d="M103 87 C109 84 115 84 121 86 M72 86 L60 82 M152 84 L163 79" />
-              <path className="glasses-shine" d="m78 83 8 14m5-14 7 12m36-14 8 14" />
-            </g>
-          )}
-          {equipped.includes("party-hat") && (
-            <g className="otter-hat" transform="translate(-6 0)">
-              <path d="M88 39 L123 3 L144 47Z" />
-              <path d="M101 26 L132 34 M113 14 L138 42" />
-              <circle className="hat-dot" cx="118" cy="31" r="3" />
-              <circle cx="123" cy="4" r="6" />
-            </g>
-          )}
-          {equipped.includes("bow-tie") && (
-            <g className="otter-bow" transform="translate(5 -24)">
-              <path d="M105 162C88 148 72 147 70 157v14c5 10 21 4 35-9 14 13 30 19 35 9v-14c-2-10-18-9-35 5Z" />
-              <circle cx="105" cy="162" r="8" />
-            </g>
-          )}
-          {showAccessorySlots && !equipped.includes("glasses") && (
-            <g className="accessory-placeholder otter-glasses">
-              <rect x="72" y="78" width="31" height="24" rx="10" />
-              <rect x="121" y="76" width="31" height="24" rx="10" />
-              <path d="M103 87 C109 84 115 84 121 86" />
-            </g>
-          )}
-          {showAccessorySlots && !equipped.includes("party-hat") && (
-            <path className="accessory-placeholder" d="M82 45 L117 7 L145 48Z" />
-          )}
-          {showAccessorySlots && !equipped.includes("bow-tie") && (
-            <path className="accessory-placeholder" d="M110 143 C92 130 78 133 76 143v12c6 8 21 2 34-9 13 11 28 17 34 9v-12c-2-10-16-13-34 0Z" />
-          )}
+          {["glasses", "hat"].map((slot) => {
+            const worn = equipped.find((id) => slotOf(id) === slot);
+            if (worn) return <g key={slot}>{accessoryArt[worn].art}</g>;
+            return showAccessorySlots && <g key={slot} className="accessory-placeholder">{slotOutlines[slot]}</g>;
+          })}
           <g className="focus-workspace">
             <path className="desk-top" d="M17 169 Q17 163 23 163 H197 Q203 163 203 169 V178 H17Z" />
             <path className="desk-front" d="M25 178 H195 L188 196 H32Z" />

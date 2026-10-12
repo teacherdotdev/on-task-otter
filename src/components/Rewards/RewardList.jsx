@@ -1,3 +1,4 @@
+import { AccessoryIcon } from "../Otter/AccessoryArt";
 import { useTranslation } from "../../i18n";
 
 const RewardList = ({ stars, accessories, unlocked, equipped, buyOrEquip, isPreviewing }) => {
@@ -9,7 +10,7 @@ const RewardList = ({ stars, accessories, unlocked, equipped, buyOrEquip, isPrev
     return (
       <article className="reward" key={item.id}>
         <span className="reward-icon" aria-hidden="true">
-          {item.icon}
+          <AccessoryIcon id={item.id} />
         </span>
 
         <div>

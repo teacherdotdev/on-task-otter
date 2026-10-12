@@ -1,4 +1,4 @@
-import { classFromSingleClassroom, firstClassList, isClassList } from "./classList.js";
+import { classFromSingleClassroom, firstClassList, isClassList, updateOutfit } from "./classList.js";
 
 export const SAVE_FILE_APP_NAME = "On-task Otter";
 export const SAVE_FILE_VERSION = 2;
@@ -68,10 +68,10 @@ const readSingleClassroom = () => {
 /** The saved classes, or a first class holding whatever was saved before classes existed. */
 export const loadClassList = () => {
   const saved = loadData(CLASSES_KEY);
-  if (isClassList(saved)) return saved;
+  if (isClassList(saved)) return { ...saved, classes: saved.classes.map(updateOutfit) };
 
   try {
-    const list = firstClassList(classFromSingleClassroom(readSingleClassroom()));
+    const list = firstClassList(updateOutfit(classFromSingleClassroom(readSingleClassroom())));
     saveData(CLASSES_KEY, list);
     removeSingleClassroomKeys();
     return list;

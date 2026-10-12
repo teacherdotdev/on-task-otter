@@ -12,6 +12,18 @@ const artworkFor = (id) => {
   return url;
 };
 
+// Each room's picker icon is its own file, named by room id.
+const roomIconArtwork = import.meta.glob("../assets/room-icons/*.svg", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+const roomIconFor = (id) => {
+  const url = roomIconArtwork[`../assets/room-icons/${id}.svg`];
+  if (!url) throw new Error(`Missing artwork: src/assets/room-icons/${id}.svg`);
+  return url;
+};
+
 const cartoonRoom = (name, symbol, wall, floor) => {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540">
     <rect width="900" height="540" fill="${wall}"/>
@@ -37,6 +49,21 @@ const nextRoomPrice = (room) => {
   return 30 + (pricePosition + retiredMobileOffset) * 5;
 };
 
+// These items are drawn sitting on another item, so a class can only buy one
+// once the piece it rests on is in the room.
+const sitsOn = {
+  "cloud-pillows": "sunny-sofa",
+  "record-player": "book-nook",
+  "moon-lamp": "nightstand",
+  "soft-blanket": "cozy-bed",
+  "cake-stand": "sunny-table",
+  "place-settings": "dining-table",
+  "dinner-feast": "dining-table",
+  "rubber-duck": "bubble-bath",
+  "desk-lamp": "office-desk",
+  "coffee-maker": "filing-cabinet",
+};
+
 // Each item's name lives in the translations, under "item.<id>".
 const item = (id, _cost, room, symbol, _color, sceneType = "floor") => ({
   id,
@@ -44,6 +71,7 @@ const item = (id, _cost, room, symbol, _color, sceneType = "floor") => ({
   room,
   symbol,
   sceneType,
+  sitsOn: sitsOn[id] ?? null,
   image: artworkFor(id),
   roomImage: artworkFor(id),
   roomPosition: layoutPosition(room, id),
@@ -110,6 +138,9 @@ export const houseItems = [
   item("wall-art", 315, "office", "🖼️", "#f0b867", "wall"),
   item("coffee-maker", 320, "office", "☕", "#6fa7b0", "surface"),
 ];
+
+/** Whether the piece an item sits on (if any) is already in the room. */
+export const hasSupport = (item, ownedIds) => !item.sitsOn || ownedIds.includes(item.sitsOn);
 
 export const classMilestones = [
   {
@@ -187,9 +218,9 @@ export const classMilestones = [
 ];
 
 export const houseRooms = [
-  { id: "living", icon: "⌂", image: cartoonRoom("Living Room", "HOME", "#d9e9db", "#caa27a") },
-  { id: "bedroom", icon: "☾", image: cartoonRoom("Bedroom", "DREAM", "#ded8ee", "#b89072") },
-  { id: "kitchen", icon: "♨", image: cartoonRoom("Kitchen", "YUM", "#f6ddad", "#c99d75") },
-  { id: "bathroom", icon: "◌", image: cartoonRoom("Bathroom", "SPLASH", "#d1e9ed", "#b58d6d") },
-  { id: "office", icon: "▣", image: cartoonRoom("Office", "FOCUS", "#e9e2d3", "#a88161") },
+  { id: "living", wall: "#e6e2c3", floor: "#d0a074", icon: roomIconFor("living"), image: cartoonRoom("Living Room", "HOME", "#d9e9db", "#caa27a") },
+  { id: "bedroom", wall: "#e4cfcc", floor: "#bf8e68", icon: roomIconFor("bedroom"), image: cartoonRoom("Bedroom", "DREAM", "#ded8ee", "#b89072") },
+  { id: "kitchen", wall: "#f6e2b6", floor: "#d0a074", icon: roomIconFor("kitchen"), image: cartoonRoom("Kitchen", "YUM", "#f6ddad", "#c99d75") },
+  { id: "bathroom", wall: "#f4e5ca", floor: "#dab993", icon: roomIconFor("bathroom"), image: cartoonRoom("Bathroom", "SPLASH", "#d1e9ed", "#b58d6d") },
+  { id: "office", wall: "#f2dcc3", floor: "#d0a074", icon: roomIconFor("office"), image: cartoonRoom("Office", "FOCUS", "#e9e2d3", "#a88161") },
 ];

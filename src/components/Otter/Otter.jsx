@@ -30,9 +30,7 @@ const Otter = ({ equipped, isCelebrating, isFocusing, isAtDesk = isFocusing, noi
 
   return (
     <div className={`otter-scene state-${state}`}>
-      <p className="otter-message" aria-live="polite">{t(`otter.${state}`)}</p>
-      <span className="sparkle one" aria-hidden="true">✦</span>
-      <span className="sparkle two" aria-hidden="true">✦</span>
+      <p className="otter-message" aria-live="polite">{state !== "celebrating" && t(`otter.${state}`)}</p>
       <div className="otter" role="img" aria-label={stateLabels[state]}>
         <svg className="otter-svg" viewBox="0 0 220 220" aria-hidden="true">
           <g className="focus-chair">

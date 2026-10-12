@@ -182,7 +182,6 @@ export const es = {
     ],
 
     "otter.default": "Otter",
-    "otter.celebrating": "¡Lo logramos!",
     "otter.focusing": "Concentrado a tope...",
     "otter.idle": "¡Listo cuando tú lo estés!",
     "otter.loud": "Un poquito más bajo, por favor.",
@@ -317,7 +316,7 @@ export const es = {
     "complete.body": "Tu clase completó *{duration}* de concentración compartida.",
     "complete.duration": "{minutes} minutos",
     "complete.silence": "Apagar la alarma",
-    "complete.celebrate": "¡A celebrar!",
+    "complete.done": "Completar",
 
     "about.title": "Acerca de",
     "about.intro": "Una herramienta de concentración compartida para el aula, hecha para los maestros y los estudiantes con quienes se sientan cada día.",

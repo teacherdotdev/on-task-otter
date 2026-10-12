@@ -42,7 +42,7 @@ const CompletionModal = ({ equipped, showComplete, duration, isTimerAlertPlaying
             </button>
           )}
           <button className="primary" type="button" autoFocus={!isTimerAlertPlaying} onClick={onClose}>
-            {t("complete.celebrate")}
+            {t("complete.done")}
           </button>
         </div>
     </Modal>

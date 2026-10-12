@@ -183,7 +183,6 @@ export const en = {
     ],
 
     "otter.default": "Otter",
-    "otter.celebrating": "We did it!",
     "otter.focusing": "In the zone...",
     "otter.idle": "Ready when you are!",
     "otter.loud": "A little quieter, please!",
@@ -318,7 +317,7 @@ export const en = {
     "complete.body": "Your class completed *{duration}* of shared focus.",
     "complete.duration": "{minutes} minutes",
     "complete.silence": "Turn off alarm",
-    "complete.celebrate": "Celebrate",
+    "complete.done": "Complete",
 
     "about.title": "About",
     "about.intro": "A shared focus tool for classrooms, built for teachers and the students they sit with every day.",

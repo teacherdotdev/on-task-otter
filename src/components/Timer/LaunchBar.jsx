@@ -18,11 +18,13 @@ const PresetMenu = ({ presets, onChoose }) => {
     const closeOnOutsideClick = (event) => {
       if (!container.current?.contains(event.target)) setOpen(false);
     };
-    window.addEventListener("keydown", closeOnEscape);
-    window.addEventListener("pointerdown", closeOnOutsideClick);
+    // The bar may be in the floating window rather than the tab.
+    const view = container.current?.ownerDocument.defaultView ?? window;
+    view.addEventListener("keydown", closeOnEscape);
+    view.addEventListener("pointerdown", closeOnOutsideClick);
     return () => {
-      window.removeEventListener("keydown", closeOnEscape);
-      window.removeEventListener("pointerdown", closeOnOutsideClick);
+      view.removeEventListener("keydown", closeOnEscape);
+      view.removeEventListener("pointerdown", closeOnOutsideClick);
     };
   }, [open]);
 

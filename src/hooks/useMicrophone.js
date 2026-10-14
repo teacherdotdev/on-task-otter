@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { applyCalibration } from "../audio/calibration";
+import { nextFrame } from "../utils/clock";
 
 /**
  * The microphone: raw room loudness, ten times a second.
@@ -133,7 +134,7 @@ export const useMicrophone = () => {
       setStatus("on");
 
       const samples = new Uint8Array(analyser.fftSize);
-      let frame = 0;
+      let cancelFrame = () => {};
       let smoothed = 0;
       let lastTick = performance.now();
       let lastPublished = 0;
@@ -162,13 +163,13 @@ export const useMicrophone = () => {
           windowFrames = 0;
           lastPublished = now;
         }
-        frame = requestAnimationFrame(measure);
+        cancelFrame = nextFrame(measure);
       };
       measure();
 
       const activeStream = stream;
       teardownRef.current = () => {
-        cancelAnimationFrame(frame);
+        cancelFrame();
         activeStream.getTracks().forEach((track) => track.stop());
         void context.close();
       };

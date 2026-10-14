@@ -837,6 +837,34 @@ legend { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
   .scene-sound-folded { display: flex; justify-content: flex-end; }
 }
 
+/* Floating: the room alone, filling a small window that stays on top of the
+   teacher's other windows. That window is as narrow as a phone, so the phone
+   layout is undone here: the timer and sound meter stay inside the room,
+   shrunk to suit it. */
+.app-shell.floating { justify-content: center; min-height: 100vh; padding: 8px; }
+.floating .house-card { border-radius: 0; margin: 0 auto; max-width: calc((100vh - 16px) * 900 / 440); padding: 0; width: 100%; }
+.floating .room-scene { margin-top: 0; }
+.floating .scene-timer, .floating .scene-sound { margin-top: 0; position: absolute; zoom: .72; }
+.floating .scene-sound { width: 300px; }
+.floating .scene-sound-folded { display: block; width: auto; }
+/* Before a session the launch bar keeps its one-row computer layout, shrunk to
+   fit under a room that gives up a little height for it. */
+.floating.launching .house-card { max-width: calc((100vh - 84px) * 900 / 440); }
+/* The bar may be wider than the room above it, so it centres on the window. */
+.floating .launch-bar { align-items: flex-end; flex-direction: row; flex-wrap: wrap; justify-content: center; left: 50%; margin: 8px 0 0; max-width: calc((100vw - 16px) / .7); position: relative; translate: -50% 0; width: max-content; zoom: .7; }
+.floating .launch-presets-button { width: auto; }
+.floating .launch-quick { justify-content: center; }
+.floating .launch-presets + .launch-quick { border-left: 1px solid rgba(220, 233, 217, .25); border-top: 0; padding-left: 10px; padding-top: 0; }
+.floating .launch-group, .floating .launch-segments button, .floating .launch-stepper label, .floating .launch-start { flex: 0 0 auto; }
+/* The end-of-session celebration shrinks to fit the window too. */
+.floating .modal-backdrop { padding: 10px; }
+.floating .completion-modal { zoom: .68; }
+/* While the room is in a floating window, the tab says where it went. */
+.floating-placeholder { align-items: center; background: #fffaf0; border: 1px solid #e7ded0; border-radius: 28px; box-shadow: 0 12px 35px rgba(37, 67, 61, .1); display: flex; flex-direction: column; gap: 10px; margin: 12px auto 30px; max-width: 460px; padding: 34px 30px; text-align: center; width: calc(100% - 48px); }
+.floating-placeholder .icon { color: #39675b; height: 44px; width: 44px; }
+.floating-placeholder h2 { margin: 0; }
+.floating-placeholder p { color: #60756e; line-height: 1.6; margin: 0 0 8px; }
+
 
 /* Classes: the class picker beside the microphone, and the Edit classes window. */
 .app-header-start { align-items: center; display: flex; gap: 14px; min-width: 0; }

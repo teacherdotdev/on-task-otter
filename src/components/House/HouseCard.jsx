@@ -21,7 +21,7 @@ const SceneButton = ({ icon, label, pressed, onClick }) => (
 
 // In focus mode the session's timer and sound meter come in as children, so
 // they sit inside the room instead of under it.
-const HouseCard = ({ house, rewards, focusMode = false, fullScreen, children }) => {
+const HouseCard = ({ house, rewards, focusMode = false, fullScreen, floating, children }) => {
   const { t } = useTranslation();
   const [isRenaming, setIsRenaming] = useState(false);
   const [editingMode, setEditingMode] = useState(null);
@@ -110,13 +110,22 @@ const HouseCard = ({ house, rewards, focusMode = false, fullScreen, children }) 
     </>
   );
 
-  const focusOverlay = fullScreen?.isSupported && (
+  // A floating room needs neither button: the floating window carries the
+  // browser's own button for going back to the tab.
+  const canFloat = floating?.isSupported && !floating.isFloating;
+  const canGoFullScreen = fullScreen?.isSupported && !floating?.isFloating;
+  const focusOverlay = (canFloat || canGoFullScreen) && (
     <div className="scene-overlay scene-overlay-end">
-      <SceneButton
-        icon={fullScreen.isFullScreen ? "minimize" : "maximize"}
-        label={fullScreen.isFullScreen ? t("app.fullScreen.exit") : t("app.fullScreen.enter")}
-        onClick={fullScreen.isFullScreen ? fullScreen.exit : fullScreen.enter}
-      />
+      {canFloat && (
+        <SceneButton icon="pictureInPicture" label={t("app.float.enter")} onClick={floating.open} />
+      )}
+      {canGoFullScreen && (
+        <SceneButton
+          icon={fullScreen.isFullScreen ? "minimize" : "maximize"}
+          label={fullScreen.isFullScreen ? t("app.fullScreen.exit") : t("app.fullScreen.enter")}
+          onClick={fullScreen.isFullScreen ? fullScreen.exit : fullScreen.enter}
+        />
+      )}
     </div>
   );
 

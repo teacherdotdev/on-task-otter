@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { RoomMonitor } from "../noise/RoomMonitor";
+import { nextFrame } from "../utils/clock";
 
 /**
  * Judges the room every animation frame while `judging` is true, the same
@@ -23,15 +24,15 @@ export const useRoomMonitor = ({ readLevel, goal, judging }) => {
     if (!judging) return;
     const monitor = monitorRef.current;
     reset();
-    let frame;
+    let cancelFrame;
     const step = () => {
       monitor.observe(readLevel(), goalRef.current, performance.now());
       setState(monitor.state);
-      frame = requestAnimationFrame(step);
+      cancelFrame = nextFrame(step);
     };
-    frame = requestAnimationFrame(step);
+    cancelFrame = nextFrame(step);
     return () => {
-      cancelAnimationFrame(frame);
+      cancelFrame();
       reset();
     };
   }, [judging, readLevel, reset]);

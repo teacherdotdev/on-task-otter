@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { accessories, accessorySlots, toggleWorn } from "./data/accessories";
 import { activities, soundThresholdOf } from "./data/activities";
 import { hasSupport, houseItems, houseRooms } from "./data/houseItems";
@@ -8,6 +9,7 @@ import { useClassList } from "./hooks/useClassList";
 import { useMicrophone } from "./hooks/useMicrophone";
 import { useRoomMonitor } from "./hooks/useRoomMonitor";
 import { useFullScreen } from "./hooks/useFullScreen";
+import { useFloatingWindow } from "./hooks/useFloatingWindow";
 import { useTimer } from "./hooks/useTimer";
 import { formatTime } from "./utils/formatTime";
 import { playNoiseAlert } from "./utils/playNoiseAlert";
@@ -15,6 +17,7 @@ import { playTimerCompleteAlert } from "./utils/playTimerCompleteAlert";
 import Header from "./components/Header/Header";
 import TimerCard from "./components/Timer/TimerCard";
 import HouseCard from "./components/House/HouseCard";
+import FloatingPlaceholder from "./components/House/FloatingPlaceholder";
 import SessionPresets from "./components/SessionSettings/SessionPresets";
 import SessionCompletionModal from "./components/SessionCompleteModal/SessionCompletionModal";
 import ExportImportModal from "./components/ExportImport/ExportImportModal";
@@ -229,12 +232,16 @@ const Classroom = () => {
   const openMicrophoneSetup = () => setShowMicrophone(true);
   const [appMode, setAppMode] = useState("configure");
   const fullScreen = useFullScreen();
+  const floating = useFloatingWindow();
+  const isFloating = floating.window !== null;
   const isFocusFullScreen = appMode === "focus" && fullScreen.isFullScreen;
 
   // runtime state
   const expectation = { ...activities[activity], threshold: soundThresholds[activity] };
   const microphone = useMicrophone();
   const timer = useTimer(preferredMinutes);
+  // Whether the class sees the countdown, chosen when a session starts.
+  const [sessionDisplay, setSessionDisplay] = useState({ showCountdown: true, hiddenTimerMode: "none" });
   const pauseTimer = timer.pause;
   /**
    * True while the calibration popup is open. The class is being asked to
@@ -342,9 +349,11 @@ const Classroom = () => {
     const closeOnEscape = (event) => {
       if (event.key === "Escape") closeCompletionModal();
     }
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [showComplete, closeCompletionModal]);
+    // While the room floats, the celebration shows in the floating window.
+    const target = floating.window ?? window;
+    target.addEventListener("keydown", closeOnEscape);
+    return () => target.removeEventListener("keydown", closeOnEscape);
+  }, [showComplete, closeCompletionModal, floating.window]);
 
   const buyOrEquip = (item) => {
     if (unlocked.includes(item.id)) {
@@ -389,6 +398,21 @@ const Classroom = () => {
   const enterFocusMode = () => {
     stopPreview();
     setAppMode("focus");
+  };
+
+  // Floating belongs to on-task mode, so setting up the classroom brings the
+  // room back into the tab.
+  const enterConfigureMode = () => {
+    floating.close();
+    setAppMode("configure");
+  };
+
+  const floatRoom = () => {
+    fullScreen.exit();
+    floating.open({ width: 720, height: 380, title: t("app.name") }).catch(() => {
+      // The browser said no (a second click while one opens, say). The room
+      // simply stays in the tab.
+    });
   };
 
   const togglePreviewId = (ids, id) =>
@@ -453,6 +477,8 @@ const Classroom = () => {
     chooseDuration,
     setActivity,
     favoriteSessions,
+    display: sessionDisplay,
+    setDisplay: setSessionDisplay,
     saveFavoriteSession,
     updateFavoriteSession,
     deleteFavoriteSession,
@@ -596,6 +622,29 @@ const Classroom = () => {
     window.location.reload();
   };
 
+  const houseCard = (
+    <HouseCard
+      house={house}
+      rewards={rewards}
+      focusMode={appMode === "focus"}
+      fullScreen={fullScreen}
+      floating={{ isSupported: floating.isSupported, isFloating, open: floatRoom }}
+    >
+      <TimerCard timerSettings={timerSettings} session={session} noise={noise} />
+    </HouseCard>
+  );
+
+  const completionModal = (
+    <SessionCompletionModal
+      equipped={shownEquipped}
+      showComplete={showComplete}
+      isTimerAlertPlaying={isTimerAlertPlaying}
+      onClose={closeCompletionModal}
+      onSilenceAlert={silenceTimerAlert}
+      duration={t("complete.duration", { minutes: timer.durationSeconds / 60 })}
+    />
+  );
+
   return (
     <main className={`app-shell mode-${appMode} ${isPreviewing ? "previewing" : ""} ${isFocusFullScreen ? "full-screen" : ""} ${isLaunching ? "launching" : ""}`}>
       {/* Everything above the footer grows to fill the screen, so the footer
@@ -616,7 +665,7 @@ const Classroom = () => {
           className={appMode === "configure" ? "selected" : ""}
           type="button"
           aria-pressed={appMode === "configure"}
-          onClick={() => setAppMode("configure")}
+          onClick={enterConfigureMode}
         >
           {t("app.mode.configure")}
         </button>
@@ -630,20 +679,21 @@ const Classroom = () => {
         </button>
       </nav>
 
-      <HouseCard house={house} rewards={rewards} focusMode={appMode === "focus"} fullScreen={fullScreen}>
-        <TimerCard timerSettings={timerSettings} session={session} noise={noise} />
-      </HouseCard>
+      {isFloating ? (
+        <FloatingPlaceholder onReturn={floating.close} />
+      ) : houseCard}
 
       {appMode === "configure" && <SessionPresets session={session} noise={noise} />}
 
-      <SessionCompletionModal
-        equipped={shownEquipped}
-        showComplete={showComplete}
-        isTimerAlertPlaying={isTimerAlertPlaying}
-        onClose={closeCompletionModal}
-        onSilenceAlert={silenceTimerAlert}
-        duration={t("complete.duration", { minutes: timer.durationSeconds / 60 })}
-      />
+      {!isFloating && completionModal}
+
+      {isFloating && createPortal(
+        <div className={`app-shell mode-focus floating ${isLaunching ? "launching" : ""}`}>
+          {houseCard}
+          {completionModal}
+        </div>,
+        floating.window.document.body,
+      )}
 
       {showExportImport && (
         <ExportImportModal

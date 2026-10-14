@@ -1,4 +1,3 @@
-import { useState } from "react";
 import TimerControls from "./TimerControls";
 import LaunchBar from "./LaunchBar";
 import SoundPanel from "../NoiseMeter/SoundPanel";
@@ -8,15 +7,17 @@ import SoundPanel from "../NoiseMeter/SoundPanel";
 // meter on the floor once the session has begun.
 const TimerCard = ({ timerSettings, session, noise }) => {
   const { timer } = timerSettings;
-  const [showCountdown, setShowCountdown] = useState(true);
-
-  // "none", "generic", "progressive"
-  const [hiddenTimerMode, setHiddenTimerMode] = useState("none");
+  // Kept by the app rather than here, so the session keeps its countdown
+  // setting when the room floats out of the tab and back.
+  const { showCountdown, hiddenTimerMode } = session.display;
   const hasStarted = timer.isRunning || timer.secondsRemaining < timer.durationSeconds;
 
   const launchSession = (setup) => {
-    setShowCountdown(setup.showCountdown ?? true);
-    setHiddenTimerMode(setup.hiddenTimerMode ?? "none");
+    session.setDisplay({
+      showCountdown: setup.showCountdown ?? true,
+      // "none", "generic", "progressive"
+      hiddenTimerMode: setup.hiddenTimerMode ?? "none",
+    });
     session.startSession(setup);
   };
 

@@ -43,7 +43,6 @@ const Classroom = () => {
   const [settings, setSettings] = useLocalStorage(SETTINGS_KEY, {
     activity: "independent",
     preferredMinutes: 15,
-    otterName: "Otter",
     favoriteSessions: [],
     soundThresholds: {
       independent: activities.independent.threshold,
@@ -52,23 +51,28 @@ const Classroom = () => {
     trackSound: true,
     starsPerMinute: DEFAULT_STARS_PER_MINUTE,
   });
-  // Each class earns its own stars and keeps its own otter outfit and rooms.
+  // Each class earns its own stars and keeps its own otter, with its own name,
+  // outfit and rooms.
   const classes = useClassList();
   const {
+    otterName,
     progress: progressData,
     rewards: rewardData,
     house: houseData,
   } = classes.currentClass;
   const {
+    setOtterName,
     setProgress: setProgressData,
     setRewards: setRewardData,
     setHouse: setHouseData,
   } = classes;
 
+  // The otter's name was once shared by every class. Each class now names its
+  // own otter, so the old shared name is left out of the save file.
+  const { otterName: _sharedOtterName, ...savedSettings } = settings;
   const {
     activity: savedActivity,
     preferredMinutes,
-    otterName = t("otter.default"),
     favoriteSessions: savedFavoriteSessions = [],
     soundThresholds: savedSoundThresholds = {},
     trackSound = true,
@@ -102,10 +106,6 @@ const Classroom = () => {
           : value
       }
     ));
-
-  const setOtterName = (value) => setSettings(
-    (current) => ({ ...current, otterName: value })
-  );
 
   const setSoundThreshold = (activityId, value) => setSettings((current) => ({
     ...current,
@@ -555,9 +555,8 @@ const Classroom = () => {
 
   const classroomData = {
     onTaskOtterSettings: {
-      ...settings,
+      ...savedSettings,
       activity,
-      otterName,
       favoriteSessions: favoriteSessions.map((favorite) => ({
         ...favorite,
         activity: activities[favorite.activity] ? favorite.activity : "partner",

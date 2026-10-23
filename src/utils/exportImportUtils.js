@@ -1,5 +1,5 @@
 import { exportClassroomSave, importClassroomSave, SAVE_FILE_APP_NAME, SAVE_FILE_VERSION } from "./storage.js";
-import { classFromSingleClassroom, firstClassList, updateOutfit } from "./classList.js";
+import { classFromSingleClassroom, firstClassList, giveOtterName, updateOutfit } from "./classList.js";
 import { activities, MAX_SOUND_THRESHOLD, MIN_SOUND_THRESHOLD } from "../data/activities";
 import { MAX_STARS_PER_MINUTE, MIN_STARS_PER_MINUTE } from "../data/stars";
 
@@ -102,6 +102,7 @@ const isValidClass = (classroom, validIds) => {
 
   return typeof classroom.id === "string"
     && typeof classroom.name === "string"
+    && (classroom.otterName === undefined || typeof classroom.otterName === "string")
     && validProgress
     && validRewards
     && validHouse;
@@ -127,6 +128,7 @@ const upgradeSingleClassroomSave = (save) => ({
       progress: save.data.onTaskOtterProgress,
       rewards: save.data.onTaskOtterRewards,
       house: save.data.onTaskOtterHouse,
+      otterName: save.data.onTaskOtterSettings.otterName,
     })),
   },
 });
@@ -156,9 +158,11 @@ const validateSaveFile = (file, validIds) => {
     throw new Error("Invalid classroom save file");
   }
 
+  // Files saved before each class named its own otter keep one shared name in
+  // the settings. Every class without a name of its own takes that one.
+  const { otterName: sharedOtterName, ...teacherSettings } = settings;
   data.data.onTaskOtterSettings = {
-    ...settings,
-    otterName: settings.otterName ?? "Otter",
+    ...teacherSettings,
     favoriteSessions: settings.favoriteSessions ?? [],
     soundThresholds: settings.soundThresholds ?? {
       independent: activities.independent.threshold,
@@ -170,7 +174,7 @@ const validateSaveFile = (file, validIds) => {
       ? classList.currentId
       : classList.classes[0].id,
     classes: classList.classes.map((classroom) => ({
-      ...classroom,
+      ...giveOtterName(classroom, sharedOtterName),
       rewards: {
         unlocked: [...new Set(classroom.rewards.unlocked)],
         equipped: [...new Set(classroom.rewards.equipped)],

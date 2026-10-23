@@ -1,4 +1,4 @@
-import { classFromSingleClassroom, firstClassList, isClassList, updateOutfit } from "./classList.js";
+import { classFromSingleClassroom, firstClassList, giveOtterName, isClassList, updateOutfit } from "./classList.js";
 
 export const SAVE_FILE_APP_NAME = "On-task Otter";
 export const SAVE_FILE_VERSION = 2;
@@ -67,11 +67,22 @@ const readSingleClassroom = () => {
 
 /** The saved classes, or a first class holding whatever was saved before classes existed. */
 export const loadClassList = () => {
+  // Saves from before each class named its own otter keep the one shared name
+  // in the settings.
+  const sharedOtterName = loadData(SETTINGS_KEY)?.otterName;
   const saved = loadData(CLASSES_KEY);
-  if (isClassList(saved)) return { ...saved, classes: saved.classes.map(updateOutfit) };
+  if (isClassList(saved)) {
+    return {
+      ...saved,
+      classes: saved.classes.map((classroom) => updateOutfit(giveOtterName(classroom, sharedOtterName))),
+    };
+  }
 
   try {
-    const list = firstClassList(updateOutfit(classFromSingleClassroom(readSingleClassroom())));
+    const list = firstClassList(updateOutfit(classFromSingleClassroom({
+      ...readSingleClassroom(),
+      otterName: sharedOtterName,
+    })));
     saveData(CLASSES_KEY, list);
     removeSingleClassroomKeys();
     return list;

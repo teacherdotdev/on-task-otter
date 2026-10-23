@@ -21,7 +21,7 @@ export const useClassList = () => {
     }
   }, [classList]);
 
-  /** Changes one part (progress, rewards or house) of the class on screen. */
+  /** Changes one part (otterName, progress, rewards or house) of the class on screen. */
   const setCurrentClassPart = (part) => (value) => setClassList((list) =>
     updateCurrentClass(list, (classroom) => ({
       ...classroom,
@@ -32,6 +32,7 @@ export const useClassList = () => {
   return {
     classList,
     currentClass: currentClassOf(classList),
+    setOtterName: setCurrentClassPart("otterName"),
     setProgress: setCurrentClassPart("progress"),
     setRewards: setCurrentClassPart("rewards"),
     setHouse: setCurrentClassPart("house"),

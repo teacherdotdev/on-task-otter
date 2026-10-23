@@ -44,12 +44,13 @@ the computer it was earned on, and saves itself as it changes.
 
 To move a classroom to another computer, or keep a backup, the teacher presses
 **Save Classroom Setup** and downloads a save file. It holds every class (each
-one's stars, session history, otter outfit and rooms) and the timer settings and
+one's stars, session history, otter name, outfit and rooms) and the timer settings and
 session presets they share. Restoring that file on any computer brings every
 class back.
 
 A teacher with several classes picks the class on screen from the menu beside
-the logo. Each class earns its own stars and keeps its own otter outfit and rooms.
+the logo. Each class earns its own stars and keeps its own otter, with its own
+name, outfit and rooms.
 
 ## Later Ideas
 

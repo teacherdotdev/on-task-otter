@@ -158,6 +158,6 @@ If you teach more than one class, each class can have its own otter progress.
 
 - Select the class name beside the On-task Otter logo to switch classes. The timer starts fresh when you switch.
 - Select **Edit classes** in that menu to add, rename, or delete a class.
-- Each class keeps its own **stars**, completed sessions, otter accessories, room decorations, and the room the otter is in.
-- Session presets, the timer and noise settings, and the otter's name are shared by every class.
+- Each class keeps its own **stars**, completed sessions, otter name, otter accessories, room decorations, and the room the otter is in.
+- Session presets and the timer and noise settings are shared by every class.
 - **Save Classroom Configuration** downloads one file with every class in it. Restoring that file brings back all of the classes.

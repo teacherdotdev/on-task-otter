@@ -1,8 +1,10 @@
 // A teacher can keep several classes on one computer. Each class earns its own
-// stars and keeps its own otter outfit and rooms; timer settings and session
-// presets belong to the teacher and are shared by every class.
+// stars and keeps its own otter, with its own name, outfit and rooms; timer
+// settings and session presets belong to the teacher and are shared by every
+// class.
 //
-// The list is saved as { currentId, classes: [{ id, name, progress, rewards, house }] }.
+// The list is saved as
+// { currentId, classes: [{ id, name, otterName, progress, rewards, house }] }.
 
 import { accessorySlots, retiredAccessories, slotOf } from "../data/accessories.js";
 
@@ -14,10 +16,14 @@ export const newClassId = () => Date.now().toString(36) + Math.random().toString
 export const cleanClassName = (name) =>
   String(name ?? "").replace(/\s+/g, " ").trim().slice(0, MAX_CLASS_NAME_LENGTH);
 
-/** A class that has not earned anything yet. An empty name shows as "My class". */
-export const emptyClass = (name = "") => ({
+/**
+ * A class that has not earned anything yet. An empty name shows as "My class",
+ * and an empty otter name as "Otter" in the teacher's language.
+ */
+export const emptyClass = (name = "", otterName = "") => ({
   id: newClassId(),
   name: cleanClassName(name),
+  otterName,
   progress: { stars: 0, totalStars: 0, completedSessions: 0, history: [] },
   rewards: { unlocked: [], equipped: [] },
   house: { activeRoom: "living", houseItemsOwned: [] },
@@ -27,10 +33,10 @@ export const emptyClass = (name = "") => ({
  * Turns one classroom saved before classes existed into a class. Those saves
  * counted "points"; the class now earns stars, one per minute just like before.
  */
-export const classFromSingleClassroom = ({ progress, rewards, house }, name = "") => {
+export const classFromSingleClassroom = ({ progress, rewards, house, otterName }, name = "") => {
   const history = Array.isArray(progress?.history) ? progress.history : [];
   return {
-    ...emptyClass(name),
+    ...emptyClass(name, typeof otterName === "string" ? otterName : ""),
     progress: {
       stars: progress?.stars ?? progress?.points ?? 0,
       totalStars: progress?.totalStars ?? progress?.totalPoints ?? 0,
@@ -72,6 +78,16 @@ export const updateOutfit = (classroom) => {
     rewards: { unlocked: unlocked.filter((id) => !(id in retiredAccessories)), equipped: worn },
   };
 };
+
+/**
+ * The otter's name used to be one name in the teacher's settings, shared by
+ * every class. A class saved back then is given that name, so no otter is
+ * renamed by the move.
+ */
+export const giveOtterName = (classroom, sharedOtterName) =>
+  typeof classroom?.otterName === "string"
+    ? classroom
+    : { ...classroom, otterName: typeof sharedOtterName === "string" ? sharedOtterName : "" };
 
 export const firstClassList = (firstClass = emptyClass()) => ({
   currentId: firstClass.id,
